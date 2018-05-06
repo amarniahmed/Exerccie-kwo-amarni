@@ -1,0 +1,38 @@
+<table class="order-amounts">
+  <tbody>
+    <tr class="purchase_amount">
+      <td><label><?=c(l('subtotal_of_items'))?></label></td>
+      <td><?=H::amount($order->purchase_amount)?></td>
+    </tr>
+    <tr class="shipping_handling separator">
+      <td><label><?=c(l('shipping_handling'))?></label></td>
+      <td><?=H::amount($order->shipping_amount)?></td>
+    </tr>
+    <tr class="total_before_taxes">
+      <td><label><?=c(l('total_before_taxes'))?></label></td>
+      <td><?=H::amount($order->purchase_amount + $order->shipping_amount)?></td>
+    </tr>
+    <tr class="tax_amount separator">
+      <td><label><?=c(l('taxes'))?></label></td>
+      <td><?=H::amount($order->tax_amount)?></td>
+    </tr>
+<?php if ($order->discount_amount > 0): ?>
+    <tr class="discount_amount separator">
+      <td><label><?=c(l('discount'))?></label></td>
+      <td><?=H::amount($order->discount_amount)?></td>
+    </tr>
+
+<?php foreach ($discounts as $discount): ?>
+    <tr class="discounts separator">
+      <td><label><?=c(l('discount'))?> : <?=c($discount['label'])?></label></td>
+      <td><?=H::amount($discount['amount'])?></td>
+    </tr>
+<?php endforeach; ?>
+
+<?php endif; ?>
+    <tr class="order_total">
+      <td><label class="total"><?=c(l('order_total'))?></label></td>
+      <td style="vertical-align:middle;"><b><?=H::amount($order->total_amount)?></b></td>
+    </tr>
+  </tbody>
+</table>

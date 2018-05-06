@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset>
+
+<notebook>
+
+ <page>
+  <form>
+   <hbox>
+    <vbox>
+     <elem field="name" />
+     <elem field="app" />
+     <elem field="code" />
+    </vbox>
+    <vbox>
+     <elem field="models" label="modèles associés" />
+    </vbox>
+    <vbox>
+     <elem field="flags" />
+     <elem field="build_method" label="Construction : méthode" />
+    </vbox>
+   </hbox>
+   <launcher/>
+  </form>
+ </page>
+
+ <page label="arborescence" built="$is_loaded">
+  <hbox class="node-box workspace-box">
+   <vbox width="50%">
+    <box class="node-home-box columns" value="$columnview" />
+   </vbox>
+   <vbox>
+    <box class="node-edit-box"/>
+   </vbox>
+  </hbox>
+ </page>
+
+ <page>
+  <hbox>
+   <vbox width="150px">
+    <box label="actions">
+     <link icon="details" />
+     <link icon="seo" />
+     <link icon="build" label="construire"
+           action="build" confirm="true" container="panel" />
+    </box>
+   </vbox>
+   <vbox><deck /></vbox>
+  </hbox> 
+ </page>
+
+</notebook>
+</fieldset>
+
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<box label="courrier">
+ <form>
+  <elem name="code" type="hidden" value="$code" />
+  <hbox>
+   <vbox width="60%">
+    <hbox>
+     <vbox>
+      <elem name="from_name" value="$from_name" label="from name" />
+      <elem name="from_email" value="$from_email" label="from email" />
+     </vbox>
+     <vbox> 
+      <elem name="cc" value="$cc" label="cc" />
+      <elem name="bcc" value="$bcc" label="bcc" />
+     </vbox>
+    </hbox>
+    <elem name="subject" value="$subject" label="sujet" />
+    <elem rows="13" mode="rich" name="body" value="$body" label="contenu" />
+   </vbox>
+   <vbox>
+    <elem rows="14" name="recipients" label="destinataire" />
+   </vbox>
+  </hbox>
+  <launcher>
+   <button icon="store" tooltip="enregistrer" action=".onExec('letter.send', this, {callback: true}); return false;" />
+  </launcher>
+ </form>
+</box>

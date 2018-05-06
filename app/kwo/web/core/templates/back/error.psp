@@ -1,0 +1,3 @@
+<fieldset class="error"><legend><?=c(l('erreur'))?></legend>
+ <?=$_error_msg?>
+</fieldset>

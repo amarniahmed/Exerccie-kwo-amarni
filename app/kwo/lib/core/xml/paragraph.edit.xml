@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox><elem field="name" required="true" /></vbox>
+     <vbox><elem field="locales" /></vbox>
+    </hbox>
+    <box localized="true">
+     <elem field="title" />
+     <elem field="content" mode="rich" rows="20" />
+    </box>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="20%">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>
+

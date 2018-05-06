@@ -1,0 +1,55 @@
+<div class="hbox-label"><?=c(l('action'))?></div>
+
+<?php if ($discount->isCatalog()): ?>
+  <form>
+    <input type="hidden" name="action_id" value="<?=$action_id?>" />
+    <table class="vbox">
+      <tbody>
+        <tr>
+          <td><?=l('montant de la réduction')?></td>
+          <td><input type="text" name="rate" value="<?=$rate?>" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="actions">
+      <a href="javascript:void(0)" class="cancel"><?=c(l('annuler'))?></a>
+      <input type="button" value="<?=c(l('enregistrer'))?>" />
+    </div>
+  </form>
+<?php return; endif;?>
+
+<form>
+  <input type="hidden" name="action_id" value="<?=$action_id?>" />
+  <table class="vbox">
+    <tbody>
+      <tr>
+        <td><?=c(l('réduction sur'))?></td>
+        <td>
+          <select name="target">
+            <?=H::options($targets, $target)?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><?=l('montant')?></td>
+        <td><input type="text" name="rate" value="<?=$rate?>" /></td>
+      </tr>
+      <tr>
+        <td><?=l('type de limite')?></td>
+        <td>
+          <select name="threshold_type"<?=$is_order?' disabled="disabled"':''?>>
+            <?=H::options($threshold_types, $threshold_type)?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><?=l('limite')?></td>
+        <td><input type="text" name="threshold" value="<?=$threshold?>" /></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+    <a href="javascript:void(0)" class="cancel"><?=c(l('annuler'))?></a>
+    <input type="button" value="<?=c(l('enregistrer'))?>" />
+  </div>
+</form>

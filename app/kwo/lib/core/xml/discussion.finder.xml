@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="id desc" include="group">
+    <filters>
+      <filter name="id" />
+      <filter type="text" name="group_id" label="groupe ID"/>
+      <filter name="name" />
+      <filter type="user"/>
+    </filters>
+    <cols>
+      <col name="name" />
+      <col name="group_name" label="groupe"/>
+      <col name="user" />
+      <col name="created_at" />
+    </cols>
+  </finder>
+

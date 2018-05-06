@@ -1,0 +1,19 @@
+<div class="batch-wrapper" data-warning="<?=c(l('attention, la suppression des éléments sélectionnés sera définitive'))?>"></div>
+<div class="batch-controls">
+  <span class="button batch-submit"><i class="fa fa-caret-right"></i><?=c(l('exécuter'))?></span>
+  <span class="targets">
+    <?php if ($items_selected > 0): ?>
+      <label><input type="radio" class="items-selected"
+                    data-count="<?=$items_selected?>"
+                    value="1" checked="checked"
+                    name="target" /><?=l('sur la sélection')?> - <strong><?=$items_selected?> <?=l('élément(s)')?></strong>
+      </label>
+    <?php endif; ?>
+    <label>
+      <input type="radio" class="items-found"
+             data-count="<?=$items_found?>"
+             value="2" <?=$items_selected < 1 ? ' checked="checked"' : ''?>
+             name="target" /><?=l('sur tous les résultats')?> - <strong><?=$items_found?> <?=l('élément(s)')?></strong>
+    </label>
+  </span>
+</div>

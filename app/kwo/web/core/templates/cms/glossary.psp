@@ -1,0 +1,21 @@
+<div class="kwo-glossary">
+  <div class="kwo-letters">
+    <?php foreach ($letters as $l => $has_terms): ?>
+    <a href="javascript:void(0)" id="kwo-letter-<?=$l?>"
+<?php if ($has_terms === true): ?>
+    onclick="Kwo.Glossary.selectLetter('<?=$l?>', <?=$glossary->getId()?>)"
+<?php else : ?>
+    class="empty"
+<?php endif; ?>
+ ><?=$l?></a>
+    <?php endforeach; ?>
+  </div>
+  <div id="kwo-terms" class="kwo-terms"> </div>
+</div>
+<?php if (strlen($letter) < 1 && strlen($term) < 1) return ; ?>
+<script>
+Kwo.load("cms", function () {
+  Kwo.Glossary.term = '<?=$term?>';
+  Kwo.Glossary.selectLetter('<?=$letter?>', <?=$glossary->getId()?>);
+});
+</script>

@@ -1,0 +1,37 @@
+<h1>Inviter des amis</h1>
+
+<div class="layout-hbox-content">
+
+<form onsubmit="Kwo.Group.onInvitationSend(this); return false;">
+
+<?=Elt::hidden(array('name' => 'item', 
+                     'value' => $item->getKey()))?>
+
+<table class="fixed"><tbody><tr>
+
+<td>
+ <h2>Mon réseau</h2>
+ <ul>
+<?php foreach ($friends as $friend): ?>
+  <li><input type="checkbox" name="friends[]" value="<?=$friend->getId()?>" /><?=$friend?></li>
+<?php endforeach; ?>
+ </ul>
+</td>
+
+<td>
+ <h2>Adresses email</h2>
+ <?=Elt::text(array('name' => 'emails', 
+                    'rows' => 5,
+                    'wide' => true))?>
+</td>
+
+</tr>
+
+
+</tbody></table>
+
+<?=Elt::button(array('label' => l('send')))?>
+
+</form>
+
+</div>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" required="true" />
+      <elem field="code" />
+      <elem field="app" />
+      <hbox>
+       <vbox>
+        <elem field="status" />
+        <elem field="image" type="image" label="image associée" />
+       </vbox>
+       <vbox><elem type="relations" model="heading" label="catégories" /></vbox>
+      </hbox>
+      <elem field="locales" />
+     </vbox>
+     <vbox>
+      <box localized="true">
+       <elem field="title" />
+       <elem field="description" rows="10" />
+      </box>
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="seo" />
+      <link icon="hasmany" model="post" />
+     </box>
+    </vbox>
+    <vbox><deck/></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="type" />
+  <filter name="status" />
+ </filters>
+ <cols>
+  <col name="contact" />
+  <col name="form_id" label="formulaire" />
+  <col name="calls" label="nb. appels" width="80px" />
+  <col name="type" />
+  <col name="status" />
+  <col name="sector" label="secteur" />
+  <col name="user_id" label="expert" />
+  <col name="created_at" label="création" />
+ </cols>
+</finder>

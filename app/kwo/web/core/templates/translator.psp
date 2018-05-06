@@ -1,0 +1,61 @@
+<?=H::head(array('defer' => true,
+                 'scripts' => array(WEB_URL.'/core/scripts/translator.js'),
+                 'styles' => array(WEB_URL.'/core/styles/translator.css')))?>
+
+<div class="wrapper">
+  <div class="wrapper-main">
+    <div class="wrapper-content">
+      <table class="fixed" id="translator"
+             data-on-load="new kwo.Translator(this)">
+        <tbody>
+          <tr>
+            <td class="translation-list">
+              <div class="tabbox">
+                <div class="tabs">
+                  <?php foreach ($tabs as $tab): ?>
+                    <div class="tab<?=$tab['selected'] == true ? ' selected':''?>" data-tab="<?=$tab['code']?>">
+                      <img src="/web/core/images/lang/<?=$tab['code']?>.png" />
+                      <span><?=strtoupper($tab['label'])?></span>
+                    </div>
+                  <?php endforeach; ?>
+
+                  <div class="clear"></div>
+                </div>
+                <div class="tabpanel">
+                  <div class="inputs">
+                    <?=Elt::hidden(array('name' => 'locale',
+                                         'value' => $locale))?>
+
+                    <?=Elt::select(array('name' => 'status',
+                                         'options' => Translation::getEditorStatuses('list'),
+                                         'first' => '-- status --',
+                                         'value' => ''))?>
+
+                    <?=Elt::select(array('name' => 'model_id',
+                                         'options' => Translation::models(),
+                                         'first' => '-- model --',
+                                         'value' => ''))?>
+                  </div>
+                  <div id="translations">
+                    <?=H::get('/translation.list', array('locale' => $locale))?>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="translation-form">
+              <div id="console"></div>
+              <form>
+                <?php if ($item): ?>
+                  <?=H::get('/translation.edit', array('id' => $item->getId(),
+                                                            'locale' => $locale))?>
+                <?php endif; ?>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<?=H::foot()?>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="code" />
+    <hbox>
+     <vbox width="100px">
+      <elem field="civility" options="Contact::$civilities" label="civilité" />
+     </vbox>
+     <vbox><elem field="first_name" label="prénom" /></vbox>
+     <vbox><elem field="last_name" label="nom" /></vbox>
+    </hbox>
+    <elem field="status" label="état" />
+    <elem field="type" options="Contact::$types" label="poste" />
+    <elem field="occupation" label="fonction" />
+    <elem field="organization" label="société" />
+   </vbox>
+   <vbox>
+    <elem field="email" label="email" />
+    <elem field="phone" label="téléphone" />
+    <elem field="mobile" label="mobile" />
+    <elem field="address" label="adresse" />
+    <elem field="city" label="ville" />
+    <elem field="postal_code" label="code postal" />
+   </vbox>
+   <vbox>
+    <elem field="description" rows="3" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page label="opérations" built="false">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="note" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox>
+</page>
+</notebook>
+
+</fieldset>
+

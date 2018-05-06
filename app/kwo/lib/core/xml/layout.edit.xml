@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" />
+      <hbox>
+       <vbox><elem field="status" /></vbox>
+       <vbox><elem fields="online_from,online_to" type="period" /></vbox>
+      </hbox>
+      <elem field="ratio" precision="pourcentage de visiteurs ciblés" />
+     </vbox>
+     <vbox>
+      <elem field="description" rows="4" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>
+

@@ -1,0 +1,80 @@
+
+<?php foreach ($menus as $name => $menu): ?>
+<div class="menu" style="display:none;" id="menu-<?=$name?>">
+<?php foreach ($menu as $label => $link): ?>
+ <a href="javascript:void(0)" onclick="<?=$link?>"><?=$label?></a>
+<?php endforeach; ?>
+</div>
+<?php endforeach; ?>
+
+<div class="menubar">
+
+<div class="icons">
+<?php if ($files_flag === true): ?>
+ <img src="/<?=PIX_PATH?>/action/upload.png" title="Fichiers"
+      onclick="popup_files('/back/file/dir')" />
+<?php endif; ?>
+ <img src="/<?=PIX_PATH?>/action/logout.png" title="<?=strtoupper($admin->login)?> - Quitter" 
+      onclick="if (confirm('Quitter ?')) window.top.location='/back/core/logout';" />
+</div>
+
+<div class="links">
+<?php foreach ($extensions as $name => $extension): ?>
+<?php if (isset($extension['onclick'])) : ?>
+ <a href="javascript:void(0)" class="off" id="<?=$name?>" 
+    onclick="<?=$extension['onclick']?>"><?=c($extension['label'])?></a>
+<?php else : ?>
+ <a href="javascript:void(0)" class="off bind-menu" id="<?=$name?>"
+    style="cursor:default;"><?=c($extension['label'])?></a>
+<?php endif; ?>
+<?php endforeach; ?>
+</div>
+
+</div> 
+
+<div style="padding:4px 6px 0 6px; border-bottom:1px dotted #ddd;">
+<iframe src="about:blank" name="_main_iframe" id="_main_iframe" 
+        style="min-width:<?=$iframe_main_width?>; width:100%; height:<?=$iframe_main_height?>;"></iframe>
+</div>
+
+<script>
+
+function popup_files(url) {
+  if (!window.files_popup || window.files_popup.closed) {
+    window.files_popup = window.open(url,
+                                     "_blank",
+			             "toolbar=no,location=no,directories=no,status=no,menubar=no," +
+			             "scrollbars=no,resizable=no,copyhistory=no,width=780,height=460,hotkeys=no"); 
+    return true;
+  }
+  window.files_popup.focus();
+}
+
+function goTo(id, url) {
+  Kwo.Menu.onReset();
+  window.top.location.hash = "#" + id + ";";
+  window.document.title = id.ucfirst() + " - KWO";
+  if (window._selected_extension_id) {
+    $(window._selected_extension_id).toggleClassName("selected"); 
+  }
+  url = url.startsWith("/back/") ? url : "/back/" + id + "/" + url;
+  window.top._main_iframe.location = url; 
+  $(id).toggleClassName("selected");
+  window._selected_extension_id = id;
+}
+
+Kwo.Menu.onInit();
+
+/*new PeriodicalExecuter(check_auth, 1800);
+
+function check_auth(pe) {
+  Kwo.exec("/back/core/pulse", {},
+           {callback: function(res) { 
+               if (Kwo.hasError(res)) {
+                 Kwo.go("/<?=Admin::url()?>");
+               }
+             }
+           });
+           }*/
+
+</script>

@@ -1,0 +1,28 @@
+<div class="kwo-ezine kwo-headings">
+
+<?php foreach ($headings as $heading): ?>
+
+<?php if ($articles[$heading->getId()]->isEmpty()) continue ; ?>
+
+<h2>
+ <div><a href="<?=$heading->asUrl()?>"><?=l('read_more')?></a></div>
+ <?=$heading->name?>
+</h2>
+
+<div class="kwo-articles">
+
+<?php foreach ($articles[$heading->getId()] as $article) : ?>
+
+<div class="kwo-article">
+ <strong><?=$article->name?></strong>
+ <p><?=$article->description?></p>
+ <a href="<?=$article->asUrl()?>"><?=l('read_more')?></a>
+</div>
+
+<?php endforeach; ?>
+
+</div>
+
+<?php endforeach; ?>
+
+</div>

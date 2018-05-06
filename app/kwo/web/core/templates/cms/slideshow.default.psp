@@ -1,0 +1,32 @@
+<?php if (count($slides) > 0): ?>
+<div class="slideshow">
+
+<div class="slides">
+<?php foreach ($slides as $slide):?>
+ <div class="slide"
+<?php if ($slide->url): ?>
+      data-url="<?=H::url($slide->url)?>"
+<?php endif; ?>
+      data-image="<?=$slide->image?>">
+  <p><?=$slide->name?></p>
+<?php if ($slide->url && $slide->button): ?>
+  <a href="<?=H::url($slide->url)?>" class="btn"><?=$slide->button?></a>
+<?php endif; ?>
+ </div>
+<?php endforeach;?>
+</div>
+
+<div class="controls">
+ <span class="control nav-control prev">prev</span>
+ <span class="control nav-control next">next</span>
+ <div class="indexes">
+<?php foreach ($slides as $i => $slide):?>
+  <span class="control index-control"
+        data-position="<?=$i?>"><?=$i+1?></span>
+<?php endforeach;?>
+ </div>
+</div>
+
+</div>
+<?=H::trigger('new kwo.widgets.Slideshow(this)')?>
+<?php endif; ?>

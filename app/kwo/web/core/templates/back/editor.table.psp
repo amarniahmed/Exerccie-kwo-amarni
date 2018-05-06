@@ -1,0 +1,19 @@
+<form>
+  <ul class="elts">
+    <li>
+      <label><?=c(l('largeur'))?></label>
+      <input type="text" size="5" name="width" value="100%" />
+    </li>
+    <li>
+      <label><?=c(l('nb lignes'))?></label>
+      <input type="text" size="5" name="rows" value="2" />
+    </li>
+    <li>
+      <label><?=c(l('nb colonnes'))?></label>
+      <input type="text" size="5" name="cols" value="2" />
+    </li>
+    <li class="action">
+      <input type="button" style="float:right;" value="<?=c(l('insérer'))?>" />
+    </li>
+  </ul>
+</form>

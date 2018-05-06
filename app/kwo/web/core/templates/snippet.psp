@@ -1,0 +1,5 @@
+<h1><?=ucfirst($title)?></h1>
+
+<div class="layout-hbox-content">
+ <?=$content?>
+</div>

@@ -1,0 +1,11 @@
+<h1><?=c(l('coupon.title'))?></h1>
+
+<div class="layout-hbox-content">
+
+<form onsubmit="return false;" style="margin-top:10px;">
+ <input type="submit" class="button" value="<?=c(l('check'))?>" style="float:right; margin-top:-2px;" />
+ <input type="text" name="code" value="<?=$coupon?>" class="text" autocomplete="off"/>
+ <div class="output" style="display:none;"></div>
+</form>
+
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="position">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+ </filters>
+ <cols>
+  <col name="app" />
+  <col name="name" />
+  <col name="position" />
+ </cols>
+</finder>
+

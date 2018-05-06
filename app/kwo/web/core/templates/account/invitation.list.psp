@@ -1,0 +1,37 @@
+<?php if ($invitations->numRows() < 1): ?>
+Aucune invitation
+<?php return; endif; ?>
+
+<div class="item-rows">
+<?php foreach ($invitations as $invitation): ?>
+<div class="item-row vanish"><table><tbody><tr>
+
+<td class="icon">
+ <?=$invitation->getUser()->avatar()?>
+</td>
+
+<td class="details">
+ <?=$invitation->asInvitationSnippet()?>
+ <em><?=H::when($invitation->created_at)?></em>
+</td>
+
+<td class="actions"><ul>
+
+<li>
+ <a href="javascript:void(0)" class="elt-link"
+    data-id="<?=$invitation->getId()?>"
+    onclick="Kwo.Invitation.onAccept(this)"><?=ucfirst(l('accept'))?></a>
+</li>
+
+<li>
+ <a href="javascript:void(0)" class="elt-link"
+    data-confirm="<?=l('confirmation')?>"
+    data-id="<?=$invitation->getId()?>"
+    onclick="Kwo.Invitation.onRefuse(this)"><?=ucfirst(l('refuse'))?></a>
+</li>
+
+</ul></td>
+
+</tr></tbody></table></div>
+<?php endforeach; ?>
+</div>

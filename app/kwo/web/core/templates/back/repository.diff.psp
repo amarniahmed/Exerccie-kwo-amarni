@@ -1,0 +1,13 @@
+<div class="lines">
+<?php foreach ($lines as $line): ?>
+<?php if (substr($line, 0, 2) == '@@'): ?>
+<div class="line-blue"><?=$line?></div>
+<?php elseif (substr($line, 0, 1) == '+'): ?>
+<div class="line-green"><?=$line?></div>
+<?php elseif (substr($line, 0, 1) == '-'): ?>
+<div class="line-red"><?=$line?></div>
+<?php else: ?>
+<div class="line-white"><?=$line?></div>
+<?php endif; ?>
+<?php endforeach; ?>
+</div>

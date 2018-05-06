@@ -1,0 +1,122 @@
+<h1 class="heading"><?=ucfirst(_('order'))?></h1>
+
+<form id="kwo-order-form"
+      onsubmit="Kwo.Order.onFinalize(this); return false;">
+
+<table class="fixed order"><tr><td class="step-left-vbox">
+
+<div class="step-box">
+ <h2>
+  <em><?=ucfirst(_('step'))?> <?=$step++?></em> : 
+  <?=ucfirst(_('billing_address'))?>
+ </h2>
+ <div><?=H::inc('order.section.user', true)?></div>
+</div>
+
+<div class="step-box">
+ <h2>
+  <em><?=ucfirst(_('step'))?> <?=$step++?></em> : 
+  <?=ucfirst(_('payment.method'))?>
+ </h2>
+ <div>
+  <?=H::get('/order.section.payment')?>
+ </div>
+</div>
+
+</td>
+
+<?php if (!$order->isDigital()): ?>
+
+<td class="step-right-vbox">
+
+<div class="step-box">
+ <h2>
+  <em><?=ucfirst(_('step'))?> <?=$step++?></em> : 
+  <?=ucfirst(_('shipping_address'))?>
+ </h2>
+ <div id="addressees">
+   <?=H::get('/order.section.addressee')?>
+ </div>
+</div>
+
+<div class="step-box">
+ <h2>
+  <em><?=ucfirst(_('step'))?> <?=$step++?></em> : 
+  <?=ucfirst(_('shipping_method'))?>
+ </h2>
+ <div>
+  <?=H::get('/order.section.shipping')?>
+ </div>
+</div>
+
+</td>
+
+<?php endif; ?>
+
+<td class="step-right-vbox">
+
+<div class="step-box">
+ <h2>
+  <em><?=ucfirst(_('step'))?> <?=$step++?></em> : 
+  <?=ucfirst(_('discount_code'))?> (<i><?=_('optional')?></i>)
+ </h2>
+ <div>
+  <input type="hidden" name="coupon_id" id="coupon_id" />
+  <div id="coupon-link-box">
+   <a href="javascript:(void(0))" onclick="new Kwo.Class.Coupon()"><?=_('select')?></a>
+  </div>
+  <div id="coupon-code-box" style="display:none; padding:4px; border:1px solid #aaa;" ></div>
+ </div>
+</div>
+
+<?php if ($user->getCredit() > 0): ?>
+<div class="step-box">
+ <h2>
+  <em><?=ucfirst(_('step'))?> <?=$step++?></em> : 
+  <?=ucfirst(_('use_credit'))?> : <?=H::amount($user->getCredit())?>
+ </h2>
+ <div>
+  <?=Elt::yesno(array('name' => 'flags[credit]',
+                      'value' => $order->hasFlag(Order::FLAG_CREDIT),
+                      'events' => array('click' => 'Kwo.Cart.updateAmounts()')))?>
+ </div>
+</div>
+<?php endif; ?>
+
+</td></tr></table>
+
+<div class="cart-hbox">
+
+ <table class="fixed auto">
+ <tr>
+  <td>
+  <div class="purchases-vbox">
+<?php foreach ($purchases as $purchase): ?>
+   <div>
+    <strong><?=ucfirst($purchase->name)?></stong><br/>
+    <small><?=!empty($purchase->about) ? $purchase->about.'<br/>' : ''?></small>
+    <?=H::amount($purchase->price)?> - <?=_('quantity')?> <?=$purchase->quantity?>
+   </div>
+<?php endforeach; ?>
+  </div>
+  </td>
+  <td id="kwo-amounts-box" class="amounts-vbox"></td>
+ </tr>
+ </table>
+
+</div>
+
+<div class="button-hbox">
+ <?=Elt::button(array('label' => _('order.finalize')))?>
+</div>
+
+</form>
+
+<div></div>
+
+<div id="payment-container"></div>
+
+<script>
+document.observe("dom:loaded", Kwo.Cart.updateAmounts);
+</script>
+

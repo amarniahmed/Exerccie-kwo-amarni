@@ -1,0 +1,60 @@
+<html>
+<head>
+  <title><?=l('invoice', null, $locale)?></title>
+  <link href="<?=WEB_URL?>/styles/front.css" rel="stylesheet" type="text/css" />
+  <style>
+    #invoice { width:600px; margin:20px auto 0 auto; }
+    #legal { width:600px; margin:0 auto; font-size:smaller; text-align:center; margin-top:16px; }
+  </style>
+  <style media="print">
+    .print-hidden { display:none; }
+  </style>
+</head>
+<body>
+
+<div id="invoice">
+  <div id="header">
+    <table class="fixed">
+      <tr>
+        <td style="width:160px;">
+          <?php if (!empty($merchant->image)): ?>
+            <img src="<?=$merchant->image?>" alt="" style="width:150px;" />
+          <?php endif; ?>
+        </td>
+        <td style="font-size:0.8em;">
+          <?=nl2br($merchant->asAddress())?>
+        </td>
+        <td style="width:160px;">
+          <div style="border:2px solid black; padding:8px; font-weight:bolder; font-size:1.2em; text-align:center; margin-bottom:10px;">
+            <?php if ($order->invoice_id >= 1): ?>
+              <?=strtoupper(l('invoice', null, $locale))?>
+            <?php else: ?>
+              <?=strtoupper(l('order', null, $locale))?>
+            <?php endif; ?>
+          </div>
+          <input type="button" onclick="if (parent.frames['iframe-preview']) { parent.frames['iframe-preview'].focus(); parent.frames['iframe-preview'].print(); } else { window.print(); }" value="imprimer" class="print-hidden" />
+        </td>
+      </tr>
+    </table>
+    <?=l('snippet:invoice.header', null, $locale)?>
+  </div>
+
+  <?=H::get('/order.details', array('id' => $order->getId()))?>
+
+  <div id="footer">
+    <?=l('snippet:invoice.footer', null, $locale)?>
+  </div>
+
+  <div id="legal">
+    <?php if (!empty($merchant->legal_form)): ?>
+      <?=$merchant->legal_form?>
+    <?php endif; ?>
+    <?=$merchant->corporate_name?> - SIRET <?=$merchant->corporate_code?> - APE <?=$merchant->corporate_type?>
+    <?php if (!empty($merchant->tax_authority_reference)): ?>
+      - TVA <?=$merchant->tax_authority_reference?>
+    <?php endif; ?>
+  </div>
+</div>
+
+</body>
+</html>

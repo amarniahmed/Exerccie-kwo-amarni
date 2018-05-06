@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <hbox>
+     <vbox><elem field="code" /></vbox>
+     <vbox><elem field="status" type="yesno" /></vbox>
+    </hbox>
+    <elem field="label" />
+    <elem field="duration" label="durée de validité" precision="nbre de jours" />
+   </vbox>
+   <vbox>
+    <elem field="amount" label="montant" />
+    <elem field="flags" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+
+</fieldset>
+

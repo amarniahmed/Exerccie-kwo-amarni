@@ -1,0 +1,7 @@
+<h1>
+ Votre commentaire
+</h1>
+
+<div class="layout-hbox-content">
+ <?=$form?>
+</div>

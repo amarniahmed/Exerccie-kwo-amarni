@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<finder order="name">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="locale" />
+  <filter name="status" type="yesno" label="accepté" />
+ </filters>
+ <cols>
+  <col name="name" />
+  <col name="locale" />
+ </cols>
+</finder>
+

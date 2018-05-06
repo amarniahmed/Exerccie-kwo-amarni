@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder>
+    <filters>
+      <filter name="email" />
+    </filters>
+    <cols>
+      <col name="email" label="adresse email"/>
+      <col name="created_at" />
+    </cols>
+  </finder>
+

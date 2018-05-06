@@ -1,0 +1,8 @@
+- Méthodes à implémenter :
+elementAt
+first
+last
+skip
+take 
+
+- 

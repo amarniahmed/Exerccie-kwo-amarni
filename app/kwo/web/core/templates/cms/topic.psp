@@ -1,0 +1,84 @@
+
+
+<a name="forum-top"></a>
+
+<div class="topic">
+
+ <div class="author-box">
+  <?=$topic->getUser()->avatar()?>
+  <?=l('by')?> <?=H::user($topic)?><br/>
+<?php if (strlen($topic->user_description) > 1): ?>
+  <div class="sig"><?=$topic->user_description?></div>
+<?php endif; ?>
+
+    <span class="forum-date"><?=H::datetime($topic->created_at)?></span>
+    <span class="kwo-item-id" style="line-height:18px"><?=$topic->getId()?></span>
+    <?php if ($topic->user_id != $_user['id']): ?>
+    <?=W::abuse($topic)?>
+    <?php else: ?>
+    <a href="javascript:Kwo.Forum.editTopic({id:<?=$topic->getId()?>})"><?=l('modify')?></a>
+    <?php endif; ?>
+    <?=W::moderation($topic, array('ban', 'lock', 'pin', 'destroy', 'déplacer' => 'D/board/topic.dialog'))?>
+
+   </div>  
+   <h1><?=ucfirst(h($topic->name))?></h1>
+   <p><?=$topic->content?></p>
+  <div class="clear"></div>
+</div>
+
+<div class="add_comment">
+<?php if (Extension::exists('alert')): ?>
+  <?=W::alert($topic)?> |
+<?php endif; ?>
+<?php if (!$is_locked): ?>
+ <a href="javascript:Kwo.Topic.editComment({topic_id:<?=$topic->getId()?>})"
+    class=""><?=l('comment.add')?>comments</a>
+<?php endif; ?>
+</div>
+
+<?php if ($comments->count() < 1): ?>
+
+ <?=ucfirst(l('no_comment'))?>.
+
+<?php else: ?>
+
+<?php foreach ($comments as $comment): ?>
+<div class="comment">
+ <div class="author-box">
+  <?=$comment->getUser()->avatar()?>   
+  <?=l('by')?> <?=H::user($comment)?>
+  
+<?php if (strlen($comment->user_description) > 1): ?>
+  <div class="sig"><?=$comment->user_description?></div>
+<?php endif; ?>
+    <span class="forum-date" style="line-height:18px"><?=H::datetime($comment->created_at)?></span>
+    <span class="kwo-item-id"><?=$comment->getId()?></span>
+    <div class="quote">
+     <?php if ($comment->user_id != $_user['id']): ?>
+     <a href="javascript:Kwo.Topic.editComment({id:<?=$comment->getId()?>, mode:'quote'})"><?=l('quote')?></a>
+     <?=W::abuse($comment)?>
+     <?php else: ?>
+     <a href="javascript:Kwo.Topic.editComment({id:<?=$comment->getId()?>, mode:'modify'})"><?=l('modify')?></a>
+     <?php endif; ?>
+    </div>
+    <?=W::moderation($comment, array('ban', 'destroy'))?> 
+   </div>
+  <p> 
+  <?=$comment->content?>
+  </p>
+  <div class="clear"></div>
+</div>
+
+<?php endforeach; ?> 
+
+<?php endif;?> 
+
+<?php if ($comments->foundRows() > 2): ?>
+<div class="footer">
+  <a href="javascript:void(Kwo.anchor('forum-top'))" class="top"><?=ucfirst(l('top'))?></a>
+  <?=$comments->getPagination()?>
+</div>
+<?php endif; ?>
+
+
+

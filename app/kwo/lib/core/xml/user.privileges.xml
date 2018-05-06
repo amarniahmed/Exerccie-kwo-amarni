@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="privilèges">
+ <list2 data="$privileges">
+  <edit>
+   <form>
+   <hbox>
+    <vbox><elem value="$_row['privilege_id']" options="$all_privileges" name="privilege_id" label="privilège" /></vbox>
+    <vbox><elem value="$_row['available_from']" type="date" name="available_from" label="début" /></vbox>
+    <vbox><elem value="$_row['available_to']" type="date" name="available_to" label="fin" /></vbox>
+    <vbox>
+     <link icon="store" action="Kwo.F('user').onExec('privilege.store', this, {callback: $('privilege-button').onclick.bind($('privilege-button')); })" />
+     <link icon="remove" action="Kwo.F('user').onExec('privilege.remove', this, {confirm:true, callback: $('privilege-button').onclick.bind($('privilege-button')); })" />
+    </vbox>
+   </hbox>
+   </form>
+  </edit>
+  <add built="$unused_privileges"> 
+   <form>
+   <hbox>
+    <vbox><elem options="$unused_privileges" name="privilege_id" label="privilège" /></vbox>
+    <vbox><elem type="date" name="available_from" label="début" /></vbox>
+    <vbox><elem type="date" name="available_to" label="fin" /></vbox>
+    <vbox>
+     <link icon="add" action="Kwo.F('user').onExec('privilege.store', this, {callback: $('privilege-button').onclick().bind($('privilege-button')); })" />
+    </vbox>
+   </hbox>
+   </form>
+  </add>
+ </list2>
+</fieldset>

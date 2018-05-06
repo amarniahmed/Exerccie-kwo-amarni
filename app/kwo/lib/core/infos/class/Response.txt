@@ -1,0 +1,12 @@
+- mieux gérer close, write et buffering
+- <script>function listEvents(root) { ... }</script>
+- alt=json-in-script&callback=listEvents
+
+
+  /*  private static $formats = array('http'   => self::FORMAT_HTTP,
+                                  'json'   => self::FORMAT_JSON,
+                                  'jsrpc'  => self::FORMAT_JSRPC,
+                                  'php'    => self::FORMAT_PHP,
+                                  'text'   => self::FORMAT_TEXT,
+                                  'xml'    => self::FORMAT_XML,
+                                  'xmlrpc' => self::FORMAT_XMLRPC);*/

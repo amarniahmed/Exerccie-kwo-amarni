@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+ <page label="définition">
+  <form>
+   <hbox>
+    <vbox>
+     <elem field="code" label="nom de la classe" />
+     <elem field="app" />
+     <elem field="name" label="intitulé" />
+     <elem field="tag_type" options="Stylesheet::$tag_types" label="type de balise" />
+     <elem field="extra" rows="3" label="règles CSS supplémentaires" />
+    </vbox>
+    <vbox>
+     <elem field="font" options="Stylesheet::$fonts" label="font" addfirst="-" />
+     <elem field="transform" options="Stylesheet::$transforms" label="casse" addfirst="-" />
+     <elem field="decoration" options="Stylesheet::$decorations" label="decoration" addfirst="-" />
+     <elem field="weight" options="Stylesheet::$weights" label="graisse" addfirst="-" />
+     <elem field="style" options="Stylesheet::$styles" label="style" addfirst="-" />
+     <elem field="align" options="Stylesheet::$aligns" label="alignement" addfirst="-" />
+    </vbox>
+    <vbox>
+     <elem field="background" label="fond" />
+     <elem field="color" label="couleur" />
+     <elem field="size" label="taille" />
+     <elem field="line_height" label="hauteur de ligne" />
+     <elem field="letter_spacing" label="espacement entre caractères" />
+     <elem field="word_spacing" label="espacement entre mots" />
+    </vbox>
+    <vbox>
+     <elem field="border" label="bord" />
+     <elem field="padding" />
+     <elem field="margin" label="marge" />
+    </vbox>
+   </hbox>
+   <launcher/>
+  </form>
+ </page>
+
+ <page label="opérations" built="$is_loaded">
+  <hbox>
+   <vbox width="30%">
+    <box label="actions">
+     <link icon="details" />
+     <link icon="tag" built="false" />
+    </box>
+   </vbox>
+   <vbox><deck /></vbox>
+  </hbox> 
+ </page>
+
+</notebook>
+</fieldset>
+

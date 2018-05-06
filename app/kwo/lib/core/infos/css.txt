@@ -1,0 +1,34 @@
+
+TEXTAREA,
+SELECT,
+.text { background:#f7f7f7; -moz-box-sizing:border-box; 
+        padding:0px; padding-left:2px; font-family:inherit; font-size:10px; width:100%;
+        border-top:1px solid #999; border-left:1px solid #999; border-bottom:1px solid #ccc; border-right:1px solid #ccc; }
+
+.text:hover,
+TEXTAREA:hover,
+SELECT:hover,
+INPUT[type=text]:hover,
+INPUT[type=password]:hover { border:1px solid #ccc; }
+
+.text:focus,
+TEXTAREA:focus,
+SELECT:focus,
+INPUT[type=text]:focus ,
+INPUT[type=password]:focus { background:white; }
+
+SELECT OPTION { padding:0px; }
+
+INPUT.button { border-top:1px solid #ddd; border-right:1px solid #888; border-bottom:1px solid #888; border-left:1px solid #ddd; 
+               padding:0px; font-size:10px; font-family:Arial; cursor:pointer; 
+               background-image:url(/app/sys/pix/button_bg.gif)!important; background-repeat:repeat-x; }
+INPUT.button:first-letter { text-transform:uppercase; }
+
+INPUT.click { cursor:pointer;
+              background-image:url(/app/sys/pix/picto-pick.gif)!important; 
+              background-repeat:no-repeat; background-position:top right; }
+
+
+*[type=checkbox] { margin-right:4px; vertical-align:middle; border-width:1px; }
+*[type=radio] { margin-right:4px; vertical-align:middle; }
+*[type=submit] { cursor:pointer; }

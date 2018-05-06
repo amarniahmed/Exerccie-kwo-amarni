@@ -1,0 +1,25 @@
+- http://e-comm.webopedia.com/TERM/P/PCI_DSS.html
+
+
+- http://en.wikipedia.org/wiki/List_of_on-line_payment_service_providers
+  http://en.wikipedia.org/wiki/Payment_service_provider
+  http://en.wikipedia.org/wiki/Electronic_funds_transfer
+  http://en.wikipedia.org/wiki/Category:Payment_systems
+
+- http://www1.paybox.com/telechargements.aspx?tech=1
+
+
+- http://google.com/base/products.html
+
+
+- http://google-checkout-oscommerce.googlecode.com/svn/trunk/README.txt
+  state
+  . pending
+  . processing
+  . delivered
+
+- http://www.golfballs.com/PC1590/Callaway-Golf-Big-Bertha-460-Driver.html
+
+- http://www.amazon.com/b/ref=sc_fe_c_1_3435361_1/105-5624584-3371611?ie=UTF8&node=342430011&no=3435361&me=A36L942TSJ2AJA
+
+- année;mois;date de finalisation;Numéro de facture;Nom du client;département;montant hors taxe;réduction HT;prix HT après réduction;Frais de port HT;total de la commande HT;total de la TVA;total TTC;mode de paiement;Origine;Code coupon

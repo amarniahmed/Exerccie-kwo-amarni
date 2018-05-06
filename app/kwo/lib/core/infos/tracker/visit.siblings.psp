@@ -1,0 +1,19 @@
+<span class="visit-label">Autres visites du même visiteur</span>
+<table class="grid auto"><tbody>
+<?php foreach ($visits as $vis): ?>
+<tr>
+ <td title="visit id : <?=$vis['id']?>">
+  <a href="javascript:void(0)"
+     onclick="Kwo.Visit.onDisplay(this)"
+     data-id="<?=$vis['id']?>"
+     class="visit-sibling"
+     style="text-decoration:none; border:none;<?=$vis['conversions']>0?'color:red;':''?>"><?=$vis['created_on']?>
+     <?=substr($vis['created_at'], 0, 5)?></a>
+ </td>
+ <td><?=Tracker::$mediums[$vis['medium']]?></td>
+ <td><?=$vis['source']?></td>
+ <td><?=$vis['term']?></td>
+ <td><?=$vis['campaign']?></td>
+</tr>
+<?php endforeach; ?>
+</tbody></table>

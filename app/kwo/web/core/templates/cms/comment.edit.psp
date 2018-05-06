@@ -1,0 +1,22 @@
+<form onsubmit="Kwo.Topic.onCommentSubmit(this); return false;">
+  <?=Elt::hidden(array('name' => 'id',
+                       'value' => $comment_id))?>
+
+  <?=Elt::hidden(array('name' => 'item',
+                       'value' => $topic->getKey()))?>
+
+  <ul class="hbox layout-inline">
+    <li>
+      <?=Elt::text(array('name' => 'content',
+                         'label' => l('content'),
+                         'value' => $content,
+                         'rows' => 10,
+                         'html' => true,
+                         'required' => true,
+                         'style' => 'width:300px;'))?>
+    </li>
+    <li>
+      <?=Elt::button(array('value' => l('save')))?>
+    </li>
+  </ul>
+</form>

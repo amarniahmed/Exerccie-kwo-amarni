@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox width="34%">
+    <elem field="name" label="nom" />
+   </vbox>
+   <vbox width="34%">
+    <elem field="description" rows="3" />
+   </vbox>
+   <vbox>
+    <elem field="status" type="yesno" label="valide" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="30%">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="tag" built="false" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+</fieldset>
+

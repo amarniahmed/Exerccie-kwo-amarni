@@ -1,0 +1,55 @@
+
+<table class="fixed visit"><tbody><tr><td style="width:40%;">
+
+<div style="padding:4px 4px;">
+<table class="fixed"><tbody><tr>
+ <td style="text-align:left;">
+<?php if ($visit->id > 1): ?>
+  <img src="<?=PIX_URL?>/action/prev.png"
+       onclick="Kwo.Visit.onDisplay(this)"
+       data-id="<?=($visit->id - 1)?>" />
+<?php endif; ?>
+ </td>
+ <td style="text-align:middle;">
+  <span style="color:<?=$visit->conversions>0?'red':'black'?>;">
+   Visit ID : <strong><?=$visit->id?></strong>
+  </span>
+ </td>
+ <td style="text-align:right;">
+<?php if ($visit->hasNext()): ?>
+  <img src="<?=PIX_URL?>/action/next.png"
+       onclick="Kwo.Visit.onDisplay(this)"
+       data-id="<?=($visit->id + 1)?>" />
+<?php endif; ?>
+ </td>
+</tr></tbody></table>
+</div>
+
+<table class="grid auto">
+<?php foreach ($rows as $key => $value) : ?>
+<tr>
+ <td style="text-align:right;width:25%;font-weight:bolder; padding-right:4px;"><?=$key?></td>
+ <td><?=$value?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+
+</td><td style="padding-left:10px; height:476px; overflow:auto; display:block;">
+
+<div class="visit-path">
+<?php if (count($events) > 0): ?>
+<span class="visit-label">Chemin</span>
+<table class="grid auto"><tbody>
+<?php foreach ($events as $created_at => $name) : ?>
+<tr>
+ <td><?=$created_at?></td>
+ <td><?=$name?></td>
+</tr>
+<?php endforeach; ?>
+</tbody></table>
+<?php endif; ?>
+</div>
+
+<div class="visit-siblings" style="dispplay:none;"></div>
+
+</td></tr></tbody></table>

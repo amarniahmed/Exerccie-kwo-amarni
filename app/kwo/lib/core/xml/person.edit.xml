@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <elem type="hidden" name="profile" field="profile" />
+    <hbox>
+     <vbox width="34%">
+      <elem field="civility" options="Person::$civilities" />
+      <elem field="first_name" />
+      <elem field="last_name" />
+      <elem field="description" />
+      <elem field="website" />
+      <elem field="business" />
+      <elem field="organization" />
+      <elem field="occupation" />
+     </vbox>
+     <vbox width="34%">
+      <elem field="address" />
+      <elem field="address_extra" />
+      <elem field="city" />
+      <elem field="region" />
+      <elem field="postal_code" />
+      <elem field="country_id" options="I18N::getCountries()" />
+     </vbox>
+     <vbox>
+      <elem field="phone" />
+      <elem field="mobile" />
+      <elem field="fax" />
+     </vbox>
+    </hbox>
+    <launcher />
+   </form>
+  </page>
+ </notebook>
+</fieldset>
+

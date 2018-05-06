@@ -1,0 +1,25 @@
+<?php if (count($carriers) >= 1): ?>
+
+<h2><?=c(l('shipping.method'))?></h2>
+
+<table class="layout-checkboxes">
+ <tbody>
+<?php foreach ($carriers as $carrier) : ?>
+  <tr>
+   <td class="left">
+    <input type="radio" name="carrier_id" id="carrier-<?=$carrier->id?>"
+           value="<?=$carrier->getId()?>"<?=$order->carrier_id==$carrier->getId()?' checked="checked"':''?>
+           onclick="Kwo.Order.onChange(this)" />
+    </td>
+    <td>
+     <label for="carrier-<?=$carrier->id?>">
+      <?=nl2br($carrier->getProperty('label'))?>
+      <?=nl2br($carrier->getProperty('description'))?>
+     </label>
+    </td>
+   </tr>
+ <?php endforeach; ?>
+  </tbody>
+</table>
+
+<?php endif; ?>

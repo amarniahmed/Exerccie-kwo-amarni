@@ -1,0 +1,46 @@
+<form>
+  <div class="elem">
+    <label><?=c(l('type'))?></label>
+    <select id="link-type" name="link-type">
+      <option value="http"><?=l('page web')?></option>
+      <option value="download"><?=l('téléchargement')?></option>
+      <option value="mailto"><?=l('e-mail')?></option>
+    </select>
+  </div>
+  <div class="elem">
+    <label>
+      <?=c(l('adresse'))?>
+      <img src="<?=PIX_URL?>/back.search.gif" class="ico" id="button-lookup"
+           style="display:none;"
+           data-models="page" />
+    </label>
+    <input type="text" id="link-url" name="link-url" />
+  </div>
+  <div class="elem">
+    <label><?=c(l('ouverture'))?></label>
+    <select id="link-target" name="link-target">
+      <option value="0"><?=l('par défaut')?></option>
+      <option value="_blank"><?=l('nouvelle fenêtre')?></option>
+    </select>
+  </div>
+  <div class="elem">
+    <label><?=c(l('style'))?></label>
+    <select id="link-class" name="link-class">
+      <option value=""><?=l('aucun')?></option>
+      <?php foreach ($styles as $code => $name): ?>
+        <option value="kwo-<?=$code?>"><?=$name?></option>
+      <?php endforeach; ?>
+    </select>
+  </div>
+  <div class="elem">
+    <label><?=c(l('titre'))?></label>
+    <input type="text" id="link-title" name="link-title" />
+  </div>
+  <div style="margin-top:10px;">
+    <input type="button"
+           id="button-insert"
+           style="float:right;" class="button"
+           value="<?=c(l('insérer'))?>" />
+    <a href="javascript:void(0)" id="button-remove" style="display:none;" /><?=c(l('supprimer le lien'))?></a>
+  </div>
+</form>

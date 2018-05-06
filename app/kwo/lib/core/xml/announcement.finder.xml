@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="id desc">
+    <filters>
+      <filter name="id" />
+      <filter name="name" />
+      <filter type="radio" options="Announcement::$statuses" name="status" label="état"/>
+    </filters>
+    <cols>
+      <col name="name" />
+      <col name="created_at" />
+    </cols>
+  </finder>
+

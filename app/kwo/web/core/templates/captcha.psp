@@ -1,0 +1,12 @@
+<?php $token = rand(10000, 99900); ?>
+
+<!-- CAPTCHA -->
+ <input type="hidden" name="_captcha_token" value="<?=$token?>" />
+ <input type="text" name="_captcha" value="" size="6"
+        id="kwo-captcha-<?=$n?>"
+        onclick2="if (this.value == this.title) this.value = '';"
+        onblur2="if (this.value.empty()) this.value = this.title;"
+        autocomplete="off"
+        title="<?=ucfirst(l('enter_code_below'))?>" />
+ <img src="/captcha?_captcha_token=<?=$token?>" style="vertical-align:middle;" />
+<!-- /CAPTCHA -->

@@ -1,0 +1,89 @@
+<table class="hbox"><tboby><tr><td>
+
+<?php if (count($ages) >= 1): ?>
+<table class="grid">
+<thead><tr><th colspan="2">ages</th></tr></thead>
+<tbody>
+<?php foreach ($ages as $key => $value): ?>
+ <tr><td><?=$key?></td><td><?=$value?>%</td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+<?php if (count($sexes) >= 1): ?>
+
+<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<?=join(',', array_values($sexes))?>&chs=280x100&chl=<?=join('|', array_keys($sexes))?>" style="margin:10px 0;" />
+
+
+<?php endif; ?>
+
+<?php if (count($origins) >= 1): ?>
+<table class="grid">
+<thead><tr><th colspan="2">origines</th></tr></thead>
+<tbody>
+<?php foreach ($origins as $key => $value): ?>
+ <tr><td><?=$key?></td><td><?=$value?>%</td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+<?php if (!empty($auths)): ?>
+
+<table class="grid">
+<thead><tr><th colspan="2">authentifications</th></tr></thead>
+<tbody>
+<?php foreach ($auths as $key => $value): ?>
+ <tr>
+  <td><?=$key?></td>
+  <td><?=$value?></td>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<div style="text-align:center;">
+<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<?=join(',', array_values($auths))?>&chs=300x150&chl=<?=join('|', array_keys($auths))?>" style="margin:10px 0;" />
+</div>
+
+<div style="text-align:center;">
+<img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<?=join(',', array_values($countries))?>&chs=300x150&chl=<?=join('|', array_keys($countries))?>" style="margin:10px 0;" />
+</div>
+
+<?php endif; ?>
+
+</td><td>
+
+<?php if (!empty($logins)): ?>
+<table class="grid">
+<thead><tr><th colspan="2">les plus fidèles (identifications)</th></tr></thead>
+<tbody>
+<?php foreach ($logins as $user): ?>
+ <tr>
+  <td><?=$user['email']?> (<?=$user['id']?>)</td>
+  <td><?=$user['n']?></td>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+
+<?php if (!empty($intents)): ?>
+<table class="grid">
+<thead><tr><th colspan="2">les plus actifs (actions)</th></tr></thead>
+<tbody>
+<?php foreach ($intents as $user): ?>
+ <tr>
+  <td><?=$user['email']?> (<?=$user['id']?>)</td>
+  <td><?=$user['n']?></td>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+
+
+</td></tr></tbody></table>

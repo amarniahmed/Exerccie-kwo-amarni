@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="login">
+    <filters>
+      <filter type="text" name="email" label="email"/>
+      <filter type="text" name="name" label="identité"/>
+      <filter type="select" options="Model::asHash('policy')" name="policy_id" label="droits"/>
+    </filters>
+    <cols>
+      <col name="login" label="identifiant"/>
+      <col name="name" label="identité" />
+      <col name="created_at" />
+    </cols>
+  </finder>
+

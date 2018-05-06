@@ -1,0 +1,46 @@
+<!-- (Explorer) -->
+<div class="explorer">
+ <div class="over">
+  <a href="javascript:void(Kwo.Page.home())"><img src="/<?=PIX_PATH?>/toggle-close.png" />site</a>
+ </div>
+<?php $i=0; foreach ($ancestors as $ancestor) : ?>
+ <div class="over<?=($i++%2)?' alt':''?><?=$i===count($ancestors)?' selected':''?>" style="padding-left:<?=($i*7)?>px;">
+  <a href="javascript:void(Kwo.Page.edit(<?=$ancestor->id?>))">
+  <img src="/<?=PIX_PATH?>/toggle-close.png" /><?=$ancestor->name?></a>
+  <small><?=$ancestor->children_count?></small>
+ </div>
+<?php endforeach; ?>
+ <div class="launcher" style="margin:6px 4px 6px 0;">
+<?php if ($selected_page_id > 0): ?>
+  <a href="javascript:void(0)" onclick="$('_zone_copy').toggle()"><img src="/<?=PIX_PATH?>/action/cart.png" /></a>
+<?php endif; ?>
+  <a href="javascript:void(0)" onclick="$('box_add').toggle()"><img src="/<?=PIX_PATH?>/action/page_add.png" /></a>
+ </div>
+ <div style="display:none; margin-bottom:6px; padding-left:6px;" id="_zone_copy">
+  <ul>
+   <li> - <a href="javascript:void(0)" onclick="Kwo.Page.copy(<?=$selected_page_id?>)">copier < <b><?=$selected_page_name?></b> ></a></li>
+<!--   <li> - <a href="javascript:void(0)" onclick="Kwo.Page.mirror(<?=$selected_page_id?>)">dupliquer l&rsquo;arborescence < <b><?=$selected_page_name?></b> ></a></li> -->
+   <li> - <a href="javascript:void(0)" onclick="Kwo.Page.move(<?=$selected_page_id?>)">déplacer < <b><?=$selected_page_name?></b></a> ></li>
+   <li> - <a href="javascript:void(0)" onclick="Kwo.Page.exec('unselect')">annuler la sélection</a></li>
+  </ul>
+ </div>
+
+<div id="box_add" style="display:none; padding:6px; border:1px #ddd solid; margin:0 8px;">
+<form onsubmit="Kwo.Page.addChild(this); return false;">
+ <input type="submit" name="id" style="display:none;" />
+ <input type="hidden" name="id" value="<?=$id?>" />
+ <input type="text" name="record[name]" /><br/>
+ <div style="float:left"><input type="checkbox" name="record[visibility]" value="1" checked="checked" id="_vis" /> <label for="_vis">page visible</label></div>
+ <div style="text-align:right"><img src="/<?=PIX_PATH?>/action/exec.png" onclick="Kwo.Page.addChild(this)" /></div>
+</form>
+</div>
+
+<?php $i = 0; foreach ($children as $child): ?>
+ <div class="children<?=($i++%2)?' alt':''?>">
+  <a href="javascript:void(Kwo.Page.edit(<?=$child->id?>))">
+   <img src="/<?=PIX_PATH?>/status/<?=($child->visibility==0)?'red':'green'?>.gif" /><?=$child->name?></a> 
+  <small><?=$child->children_count?></small>
+ </div>
+<?php endforeach; ?>
+</div>
+<!-- (/Explorer) -->

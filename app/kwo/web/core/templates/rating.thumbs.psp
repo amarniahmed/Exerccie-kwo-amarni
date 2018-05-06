@@ -1,0 +1,13 @@
+<div class="rate-thumbs-wrapper">
+ <div class="rate-thumbs"
+      data-item="<?=$item?>">
+<?php foreach (array('up', 'down') as $direction): ?>
+  <span class="rate-thumb-wrapper">
+   <img src="<?=PIX_URL?>/thumb-<?=$direction?>-off.png"
+        class="rate-thumb rate-thumb-<?=$direction?>"
+        data-direction="<?=$direction?>" /> <?=$values[$direction]?>
+  </span>
+<?php endforeach; ?>
+ </div>
+</div>
+<?=H::trigger('new Kwo.Class.ThumbManager(this)')?>

@@ -1,0 +1,15 @@
+
+ini_set('session.cookie_path', '/');
+ini_set('session.cookie_lifetime', 0);
+ini_set('session.name', 'front_session_id');
+
+ini_set('session.gc_divisor', 1000);
+ini_set('session.gc_maxlifetime', 14400);
+ini_set('session.save_path', '2; '.SESSION_PATH.'/front'); 
+
+
+
+
+
+ini_set('session.cookie_path', '/back');
+ini_set('session.cookie_lifetime', 0);

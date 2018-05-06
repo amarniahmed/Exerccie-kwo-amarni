@@ -1,0 +1,61 @@
+<table class="fixed" style="background-image:url(/app/tfm/pix/photos_bg.jpg); background-repeat:repeat-y;"><tr>
+ <td style="background-image:url(/app/tfm/pix/photos_top.jpg); background-repeat:no-repeat; height:500px;">
+
+<div id="album-support"><div id="album-items">
+
+<table class="fixed"><tr>
+<td id="album-panel-edito">
+
+ <h1><?=ucfirst($page->title)?></h1>
+
+ <p>
+  <?=$page->content?>
+ </p>
+
+ <div id="photos">
+<?php foreach ($children as $i => $child): ?>
+
+<?php if (!empty($child->img)): ?>
+  <a href="javascript:void(0)" 
+     onclick="Kwo.Album.viewPhoto(<?=$child->getId()?>)"><img src="<?=$child->img?>" title="<?=ucfirst($child->title)?>" class="ico"/> 
+<?php endif; ?>
+ 
+  <?=(($i > 0 && $i%3 === 0)?'<div style="clear:both"></div>':'')?>
+
+<?php endforeach; ?>
+  <div style="clear:both;"></div>
+ </div>
+
+<?php if (strlen($_source) >= 1): ?>
+ <div id="back"><a href="/content/page/-/id/<?=$page->parent_id?>">> Retour aux albums</a></div>
+<?php endif; ?>
+
+</td><td id="album-panel-photo"> 
+
+ <div id="photo" style="display:none;"></div>
+
+</td></tr></table>
+
+</div></div>
+
+</td></td></table>
+
+<img src="/app/tfm/pix/photos_bottom.jpg"/>
+
+<script>
+
+Kwo.Album = {
+ viewPhoto: function(id) {
+  if (!$('photo').visible()) $('photo').show(); 
+  Kwo.exec('/content/page', {'id': id}, {'container': 'photo'});
+ }
+};
+
+Event.observe(window, "load", function () {
+ var photos = $("photos").getElementsBySelector("a");
+ if (photos.length >= 1) {
+   photos[0].onclick();
+ }
+});
+
+</script>

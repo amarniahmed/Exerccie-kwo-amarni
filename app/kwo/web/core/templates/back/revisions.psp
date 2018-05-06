@@ -1,0 +1,21 @@
+<fieldset>
+  <legend><?=c(l('modifications'))?></legend>
+  <table class="grid auto">
+    <tbody>
+      <?php foreach ($rows as $row): ?>
+        <?php foreach ($row['attributes'] as $field => $values): ?>
+          <tr>
+            <td>
+              <?=$row['created_at']?><br/>
+              <?=$row['creator']?><br/>
+              <?=$row['action']?>
+            </td>
+            <td><?=$field?></td>
+            <td><?=h($values[0])?></td>
+            <td><?=h($values[1])?></td>
+          </tr>
+        <?php endforeach ; ?>
+      <?php endforeach ; ?>
+    </tbody>
+  </table>
+</fieldset>

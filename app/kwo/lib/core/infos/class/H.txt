@@ -1,0 +1,7 @@
+Pour google
+street, city, state, postal code, country
+
+/***
+escapeHtml escapePre escapeQuery escapeJs
+http://google-ctemplate.googlecode.com/svn/trunk/doc/howto.html
+***/

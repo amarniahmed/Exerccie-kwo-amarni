@@ -1,0 +1,46 @@
+<div class="order">
+  <h1 class="heading"><?=c(l('order'))?></h1>
+  <div class="order-layout">
+    <div class="order-steps">
+      <table class="fixed">
+        <tr>
+          <td class="order-step order-step-selected" data-step="billing">
+            <div><em><?=$index++?></em> <span><?=c(l('step.billing'))?></span></div>
+          </td>
+          <?php if (!$order->isDigital()): ?>
+            <td class="order-step" data-step="shipping">
+              <div><em><?=$index++?></em> <span><?=c(l('step.shipping'))?></span></div>
+            </td>
+          <?php endif; ?>
+          <td class="order-step" data-step="discount">
+            <div><em><?=$index++?></em> <span><?=c(l('step.discount'))?></span></div>
+          </td>
+          <td class="order-step" data-step="method">
+            <div><em><?=$index++?></em> <span><?=c(l('step.method'))?></span></div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="order-section" id="order-section">
+      <?=H::get('/order.billing')?>
+    </div>
+    <div class="order-summary">
+      <table class="fixed auto">
+        <tr>
+          <td class="purchases">
+            <?php foreach ($purchases as $purchase): ?>
+              <div class="purchase">
+                <strong><?=ucfirst($purchase->name)?></strong><br/>
+                <small><?=!empty($purchase->about) ? $purchase->about.'<br/>' : ''?></small>
+                <?=l('quantity')?> <?=$purchase->quantity?> - <?=H::amount($purchase->price)?>
+              </div>
+            <?php endforeach; ?>
+          </td>
+          <td id="kwo-amounts-box" class="amounts">
+            <?=H::get('/order.amounts')?>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

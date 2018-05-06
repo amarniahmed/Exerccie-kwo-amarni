@@ -1,0 +1,7 @@
+rate this
+
+very poor
+poor
+average
+good
+excellent

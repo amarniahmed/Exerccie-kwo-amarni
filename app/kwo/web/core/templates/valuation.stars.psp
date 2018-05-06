@@ -1,0 +1,38 @@
+<h1><?=c(l('valuation.title'))?></h1>
+
+<div>
+  <form>
+    <p>Notez chacun de ces critères de 1 à 5 étoiles 
+    (5 étant la meilleure note et 1 la moins bonne) :</p>
+    <table class="auto valuation-stars">
+      <tbody>
+<?php foreach ($criterions as $criterion): ?>
+          <tr>
+            <td class="valuation-label">
+              <?=SH::capitalize($criterion)?>
+            </td>
+            <td>
+<?php foreach (range(1, 5) as $i): ?>
+                <img src="<?=PIX_URL?>/star-off.gif"
+                     data-value="<?=$i?>" class="star" />
+<?php endforeach; ?>
+            </td>
+            <td class="valuation-grade">
+              <span class="criterion-grade"></span>
+              <input type="hidden" name="criterions[<?=$criterion->getId()?>]" value="0" />
+            </td>
+          </tr>
+<?php endforeach; ?>
+      </tbody>
+    </table>
+
+    <?=Elt::text(array('name' => 'comment',
+                       'rows' => 3,
+                       'wide' => true,
+                       'label' => 'Laisser un commentaire :'))?>
+
+    <div class="valuation-submit">
+      <?=Elt::button(array('label' => l('send')))?></td>
+    </div>
+  </form>
+</div>

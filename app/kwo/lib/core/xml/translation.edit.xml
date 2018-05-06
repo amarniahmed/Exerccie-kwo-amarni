@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox width="25%">
+      <grid value="$grid" />
+      <hbox>
+        <vbox><elem field="status" /></vbox>
+        <vbox><elem field="priority" type="radio" 
+                    options="Translation::$priorities" label="priorité" /></vbox>
+      </hbox>
+      <elem field="flags" cols="1" />
+      <elem field="content" label="échanges avec le traducteur" rows="6" />
+     </vbox>
+     <vbox>
+      <box class="grid" value="$properties" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

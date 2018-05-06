@@ -1,0 +1,52 @@
+<?php
+$client_id = '82964214151-v4dqf8opssstbfbm0tu6l6u2atbhl7ke.apps.googleusercontent.com';
+$client_secret = 'FxOuPZAD4M2bbgUOEboRMEze';
+$redirect_uri = 'http://www.scopalto.com/scopalto/oauth.callback';
+$scope = 'https://www.googleapis.com/auth/blogger';
+?>
+
+<style>
+.oauth-tokens { width:640px; margin:40px auto; }
+.oauth-tokens h1 { font-size:2em; }
+.oauth-tokens input[type=text] { display:block; width:100%; }
+</style>
+
+<div class="oauth-tokens">
+
+<h1><?=$title?></h1>
+
+<?php if (empty($oauthv2)): ?>
+<form action="<?=$button['url']?>" method="post">
+<select name="provider">
+<option value="google">Google</option>
+<option value="facebook">Facebook</option>
+</select>
+<input type="text" name="client_id" placeholder="client_id" value="<?=$client_id?>" />
+<input type="text" name="client_secret" placeholder="client_secret" value="<?=$client_secret?>" />
+<input type="text" name="redirect_uri" placeholder="redirect_uri" value="<?=$redirect_uri?>" />
+<textarea name="scope" placeholder="scope" rows="6"><?=$scope?></textarea>
+<input type="submit" value="<?=$button['label']?>" />
+</form>
+
+<?php else: ?>
+
+<div class="tokens">
+<ul>
+<?php foreach ($oauthv2 as $key => $value): ?>
+<li><?=$key?>: <?=$value?></li>
+<?php endforeach; ?>
+</ul>
+</div>
+
+<?php if ($button): ?>
+
+<form action="<?=$button['url']?>" method="post">
+<input type="submit" value="<?=$button['label']?>" />
+</form>
+
+<?php endif; ?>
+
+<?php endif; ?>
+
+</form>
+</div>

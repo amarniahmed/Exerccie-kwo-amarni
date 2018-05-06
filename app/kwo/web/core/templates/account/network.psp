@@ -1,0 +1,33 @@
+<?php if ($friends->numRows() < 1): ?>
+  Aucun ami
+<?php return; endif; ?>
+
+<div class="item-rows">
+  <?php foreach ($friends as $friend): ?>
+    <div class="item-row vanish">
+      <table>
+        <tbody>
+          <tr>
+            <td class="icon"><?=$friend->avatar()?></td>
+            <td class="details"><a href="<?=$friend->asUrl()?>"><?=$friend?></a></td>
+            <td class="actions">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" class="elt-link"
+                    data-confirm="<?=l('confirmation')?>"
+                    data-item="<?=$friend->getKey()?>"
+                    onclick="Kwo.Network.onRemove(this)">retirer de mon réseau</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" class="elt-link"
+                    data-item="<?=$friend->getKey()?>"
+                    onclick="new Kwo.Composer.Message(this)">envoyer un message</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <?php endforeach; ?>
+</div>

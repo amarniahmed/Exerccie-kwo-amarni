@@ -1,0 +1,5 @@
+
+2014-14-11 : mluberry
+pour la traduction du BO
+- core_admin : `locale` INT UNSIGNED DEFAULT '1'
+- core_string : unique sur code ET type au lieu de code uniquement

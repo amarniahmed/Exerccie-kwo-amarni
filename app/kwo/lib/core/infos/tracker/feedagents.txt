@@ -1,0 +1,2 @@
+/* rss agent : google desktop|rss|feed|wordpress|blog|gator|syndicat|pubsub|news|veoh|php|harvest|voyager|indy| */
+/* rss domain : newserbay|parwch0|ns202191|car75|confix */

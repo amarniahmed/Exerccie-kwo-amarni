@@ -1,0 +1,92 @@
+<table class="hbox">
+  <tbody>
+    <tr>
+      <td style="width:60%;">
+        <div class="map" style="height:400px;"></div>
+        <form class="map-search">
+          <table class="fixed">
+            <tbody>
+              <tr>
+                <td style="width:160px;">
+                  <a href="javascript:void(0)"
+                     class="marker"><img src="<?=PIX_URL?>/action/marker.png" /><?=l('placer un marker')?></a></td>
+                <td><input type="text" value="<?=h($formatted_address)?>" class="address" /></td>
+                <td style="width:24px; text-align:center;"><input type="image" src="<?=PIX_URL?>/action/home-search.png" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </td>
+      <td>
+        <form class="attributes" onsubmit="return false;" data-model="<?=$item->getModel()?>">
+          <input type="hidden" name="country_code" value="<?=$geo['country_id']?>" class="country_code" />
+          <table class="vbox">
+            <tbody>
+              <tr>
+                <td><label><?=l('zoom')?></label></td>
+                <td><input type="text" name="row[zoom]" value="<?=$geo['zoom']?>" class="zoom" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('radius')?></label></td>
+                <td><input type="text" name="row[radius]" value="<?=$geo['radius']?>" class="radius" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('latitude')?></label></td>
+                <td><input type="text" name="row[latitude]" value="<?=$geo['latitude']?>" class="latitude" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('longitude')?></label></td>
+                <td><input type="text" name="row[longitude]" value="<?=$geo['longitude']?>" class="longitude" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('country')?></label></td>
+                <td><input type="text" name="row[country]" value="<?=$geo['country']?>" class="country" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('admin1')?></label></td>
+                <td><input type="text" name="row[admin1]" value="<?=$geo['admin1']?>" class="admin1" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('admin2')?></label></td>
+                <td><input type="text" name="row[admin2]" value="<?=$geo['admin2']?>" class="admin2" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('admin3')?></label></td>
+                <td><input type="text" name="row[admin3]" value="<?=$geo['admin3']?>" class="admin3" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('locality')?></label></td>
+                <td><input type="text" name="row[locality]" value="<?=$geo['locality']?>" class="locality" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('sublocality')?></label></td>
+                <td><input type="text" name="row[sublocality]" value="<?=$geo['sublocality']?>" class="sublocality" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('postal code')?></label></td>
+                <td><input type="text" name="row[postal_code]" value="<?=$geo['postal_code']?>" class="postal_code" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('adresse')?></label></td>
+                <td><input type="text" name="row[address]" value="<?=$geo['address']?>" class="formatted_address" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('rue')?></label></td>
+                <td><input type="text" name="row[route]" value="<?=$geo['route']?>" class="route" readonly="readonly" /></td>
+              </tr>
+              <tr>
+                <td><label><?=l('n°')?></label></td>
+                <td><input type="text" name="row[street_number]" value="<?=$geo['street_number']?>" class="street_number" readonly="readonly" /></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="launcher">
+            <input type="image" src="<?=PIX_URL?>/action/store.png" value="<?=c(l('enregistrer'))?>" />
+          </div>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<?=H::trigger('new kwo.managers.Geocoder(this)')?>

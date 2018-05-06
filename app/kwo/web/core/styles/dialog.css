@@ -1,0 +1,109 @@
+/* --- DIALOG : UI ELEMENTS --- */
+
+.dialog-overlay { background-color:black; z-index:50; }
+
+.dialog-shadow { border-radius:6px; -moz-border-radius:6px; -webkit-border-radius:6px;
+                 background:url("/web/core/images/dialog.border.png"); padding:6px; z-index:100; }
+
+.dialog-support { overflow:auto; background-color:white; cursor:default;
+                  border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;
+                  background-color:white; }
+
+.dialog-close { float:right; cursor:pointer; top:0px; left:15px;
+                user-select:none; -moz-user-select:none; -webkit-user-select:none;
+                display:block; position:relative;
+                margin-top:-18px; margin-bottom:-12px;
+                margin-right:0px;
+                width:30px; height:30px;
+                background-image:url("/web/core/images/dialog.close.png");
+                background-position:0 0; }
+.dialog-close:hover { background-position:0 30px; }
+
+.dialog-shadow .layout-hbox > H1 { height:30px; line-height:28px; margin-top:2px;
+                                   padding-left:8px;
+                                   font-size:1.1em; text-shadow:0 1px #fff;
+                                   font-family:Georgia,Times,serif;
+                                   background:transparent url(/web/core/images/dialog.menubar.png) repeat scroll 0 0;
+                                   user-select:none; -moz-user-select:none; -webkit-user-select:none; }
+.dialog-shadow .layout-hbox H1:first-letter { text-transform:uppercase; }
+.dialog-shadow .layout-hbox H1 IMG { vertical-align:middle; margin:0 2px 5px 6px; }
+.dialog-shadow .layout-hbox .layout-hbox-content { padding:16px; }
+.dialog-shadow .layout-hbox > DIV { padding:16px; }
+
+.dialog-support .text-block { line-height:1.1em; border:1px solid #ccc; padding:3px 6px;
+                             border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; }
+.dialog-support .text-block A { color:inherit; }
+.dialog-support .text-block A:hover { text-decoration:none; }
+
+
+/* --- DIALOG : SNIPPET --- */
+
+.dialog-snippet .layout-hbox-content { height:340px; overflow-y:auto; margin:10px;
+                                       padding:0 0 0 8px!important; }
+.dialog-snippet H2 { margin:8px 0 6px -8px; border-bottom:1px solid #ccc; padding-bottom:3px; }
+.dialog-snippet H2:first-child { margin-top:0; padding:0; }
+
+/* --- DIALOG : FAQ --- */
+
+.dialog-faq .layout-hbox-content { height:394px; overflow-y:auto; position:relative;
+                                   margin:10px!important; padding:0!important; }
+.dialog-faq .faq-questions { margin-bottom:16px; }
+.dialog-faq .faq-questions A { display:block; padding-bottom:4px; color:black;
+                               font-size:1em; text-decoration:none; }
+.dialog-faq .faq-questions A:hover { background:#f3f3f3; }
+.dialog-faq .faq-components { padding-right:2px; }
+.dialog-faq .faq-question { border-bottom:1px solid #eee; padding-bottom:4px; }
+.dialog-faq .faq-question SPAN { font-size:1.1em; font-family:arial,sans; }
+.dialog-faq .faq-question A { float:right; text-decoration:none; font-size:0.6em;
+                              text-transform:uppercase; color:#888; padding-top:6px; }
+.dialog-faq .faq-answer { padding:10px 0 14px 8px; }
+
+/* --- DIALOG : SHARE --- */
+
+.dialog-share .share-mode { padding:6px 0;  }
+.dialog-share .share-mode STRONG { display:block; margin:0 0 4px 0; }
+.dialog-share .share-mode .icon { margin-right:5px; }
+.dialog-share .share-mode A:link,
+.dialog-share .share-mode A:visited { display:block; text-decoration:none;padding:4px;
+                                      border-bottom:1px solid #eee;
+                                      font-family:verdana; font-size:0.9em; color:#666;  }
+.dialog-share .share-mode A:hover { text-decoration:underline; }
+
+.dialog-share FORM { padding:0; }
+.dialog-share FORM .recipients { border:3px solid #aaa; background:#efefef; padding:8px; }
+.dialog-share FORM .recipients LABEL { margin-top:3px; }
+.dialog-share FORM A:link,
+.dialog-share FORM A:visited { text-decoration:none; color:#666; }
+
+/* --- DIALOG : DATE --- */
+
+.dialog-date DIV.date-layout { margin:6px; }
+.dialog-date SELECT {text-align:center; }
+.dialog-date OPTION {text-align:center; }
+.dialog-date .calendar { margin:6px 0; }
+.dialog-date .calendar TH { padding:5px; }
+.dialog-date .calendar TD { border:1px solid #bbb; }
+.dialog-date .calendar TD SPAN { display:block; text-align:center; padding:2px 0; }
+.dialog-date .calendar TD A:link,
+.dialog-date .calendar TD A:visited { display:block; background:#f6f6f6; color:#666;
+                                     text-decoration:none; text-align:center; padding:2px 0; }
+.dialog-date .calendar TD A:hover { background:#efefef; }
+.dialog-date .calendar TD A.selected { color:red; font-weight:bolder; }
+
+/* --- DIALOG : PROMPT --- */
+
+.dialog-prompt FORM { margin-top:6px; }
+.dialog-prompt .buttons { margin-top:6px; }
+.dialog-prompt .button-ok { float:right; }
+
+/* --- RATING --- */
+
+.dialog-valuation TH.level { width:10%; border-bottom:1px solid #ccc; }
+.dialog-valuation TH { border-bottom:1px solid #ccc; padding-bottom:3px; }
+.dialog-valuation TD { border-bottom:1px solid #ccc; padding:3px; }
+.dialog-valuation .level { text-align:center; }
+.dialog-valuation .valuation-submit { text-align:right; margin-top:8px; }
+.dialog-valuation .valuation-stars { margin:16px 0; }
+.dialog-valuation .valuation-label { width:45%; }
+.dialog-valuation .valuation-grade { width:35%; text-align:center; }
+.dialogvaluation .star { cursor:pointer; }

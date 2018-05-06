@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="checkedout_at desc, id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="invoice_id" label="facture ID" />
+  <filter name="status" label="état" />
+  <filter type="user" />
+ </filters>
+ <cols>
+  <col name="id" width="70px" label="cmd"/>
+  <col name="total_amount" width="80px" label="montant"/>
+  <col name="status" width="130px" label="état"/>
+  <col name="name" label="label"/>
+  <col name="user" label="utilisateur"/>
+  <col name="name"/>
+  <col name="checkedout_at" />
+ </cols>
+</finder>

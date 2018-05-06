@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" required="true" />
+      <elem field="app" />
+      <hbox>
+       <vbox width="120px;"><elem field="status" /></vbox>
+       <vbox>
+        <elem field="priority" precision="0: normal - 3: max" />
+        <elem field="visit_number" />
+       </vbox>
+       <vbox><elem fields="online_from,online_to" type="period" /></vbox>
+      </hbox>
+      <elem field="flags" />
+      <elem field="locales" />
+     </vbox>
+     <vbox localized="true">
+      <elem field="title" />
+      <elem field="content" rows="8" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="metrics" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>
+

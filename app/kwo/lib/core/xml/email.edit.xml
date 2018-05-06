@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="email" required="true" />
+     </vbox>
+     <vbox>
+      <elem field="status" type="text" precision="entre 0 et 8" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations">
+   <hbox>
+    <vbox width="30%">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="note" />
+      <link icon="hasmany" model="base" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>

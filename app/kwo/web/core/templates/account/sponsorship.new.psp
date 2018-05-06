@@ -1,0 +1,51 @@
+<div style="font-size:1.2em; margin:10px 0;">
+  <?=c(l('register.friends.sponsor.them'))?>
+</div>
+
+<form onsubmit="Kwo.Sponsorship.onSend(this); return false;">
+  <table class="fixed">
+    <thead>
+      <tr>
+        <th><?=c(l('first_name'))?></th>
+        <th><?=c(l('email'))?></th>
+        <th><?=c(l('your.message'))?> (<?=l('optional')?>)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <?php $index = 1; foreach ($emails as $i => $email): ?>
+            <div>
+              <?=Elt::text(array('name' => 'names['.$i.']',
+                                 'tabindex' => $index))?>
+            </div>
+            <?php $index += 2; ?>
+          <?php endforeach; ?>
+        </td>
+        <td>
+          <?php $index = 2; foreach ($emails as $i => $email): ?>
+            <div>
+              <?=Elt::text(array('name' => 'godsons['.$i.']',
+                                 'value' => $email,
+                                 'tabindex' => $index))?>
+            </div>
+            <?php $index += 2; ?>
+          <?php endforeach; ?>
+          <?php if ($email_count < 1): ?>
+            <div style="margin-top:8px;">
+              <a href="javascript:void(0)" onclick="new Kwo.Class.Importer(this)">
+                <?=c(l('import.contact.adress.book'))?>
+              </a>
+            </div>
+          <?php endif; ?>
+        </td>
+        <td>
+          <?=Elt::text(array('name' => 'content',
+                             'value' => c(l('sponsorship.form.placeholder')),
+                             'rows' => 5))?>
+          <?=Elt::button(array('label' => l('send')))?>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

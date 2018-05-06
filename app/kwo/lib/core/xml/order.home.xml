@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<notebook>
+ <page>
+  <finder/>
+ </page>
+ <page label="opérations">
+  <hbox>
+   <vbox width="150px">
+    <box label="actions">
+     <link icon="dashboard" />
+     <link icon="export" label="exporter" action="export.form" />
+    </box>
+   </vbox>
+   <vbox>
+    <deck />
+   </vbox>
+  </hbox>
+ </page>
+</notebook>

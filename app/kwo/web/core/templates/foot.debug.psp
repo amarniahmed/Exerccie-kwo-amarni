@@ -1,0 +1,45 @@
+
+<div style="margin:0 auto; border:1px solid #ccc; max-height:200px;
+            overflow:auto; margin-top:10px;
+            color:#aaa; background:white;">
+
+<div style="padding:4px;">
+ <a href="javascript:void(0)" onclick="$('table_debug').toggle()">debug</a>
+</div>
+
+<table class="fixed"
+       style="table-layout:auto; display:none; margin-top:4px; border-top:1px solid #ccc;"
+       id="table_debug"><tr>
+
+ <td style="border-right:1px solid #ccc;">
+   <b>session: </b>
+<?php if (S('req')->hasSession()): ?>
+  <pre><?php print_r(S('req')->getSession()->getAttributes()); ?></pre>
+<?php endif; ?>
+ </td>
+
+ <td style="border-right:1px solid #ccc;">
+   <b>cookie: <?=Cookie::NAME?></b>
+<?php if (S('req')->hasCookie()): ?>
+  <pre><?php print_r(S('req')->getCookie()->getAttributes()); ?></pre>
+<?php endif; ?>
+ </td>
+
+ <td style="border-right:1px solid #ccc;">
+   <b>cookie: <?=Tracker::COOKIE_NAME?></b>
+<?php if (S('req')->hasCookie(Tracker::COOKIE_NAME)): ?>
+     <pre><?php print_r(S('req')->getCookie(Tracker::COOKIE_NAME)->getAttributes()); ?></pre>
+<?php endif; ?>
+ </td>
+
+ <td>
+ <b>ctx: </b>
+  <pre>
+<?php print_r($context); ?>
+  </pre>
+ </td>
+
+</tr></table>
+
+</div>
+

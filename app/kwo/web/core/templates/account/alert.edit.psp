@@ -1,0 +1,36 @@
+<h2><?=l('account.heading.alert.edit')?></h2>
+<form onsubmit="Kwo.Alert.onUpdate(this); return false;" data-confirm="<?=l('confirmation')?>">
+  <?=Elt::hidden(array('name' => 'id',
+                       'value' => $alert->id))?>
+  <ul class="hbox rounded">
+    <li>
+      <?=Elt::code(array('label' => l('keyword.label'),
+                         'value' => $alert->getKeyword()))?>
+    </li>
+    <li>
+      <?=Elt::yesno(array('name' => 'email',
+                          'label' => l('deliver.email'),
+                          'value' => $alert->isLoaded()
+                                     ? $alert->hasFlag(Alert::FLAG_DELIVER_EMAIL)
+                                     : 1))?>
+    </li>
+    <?php if (false): ?>
+      <li>
+        <div class="rounded column-bloc-text">
+          <?=l('snippet:alert.feed', array('url' => $alert->feed()))?>
+        </div>
+      </li>
+    <?php endif; ?>
+    <li style="padding-top:10px;">
+      <div style="float:right;">
+        <?=Elt::link(array('label' => l('suppress'),
+                           'datas' => array('confirm' => l('confirmation')),
+                           'events' => array('click' => 'Kwo.Alert.onDelete(this)')))?> |
+        <?=Elt::link(array('label' => l('cancel'),
+                           'events' => array('click' => 'Kwo.Alert.onCancel(this)')))?>
+      </div>
+      <?=Elt::button(array('label' => l('save')))?>
+      <div class="clear"></div>
+    </li>
+  </ul>
+</form>

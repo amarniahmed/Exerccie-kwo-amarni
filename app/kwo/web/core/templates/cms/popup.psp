@@ -1,0 +1,2 @@
+<h1><?=$popup->title?></h1>
+<div><?=$popup->content?></div>

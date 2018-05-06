@@ -1,0 +1,92 @@
+Documentation : (http://docs.rackspace.com/)
+- Cloud File API : http://docs.rackspace.com/files/api/v1/cf-devguide/content/Overview-d1e70.html
+
+Interface de gestion:
+https://mycloud.rackspace.com/
+
+---
+
+Authentification:
+3 paramètres sont requis pour obtenir un access token auprès de Rackspace
+- Account name
+- API key
+- Account URL
+
+L'API Key est disponible depuis l'interface de gestion dans en déroulant le menu en haut à droite (account name), 
+puis dans API Keys (https://mycloud.rackspace.com/a/<account name>/account/api-keys)
+
+L'account URL dépendra du site sur lequel le compte à été créé
+Si le compte est créé via http://www.rackspacecloud.com, le service d'authentification sera à l'adresse https://identity.api.rackspacecloud.com/v1.0
+Autrement s'il est créé via http://www.rackspacecloud.co.uk, l'authentification se fera à l'adresse https://lon.identity.api.rackspacecloud.com/v1.0
+(Constantes URL_UK et URL_US de la classe RackSpaceClient)
+
+les informations de connexion sont envoyé dans l'entête HTTP.
+Si un status 204 (no-content) ou 2xx, l'authentification est réussie. Le token sera valide pour 24h
+Un status 404 sera retourné pour les actions ayant échouées
+
+le service d'authentification renvera alors plusieurs informations utiles:
+- Auth-Token
+- CDN-Management-Url
+- Server-Management-Url
+- Storage-Token
+- Storage-Url
+
+Auth-Token sera le token d'authentification pour effectuer les differentes action. Il devra chaque fois être placé dans l'entête HTTP (X-Auth-Token)
+CDN Management sera l'url utilisée pour les actions de gestion sur les conteneurs de données (ex: rendre un conteneur public via CDN)
+Storage-Token est similaire à Auth-token (même valeur constaté)
+Storage sera l'url utilisé pour effectué la majorité des tâches, comme la gestion des conteneurs ou l'upload des fichiers
+
+---
+
+Conteneur:
+un conteneur est un dossier placé à la racine du serveur. Il est defini comme étant un dossier
+un fichier est placé dans un conteneur. Rackspace ne gère pas les sous-répertoires,
+néanmoins on peut utiliser des "pseudo-repertoire" en incluant le chemin dans le nom du fichier
+Ex: <container>/<file> --> container_test/pseudo_repertoire/fichier_test
+
+Des metadatas peuvent être ajoutées à un conteneur ou fichier (voir doc: 4.2.4. Set or Edit Container Metadata et 4.2.13. Update Object Metadata)
+
+
+Lister les fichier d'un conteneur:
+Via l'url de stockage avec la méthode HTTP GET (<Storage-Url>/<container>)
+Les informations sont renvoyé par defaut en plain text (un fichier par ligne), mais peuvent être formtées en XML ou JSON
+
+quelques infos sur RackSpaceClient::listFiles();
+la méthode listFiles prend 3 paramètres
+- le nom du conteneur
+- le nom du fichier (en incluant le pseudo repertoire)
+- des options
+
+options:
+- format (xml ou json)
+- recursive (booléen)
+- limit (numerique)
+
+
+Rendre un conteneur public:
+par defaut, un conteneur est privée et les fichiers qu'il contient ne sont pas accessible
+Pour le rendre publique, il faut l'ajouter au CDN en utilisant l'url de CDN management
+
+Chaque conteneur disposera de différentes urls publique (voir RackSpaceClient::getPublicUri() IOS_URI/SSL_URI/STREAMING_URI/HTTP_URI)
+Pour les récupérer on envoie une requette HTTP avec la méthode HEAD à <CDN-Management-Url>/<container>
+
+Plusieurs informations sont alors renvoyés:
+- Cdn-Enabled
+- Cdn-Ios-Uri
+- Cdn-Ssl-Uri
+- Cdn-Streaming-Uri
+- Cdn-Uri
+- Log-Retention
+
+CDN Enabled donne l'état du conteneur (public ou privé). il renvoie un booléen
+Log retention permet de conserver une trace des fichiers collectés et stockés (par default vaut false)
+Cdn-Ios-Uri et Cdn-Streaming-Uri sont des urls à privilégier pour les contenus à streamer comme les vidéos
+Cdn-Ssl-Uri et Cdn-Uri sont les url pour acceder au fichiers.
+
+
+
+Outils utiles:
+- RESTClient - extension pour firefox
+- Advanced REST client - extension pour chrome
+
+

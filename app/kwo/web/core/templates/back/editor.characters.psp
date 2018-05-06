@@ -1,0 +1,5 @@
+<?php foreach ($chars as $c): ?>
+<a href="javascript:void(0)"
+   class="elem"
+   data-value="&<?=$c?>;">&<?=$c?>;</a>
+<?php endforeach; ?>

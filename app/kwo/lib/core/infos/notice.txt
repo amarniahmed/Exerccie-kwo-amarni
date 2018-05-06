@@ -1,0 +1,6 @@
+Send me email notifications for the following activity
+- Comments on items I added to Twine
+- Connection Requests
+- Invitations to Join Twines
+- Messages from Connections
+- Messages about shared items 

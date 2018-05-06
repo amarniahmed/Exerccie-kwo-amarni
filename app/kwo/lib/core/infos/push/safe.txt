@@ -1,0 +1,36 @@
+
+   
+  /*  private function replaceLinks2() {
+    $doc = new DOMDocument();
+    @$doc->loadHTML('<?xml encoding="UTF-8">'.$this->content);
+    $nodes = $doc->getElementsByTagName('a');
+    if ($nodes->length < 1) return ;
+    $links = array();
+    foreach ($nodes as $node) {
+      $link = $node->getAttribute('href'); 
+      if (strpos($link, 'http://') !== 0 || in_array('##'.$link, $links)) continue ;
+      if (strpos($this->content, $link) === false) {
+        $link = str_replace('&', '&amp;', $link);
+        if (strpos($this->content, $link) === false) {
+          S('log')->error($link.' not found', __METHOD__);
+          throw new Exception();
+        }
+      }
+      $link_id = Url::asID($link);
+      $key = $this->campaign->getURL().'/proxy?uid='.$link_id.'&'.self::SIG;
+      $links[$key] = '##'.$link;
+    }
+    if (count($links) >= 1) {
+      arsort($links);
+      $this->content = str_ireplace(array(' href="h', " href='h", ' href=h'),
+                                    array(' href="##h', " href='##h", ' href=##h'),
+                                    $this->content);
+        $this->content = str_replace(array_values($links), 
+                                     array_keys($links), 
+                                     $this->content);
+        $this->content = str_ireplace(array(' href="##h', " href='##h", ' href=##h'),
+                                      array(' href="h', " href='h", ' href=h'),
+                                      $this->content);
+    }
+  }
+*/

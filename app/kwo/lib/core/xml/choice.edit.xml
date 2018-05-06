@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" required="true" />
+    <elem field="locales" />
+    <elem field="image" />
+   </vbox>
+   <vbox localized="true">
+    <elem field="label" label="intitulé" />
+    <elem field="receipt" rows="3" label="accusé réception" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+</fieldset>
+
+

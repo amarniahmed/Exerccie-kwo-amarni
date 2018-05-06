@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="position">
+    <filters>
+      <filter name="id" />
+      <filter name="name" />
+      <filter name="poll_id" label="sondage"/>
+    </filters>
+    <cols>
+      <col name="name" />
+      <col name="position" />
+      <col name="created_at" />
+    </cols>
+  </finder>
+

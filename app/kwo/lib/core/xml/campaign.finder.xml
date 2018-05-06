@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder>
+    <filters>
+      <filter type="text" name="name" label="nom"/>
+    </filters>
+    <cols>
+      <col name="name" />
+      <col name="created_at"/>
+    </cols>
+  </finder>
+

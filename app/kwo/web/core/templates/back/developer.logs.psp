@@ -1,0 +1,8 @@
+<fieldset>
+  <legend><?=c(l('affichage des logs'))?></legend>
+  <textarea style="height:400px; margin-top:2px; line-height:1.4em; width:100%;" id="ta-code"
+            spellcheck="false"><?=$code?></textarea>
+
+  <textarea style="height:300px; margin-top:10px; width:100%;" id="ta-url"
+            spellcheck="false"><?=$url?></textarea>
+</fieldset>

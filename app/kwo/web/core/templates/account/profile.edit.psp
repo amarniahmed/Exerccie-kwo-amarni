@@ -1,0 +1,129 @@
+<form onsubmit="Kwo.User.onProfileSubmit(this); return false;">
+  <table class="columns">
+    <tbody>
+      <tr>
+        <td class="column" style="width:48%;">
+          <h2><?=c(l('account.subtitle.account'))?></h2>
+          <ul class="hbox rounded">
+            <li>
+              <table class="vbox">
+                <tr>
+                  <td class="required" style="vertical-align:top;">
+                    <?=Elt::text(array('name' => 'user[name]',
+                                       'label' => l('nick_name'),
+                                       'value' => $user->name,
+                                       'required' => true))?>
+                  </td>
+                  <td style="width:1%;">
+                    <div id="avatar-box">
+                      <?=H::inc('avatar.edit', true)?>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            <li>
+              <?=Elt::select(array('name' => 'user[timezone_id]',
+                                   'label' => 'fuseau horaire',
+                                   'value' => $user->getInformation('timezone_id'),
+                                   'options' => Timezone::asHash($_locale),
+                                   'required' => true))?>
+            </li>
+            <li>
+              <?=Elt::date(array('name' => 'user[birth_date]',
+                                 'label' => l('birth_date'),
+                                 'value' => $user->getInformation('birth_date'),
+                                 'required' => true))?>
+            </li>
+            <li>
+              <?=Elt::text(array('name' => 'profile[website]',
+                                 'label' => l('website'),
+                                 'value' => $profile['website'],
+                                 'wide' => true))?>
+            </li>
+            <li>
+              <?=Elt::text(array('name' => 'profile[description]',
+                                 'label' => l('sig'),
+                                 'value' => $profile['description'],
+                                 'wide' => true))?>
+            </li>
+            <li>
+              <?=Elt::button(array('label' => l('save'),
+                                   'align' => 'right'))?>
+            </li>
+          </ul>
+        </td>
+        <td style="width:2%;"><img src="<?=PIX_URL?>/empty.gif" /></td>
+        <td class="column">
+          <h2><?=c(l('account.subtitle.profile'))?></h2>
+          <ul class="hbox rounded">
+            <li>
+              <table class="vbox">
+                <tr>
+                  <td style="width:3%;">
+                    <?=Elt::select(array('name' => 'profile[civility]',
+                                         'label' => l('civility'),
+                                         'value' => $profile['civility'],
+                                         'wide' => true))?>
+                  </td>
+                  <td>
+                    <?=Elt::text(array('name' => 'profile[first_name]',
+                                       'label' => l('first_name'),
+                                       'value' => $profile['first_name'],
+                                       'wide' => true))?>
+                  </td>
+                  <td>
+                    <?=Elt::text(array('name' => 'profile[last_name]',
+                                       'label' => l('last_name'),
+                                       'value' => $profile['last_name'],
+                                       'wide' => true))?>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            <li>
+              <?=Elt::text(array('name' => 'profile[address]',
+                                 'label' => l('address'),
+                                 'value' => $profile['address'],
+                                 'wide' => true))?>
+            </li>
+            <li>
+              <table class="vbox">
+                <tr>
+                  <td>
+                    <?=Elt::text(array('name' => 'profile[city]',
+                                       'label' => l('city'),
+                                       'value' => $profile['city'],
+                                       'wide' => true))?>
+                  </td>
+                  <td style="width:30%;">
+                    <?=Elt::text(array('name' => 'profile[region]',
+                                       'label' => l('region'),
+                                       'value' => $profile['region'],
+                                       'wide' => true))?>
+                  </td>
+                  <td style="width:30%;">
+                    <?=Elt::text(array('name' => 'profile[postal_code]',
+                                       'label' => l('postal_code'),
+                                       'value' => $profile['postal_code'],
+                                       'wide' => true))?>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            <li>
+              <?=Elt::select(array('name' => 'profile[country_id]',
+                                   'label' => l('country'),
+                                   'value' => $profile['country_id']))?>
+            </li>
+            <li>
+              <?=Elt::text(array('name' => 'profile[phone]',
+                                 'label' => l('phone'),
+                                 'value' => $profile['phone']))?>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <elem field="app" />
+    <elem field="locales" />
+    <elem field="postal_code" label="code postal" />
+    <elem field="country_id" />
+    <elem field="amount" label="coût" />
+   </vbox>
+   <vbox>
+    <elem field="carrier_id" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+
+</fieldset>
+

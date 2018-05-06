@@ -1,0 +1,24 @@
+<h1><?=c(l('push.dialog.title'))?></h1>
+
+<div class="layout-hbox-content">
+  <div class="text-block">
+    <strong style="display:block;"><?=c($base->title)?></strong>
+    <?=nl2br($base->description)?>
+  </div>
+  <form style="margin-top:10px;"
+        onsubmit="Kwo.Newsletter.onSubmit(this); return false;">
+    <div class="confirmation-box">
+      <?=Elt::hidden(array('name' => 'item',
+                           'value' => $base->getKey()))?>
+      <ul class="hbox">
+        <li>
+          <?=Elt::text(array('name' => 'email',
+                             'label' => l('your_email')))?>
+        </li>
+        <li>
+          <?=Elt::button(array('label' => l('i_subscribe')))?>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+*~
+\#*\#
+*.swp
+
+doc/*
+etc/*
+!etc/virtualhost.conf
+!etc/ext
+etc/app/*
+!etc/app/*conf.inc.dist
+mysql/*
+pub/*
+tmp/*
+usr/*
+var/*
+web/core/scripts/platform.js
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" required="true" />
+      <elem field="code" required="true" />
+      <elem field="app" />
+      <hbox>
+       <vbox>
+        <elem field="status" type="yesno" />
+       </vbox>
+       <vbox>
+        <elem field="flags" />
+       </vbox>
+       <vbox>
+        <elem field="email" label="email du responsable" />
+       </vbox>
+      </hbox>
+      <box localized="true">
+       <elem field="title" />
+       <elem field="description" rows="3" />
+      </box>
+      <elem field="locales" />
+      <elem field="about" />
+     </vbox>
+     <vbox>
+      <elem type="relations" model="section" label="section(s)" height="150px" />
+      <elem type="relations" model="component" label="question(s)" height="300px" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="seo" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>
+

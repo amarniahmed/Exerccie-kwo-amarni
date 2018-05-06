@@ -1,0 +1,9 @@
+<a href="javascript:void(0)" onclick="Kwo.Currency.onSelect(this)"><?=ucfirst(l('currency'))?>
+  <img src="<?=PIX_URL?>/select.gif" align="absmiddle"/>
+</a>
+<div id="kwo-currencies" style="display:none">
+  <?php foreach ($currencies as $currency): ?>
+    <a href="javascript:void(0)"
+       onclick="Kwo.Currency.onSubmit('<?=$currency->code?>')"><?=$currency->code?> : <small><?=$currency->{"name_".$_locale}?></small></a>
+  <?php endforeach; ?>
+</div>

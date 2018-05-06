@@ -1,0 +1,7 @@
+
+- krg -> knxrc : referrer category
+  krk -> knxrn : referrer name
+  krt -> knxrt : referrer tag
+
+- pb avec la fréquence de venues
+- passer par Template pour load

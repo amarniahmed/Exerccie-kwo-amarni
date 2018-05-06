@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<notebook>
+ <page>
+  <finder/>
+ </page>
+ <page label="opérations">
+  <hbox>
+   <vbox width="220px">
+    <box label="actions">
+     <link icon="add" />
+     <link icon="cache.write" label="générer le dictionnaire" 
+           action="cache.write" container="panel" />
+    </box>
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+ </page>
+</notebook>
+

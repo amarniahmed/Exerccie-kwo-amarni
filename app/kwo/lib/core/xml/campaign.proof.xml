@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<box label="envoi Bat" id="bat_box">
+ <form>
+  <elem value="$test_bases" options="Campaign::bases(true)" label="destinataires" />
+  <elem type="yesno" id="bat_flag" value="0" label="envoi BAT ?" built="false" />
+  <launcher>
+   <button icon="send" tooltip="envoyer" action=".onExec('send', this, {callback:true})" />
+  </launcher>
+ </form>
+</box>
+

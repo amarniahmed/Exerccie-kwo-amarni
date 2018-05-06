@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<hbox>
+ <vbox>
+  <box label="informations">
+   <grid value="$infos" />
+  </box>
+  <box label="social" built="$opinion">
+  </box>
+ </vbox>
+ <vbox>
+  <box label="évaluation" built="$valuation">
+  </box>
+  <box label="ecommerce" built="$ecommerce">
+  </box>
+ </vbox>
+</hbox>

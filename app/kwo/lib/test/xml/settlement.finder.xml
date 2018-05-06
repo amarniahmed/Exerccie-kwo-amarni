@@ -1,0 +1,16 @@
+/* logement apprtient au batiment qui lui a son tour appartient a une residence
+/*il n'ya pas de double heritage, il y'est plutot un heritage a deux noveaux
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="id asc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="building_id" label="bâtiment" />
+  <filter name="flags" />
+  <filter name="status" />
+ </filters>
+ <cols>
+  <col name="name" />
+  <col name="building_id" label="bâtiment" />
+ </cols>
+</finder>

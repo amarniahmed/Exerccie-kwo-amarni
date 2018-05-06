@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="description">
+   <form>
+    <hbox>
+     <vbox width="200px">
+      <elem field="status" />
+      <elem field="comment" rows="1" label="état alternatif" precision="client" />
+      <launcher buttons="store" />
+     </vbox>
+     <vbox label="résumé"><grid value="$grids['summary']" layout="auto" /></vbox>
+     <vbox label="panier"><list value="$grids['purchases']" /></vbox>
+     <vbox label="paiement"><list value="$grids['payments']" layout="auto" /></vbox>
+     <vbox label="réductions"><list value="$grids['discounts']" /></vbox>
+     <vbox label="livraison"><list value="$grids['shipments']" /></vbox>
+    </hbox> 
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="note" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>
+

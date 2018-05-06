@@ -1,0 +1,92 @@
+<div>
+  <table class="fixed">
+    <tr>
+      <td>
+        <div style="border:1px solid #aaa; padding:16px; background:#fafafa;">
+          <?=l('snippet:'.$snippet_code)?>
+        </div>
+      </td>
+      <td style="padding-left:10px;">
+        <table class="grid">
+          <tbody>
+            <?php if ($order->invoice_id >= 1): ?>
+              <tr>
+                <td><label><?=c(l('invoice_id'))?></label></td>
+                <td><?=$order->invoice_id?></td>
+              </tr>
+            <?php endif; ?>
+            <tr>
+              <td><label><?=c(l('order_id'))?></label></td>
+              <td><?=$order->getId()?></td>
+            </tr>
+            <tr>
+              <td><label><?=c(l('client_id'))?></label></td>
+              <td><?=$user->getId()?></td>
+            </tr>
+            <?php if ($order->discount_amount > 0): ?>
+              <tr>
+                <td><label><?=c(l('discount'))?></label></td>
+                <td><?=H::amount($order->discount_amount)?></td>
+              </tr>
+            <?php endif; ?>
+            <tr>
+              <td><label><?=c(l('order_total'))?></label></td>
+              <td><?=H::amount($order->total_amount)?></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<script type="text/javascript">
+ if (window["ga"]) {
+
+   ga('ecommerce:addTransaction', {
+     'id': '<?=$order->getId()?>',
+     'affiliation': '<?=P('app.name')?>',
+     'revenue': '<?=$order->total_amount?>',
+     'shipping': '<?=$order->shipping_amount?>',
+     'tax': '<?=$order->tax_amount?>'
+   });
+
+   <?php foreach ($purchases as $purchase): ?>
+
+   ga('ecommerce:addItem', {
+     'id': '<?=$purchase->order_id?>',
+     'name': '<?=$purchase->name?>',
+     'sku': '<?=$purchase->code?>',
+     'category': 'Green Medium',
+     'price': '<?=$purchase->price?>',
+     'quantity': '<?=$purchase->quantity?>'
+   });
+
+   <?php endforeach ; ?>
+
+   ga('ecommerce:send');
+
+ }
+</script>
+
+<?php if (P('google.conversion.id')): ?>
+  <script type="text/javascript">
+   var google_conversion_id = <?=P('google.conversion.id')?>;
+   var google_conversion_language = "en";
+   var google_conversion_format = "3";
+   var google_conversion_color = "ffffff";
+   var google_conversion_label = "WpCYCIGFtgQQz-vI3AM";
+   var google_conversion_value = <?=$order->total_amount?>;
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+<?php endif; ?>
+
+<?php if (P('facebook.pixel.id')): ?>
+  <img src="//www.facebook.com/offsite_event.php?id=<?=P('facebook.pixel.id')?>&value=<?=$order->total_amount?>&currency=EUR" />
+<?php endif; ?>
+
+<?php if ($trackers['lengow']): ?>
+  <img src="https://tracking.lengow.com/leadValidation.php?idClient=<?=$trackers['lengow']['id_client']?>&idGroup=<?=$trackers['lengow']['id_group']?>&idCommande=<?=$order->id?>"
+       alt="" border="0" />
+<?php endif; ?>

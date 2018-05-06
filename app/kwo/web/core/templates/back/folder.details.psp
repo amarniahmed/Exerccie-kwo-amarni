@@ -1,0 +1,13 @@
+<fieldset class="list">
+  <legend><?=c(l('répertoire'))?> <b><?=$folder->getPath()?></b></legend>
+  <table class="grid auto">
+    <tr>
+      <td><?=c(l('nombre de fichiers'))?> : </td>
+      <td><?=$folder->getNbFiles()?></td>
+    </tr>
+    <tr>
+      <td><?=c(l('taille'))?> : </td>
+      <td><?=$folder->getUsedSpace()?> M</td>
+    </tr>
+  </table>
+</fieldset>

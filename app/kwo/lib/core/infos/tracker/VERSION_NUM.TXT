@@ -1,0 +1,7 @@
+insert ignore into tracker_event (name, type) select distinct chapter, 0 from tracker_event;
+
+insert ignore into tracker_string (name, type) select distinct title, 1 from tracker_event;
+
+insert ignore into tracker_string (name, type) select distinct title, 1 from tracker_event;
+
+insert into tracker_event select visit_id, s1.id, s2.id, creation_time from tracker_event join tracker_string as s1 on (s1.name=tracker_event.chapter and s1.type=0) join tracker_string as s2 on (s2.name=tracker_event.title and s2.type=1);

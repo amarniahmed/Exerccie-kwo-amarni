@@ -1,0 +1,5 @@
+<a href="javascript:void(0)"
+   class="avatar"
+   id="avatar-box"
+   title="<?=l('change')?>"
+   onclick="new Kwo.User.onAvatarSet(this)"><?=$user->avatar(array('refresh' => true))?></a>

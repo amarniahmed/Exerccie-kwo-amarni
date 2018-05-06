@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <hbox>
+     <vbox>
+      <elem field="status" />
+      <elem field="locales" />
+     </vbox>
+     <vbox>
+      <elem field="type" />
+      <elem field="admins" label="régions" rows="4" />
+     </vbox>
+    </hbox>
+   </vbox>
+   <vbox localized="true">
+    <elem field="label" />
+    <elem field="precision" />
+    <elem field="content" rows="4" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="tags" />
+    <link icon="geocode" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox>
+</page>
+</notebook>
+
+</fieldset>
+

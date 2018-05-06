@@ -1,0 +1,26 @@
+
+<script src="/app/tracker/back.js" type="text/javascript"></script>
+
+<form method="get" action="/back/tracker/load" id="formStat">
+ <input type="hidden" name="year"  value="<?=$year?>"  id="year" />
+ <input type="hidden" name="month" value="<?=$month?>" id="month" />
+ <input type="hidden" name="day"   value="<?=$day?>"   id="day" />
+</form>
+
+<table class="layout tracker" style="height:100%;">
+
+<tr>
+ <td class="stat-block" data-period="global"
+     style="padding:0 6px 6px 0; width:50%; height:50%; border-bottom:1px solid #ccc; border-right:1px solid #ccc;"><?=$bloc_global?></td>
+ <td class="stat-block" data-period="year"
+     style="padding:0 0 6px 6px;"><?=$bloc_year?></td>
+</tr>
+
+<tr>
+ <td class="stat-block" data-period="month"
+     style="padding:6px 6px 0 0;"><?=$bloc_month?></td>
+ <td class="stat-block" data-period="day"
+     style="padding:6px 0 0 6px; border-left:1px solid #ccc; border-top:1px solid #ccc;"><?=$bloc_day?></td>
+<tr>
+
+</table>

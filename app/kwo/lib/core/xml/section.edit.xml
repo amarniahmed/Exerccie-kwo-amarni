@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" required="true" />
+      <elem field="status" />
+     </vbox>
+     <vbox localized="true">
+      <elem field="label" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>
+

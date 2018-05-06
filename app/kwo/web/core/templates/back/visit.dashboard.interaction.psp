@@ -1,0 +1,16 @@
+<?php foreach ($grids as $label => $grid): ?>
+
+<table class="grid">
+<thead><tr><th colspan="3"><?=$label?></th></tr></thead>
+<tbody>
+<?php foreach ($grid as $h): ?>
+ <tr>
+  <td><?=$h['id']?></td>
+  <td><?=$h['name']?></td>
+  <td><?=$h['value']?></td>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php endforeach; ?>

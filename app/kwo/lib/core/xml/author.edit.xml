@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+
+<page label="définition">
+ <form>
+  <elem type="hidden" name="profile" value="$profile" />
+  <hbox>
+   <vbox width="34%">
+    <elem field="name" />
+    <elem field="description" rows="5" />
+    <elem field="status" type="yesno" />
+   </vbox>
+   <vbox width="34%">
+    <elem field="website" />
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+  <launcher />
+ </form>
+</page>
+
+</notebook>
+
+</fieldset>
+

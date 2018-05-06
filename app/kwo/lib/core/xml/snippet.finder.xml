@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="app desc, code asc">
+ <filters>
+  <filter name="id" />
+  <filter name="code" />
+  <filter name="status" />
+  <filter name="properties" label="contenu" />
+  <filter name="app" options="Snippet::apps()" />
+ </filters>
+ <cols>
+  <col name="app" />
+  <col name="code" width="240px" />
+  <col name="about" />
+  <col name="locales" />
+ </cols>
+ <actions>
+  <action name="destroy" label="supprimer"
+          confirm="êtes vous sûr de vouloir procéder à la suppression ?" />
+ </actions>
+</finder>
+

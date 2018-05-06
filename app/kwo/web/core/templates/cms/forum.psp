@@ -1,0 +1,65 @@
+
+<a name="forum-top"></a>
+
+<?php if (!$is_locked): ?>
+<div class="add_topic">
+<?php if (Extension::exists('alert')): ?>
+  <?=W::alert($forum)?> |
+<?php endif; ?>
+ <a href="javascript:Kwo.Forum.editTopic({forum_id:<?=$forum->getId()?>})">
+  <?=l('topic.add')?>comment</a>
+</div>
+<?php endif; ?>
+
+<?php if ($topics->count() < 1) : ?>
+
+<?=l('no_subject')?>
+
+<?php else: ?>
+
+<table class="fixed">
+
+<thead>
+ <th class="column-subject"><?=l('subject')?></th>
+ <th class="column-response-count"><?=l('responses')?></th>
+ <th class="column-display-count"><?=l('displays')?></th>
+ <th class="column-last-comment"><?=l('comment.last')?></th>
+</thead>
+
+<tfoot>
+ <td colspan="4">
+<?php if ($topics->count() > 5): ?>  
+  <a href="javascript:void(Kwo.anchor('forum-top'))" class="top"><?=ucfirst(l('top'))?></a>
+<?php endif; ?>
+  <?=$topics->getPagination()?>
+ </td>
+</tfoot>
+
+<tbody>
+<?php foreach ($topics as $topic): ?>
+<tr class="<?=$topic->hasBit(Meta::BIT_PINNED) ? ' pinned': ''?> <?=$topic->hasBit(Meta::BIT_LOCKED) ? ' locked': ''?>">
+ <td class="column-subject">
+  <?=$topic->getUser()->avatar()?>
+<?php if ($topic->hasBit(Meta::BIT_PINNED)): ?>
+  <img src="<?=WEB_URL?>/pinned.gif" class="ico is_sticked" />
+<?php endif; ?>
+  <a href="<?=$topic->asUrl()?>"><?=ucfirst(h($topic->name))?></a>
+<?php if ($topic->hasBit(Meta::BIT_LOCKED)): ?>
+  <img src="<?=WEB_URL?>/locked.gif" class="ico is_locked" />
+<?php endif; ?>
+  <div class="topic-by">
+   <?=l('by')?> <?=H::user($topic)?>, 
+   <?=H::datenice($topic->created_at)?>
+   <span class="kwo-item-id"><?=$topic->getId()?></span>
+  </div>
+ </td>
+ <td class="column-response-count"><?=(int) $topic->comment?></td>
+ <td class="column-display-count"><?=(int) $topic->display?></td>
+ <td class="column-last-comment"><?=H::datetime($topic->updated_at)?></td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+
+</table>
+
+<?php endif; ?>

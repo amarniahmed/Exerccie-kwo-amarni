@@ -1,0 +1,18 @@
+<?php if ($slide_count > 0): ?>
+  <div class="slideshow_shadow">
+    <div class="slideshow_box" data-max="<?=$slide_count?>">
+      <a href="javascript:void(0)" class="prev"></a>
+      <a href="javascript:void(0)" class="next"></a>
+      <div class="accesses">
+        <?php foreach (range(0, $slide_count) as $index):?>
+          <a href="javascript:void(0)" class="access <?=$index == 0 ? 'access_selected':''?>" data-number="<?=$index?>"><?=$index+1?></a>
+        <?php endforeach;?>
+        <div class="clear"></div>
+      </div>
+      <?php foreach ($slides as $index => $slide):?>
+        <div class="slide <?=$index==0 ? 'slide_selected':''?> slide_<?=$index?>" style="background:white url('<?=$slide->image?>') top left no-repeat;"></div>
+      <?php endforeach;?>
+    </div>
+    <img src="/web/core/images/empty.gif" onload="new Kwo.SlideShow($(this), '/web/watch/pix/slides/');"/>
+  </div>
+<?php endif; ?>

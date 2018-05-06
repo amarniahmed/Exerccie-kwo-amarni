@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+  <notebook>
+    <page>
+      <form>
+        <hbox>
+          <vbox>
+            <elem field="name"/>
+          </vbox>
+          <vbox>
+            <elem field="code"/>
+            <elem field="tasks" rows="20" />
+          </vbox>
+        </hbox>
+        <launcher/>
+      </form>
+    </page>
+    <page>
+      <hbox>
+        <vbox width="150px">
+          <box label="actions">
+            <link icon="details"/>
+            <link icon="hasmany" model="execution"/>
+          </box>
+        </vbox>
+        <vbox>
+          <deck/>
+        </vbox>
+      </hbox>
+    </page>
+  </notebook>
+</fieldset>
+

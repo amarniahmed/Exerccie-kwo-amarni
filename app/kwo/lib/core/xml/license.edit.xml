@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <hbox>
+     <vbox><elem field="code" /></vbox>
+     <vbox><elem field="status" type="yesno" label="en cours" /></vbox>
+     <vbox><elem field="locales" /></vbox>
+    </hbox>
+    <hbox>
+     <vbox><elem field="privilege_id" /></vbox>
+     <vbox><elem field="duration" label="durée" precision="jours" /></vbox>
+    </hbox>
+    <hbox>
+     <vbox><elem field="price" label="prix" /></vbox>
+     <vbox><elem field="tax" label="taxe" /></vbox>
+    </hbox> 
+    <elem field="alerts" label="alertes" built="false" />
+   </vbox>
+   <vbox localized="true">
+    <elem field="title" label="titre" />
+    <elem field="content" rows="8" label="contenu" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="note" />
+    <link icon="seo" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+</fieldset>
+
+

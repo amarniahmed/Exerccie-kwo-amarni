@@ -1,0 +1,8 @@
+<ul>
+<?php foreach ($models as $model_id => $items): ?>
+<?php foreach ($items as $record_id => $item): ?>
+  <li data-item="<?=$item->getKey()?>"
+      title="(<?=$item->id?>)"><?=$item->getModel()?> : <?=$item->name?></li>
+<?php endforeach ; ?>
+<?php endforeach ; ?>
+</ul>

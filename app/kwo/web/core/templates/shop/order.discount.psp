@@ -1,0 +1,38 @@
+<form>
+  <table class="order-columns">
+    <tr>
+      <td>
+        <h2><?=$snippet->title?></h2>
+        <div class="order-section-bloc">
+
+<div class="order-coupon-compose">
+<?=H::get('/order.coupon.compose')?>
+</div>
+
+        </div>
+      </td>
+      <td class="help"><div class="help"><?=$snippet->content?></div></td>
+    </tr>
+  </table>
+  <div class="order-section-navigation">
+    <a href="/cart" class="elt-link">retour au panier</a>
+    <?=Elt::button(array('label' => c(l('order.continue').' »'),
+                         'events' => array('click' => 'Kwo.Order.onStepNext(this)')))?>
+  </div>
+</form>
+
+<?php
+/*        <div class="order-section-bloc">
+          <h3>Cagnotte</h3>
+          <?php if ($user->getCredit() > 0): ?>
+            <div>
+              <?=Elt::yesno(array('name' => 'flags[credit]',
+                                  'value' => $order->hasFlag(Order::FLAG_CREDIT),
+                                  'label' => c(l('use_credit')).' de '.H::amount($user->getCredit()),
+                                  'events' => array('click' => 'Kwo.Order.onChange()')))?>
+            </div>
+          <?php else: ?>
+            Votre cagnotte est vide.
+          <?php endif; ?>
+        </div> */
+?>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" label="url" />
+    <elem field="app" />
+    <elem field="destination" />
+    <hbox>
+     <vbox><elem field="status" type="yesno" label="en cours" /></vbox>
+     <vbox><elem field="flags" /></vbox>
+    </hbox>
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+
+</fieldset>
+

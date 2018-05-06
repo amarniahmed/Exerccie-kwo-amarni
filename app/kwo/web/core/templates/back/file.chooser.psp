@@ -1,0 +1,10 @@
+<h1><?=c(l('transfert'))?></h1>
+<div>
+  <form enctype="multipart/form-data" method="post" target="upload-box"
+        action="/back/core/file.upload" style="float:right;">
+    <input type="file" name="remote_file_path" />
+    <input type="hidden" name="destination" />
+    <input type="button" value="<?=c(l('envoyer'))?>" />
+    <iframe src="javascript:;" frameborder="no" name="upload-box" style="width:0px; height:0px"></iframe>
+  </form>
+</div>

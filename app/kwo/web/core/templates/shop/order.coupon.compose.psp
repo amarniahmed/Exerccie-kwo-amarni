@@ -1,0 +1,24 @@
+
+<table><tbody><tr>
+<td>
+ <div>
+  <input type="text" value="<?=$coupon?>" class="order-coupon-input"
+         onfocus="Kwo.Order.onCouponFocus(this)" />
+ </div>
+</td>
+<td>
+<div>
+<ul>
+<?php if ($display_link_check === true): ?>
+<li><a href="javascript:void(0)" onclick="Kwo.Order.onCouponCheck(this)"><?=l('coupon.link.check')?></a></li>
+<?php endif; ?>
+<?php if ($display_link_remove === true): ?>
+<li><a href="javascript:void(0)" onclick="Kwo.Order.onCouponRemove(this)"><?=l('coupon.link.remove')?></a></li>
+<?php endif; ?>
+</ul>
+</div>
+</td>
+</tr></tbody></table>
+
+<div class="order-coupon-message"></div>
+

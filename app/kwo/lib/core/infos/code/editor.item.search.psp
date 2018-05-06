@@ -1,0 +1,12 @@
+<div style="height:240px; max-height:240px; overflow-y:auto;" class="link-items-box">
+<?php foreach ($items as $item): ?>
+<div style="padding:2px 0; border-bottom:1px solid #ddd; cursor:pointer;"
+     data-url="<?=$item->asUrl()?>">
+<?=$item->name?>
+</div>
+<?php endforeach; ?>
+</div>
+
+<div style="margin-top:5px;"  class="link-items-pagination">
+ <?=$items->getPagination()->asHtml(array('onclick' => 'void(0)'))?>
+</div>

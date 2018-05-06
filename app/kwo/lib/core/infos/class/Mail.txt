@@ -1,0 +1,8 @@
+- http://www.swiftmailer.org
+- setBodyHtml before setBodyText to see the HTML Version by deflt
+- ISO-8859-15
+
+    //    $this->addHeader('X-Mailer','KWO Mail v'.$this->version);
+    //    $this->addHeader('Organisation',$app->name);        
+    //    $this->addHeader('X-MSMail-Priority','Normal');
+    //    $this->addHeader('X-Priority','3');

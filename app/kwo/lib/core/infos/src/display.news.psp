@@ -1,0 +1,27 @@
+<div id="news-support">
+
+<div id="news-items">
+
+<a name="news-top"></a>
+<h1><?=$page->title?></h1>
+
+<p id="news-edito">
+ <?=$page->content?>
+</p>
+
+<?php foreach ($children as $child): ?>
+<div class="news-item">
+ <a name="news-item-<?=$child->id?>"></a>
+ <h2><?=ucfirst($child->title)?></h2>
+ <p>
+<?php if (!empty($child->ico)): ?>
+  <img src="<?=$child->ico?>" style="float:left; margin-right:4px;">
+<?php endif; ?>
+  <?=$child->content?> <a href="#news-top">haut de page</a>
+ </p>
+ <div style="clear:both;"></div>
+</div>
+<?php endforeach; ?>
+
+</div></div>
+

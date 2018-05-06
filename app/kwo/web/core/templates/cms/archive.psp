@@ -1,0 +1,10 @@
+
+<h1><?=I18N::$months[$_locale_id]['long'][$month]?> <?=$year?></h1>
+
+<?php foreach ($articles as $article): ?>
+<div>
+ <?=H::date($article->publication_date)?> <?=$article->name?> <a href="<?=$article->asUrl()?>">lire l&rsquo;actualité</a>
+ <p><?=substr(strip_tags($article->content, '<br>'), 0, 100)?> ...</p>
+</div>
+<?php endforeach; ?>
+

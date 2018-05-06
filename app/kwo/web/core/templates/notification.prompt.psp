@@ -1,0 +1,88 @@
+<h1><?=c(l('share.dialog.title'))?></h1>
+
+<div class="layout-hbox-content">
+  <?=H::identity($item)?>
+  <div class="frame" style="display:<?=$mode!='mail'?'block':'none'?>;">
+    <div class="share-mode share-mode-email">
+      <strong><?=SH::capitalize(l('share.with'))?> :</strong>
+      <a href="javascript:void(0)" onclick="$(this).up('.frame').hide().next().show()">
+         <img src="<?=PIX_URL?>/share/mail.gif" class="icon" />
+         <?=l('share.emails')?>
+      </a>
+    </div>
+    <div class="share-mode share-mode-url">
+      <strong><?=c(l('share.on'))?> :</strong>
+      <table class="fixed">
+        <tbody>
+          <tr>
+            <td class="bookmarks">
+<?php foreach ($services as $id => $h): if ($id%2==0) continue; ?>
+                <a href="javascript:void(0)" 
+                   class="event-redirect"
+                   data-service-id="<?=$id?>">
+                  <img src="<?=PIX_URL?>/share/<?=$h['icon']?>" class="icon" />
+                  <?=c($h['name'])?>
+                </a>
+<?php endforeach; ?>
+            </td>
+            <td class="bookmarks">
+              <!--<a href="javascript:void(0)" onclick="window.bookmark($F('url'));">
+                <img src="<?=WEB_URL?>/share/pix/favorites.gif" class="icon" /> <?=c(l('bookmark_this'))?>
+              </a>-->
+<?php foreach ($services as $id => $h): if ($id%2==1) continue; ?>
+                <a href="javascript:void(0)" 
+                   class="event-redirect"
+                   data-service-id="<?=$id?>">
+                  <img src="<?=PIX_URL?>/share/<?=$h['icon']?>" class="icon" />
+                  <?=c($h['name'])?>
+                </a>
+<?php endforeach; ?>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <form class="frame" style="display:<?=$mode=='mail'?'block':'none'?>;">
+    <div class="vanish" style="display:none;"></div>
+    <ul class="hbox">
+      <?php if ($_user['id'] < 1): ?>
+        <li>
+          <?=Elt::text(array('name' => 'from',
+                             'label' => l('your_email'),
+                             'required' => true,
+                             'wide' => true))?>
+        </li>
+      <?php endif; ?>
+      <li>
+        <?=Elt::text(array('name' => 'recipients',
+                           'rows' => '2',
+                           'label' => l('recipient(s)'),
+                           'id' => 'recipients',
+                           'required' => true,
+                           'legend' => l('recipients.precisions'),
+                           'wide' => true))?>
+      </li>
+      <li>
+        <?=Elt::text(array('name' => 'comment',
+                           'rows' => '2',
+                           'label' => l('message'),
+                           'value' => "Bonjour,\nce site devrait te plaire.\nA bientôt.",
+                           'wide' => true))?>
+      </li>
+      <li>
+        <?=Elt::checkbox(array('name' => 'send_copy',
+                               'value' => 0,
+                               'label' => 'me mettre en copie du message'))?>
+      </li>
+      <li style="text-align:right; margin-top:6px;">
+        <div style="float:left;">
+          <?=Elt::link(array('label' => l('share.online'),
+                             'events' => array('click' => '$(this).up(\'.frame\').hide().previous().show()')))?>
+        </div>
+        <?=Elt::button(array('label' => l('send')))?>
+      </li>
+    </ul>
+  </form>
+</div>

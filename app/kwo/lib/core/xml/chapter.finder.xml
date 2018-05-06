@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="id desc">
+    <filters>
+      <filter type="text" name="name" label="nom"/>
+      <filter type="text" name="article_id" label="article"/>
+    </filters>
+    <cols>
+      <col name="name" />
+      <col name="created_at" />
+    </cols>
+  </finder>
+

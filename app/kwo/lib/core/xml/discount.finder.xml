@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+ <finder order="type, priority desc, code">
+  <filters>
+   <filter name="id" />
+   <filter name="code" />
+   <filter name="name" />
+   <filter name="type" />
+   <filter name="status" />
+   <filter name="flags" />
+  </filters>
+  <cols>
+   <col name="app" />
+   <col name="type" width="100px" />
+   <col name="code" />
+   <col name="name" />
+   <col name="priority" width="80px" label="priorité" />
+   <col name="available_from" label="de" />
+   <col name="available_to" label="jusqu’à" />
+  </cols>
+ </finder>

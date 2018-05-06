@@ -1,0 +1,17 @@
+<h1><?=c(l('favorite.widget.title'))?></h1>
+
+<div class="layout-hbox-content">
+  <?=H::identity($item)?>
+  <form>
+    <ul class="hbox">
+      <li><?=Elt::text(array('name' => 'comment',
+                             'rows' => '2',
+                             'wide' => true,
+                             'label' => l('favorite.comment')))?>
+      </li>
+      <li>
+        <?=Elt::button(array('label' => l('save')))?>
+      </li>
+    <ul>
+  </form>
+</div>

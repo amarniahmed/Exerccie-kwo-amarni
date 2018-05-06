@@ -1,0 +1,45 @@
+<div class="hbox-label"><?=l('condition')?></div>
+<form>
+  <input type="hidden" name="condition_id" value="<?=$condition_id?>" />
+  <table class="vbox">
+    <tbody>
+      <tr>
+        <td><?=c(l('objet cible'))?></td>
+        <td>
+          <select name="model_id">
+            <?=H::options($models, $model_id)?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><?=l('attribut')?></td>
+        <td><input type="text" name="attribute" value="<?=$attribute?>" /></td>
+      </tr>
+      <tr>
+        <td><?=l('value')?></td>
+        <td><input type="text" name="value" value="<?=$value?>" /></td>
+      </tr>
+      <?php if ($discount->isCart()): ?>
+        <tr>
+          <td><?=l('type de seuil')?></td>
+          <td>
+            <select name="threshold_type"<?=$is_order?' disabled="disabled"':''?>>
+              <?=H::options($threshold_types, $threshold_type)?>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><?=l('valeur du seuil')?></td>
+          <td><input type="text" name="threshold" value="<?=$threshold?>"<?=$is_order?' disabled="disabled"':''?> /></td>
+        </tr>
+      <?php endif; ?>
+    </tbody>
+  </table>
+  <div class="actions">
+    <?php if ($condition_id > 0): ?>
+      <a href="javascript:void(0)" class="condition-remove" data-id="<?=$condition_id?>"><?=l('supprimer')?></a>
+    <?php endif; ?>
+    <a href="javascript:void(0)" class="cancel"><?=l('annuler')?></a>
+    <input type="button" value="<?=c(l('enregistrer'))?>" />
+  </div>
+</form>

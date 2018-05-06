@@ -1,0 +1,12 @@
+<div class="field-box workspace-box" data-form-id="<?=$form->getId()?>">
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td class="field-home-box"><?=$fields?></td>
+        <td class="field-edit-box">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<?=H::trigger('new kwo.managers.Field(this)')?>

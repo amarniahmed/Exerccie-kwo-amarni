@@ -1,0 +1,33 @@
+<style>
+.kwo-glossary A { background:#eee; }
+.kwo-glossary A.empty { color:#ccc; }
+.kwo-glossary A.selected { color:red !important; }
+</style>
+
+<div class="kwo-glossary">
+
+<div class="kwo-letters">
+
+<?php foreach ($letters as $l => $has_terms): ?>
+ <a href="#kwo-letter-<?=$l?>"<?=$has_terms != true ? 'class="empty"' : ''?>><?=$l?></a>
+<?php endforeach; ?>
+
+</div>
+
+<div id="kwo-terms">
+<ul>
+<?php foreach ($terms as $i => $term): ?>
+
+<?php if ($current != $term->letter) : $current = $term->letter; ?>
+ </ul><h2 name="#kwo-letter-<?=$term->letter?>"><?=$term->letter?></h2><ul>
+<?php endif; ?> 
+
+<li>
+ <strong><?=$term->name?></strong> : <?=nl2br($term->content)?>
+</li>
+
+<?php endforeach; ?>
+</ul>
+</div>
+
+</div>

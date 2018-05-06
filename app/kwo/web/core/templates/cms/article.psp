@@ -1,0 +1,40 @@
+<div class="kwo-ezine kwo-article">
+
+<div style="display:block; float:right; width:100px;
+            border:1px solid #ccc; padding:6px;">
+<?php if ($article->hasNext()): ?>
+ <a href="<?=$article->getNext()->asUrl()?>">article suivant</a>
+<?php endif; ?>
+<?php if ($article->hasPrev()): ?>
+ <a href="<?=$article->getPrev()->asUrl()?>">article précédent</a>
+<?php endif; ?>
+<hr/>
+<a href="<?=$PHP_SLEF?>">accès direct à cette page</a>
+<hr/>
+<a href="/articles">retour à la liste</a>
+</div>
+
+<h1><?=$article->name?></h1>
+
+<?php if ($offset < 1): ?>
+<?=$article->content?>
+<?php endif; ?>
+
+<?php if ($chapters instanceof Collection): ?>
+
+<h2><?=$chapter->name?></h2>
+<p><?=$chapter->content?></p>
+
+<?=$chapters->getPagination()?>
+
+<!--<div class="kwo-ezine-chapters">
+ page : <?php foreach ($chapters as $i => $elem): ?>
+ <a href="?page=<?=$i?>"
+    class="<?=($chapter->getId() === $elem->getId())?'selected':''?>"><?=$i?></a>
+<?php endforeach; ?>
+</div>-->
+
+
+<?php endif; ?>
+
+</div>

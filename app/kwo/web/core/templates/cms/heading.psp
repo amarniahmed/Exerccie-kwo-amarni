@@ -1,0 +1,26 @@
+<div class="kwo-ezine kwo-heading">
+
+<h2>
+ <div><a href="<?=$heading->asUrl()?>"><?=l('read_more')?></a></div>
+ <?=$heading->name?>
+</h2>
+
+<div class="kwo-articles">
+
+<?php foreach ($articles as $article) : ?>
+
+<div class="kwo-article">
+ <strong><?=$article->name?></strong>
+ <p><?=$article->description?></p>
+ <a href="<?=$article->asUrl()?>"><?=l('read_more')?></a>
+</div>
+
+<?php endforeach; ?>
+
+</div>
+
+<div class="kwo-ezine-pagination">
+ <?=$articles->getPagination()?>
+</div>
+
+</div>

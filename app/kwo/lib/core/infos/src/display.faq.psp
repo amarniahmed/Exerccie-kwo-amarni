@@ -1,0 +1,35 @@
+<div id="faq-support"><div id="faq-items">
+
+<a name="faq-top"></a>
+<h1><?=$page->title?></h1>
+
+<select id="faq-selector">
+ <option value="0">-</option>
+<?php foreach ($children as $child): ?>
+ <option value="<?=$child->id?>"><?=$child->title?></option>
+<?php endforeach; ?>
+</select>
+
+<?php foreach ($children as $child): ?>
+<div class="faq-item">
+ <h2><?=ucfirst($child->title)?> <a href="#faq-top">^</a></h2>
+ <a name="faq-item-<?=$child->id?>"></a>
+ <p>
+<?php if (!empty($child->ico)): ?>
+  <img src="<?=$child->ico?>">
+<?php endif; ?>
+  <?=$child->content?>
+ </p>
+ <div style="clear:both;"></div>
+</div>
+<?php endforeach; ?>
+
+</div></div>
+
+<script>
+Event.observe(window, "load", function () {
+ Event.observe($("faq-selector"), "change", function() {
+  if ($F("faq-selector") < 1) return;
+  document.anchors["faq-item-"+$F("faq-selector")].focus();
+ }) });
+</script>

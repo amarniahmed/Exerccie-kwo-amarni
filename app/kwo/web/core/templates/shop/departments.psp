@@ -1,0 +1,11 @@
+<?php foreach($departments as $name => $genres): ?>
+  <div style="width:200px; float:left; border:1px solid black; background:#ccc;">
+    <h1><?=$name?></h1>
+    <p>
+      <?php foreach($genres as $genre => $count): ?>
+        <a href="/catalog/-/department/<?=urlencode($name)?>/genre/<?=urlencode($genre)?>"><?=$genre?></a> (<?=$count?>) |
+      <?php endforeach; ?>
+    </p>
+  </div>
+<?php endforeach; ?>
+<div class="clear"></div>

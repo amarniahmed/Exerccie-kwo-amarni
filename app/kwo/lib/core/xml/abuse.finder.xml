@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<finder order="id desc" include="motive">
+
+<filters>
+ <filter name="id" />
+ <filter name="status" />
+ <filter name="flags" />
+ <filter type="user" />
+</filters>
+
+<cols>
+ <col name="motive_name" width="200px" label="motif"/>
+ <col name="item" label="objet cible" width="300px" />
+ <col name="content" />
+ <col name="created_at" />
+</cols>
+
+</finder>
+
+

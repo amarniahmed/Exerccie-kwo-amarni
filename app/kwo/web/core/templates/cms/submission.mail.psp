@@ -1,0 +1,24 @@
+<html>
+<head>
+<style>
+BODY { padding:8px; background:white; color:black; }
+TABLE { font-size:inherit; border-collapse:collapse; table-layout:fixed; width:100%; }
+TD { padding:4px; border-bottom: 1px solid #ccc; vertical-align:top; }
+TD.left { font-weight:bolder; width:20%; }
+</style>
+</head>
+<body>
+<div>
+<table>
+<?php foreach ($fields as $key => $value): ?>
+<tr>
+<td class="left">
+<?=h($key)?>
+</td>
+<td class="right"><?=$value?></td>
+</tr>
+<?php endforeach; ?>
+</table>
+</div>
+</body>
+</html>

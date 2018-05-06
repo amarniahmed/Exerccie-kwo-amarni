@@ -1,0 +1,52 @@
+<form>
+  <div class="hbox" style="padding:20px;">
+    <?php if ($item->hasAttribute('about')): ?>
+      <div class="elem">
+        <label><?=c(l('à propos / description pour le traducteur'))?></label>
+        <textarea name="about"><?=$item->about?></textarea>
+      </div>
+      <br />
+      <br />
+    <?php endif; ?>
+
+    <table class="hbox">
+      <tbody>
+        <tr>
+          <?php foreach ($locales as $locale => $label): ?>
+            <td>
+              <div>
+                <img src="/web/core/images/lang/<?=Locale::toCode($locale)?>.png" />
+                <strong><?=strtoupper($label)?></strong>
+              </div>
+              <br />
+              <br />
+              <div class="elem">
+                <label><?=c(l('état'))?></label>
+                <select name="translations[<?=$locale?>][status]">
+                  <?=H::options((array(0 => '--') + Translation::$statuses),
+                                $translations[$locale]['status'])?>
+                </select>
+              </div>
+              <div class="elem">
+                <label><?=c(l('priorité'))?></label>
+                <select name="translations[<?=$locale?>][priority]">
+                  <?=H::options(Translation::$priorities, $translations[$locale]['priority'])?>
+                </select>
+              </div>
+              <div class="elem">
+                <label><?=c(l('commentaire'))?></label>
+                <textarea name="translations[<?=$locale?>][content]" style="height:200px;"><?=$translations[$locale]['content']?></textarea>
+              </div>
+            </td>
+          <?php endforeach ; ?>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <br />
+    <br />
+    <div class="launcher">
+      <input type="submit" value="<?=c(l('enregistrer'))?>" class="submit" />
+    </div>
+  </div>
+</form>

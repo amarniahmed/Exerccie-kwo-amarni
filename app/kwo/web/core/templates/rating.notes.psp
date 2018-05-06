@@ -1,0 +1,13 @@
+<div class="rate-notes-wrapper">
+  <div class="rate-notes" data-max="<?=$max?>" data-item="<?=$item?>">
+  <?php for ($i=1; $i <= $max; $i++): ?>
+    <img src="<?=PIX_URL?>/empty.gif"
+         data-src="<?=PIX_URL?>/star-<?=$value < $i ? 'off' : 'on'?>.gif"
+         data-note="<?=$i?>"
+         class="rate-note rate-note-<?=$i?>" />
+  <?php endfor; ?>
+  </div>
+</div>
+<?=H::trigger('new Kwo.Class.RateManager(this)')?>
+
+

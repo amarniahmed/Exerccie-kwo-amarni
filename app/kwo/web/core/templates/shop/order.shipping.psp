@@ -1,0 +1,57 @@
+<form>
+  <table class="order-columns">
+    <tr>
+      <td>
+        <h2><?=c($snippet->title)?></h2>
+
+        <table class="layout-checkboxes">
+          <tbody>
+            <tr>
+              <td class="left">
+                <input type="radio" name="addressee_id" id="addressee-0"
+                       value="0"<?=$order->addressee_id<1?' checked="checked"':''?>
+                       onclick="Kwo.Order.onChange(this)" />
+              </td>
+              <td>
+                <label for="addressee-0"><?=c(l('same_as_invoice'))?></label>
+              </td>
+            </tr>
+            <?php foreach ($addressees as $addressee) : ?>
+              <tr>
+                <td class="left">
+                  <input type="radio" name="addressee_id" id="addressee-<?=$addressee->id?>"
+                         value="<?=$addressee->getId()?>"<?=$order->addressee_id==$addressee->getId()?' checked="checked"':''?>
+                         onclick="Kwo.Order.onChange(this)" />
+                </td>
+                <td>
+                  <label for="addressee-<?=$addressee->id?>"><?=nl2br($addressee->asAddress())?></label>
+                  <a href="javascript:void(0)" class="elt-link"
+                     onclick="new Kwo.Class.Addressee(this)"
+                     data-id="<?=$addressee->getId()?>"><?=l('addressee.alter')?></a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+            <tr class="link">
+              <td></td>
+              <td>
+                <a href="javascript:void(0)" class="elt-link"
+                   onclick="new Kwo.Class.Addressee(this)"><?=l('addressee.add')?></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+<div class="order-dynamic-box" data-action="shipping.carriers">
+<?=H::get('/order.shipping.carriers')?>
+</div>
+
+      </td>
+      <td class="help"><div class="help"><?=$snippet->content?></div></td>
+    </tr>
+  </table>
+  <div class="order-section-navigation">
+    <a href="/cart" class="elt-link"><?=l('cart.return')?></a>
+    <?=Elt::button(array('label' => c(l('order.continue')).' »',
+                         'events' => array('click' => 'Kwo.Order.onStepNext(this)')))?>
+  </div>
+</form>

@@ -1,0 +1,48 @@
+<?php if ($groups->numRows() < 1): ?>
+Aucun groupe
+<?php return; endif; ?>
+
+<div class="item-rows">
+<?php foreach ($groups as $group): ?>
+<div class="item-row vanish"><table><tbody><tr>
+
+<td class="icon"></td>
+
+<td class="details">
+ <strong><?=$group?><strong>
+ <em><?=$group->description?></em>
+</td>
+
+<td class="actions"><ul>
+
+<li>
+ <a href="<?=$group->asUrl()?>" class="elt-link">accéder</a>
+</li>
+
+<li>
+ <a href="javascript:void(0)" class="elt-link"
+    data-id="<?=$group->getKey()?>"
+    onclick="Kwo.Group.onInvite(this)">inviter</a>
+</li>
+
+<?php if ($user->hasAccessTo($group, 'w')): ?>
+<li>
+ <a href="javascript:void(0)" class="elt-link"
+    data-id="<?=$group->getId()?>"
+    onclick="Kwo.Group.onEdit(this)">modifier</a>
+</li>
+<?php else: ?>
+<li>
+ <a href="javascript:void(0)" class="elt-link"
+    data-confirm="<?=l('confirmation')?>"
+    data-id="<?=$group->getId()?>"
+    onclick="Kwo.Group.onLeave(this)">quitter</a>
+</li>
+<?php endif; ?>
+
+</ul></td>
+
+</tr></tbody></table></div>
+<?php endforeach; ?>
+</div>
+

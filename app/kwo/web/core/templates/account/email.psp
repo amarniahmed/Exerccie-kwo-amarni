@@ -1,0 +1,7 @@
+<form onsubmit="Kwo.User.onEmailSubmit(this); return false;">
+  <ul class="hbox layout-inline">
+    <li><?=Elt::code(array('value' => $user->email, 'label' => l('email.current')))?></li>
+    <li><?=Elt::text(array('name' => 'email', 'label' => l('email.new')))?></li>
+    <li><?=Elt::button(array('label' => l('send')))?></li>
+  </ul>
+</form>

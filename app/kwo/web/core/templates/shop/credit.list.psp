@@ -1,0 +1,29 @@
+<table class="grid">
+  <thead>
+    <th><?=c(l('origin'))?></th>
+    <th><?=c(l('amount'))?></th>
+    <th><?=c(l('expiration.date'))?></th>
+  </thead>
+  <tbody>
+    <?php foreach ($credits as $i => $credit): ?>
+      <tr<?=$i%2==0 ? ' class="alt"' : ''?>>
+        <td>
+          <?=SH::capitalize($credit->name)?><br/>
+          <small><?=H::datetime($credit->getMeta('created_at'))?></small>
+        </td>
+        <td><?=H::amount($credit->amount)?></td>
+        <td><?=H::datenice($credit->expire_on)?></td>
+      </tr>
+    <?php endforeach; ?>
+    <tr<?=++$i%2==0 ? ' class="alt"' : ''?>>
+      <td><strong><?=c(l('already.used.credit.amount'))?></strong></td>
+      <td><?=H::amount($credit_sum - $cagnotte)?></td>
+      <td></td>
+    </tr>
+    <tr<?=++$i%2==0 ? ' class="alt"' : ''?>>
+      <td><strong><?=c(l('usable.amount'))?></strong></td>
+      <td><?=H::amount($cagnotte)?></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

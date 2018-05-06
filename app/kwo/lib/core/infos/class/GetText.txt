@@ -1,0 +1,3 @@
+http://code.google.com/apis/ajaxlanguage/documentation/reference.html#LangNameArray 
+
+http://www.gnu.org/software/gettext/manual/html_node/gettext_150.html#Plural-forms

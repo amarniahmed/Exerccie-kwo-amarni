@@ -1,0 +1,26 @@
+<?=H::head(array('styles' => array(WEB_URL.'/core/styles/affiliate.css')))?>
+<div>
+
+<h1><?=$affiliate->name?></h1>
+
+<table>
+<thead>
+<th>mois</th>
+<th>visites</th>
+<th>ventes</th>
+<th>ca</th>
+</thead>
+<tbody>
+<?php foreach ($months as $month => $h): ?>
+<tr>
+<td><?=$month?></td>
+<td><?=$h['visits']?></td>
+<td><?=$h['orders']?></td>
+<td><?=$h['turnover']?></td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+</div>
+<?=H::foot()?>

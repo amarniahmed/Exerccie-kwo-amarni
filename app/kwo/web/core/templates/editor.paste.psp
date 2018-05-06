@@ -1,0 +1,8 @@
+<h1>Zone de copier/coller</h1>
+<form>
+ <textarea id="input-paste" rows="10"
+           class="text" style="width:100%"></textarea>
+ <div>
+  <input type="submit" value="Coller dans l'éditeur"/>
+ </div>
+</form>

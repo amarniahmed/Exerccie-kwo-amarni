@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<finder order="model_id, name">
+
+<filters>
+ <filter name="id" />
+ <filter name="name" />
+ <filter type="select" name="model_id"
+         options="Property::models()" label="modèle"/>
+</filters>
+
+<cols>
+ <col name="model_id" />
+ <col name="name" />
+</cols>
+
+</finder>
+
+

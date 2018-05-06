@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+ <meta charset="utf-8" />
+ <title>Authentification</title>
+ <link rel="icon" type="image/png" href="<?=PIX_URL?>/back.favicon.png" />
+ <link rel="stylesheet" type="text/css"  href="<?=WEB_URL?>/core/styles/admin.signin.css" />
+ <script type="text/javascript" src="<?=WEB_URL?>/core/scripts/vendors/prototype.js"></script>
+ <script type="text/javascript" src="<?=WEB_URL?>/core/scripts/kwo.js"></script>
+ <script type="text/javascript" src="<?=WEB_URL?>/core/scripts/admin.signin.js"></script>
+</head>
+
+<body>
+
+<table><tr><td>
+
+<form id="auth_form" autocomplete="off" style="display:none">
+<input type="hidden" name="admin_url" value="<?=Admin::url()?>" />
+
+<?php if ($banner): ?>
+ <img src="<?=$banner?>" id="banner" />
+<?php endif; ?>
+
+<div class="panel over"
+     onMouseOut="$(this).removeClassName('over')"
+     onMouseOver="$(this).addClassName('over')">
+ <label>Identifiant</label>
+ <input type="text" name="admin_login" id="login" value="<?=$login?>"
+        autocomplete="off" spellcheck="false" />
+ <label>Mot de passe</label>
+ <input type="password" name="admin_password" id="password"
+        autocomplete="off" spellcheck="false" />
+ <input type="submit" value="Se connecter" />
+
+ <div id="auth_error" style="display:none;">indentifiant ou mot de passe invalide</div>
+
+</div>
+
+</form>
+
+<div id="alert" style="display:none;">
+ La navigateur que vous utilisez ne vous permettra d’exploiter toutes les fonctionnalités de l’espace d’administration.<br/>
+ Veuillez préférer un navigateur plus moderne tel que
+ <a href="http://www.mozilla.com/fr/firefox/">Mozilla Firefox</a> ou
+ <a href="http://www.google.com/chrome">Google Chrome</a>.
+</div>
+
+
+</td></tr>
+</table>
+
+</body>
+</html>

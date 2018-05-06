@@ -1,0 +1,17 @@
+<span class="visit-label"><?=$label?></span>
+<table class="grid auto visits"><tbody>
+<?php foreach ($visits as $vis): ?>
+<tr<?=$vis['conversions']>0?' class="important"':''?>>
+ <td title="visit id : <?=$vis['id']?>">
+  <a href="javascript:void(0)"
+     data-visit-id="<?=$vis['id']?>"><?=$vis['id']?><?=$vis['conversions']>0?' ('.$vis['conversions'].')':''?></a>
+ </td>
+ <td><?=$vis['created_on']?> <?=substr($vis['created_at'], 0, 5)?></td>
+ <td><?=Tracker::$mediums[$vis['medium']]?></td>
+ <td><?=$vis['source']?></td>
+ <td><?=$vis['term']?></td>
+ <td><?=$vis['campaign']?></td>
+ <td><?=$vis['country']?></td>
+</tr>
+<?php endforeach; ?>
+</tbody></table>

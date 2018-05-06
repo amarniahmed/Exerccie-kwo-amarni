@@ -1,0 +1,323 @@
+<!-- Finder -->
+
+<div class="finder dtg"
+     data-model="<?=$finder->getModel()?>"
+     data-finder="<?=$finder->getId()?>"
+     data-page-count="<?=$page_count?>">
+
+<div class="dtg-filters">
+
+<form onsubmit="Kwo.F('<?=$finder->getModel()?>').onSearch(this); return false;">
+
+
+<input type="hidden" name="model" value="<?=$finder->getModel()?>" />
+<input type="hidden" name="page" value="<?=$collection->getPage()?>" />
+<input type="hidden" name="limit" value="50" />
+<input type="hidden" name="reset" value="0" />
+
+
+<div class="dtg-filters-section">
+<table class="vbox"><tbody>
+<?php foreach ($finder->filters as $filter): ?>
+
+<?php if ($filter['type'] === null): ?>
+  <!-- <?=$filter['name']?> -->
+
+<?php elseif ($filter['type'] === 'hidden'): ?>
+
+ <input type="hidden" name="filters[<?=$filter['name']?>]"
+        value="<?=$filter['value']?>" />
+
+<?php else: ?>
+
+<tr>
+
+ <td>
+  <label><?=$filter['label']?></label>
+ </td>
+
+ <td class="filter-<?=$filter['type']?>">
+
+<?php if (in_array($filter['type'], array('text', 'date'))): ?>
+
+ <input type="text" name="filters[<?=$filter['name']?>]"
+ <?php if ($filter['type'] === 'date'): ?> onclick="new kwo.dialogs.PeriodPicker(this)" <?php endif; ?>
+        value="<?=is_array($filter['value'])?join(' ', $filter['value']):$filter['value']?>" class="text" />
+
+<?php elseif ($filter['type'] == 'radio'): ?>
+
+  <label><input type="radio" name="filters[<?=$filter['name']?>]"
+                value="" />x</label>
+<?php foreach ($filter['options'] as $k => $v): ?>
+  <label><input type="radio" name="filters[<?=$filter['name']?>]"
+                value="<?=$k?>"<?=(strlen($filter['value'])>=1 && $k==$filter['value'])?' checked="checked"':''?> /><?=c($v)?></label>
+<?php endforeach; ?>
+
+<?php elseif ($filter['type'] == 'select'): ?>
+
+ <select name="filters[<?=$filter['name']?>]">
+  <option value="">--</option>
+<?php foreach ($filter['options'] as $k => $v): ?>
+  <option value="<?=$k?>"<?=(strlen($filter['value']) >= 1 && $k == $filter['value'])?' selected="selected"':''?>><?=c($v)?></option>
+<?php endforeach; ?>
+ </select>
+
+<?php elseif ($filter['type'] == 'checkbox'): ?>
+
+<?php foreach ($filter['options'] as $k => $v): ?>
+ <label><input type="checkbox" name="filters[<?=$filter['name']?>][]"
+               value="<?=$k?>"<?=in_array($k, (array) $filter['value'])?' checked="checked"':''?>/><span><?=c($v)?></span></label>
+<?php endforeach; ?>
+
+<?php elseif ($filter['type'] == 'hbits'): ?>
+
+<?php foreach ($filter['options'] as $k => $v): ?>
+ <div>
+ <input type="radio" name="filters[<?=$filter['name']?>][<?=$k?>]"
+        value="1"<?=$filter['value'][$k] == '1'?' checked="checked"':''?>/><span class="yn">o</span>
+ <input type="radio" name="filters[<?=$filter['name']?>][<?=$k?>]"
+        value="0"<?=$filter['value'][$k] == '0'?' checked="checked"':''?>/><span class="yn">n</span>
+ <span><?=ucfirst($v)?></span>
+</div>
+<?php endforeach; ?>
+
+<?php elseif ($filter['type'] == 'yesno'): ?>
+
+ <label><input type="radio" name="filters[<?=$filter['name']?>]"
+               value=""<?=empty($filter['value']) ? ' checked="checked"' : ''?> />&#x2A2F;</label>
+ <label><input type="radio" name="filters[<?=$filter['name']?>]"
+               value="1"<?=('1' == $filter['value']) ? ' checked="checked"' : ''?> />oui</label>
+ <label><input type="radio" name="filters[<?=$filter['name']?>]"
+               value="0"<?=('0' == $filter['value']) ? ' checked="checked"' : ''?> />non</label>
+
+<?php endif; ?>
+ </td>
+
+</tr>
+
+<?php endif; ?>
+<?php endforeach; ?>
+
+<?php if ($finder->has_user == true): $v = $finder->extra_filters['user_field']; ?>
+<tr>
+ <td class="control">
+  <select name="extra_filters[user_field]">
+  <option value="id"<?=$v=='id'?' selected':''?>>user ID</option>
+   <option value="email"<?=$v=='email'?' selected':''?>>email</option>
+   <option value="name"<?=$v=='name'?' selected':''?>>pseudo</option>
+   <option value="last_name"<?=$v=='last_name'?' selected':''?>>nom</option>
+  </select></td>
+ <td class="right"><input type="text" name="extra_filters[user_value]"
+                          value="<?=$finder->extra_filters['user_value']?>" class="text" /></td>
+</tr>
+<?php endif; ?>
+
+</tbody></table>
+</div>
+
+<?php if (!empty($finder->orders)): ?>
+<div class="dtg-filters-section">
+<table class="vbox"><tbody><tr>
+
+<td><label>trier par</label></td>
+
+<td class="filter-select">
+
+<select name="order">
+<?php foreach ($finder->orders as $order): ?>
+ <option value="<?=$order['cols']?>"<?=($finder->order==$order['cols'])?' selected':''?>><?=$order['label']?></option>
+<?php endforeach; ?>
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+<td><label>inverser</label></td>
+
+<td><label style="display:block; margin-left:2px;"><input
+type="checkbox" name="order_reverse" value="1"<?=($finder->order_reverse==true)?' checked':''?>><span style="display:inline-block; vertical-align:bottom;"></span></label></td>
+
+</tr></tbody></table>
+</div>
+
+<?php else: ?>
+
+<input type="hidden" name="order" value="<?=$finder->order?>" />
+
+<?php endif; ?>
+
+<div class="dtg-filters-section" style="text-align:right; margin-right:6px;">
+
+<?php if (!in_array($finder->getModel(), array('conversion', 'order'))): ?>
+<span class="button" style="float:left;"
+      title="ajouter" data-id="0"
+      onclick="Kwo.F('<?=$finder->getModel()?>').onEdit(this)"><i class="fa fa-plus-circle"></i>Ajouter</span>
+
+<?php endif; ?><span class="buttons">
+  <?php if ($collection): ?>
+    <span class="button" title="reset"
+          onclick="Kwo.Finder.onReset(this)"><i class="fa fa-refresh"></i></span><?php endif; ?><span
+    class="button"
+    onclick="Kwo.Finder.onSearch(this)"><i class="fa fa-search"></i></span>
+
+</span><input type="image" src="<?=PIX_URL?>/empty.gif" name="submit" value="1" style="width:0px;" />
+
+</div>
+</form>
+
+</div>
+
+
+<div class="dtg-datas">
+
+<div class="dtg-header"><table><tbody><tr>
+<?php if ($finder->has_checkbox == true): ?>
+ <td class="checkbox">
+  <input type="checkbox" class="checkbox-controller"
+         onclick="Kwo.Finder.onClick(event)" />
+ </td>
+<?php endif; ?>
+<?php $i = 0; foreach ($finder->cols as $col): ?>
+<?php $cols[$i++] = $col['width']; ?>
+ <td<?=$col['width']?' style="width:'.$col['width'].'"':''?>>
+  <?=c($col['label'])?>
+<?php if ($col['editable'] == 'true'): ?> &middot; <?php endif; ?>
+ </td>
+<?php endforeach; ?>
+ <td class="<?=(S('req')->isChrome()?'chrome':'not-chrome')?>"></td>
+</tr></tbody></table></div>
+
+
+<div class="dtg-body" style="height:<?=$finder->height?>px;">
+
+<?php if (!$collection): ?>
+
+ &nbsp;
+
+<?php elseif ($collection->numRows() < 1): ?>
+
+<i>aucun résultat</i>
+
+<?php else: ?>
+
+<form>
+<table onclick="Kwo.Finder.onClick(event)"><tbody>
+
+<?php foreach ($collection as $elem): ?>
+<?php
+$hash = $finder->getItemHash($elem);
+$color = array_shift($hash);
+?>
+ <tr data-id="<?=$elem->id?>">
+<?php if ($finder->has_checkbox == true): ?>
+  <td class="checkbox"><input type="checkbox" /></td>
+<?php endif; ?>
+<?php $i = 0; foreach ($hash as $key => $value): ?>
+  <td<?=$cols[$i]?' style="width:'.$cols[$i].'"':''?>>
+<?php if ($i++ == 0): ?>
+<span class="link-finder link-<?=$color?>"
+      title="élément (<?=$elem->id?>)"></span>
+<?php endif; ?>
+<?php if ($finder->cols[$key]['editable'] === 'true'): ?><span class="inline-editor"
+ data-id="<?=$elem->id?>"
+ data-model="<?=$finder->getModel()?>"
+ data-attribute="<?=$finder->cols[$key]['name']?>"><?php endif; ?>
+   <?=$value?>
+<?php if ($finder->cols[$key]['editable'] === 'true'): ?></span><?php endif; ?>
+  </td>
+<?php endforeach; ?>
+ </tr>
+<?php endforeach; ?>
+
+</tbody></table>
+</form>
+<?php endif; ?>
+
+</div>
+
+
+
+<div class="dtg-footer">
+
+<?php if (!$collection): ?>
+
+<table><tbody><tr><td></td></tr></tbody></table>
+
+<?php else: ?>
+
+<table><tbody><tr>
+
+<td class="actions">
+<?php if (count($finder->actions) > 0): ?>
+ <span class="buttons">
+   <?php foreach ($finder->actions as $action): ?><span onclick="Kwo.Finder.onExec(this)"
+           class="button"
+       <?=AH::asAttributes($action['datas'])?>><?php if ($action['icon']): ?>
+       <i class="fa fa-<?=$action['icon']?>"></i><?php endif; ?><?=c($action['label'])?></span><?php endforeach; ?>
+ </span>
+<?php endif; ?>
+
+ <span class="buttons button-save" style="display:none;"><span onclick="Kwo.Finder.onExec(this)"
+                                                               class="button"
+        data-action="attribute.store" data-name="attribute.store"
+        data-confirm="êtes vous sûr ?">Enregistrer</span>
+ </span>
+
+</td>
+
+<td class="pagination">
+
+<?php if ($collection->hasPagination()): ?>
+
+ <?=$collection->getOffsetFrom()?> -
+ <?=$collection->getOffsetTo()?> sur
+ <b><?=$collection->getFoundRows()?></b>
+
+<span class="buttons">
+ <span
+      <?php if ($collection->getOffset() >= 1): ?>
+    class="button" onclick="Kwo.Finder.onPrev(this)"
+      <?php else: ?>
+    class="button disable"
+      <?php endif; ?>><i class="fa fa-chevron-left"></i></span><span
+    <?php if ($collection->getOffset() < ($page_count - 1)): ?>
+    class="button" onclick="Kwo.Finder.onNext(this)"
+      <?php else: ?>
+    class="button disable"
+      <?php endif; ?>><i class="fa fa-chevron-right"></i></span>
+</span>
+
+ <form onsubmit="Kwo.Finder.onSwitchPage(this); return false;">
+  <input type="text" value="<?=($collection->getOffset() + 1)?>" />
+  [ <span onclick="$(this).previous('INPUT').value=1;Kwo.Finder.onSwitchPage($(this).up('FORM'));">1</span>
+    &middot;
+    <span onclick="$(this).previous('INPUT').value=<?=$page_count?>;Kwo.Finder.onSwitchPage($(this).up('FORM'));"><?=$page_count?></span>
+  ]
+  <input type="submit" style="display:none;" />
+ </form>
+
+<?php elseif ($collection->foundRows() >= 1): ?>
+
+ <?=$collection->getOffsetFrom()?> -
+ <?=$collection->getOffsetTo()?> sur
+ <b><?=$collection->getFoundRows()?></b>
+
+<?php endif; ?>
+
+</td></tr></tbody></table>
+
+<?php endif; ?>
+
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+<!-- /Finder -->

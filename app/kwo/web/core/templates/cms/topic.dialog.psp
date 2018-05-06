@@ -1,0 +1,14 @@
+
+<form style="padding:10px;" onsubmit="Kwo.exec('/topic.move', this, {callback:true}); return false;">
+<input type="hidden" name="item" value="<?=$topic->getKey()?>" />
+
+Déplacer le sujet <strong><?=$topic->name?></strong> du forum
+<strong><?=$forum->name?></strong> vers le forum<br/>
+
+<select name="forum_id">
+<?=H::options($forums)?>
+</select>
+
+<input type="submit" value="<?=l('send')?>" />
+
+</form>

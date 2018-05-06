@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<notebook>
+ <page label="recherche">
+
+<finder/>
+
+ </page>
+ <page label="opérations">
+  <hbox>
+   <vbox width="150px">
+    <box label="actions">
+     <link icon="add" />
+    </box>
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+</page>
+</notebook>

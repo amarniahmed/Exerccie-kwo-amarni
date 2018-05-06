@@ -1,0 +1,24 @@
+<?php if (count($emails) < 1): ?>
+Aucun contact disponible
+<?php return; endif; ?>
+
+<form class="emails">
+
+<div>
+ <ul>
+<?php foreach ($emails as $i => $email): ?>
+  <li>
+   <input type="checkbox"
+          name="emails[]"
+          value="<?=$email?>"
+          id="email-<?=$i?>" /> 
+   <label for="email-<?=$i?>"><?=$email?></a></li>
+<?php endforeach; ?>
+ </ul>
+</div>
+
+<div>
+ <input type="submit" value="importer les contacts sélectionnés" />
+</div>
+
+</form>

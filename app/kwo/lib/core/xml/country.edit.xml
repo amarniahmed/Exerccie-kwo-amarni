@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+<page label="définition">
+ <form>
+   <hbox>
+    <vbox width="33%">
+     <elem field="code" label="code" precision="ISO 3166-1 alpha-2" />
+     <elem field="iso3_code" label="code" precision="ISO 3166-1 alpha-3" spellcheck="false" />
+     <elem field="fips_code" label="code" precision="FIPS" spellcheck="false" />
+    </vbox>
+    <vbox width="33%">
+     <elem field="status" type="yesno" />
+     <elem field="flags" />
+    </vbox>
+    <vbox width="34%">
+     <elem field="name_fr" label="nom" precision="FR" spellcheck="false" />
+     <elem field="name_en" label="nom" precision="EN" spellcheck="false" />
+     <elem field="name_es" label="nom" precision="ES" spellcheck="false" />
+     <elem field="name_de" label="nom" precision="DE" spellcheck="false" />
+     <elem field="name_it" label="nom" precision="IT" spellcheck="false" />
+    </vbox>
+   </hbox>
+  <launcher />
+ </form>
+</page>
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="30%">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox>
+   <deck />
+  </vbox>
+ </hbox> 
+</page>
+</notebook>
+
+</fieldset>
+

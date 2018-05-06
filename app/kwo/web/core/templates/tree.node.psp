@@ -1,0 +1,10 @@
+<div class="kwo-level-<?=(strlen($node['path']) / 2)?>">
+<?php if (empty($node['url'])): ?>
+ <b><?=$node['name']?></b>
+<?php else: ?>
+ <b><a href="<?=$node['url']?>" target="_blank"><?=$node['name']?></a></b>
+<?php endif; ?>
+<?php if (!empty($node['description'])): ?>
+ <p><?=$node['description']?></p>
+<?php endif; ?>
+</div>

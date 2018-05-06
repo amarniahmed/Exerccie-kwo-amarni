@@ -1,0 +1,68 @@
+<h1><?=c(l('my_cart'))?></h1>
+<?php if ($product_count < 1): ?>
+  <?=H::error(l('error.cart.empty'))?>
+<?php return; endif; ?>
+
+<form onsubmit="return false;">
+  <table class="cart">
+    <thead>
+      <tr>
+        <th><?=c(l('description'))?></th>
+        <th class="price"><?=c(l('price'))?></th>
+        <th class="quantity"><?=c(l('quantity'))?></th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+       <td colspan="1">
+        <input type="text" value="<?=h($coupon)?>" /><a href="javascript:void(0)" onclick="Kwo.Cart.onCouponPreCheck($(this).previous())">test le coupon</a>
+       </td>
+       <td colspan="2">
+        <input type="button" value="<?=c(l('proceed_to_checkout'))?>" class="button" onclick="Kwo.Order.compose()" />
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <?php foreach($purchases as $purchase): ?>
+        <tr class="purchase">
+          <td>
+            <?php if (!empty($purchase->image)): ?>
+              <img src="<?=$purchase->image?>" alt="" />
+            <?php endif; ?>
+            <strong><?=c($purchase->name)?></strong><br/>
+            <small><?=c($purchase->description)?></small>
+          </td>
+          <td class="price"><?=H::amount($purchase->getPrice())?></td>
+          <td class="quantity">
+            <?php if ($purchase->bundle_id >= 1): ?>
+              <?=$purchase->quantity?>
+            <?php else: ?>
+              <input type="text" class="text" value="<?=$purchase->quantity?>"
+                     name="purchases[<?=$purchase->getId()?>]"
+                     onfocus="Kwo.Cart.onQuantityChange(this)" /><br/>
+            <?php endif; ?>
+            <a href="javascript:void(0)" class="elt-link"
+               onclick="Kwo.Cart.onPurchaseDelete(this)"
+               data-confirm="<?=l('confirmation')?>"
+               data-id="<?=$purchase->getId()?>"><?=l('suppress')?></a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+      <tr class="total">
+        <td class="left">
+          <a href="javascript:void(0)" class="elt-link"
+             data-confirm="<?=l('confirmation')?>"
+             onclick="Kwo.Cart.empty(this)"><?=c(l('empty_cart'))?></a>
+          <strong><?=c(l('total'))?></strong>
+        </td>
+        <td class="price">
+          <?=H::amount($total)?>
+        </td>
+        <td class="quantity">
+          <a href="javascript:void(0)" class="elt-link" style="display:none;"
+             onclick="Kwo.Cart.onUpdate(this)"><?=c(l('update'))?></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <elem field="name" label="nom" />
+    <hbox>
+     <vbox width="40%">
+      <elem field="code" />
+     </vbox>
+     <vbox>
+      <elem field="item" models="$models" built="$has_model_id" />
+     </vbox>
+    </hbox>
+    <elem field="flags" />
+    <elem field="locales" />
+    <elem field="value" label="valeur" />
+    <box localized="true">
+     <elem field="label" />
+     <elem field="description" rows="2" />
+     <elem field="url" />
+      <box built="$tree_id == 20" label="Annuaire">
+     <elem field="entete_label" label="Entete" />
+     <elem field="rubrique_label" label="Rubrique" />
+     <elem field="rubrique_sous_label" label="sous-Rubrique" />
+     <elem field="legende" label="Legende" />
+     <elem field="motcle" label="Mot-clé" />
+     <elem field="publicite" label="Publicité" />
+      </box>
+    </box>
+    <launcher />
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="duplicate" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>

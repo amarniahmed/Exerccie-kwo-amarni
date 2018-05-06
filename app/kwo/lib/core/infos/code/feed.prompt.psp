@@ -1,0 +1,39 @@
+
+<h1>Flux RSS</h1>
+
+<div class="layout-hbox-content">
+
+ <ul>
+ <li>
+  <a href="http://fusion.google.com/add?feedurl=<?=urlencode($url)?>" target="_blank">
+   <img src="<?=PIX_URL?>/feedreaders/feed-google.png" class="icon" /> Google Reader / iGoogle
+  </a>
+ </li>
+ <li>
+  <a href="http://add.my.yahoo.com/rss?url=<?=urlencode($url)?>" target="_blank">
+   <img src="<?=PIX_URL?>/feedreaders/feed-yahoo.png" class="icon" /> MyYahoo
+  </a>
+ </li>
+ <li>
+  <a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<?=urlencode($url)?>" target="_blank">
+   <img src="<?=PIX_URL?>/feedreaders/feed-newsgator.png" class="icon" /> NewsGator
+  </a>
+ </li>
+ <li>
+  <a href="http://www.netvibes.com/subscribe.php?url=<?=urlencode($url)?>" target="_blank">
+   <img src="<?=PIX_URL?>/feedreaders/feed-netvibes.png" class="icon" /> Netvibes
+  </a>
+ </li>
+ <li>
+  <a href="http://www.bloglines.com/sub/<?=urlencode($url)?>" target="_blank">
+   <img src="<?=PIX_URL?>/feedreaders/feed-bloglines.png" class="icon" /> Bloglines
+  </a>
+ </li>
+ <li>
+  <a href="<?=$url?>" target="_blank">
+   <img src="<?=PIX_URL?>/feedreaders/feed-xml.png" class="icon" /> XML
+  </a>
+ </li>
+</ul>
+
+</div>

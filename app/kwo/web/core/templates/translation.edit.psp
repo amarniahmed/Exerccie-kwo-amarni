@@ -1,0 +1,56 @@
+<h1><?=$translation->asName()?></h1>
+
+<div id="form-edition">
+  <?php if (Model::hasField(Model::name($item->getModelId()), 'about')): ?>
+    <h2><strong><?=c(l('about'))?></strong> : <?=strlen($item->about) > 5 ? $item->about : 'n/c.'?></h2>
+  <?php endif; ?>
+
+  <div class="form-head">
+    <div class="form-head-left-cell">
+      <?=Elt::text(array('name' => 'record[content]',
+                         'label' => l('translation.comment'),
+                         'value' => $translation->content,
+                         'rows' => 1))?>
+    </div>
+    <div class="form-head-left-cell">
+      <?=Elt::select(array('name' => 'record[status]',
+                           'label' => l('translation.status.actual').' : '.Translation::$statuses[$translation->status],
+                           'first' => '-- nouvel état --',
+                           'options' => Translation::getEditorStatuses('edit')))?>
+    </div>
+    <div class="form-head-right-cell">
+      <?=Elt::button(array('label' => l('save'),
+                           'class' => 'submit'))?>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <?=Elt::hidden(array('name' => 'id',
+                       'value' => $translation->getId()))?>
+
+  <?=Elt::hidden(array('name' => 'md5',
+                       'value' => $translation->getMd5()))?>
+
+  <table class="properties fixed">
+    <thead>
+      <tr>
+        <th style="width:10%;"><?=c(l('translator.th.property'))?></th>
+        <th style="width:45%;"><?=c(l('translator.th.reference'))?></th>
+        <th style="width:45%;"><?=c(l('translator.th.translation'))?> <img src="/web/core/images/lang/<?=I18N::$langs[$translation->locale]?>.png" /alt="" ></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($translation->asEditPropertiesHash($locale) as $property): ?>
+        <tr>
+          <td><?=$property['name']?></td>
+          <td><div class="property-content"><?=h($property['reference'])?></div></td>
+          <td><?=Elt::text($property['input'])?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+
+<div id="form-validation" style="display:none;">
+  <p><?=c(l('translator.pending.validation.msg'))?></p>
+</div>

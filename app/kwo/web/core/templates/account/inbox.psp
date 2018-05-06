@@ -1,0 +1,87 @@
+<form onsubmit="return false;" data-confirm="<?=l('confirmation')?>">
+  <table class="fixed inbox">
+    <colgroup>
+      <col style="width:3%;" />
+      <col style="width:3%;" />
+      <col style="width:30%;" />
+      <col style="width:60%;" />
+      <col style="width:4%;" />
+    </colgroup>
+    <thead>
+      <tr>
+        <th colspan="5">
+          <select onchange="Kwo.Inbox.onSelect(this)" style="float:left;">
+            <option value="0"> <?=ucfirst(l('select'))?> </option>
+            <option value="none"><?=l('inbox.select.none')?></option>
+            <option value="read"><?=l('inbox.select.read')?></option>
+            <option value="unread"><?=l('inbox.select.unread')?></option>
+            <option value="all"><?=l('inbox.select.all')?></option>
+          </select>
+          <div style="text-align:right; margin-top:4px;">
+            <a href="javascript:void(0)" class="button"
+               onclick="Kwo.Inbox.Message.onMarkRead(this)"><?=ucfirst(l('inbox.mark.read'))?></a> &middot;
+            <a href="javascript:void(0)" class="button"
+               onclick="Kwo.Inbox.Message.onMarkUnread(this)"><?=ucfirst(l('inbox.mark.unread'))?></a> &middot;
+            <a href="javascript:void(0)" class="button" id="delete-selected"
+               data-confirm="<?=l('confirmation')?>"
+               onclick="Kwo.Inbox.Message.onDelete(this)"><?=ucfirst(l('delete'))?></a>
+          </div>
+          <div class="clear"></div>
+        </th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <td colspan="5">
+          <?=$messages->getPagination()?>
+        </td>
+      </tr>
+    </tfoot>
+    <tbody>
+      <?php if ($messages->numRows() < 1): ?>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <?php else: ?>
+        <?php foreach ($messages as $message): ?>
+          <?php $message = (object) $message; ?>
+          <tr class="<?=$message->status == Message::STATUS_READ ? 'read' : ''?>">
+            <td class="replied">
+<?php if ($message->replier_id >= 1): ?>
+**
+<?php endif; ?>
+            </td>
+            <td class="selection">
+              <input type="checkbox" name="messages[]" value="<?=$message->id?>"
+                     class="<?=$message->status == Message::STATUS_READ ? 'message-read' : 'message-unread'?>"
+                     onclick="$('delete-selected').show()" />
+            </td>
+            <td class="sender">
+              <?=H::avatar($message)?>
+              <strong><?=$message->user_name?></strong><br/>
+              <?=H::datetime($message->created_at)?>
+            </td>
+            <td class="title">
+              <a href="javascript:void(0)"
+                 onclick="Kwo.Inbox.Message.view(<?=$message->id?>)"><?=h($message->title)?></a>
+              <span><?=h(H::ellipse($message->content))?></span>
+            </td>
+            <td class="suppression">
+              <span onclick="$(this).up('TR').select('INPUT')[0].checked = true; Kwo.Inbox.Message.onDelete(this);"
+                    data-confirm="<?=l('confirmation')?>"
+                    title="<?=l('suppress')?>">destroy</span>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </tbody>
+  </table>
+</form>
+
+<script>
+inbox_offset = <?=intval($offset)?>;
+</script>

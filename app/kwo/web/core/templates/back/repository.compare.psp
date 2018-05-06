@@ -1,0 +1,49 @@
+<div class="diff">
+  <table>
+    <thead>
+      <tr>
+        <th><?=c(l('local'))?></th>
+        <th></th>
+        <th><?=c(l('distant'))?></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="category" colspan="4"><?=c(l('fichiers'))?></td>
+      </tr>
+      <?php foreach ($files as $file => $h): ?>
+        <tr data-file="<?=$file?>" data-direction="<?=$h['local']['status']?'pull':'push'?>">
+          <td>
+            <div class="<?=($h['local']['md5'] && $h['remote']['md5'])?'btn-diff':''?>"><span><?=$file?></span></div>
+            <div>
+              <ul>
+                <li><?=H::datetime($h['local']['mtime'])?></li>
+                <li><?=$h['local']['size']?></li>
+              </ul>
+            </div>
+          </td>
+          <td class="direction">
+            <?php if ($h['local']['status']): ?>
+            &lt;
+            <?php else: ?>
+            &gt;
+            <?php endif; ?>
+          </td>
+          <td>
+            <?=$file?>
+            <ul>
+              <li><?=H::datetime($h['remote']['mtime'])?></li>
+              <li><?=$h['remote']['size']?></li>
+            </ul>
+          </td>
+          <td class="checkbox"><input type="checkbox" checked="true" /></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
+<div class="actions">
+  <div><textarea></textarea></div>
+  <div><input type="button" value="<?=c(l('transmettre'))?>" /></div>
+</div>

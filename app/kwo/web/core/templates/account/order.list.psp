@@ -1,0 +1,55 @@
+<?php if ($orders->numRows() < 1): ?>
+  <div class="account-alert"><?=l('order.none')?></div>
+<?php return; endif; ?>
+
+<table class="grid">
+  <thead>
+    <th class="column-order-id column-id"><?=l('order_id')?></th>
+    <th class="column-date"><?=l('date')?></th>
+    <th class="column-amount"><?=l('amount')?></th>
+    <th class="column-state"><?=l('state')?></th>
+    <th class="column-print"></th>
+  </thead>
+  <tbody>
+    <?php foreach ($orders as $i => $order): ?>
+      <tr<?=$i%2==0 ? ' class="alt"' : ''?> data-id="<?=$order->getId()?>">
+        <td class="column-order-id"><?=$order->id?></td>
+        <td class="column-date"><?=H::datenice($order->created_at)?></td>
+        <td class="column-amount"><?=H::amount($order->total_amount)?></td>
+        <td class="column-state">
+          <ul>
+            <li class="order-status">
+              <?=l('payment.status.'.Order::$codes[$order->status])?>
+              <?php if (!empty($order->comment)): ?>
+                <br/><?=$order->comment?></li>
+              <?php endif; ?>
+            </li>
+            <?php if ($order->isCompleted()): ?>
+
+              <?php if (!$order->isDigital()): ?>
+                <?php if (Valuation::isEvaluated($order, $order->user_id)): ?>
+                  <li class="order-grade"><?=Valuation::grade($order, $order->user_id)?> / 5</li>
+                <?php else: ?>
+                  <li class="order-survey">
+                    <a href="javascript:void(0)" onclick="new Kwo.Class.Valuation(this)"
+                      data-item="<?=$order->getKey()?>"><?=l('account.order.valuation')?></a>
+                  </li>
+                <?php endif; ?>
+              <?php endif; ?>
+
+              <?php if (!$order->isDigital()): ?>
+                <li class="order-return"><a href="javascript:void(0)"
+                  onclick="new Kwo.Composer.Return(this)"><?=l('account.order.return')?></a></li>
+              <?php endif; ?>
+
+            <?php endif; ?>
+          </ul>
+        </td>
+        <td>
+          <a href="/invoice?item=<?=$order->getKey()?>"
+            target="_blank"><?=l('account.order.print')?></a>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>

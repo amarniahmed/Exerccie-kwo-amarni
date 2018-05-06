@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="name">
+ <filters>
+  <filter name="name" />
+  <filter name="advertiser_id" type="select" label="annonceur" options="Model::asHash('advertiser')" />
+  <filter name="type" type="select" label="type" />
+  <filter name="format" type="select" label="format" options="Advert::$formats" />
+  <filter name="status" type="yesno" label="en ligne"/>
+ </filters>
+ <cols>
+  <col name="app" />
+  <col name="name" />
+  <col name="locale" />
+  <col name="format" />
+  <col name="type" />
+ </cols>
+</finder>

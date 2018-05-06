@@ -1,0 +1,26 @@
+<?php foreach ($posts as $post): ?>
+<?=H::inc('_post', array('post' => $post))?>
+<?php endforeach; ?>
+
+<?php if ($posts->hasPagination()): ?>
+
+<div id="blog-navig">
+<table class="fixed"><tr>
+<td style="width:34%;">
+<?php if ($posts->hasPrev()): ?>
+<a href="?page=<?=($posts->getPage() - 1)?>&id=<?=$blog->getId()?>">Articles plus récents</a>
+<?php endif; ?>
+</td><td style="width:32%; text-align:center;">
+<?php if ($posts->hasPrev() && $posts->hasNext()): ?>
+&nbsp; <a href="/blog/-/id/<?=$blog->id?>">Accueil</a> &nbsp;
+<?php endif; ?>
+</td><td style="text-align:right;">
+<?php if ($posts->hasNext()): ?>
+<a href="?page=<?=($posts->getPage() + 1)?>&id=<?=$blog->getId()?>">Articles plus anciens</a>
+<?php endif; ?>
+</td>
+</tr></table>
+</div>
+
+
+<?php endif; ?>

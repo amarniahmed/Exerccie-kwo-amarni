@@ -1,0 +1,48 @@
+
+find . -type f -exec file -i {} \; | grep iso- | grep -v infos
+
+
+UTF8
+
+- détecter l'encoding : file -i toto.txt
+- en ssh : securecrt : Session > Terminal > Appearance > Character encoding : UTF-8
+
+- xterm : 
+  C ^ clic droit
+  utiliser le clic gauche pour choisir UTF-8 (en bas) 
+
+
+setenv LANG en_US.UTF-8
+yum install xorg-x11-fonts-100dpi
+fc-list
+xterm -T 'xterm pulsar' +sm -n 'xterm pulsar - ico' -fn '-*-Fixed-Medium-R-Normal--12-*-*-*-*-*-ISO10646-1' -display 192.168.0.102:0.0 -u8 &
+
+emacs -nw -l /root/.emacs.utf8 -q 
+
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment "UTF-8")
+(set-selection-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+
+
+
+optionnelles
+yum install liberation-fonts
+yum install dejavu-lgc-fonts
+yum install bitstream-vera-fonts
+xterm -fa 'bitstream vera sans mono' -fs 11 -u8 
+xterm -fa 'liberation mono' -fs 11 -u8
+xterm -fa 'DejaVu LGC Sans Mono' -fs 11 -u8
+
+.Xdefaults 
+xterm*utf8: 1
+
+
+
+
+
+
+
+
+
+

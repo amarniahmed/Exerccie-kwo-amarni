@@ -1,0 +1,71 @@
+<?php if ($godsons->count() < 1 && $prospects->count() < 1): ?>
+  <?=c(l('no.godson'))?>, <a href="/account/sponsorship.new"><?=l('click.here')?></a> <?=l('to.send.a.message')?>
+<?php else: ?>
+  <a href="/account/sponsorship.new"><?=l('click.here')?></a> <?=l('to.send.a.message')?>
+<?php endif; ?>
+
+<?php if ($godsons->count() >= 1): ?>
+
+<table class="grid">
+
+<thead>
+ <th><?=c(l('godson'))?></th>
+ <th><?=c(l('email'))?></th>
+ <th><?=c(l('credits.earned'))?></th>
+</thead>
+
+<tbody>
+<?php foreach ($godsons as $i => $godson): ?>
+<?php $amount += $godson->getProfit(); ?>
+ <tr<?=$i%2==0 ? ' class="alt"' : ''?>>
+  <td><?=SH::capitalize($godson)?></td>
+  <td><?=$godson->getEmail()->email?></td>
+  <td><?=H::amount($godson->getProfit())?></td>
+ </tr>
+<?php endforeach; ?>
+ <tr<?=++$i%2==0 ? ' class="alt"' : ''?>>
+  <td><a href="/account/credit.list"><?=c(l('view.credit'))?></a></td>
+  <td style="text-align:right;"></td>
+  <td><?=H::amount($amount)?></td>
+ </tr>
+</tbody>
+
+</table>
+
+<?php endif; ?>
+
+<?php if ($prospects->count() >= 1): ?>
+
+<form onsubmit="Kwo.Sponsorship.onSend(this); return false;">
+<table class="grid">
+
+<thead>
+ <th><?=c(l('emails.sent.unregistered'))?></th>
+ <th><?=c(l('email'))?></th>
+ <th><?=c(l('send.email.again'))?></th>
+</thead>
+
+<tbody>
+<?php foreach ($prospects as $i => $prospect): ?>
+<?php $amount += $prospect->getProfit(); ?>
+ <tr<?=$i%2==0 ? ' class="alt"' : ''?>>
+  <td><?=SH::capitalize($prospect)?></td>
+  <td><?=$prospect->getEmail()->email?></td>
+  <td>
+   <input type="checkbox" name="sponsorships[]"
+          value="<?=$prospect->getId()?>" /></td>
+ </tr>
+<?php endforeach; ?>
+ <tr<?=++$i%2==0 ? ' class="alt"' : ''?>>
+  <td></td>
+  <td></td>
+  <td><?=Elt::button(array('label' => l('send')))?></td>
+ </tr>
+</tbody>
+
+</table>
+</form>
+
+<?php endif; ?>
+
+

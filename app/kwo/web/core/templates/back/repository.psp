@@ -1,0 +1,13 @@
+<div class="repository">
+
+<header>
+<select>
+<option>remote repository</option>
+</select>
+<input type="button" value="check" class="btn-compare" />
+</header>
+
+<article></article>
+
+
+</div>

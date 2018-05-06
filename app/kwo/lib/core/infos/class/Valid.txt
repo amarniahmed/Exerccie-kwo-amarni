@@ -1,0 +1,27 @@
+
+  public static function isRFC822($email) {
+    $atom = '[^][()<>@,;:\\".\s\000-\037\177-\377]+\s*';
+    $qtext = '[^"\\\\\r]';
+    $quoted_pair = '\\\\.';
+    $quoted_string = '"(?:' . $qtext . '|' . $quoted_pair . ')*"\s*';
+    $word = '(?:' . $atom . '|' . $quoted_string . ')';
+    $local_part = $word . '(?:\.\s*' . $word . ')*';
+    $dtext = '[^][\\\\\r]';
+    $domain_literal = '\[(?:' . $dtext . '|' . $quoted_pair . ')*\]\s*';
+    $sub_domain = '(?:' . $atom . '|' . $domain_literal . ')';
+    $domain = $sub_domain . '(?:\.\s*' . $sub_domain . ')*';
+    $addr_spec = $local_part . '@\s*' . $domain;
+    $route = '@' . $domain . '(?:,@\s*' . $domain . ')*:\s*';
+    $route_addr = '<\s*(?:' . $route . ')?' . $addr_spec . '>\s*';
+    $phrase = $word  . '+';
+    $mailbox = '(?:' . $addr_spec . '|' . $phrase . $route_addr . ')';
+    $group = $phrase . ':\s*(?:' . $mailbox . '(?:,\s*' . $mailbox . ')*)?;\s*';
+    $address = '/^\s*(?:' . $mailbox . '|' . $group . ')$/';
+    $uncomment =
+      '/((?:(?:\\\\"|[^("])*(?:' . $quoted_string .
+      ')?)*)((?<!\\\\)\((?:(?2)|.)*?(?<!\\\\)\))/';
+    $email = preg_replace ($uncomment, '$1 ', $email);
+    $ret = preg_match ($address, $email);
+    if ($ret<1) return false;
+    return true;
+  }

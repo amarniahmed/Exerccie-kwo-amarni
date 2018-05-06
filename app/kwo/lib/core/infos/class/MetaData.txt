@@ -1,0 +1,170 @@
+- une metadata est une valeur que l'on peut mettre à jour directement via une action 'edit'->'store'
+- Pour calcul de rate, utiliser AVG pour eviter d'avoir a faire une operation en PHP
+- avoir un update_time : si nous avons un type indexaction_count, nous pour lancer l'indexation des elements tous les n jours
+
+
+class MetaData2 {
+
+  const ABUSE_COUNT        = 13;
+  const ALERT_COUNT        = 2;
+  const BOOKMARK_COUNT     = 11;
+  const COMMENT_COUNT      = 4;
+  const DISPLAY_COUNT      = 9;
+  const FOLLOW_COUNT       = 12;
+  const FRIEND_COUNT       = 5;
+  const ITEM_COUNT         = 6;
+  const SHARE_COUNT = 10;
+  const RATE_COUNT       = 7;
+  const SUBSCRIPTION_COUNT = 8;
+  const WATCH_COUNT        = 1;
+
+  const RATING             = 50;
+
+  const CUSTOM1            = 241;
+  const CUSTOM2            = 242;
+  const CUSTOM3            = 243;
+  const CUSTOM4            = 244;
+  const CUSTOM5            = 245;
+  
+  public static $names = array(self::DISPLAY_COUNT => 'display_count',
+                               self::SUBSCRIPTION_COUNT => 'subscription_count',
+                               self::WATCH_COUNT => 'watch_count',
+                               self::COMMENT_COUNT => 'comment_count',
+                               self::FRIEND_COUNT => 'friend_count',
+                               self::ITEM_COUNT => 'item_count',
+                               self::RATING_COUNT => 'rating_count',
+                               self::NOTIFICATION_COUNT => 'notification_count',
+                               self::BOOKMARK_COUNT => 'bookmark_count',
+                               self::FOLLOW_COUNT => 'follow_count',
+                               self::ABUSE_COUNT => 'abuse_count',
+                               self::RATING => 'rating',
+                               self::CUSTOM1 => 'custom1',
+                               self::CUSTOM2 => 'custom2',
+                               self::CUSTOM3 => 'custom3',
+                               self::CUSTOM4 => 'custom4',
+                               self::CUSTOM5 => 'custom5');
+
+  public static function decrement($model_id, $record_id, $type) { 
+    return self::increment($model_id, $record_id, $type, '-');
+  }
+  
+  public static function increment($model_id, $record_id, $type, $sign='+') { 
+    $dbo = S('dbo');
+    $filters = array('model_id' => intval($model_id),
+                     'record_id' => intval($record_id),
+                     'type' => intval($type));
+    $ret = $dbo->update('sys_item_meta', 
+                        array('`value`=value'.$sign.'1',
+                              'updated_at' => Date::now()), 
+                        array('filters' => $filters));
+    if ($ret < 1) {
+      $default = (int) ($sign === '+'); 
+      $dbo->insert('sys_item_meta', 
+                   array('model_id' => intval($model_id),
+                         'record_id' => intval($record_id),
+                         'type' => intval($type),
+                         'value' => $default));
+    } 
+  }
+  
+  public static function get($model_id, $record_id, $type=null) { 
+    return S('dbo')->fetchValue('SELECT value'
+                                .' FROM sys_item_meta'
+                                .' WHERE model_id='.intval($model_id)
+                                .  ' AND record_id='.intval($record_id)
+                                .  ' AND type='.intval($type)
+                                .  ' AND (expire_time=0 OR NOW()<expire_time)');
+  }
+  
+  public static function set($model_id, $record_id, $type, $value, $ttl=null) { 
+    if ($model_id < 1 || $record_id < 1 || $type < 1) {
+      S('log')->error('[M='.$model_id.':R='.$record_id.':T='.$type.']', __METHOD__);
+    }
+    $ttl = is_null($ttl) ? 0 : Date::now(8);
+    $dbo = S('dbo'); 
+    $filters = array('model_id' => intval($model_id),
+                     'record_id' => intval($record_id),
+                     'type' => intval($type));
+    $ret = $dbo->update('sys_item_meta', 
+                        array('value' => $value,
+                              'expire_time' => $ttl,
+                              'updated_at' => Date::now()),
+                        array('filters' => $filters,
+                              'modifiers' => array('IGNORE')));
+    if ($ret < 1) {
+      $dbo->insert('sys_item_meta', 
+                   array('model_id' => $model_id,
+                         'record_id' => $record_id,
+                         'type' => $type,
+                         'value' => $value,
+                         'expire_time' => $ttl));
+      $ret = $dbo->affectedRows();
+    }
+    return $ret >= 1;
+  }
+  
+  public static function remove($item, $type=null) {
+    if ($item instanceof ActiveRecord) {
+      $model_id = $item->getURI();
+      $record_id = $item->getID();
+    }
+    elseif (isset($item['model_id'])) {
+      $model_id = (int) $item['model_id'];
+      $record_id = (int) $item['record_id'];
+    }
+    else {
+      $model_id = (int) $item[0];
+      $record_id = (int) $item[1];
+    }
+    if ($type !== null) {
+      S('dbo')->exec('DELETE FROM sys_item_meta'
+                     .' WHERE model_id='.$model_id
+                     .  ' AND record_id='.$record_id
+                     .  ' AND type='.intval($type));
+      return ;
+    }
+    foreach (R('item_tables') as $table) {
+      try {
+        S('dbo')->exec('DELETE FROM '.$table
+                       .' WHERE model_id='.$model_id
+                       .  ' AND record_id='.$record_id);
+        if ($table === 'sys_relation') {
+          S('dbo')->exec('DELETE FROM '.$table
+                         .' WHERE rel_model_id='.$model_id
+                         .  ' AND rel_record_id='.$record_id);
+        }
+      }
+      catch (Exception $e) { 
+        S('log')->error('[M='.$model_id.':R='.$record_id.'] '.$e->getMessage(), __METHOD__); 
+      }
+    }
+    if ($type === null && Extension::exists('search')) { 
+      Document::setStatus(array($model_id, $record_id), 0);
+    }
+    Cache::remove(array($model_id, $record_id));
+  }
+  
+  public static function reset($model_id, $record_id, $type=null) {
+    if ($type === null) return ;
+    $filters = array('model_id' => intval($model_id),
+                     'record_id' => intval($record_id),
+                     'type' => intval($type));
+    S('dbo')->update('sys_item_meta',
+                     array('value' => 0),
+                     array('filters' => $filters));
+  }
+  
+  public static function getAll($model_id, $record_id) {
+    return S('dbo')->asHash('SELECT type, value'
+                            .' FROM sys_item_meta'
+                            .' WHERE model_id='.intval($model_id)
+                            .  ' AND record_id='.intval($record_id));
+  }
+  
+  public static function clean() {
+    S('dbo')->exec('DELETE FROM sys_item_meta'
+                   .' WHERE expire_time > 0'
+                   .  ' AND expire_time < NOW()');
+  }
+  
+}

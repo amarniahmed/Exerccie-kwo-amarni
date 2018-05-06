@@ -1,0 +1,19 @@
+<div class="editor" style="padding:8px 12px;" data-relation="<?=$relation->getKey()?>">
+  <?php foreach ($elts as $elt): ?>
+    <div class="elem elem-text">
+      <label><?=$elt['label']?></label>
+      <?php if ($elt['type'] == 'text'): ?>
+        <input type="text" value="<?=$elt['value']?>" data-field="<?=$elt['name']?>" />
+      <?php elseif ($elt['type'] == 'select'): ?>
+        <select data-field="<?=$elt['name']?>">
+          <?=H::options($elt['options'], $elt['value'])?>
+        </select>
+      <?php endif; ?>
+    </div>
+  <?php endforeach ; ?>
+
+  <span class="buttons controls">
+    <span class="button cancel" value="<?=l('annuler')?>"><i class="fa fa-refresh cancel"></i></span>
+    <span class="button save" value="<?=l('enregistrer')?>"><i class="fa fa-check save"></i><?=c(l('enregistrer'))?></span>
+  </span>
+</div>

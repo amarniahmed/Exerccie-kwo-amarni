@@ -1,0 +1,66 @@
+<div class="translation_batch">
+  <ul>
+    <li style="padding:10px; border-bottom:1px solid #ccc;">
+      <form>
+        <?=c(l('demander la traduction'))?>
+        <select name="locale">
+          <option value=""><?=l('dans toutes les langues')?></option>
+          <?php foreach ($locales as $locale_id => $locale): ?>
+            <option value="<?=$locale?>"><?=l('en langue')?> <?=I18N::locale2code($locale)?> (<?=I18N::locale2label($locale)?>)</option>
+          <?php endforeach ; ?>
+        </select>
+        <?=l('avec la priorité')?>
+        <select name="priority">
+          <?=H::options($priorities)?>
+        </select>
+        <?=l('de tous les')?>
+        <select name="model_id">
+          <option value="0"><?=l('contenus')?></option>
+          <?php foreach ($models as $model): ?>
+            <option value="<?=Model::id($model)?>"><?=l('objets')?> <?=c(Model::label($model))?></option>
+          <?php endforeach ; ?>
+        </select>
+        <?=l('dont la traduction n’est pas en cours')?>.
+        <input type="hidden" name="type" value="create" />
+        <input type="button" value="<?=c(l('appliquer'))?>"
+               data-confirm="<?=l('êtes-vous sûr ?')?>"
+               data-action="batch.exec"
+               data-model="translation"
+               data-container="panel" onclick="kwo.ux.onExec(this)" />
+      </form>
+    </li>
+    <li style="padding:10px; border-bottom:1px solid #ccc;">
+      <form>
+        <?=c(l('passer le status à'))?>
+        <select name="status_to">
+          <?=H::options($statuses)?>
+        </select>
+        <?=l('pour tous les')?>
+        <select name="model_id">
+          <option value="0"><?=l('contenus')?></option>
+          <?php foreach ($models as $model): ?>
+            <option value="<?=Model::id($model)?>"><?=l('objets')?> <?=c(Model::label($model))?></option>
+          <?php endforeach ; ?>
+        </select>
+        <?=l('disposant du status')?>
+        <select name="status_from">
+          <?=H::options($statuses, Translation::STATUS_PENDING_VALIDATION)?>
+        </select>
+        <?=l('pour')?>
+        <select name="locale">
+          <option value="0"><?=l('toutes langues')?></option>
+          <?php foreach ($locales as $locale_id =>  $locale): ?>
+            <option value="<?=$locale_id?>"><?=l('la langue')?> <?=I18N::locale2code($locale)?> (<?=I18N::locale2label($locale)?>)</option>
+          <?php endforeach ; ?>
+        </select>
+        <input type="hidden" name="type" value="update" />
+        <input type="button" value="<?=l('appliquer')?>"
+               data-confirm="<?=l('êtes-vous sûr ?')?>"
+               data-action="batch.exec"
+               data-model="translation"
+               data-container="panel"
+               onclick="kwo.ux.onExec(this)" />
+      </form>
+    </li>
+  </ul>
+</div>

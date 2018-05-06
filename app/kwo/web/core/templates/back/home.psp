@@ -1,0 +1,27 @@
+<div id="menubar">
+  <div id="icons">
+    <a href="javascript:void(0)" title="<?=c(l('fichiers'))?>" class="fa fa-folder-open-o filemanager"></a>
+    <a href="javascript:void(0)" title="<?=strtoupper($admin->login)?> - <?=c(l('quitter'))?>" class="fa fa-power-off logout"></a>
+  </div>
+  <ul id="menutitles">
+    <?php foreach ($menus as $name => $menu): ?>
+      <li data-menu="<?=$name?>">
+        <a href="javascript:void(0)" class="menutitle"><?=c($menu['label'])?></a>
+        <div class="menu">
+          <?php foreach ($menu['entries'] as $label => $url): ?>
+            <?php if (substr($url, 0, 2) == '--'): ?>
+              <span class="separator"></span>
+            <?php else: ?>
+              <a href="javascript:void(0)" data-url="<?=$url?>"><?=$label?></a>
+            <?php endif; ?>
+          <?php endforeach; ?>
+        </div>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+</div>
+
+<div id="iframe-wrapper">
+  <iframe src="/back/core/visit.realtime" name="_main_iframe" id="_main_iframe"
+          style="min-width:<?=$iframe_main_width?>; width:100%; height:<?=$iframe_main_height?>;"></iframe>
+</div>

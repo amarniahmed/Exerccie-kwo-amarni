@@ -1,0 +1,32 @@
+<fieldset>
+  <legend><?=c(l('fichiers'))?> - [ <b><?=USR_PATH?>/<?=$user->path?></b> ]</legend>
+  <table class="hbox">
+    <tbody>
+      <tr>
+        <td>
+          <ul class="elts">
+            <?php foreach ($files as $file): ?>
+              <li>
+                <img src="<?=PIX_URL?>/bullets/delete.png"
+                     class="action"
+                     data-model="user"
+                     data-action="file.remove"
+                     data-confirm="<?=l('êtes-vous sûr ?')?>"
+                     data-args="<?=H::asDataValues(array('filepath' => $file['path']))?>"
+                     data-callback="user-files"
+                     onclick="kwo.ux.onExec(this)" />
+                <a href="javascript:void(0)"
+                   data-model="user"
+                   data-action="file.details"
+                   data-args="<?=H::asDataValues(array('filepath' => $file['path']))?>"
+                   data-container="user-file-details"
+                   onclick="kwo.ux.onExec(this)"><?=$file['name']?></a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </td>
+        <td id="user-file-details">&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>

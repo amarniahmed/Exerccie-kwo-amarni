@@ -1,0 +1,24 @@
+<div style="padding-right:8px;">
+  <table class="fixed">
+    <tbody>
+      <tr class="hbox">
+        <td style="height:400px; padding-right:0; width:40%">
+          <div id="folder-panel" style="overflow-y:auto; height:370px;"></div>
+          <div class="launcher" style="padding-right:6px;">
+            <img src="<?=PIX_URL?>/action/add.png" class="button"
+                 id="create-folder-button"
+                 data-prompt="<?=c(l('nom du dossier'))?>" />
+          </div>
+        </td>
+        <td>
+          <div style="overflow-y:auto;">
+            <div id="folder-details" style="height:370px;"> </div>
+            <div style="text-align:right">
+              <input type="button" id="apply-button" value="<?=c(l('sélectionner'))?>" align="right" style="display:none" />
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

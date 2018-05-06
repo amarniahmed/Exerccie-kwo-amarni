@@ -1,0 +1,21 @@
+<fieldset>
+  <legend><?=c(l('prochaines expirations'))?></legend>
+  <table class="hbox">
+    <tbody>
+      <tr>
+        <td>
+          <ul class="elts">
+            <?php foreach ($rs as $row): ?>
+              <li>
+                <?=$row['available_to']?> - <strong><?=$row['privilege_name']?></strong><br/>
+                <a href="javascript:void(0)"
+                   onclick="Kwo.F('user').onEdit(this)" data-id="<?=$row['id']?>"><?=$row['email']?></a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>

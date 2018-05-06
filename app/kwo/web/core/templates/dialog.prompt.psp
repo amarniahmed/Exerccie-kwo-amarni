@@ -1,0 +1,22 @@
+<h1>
+<?php if (strlen($icon) > 1): ?>
+ <img src="<?=$icon?>" />
+<?php endif; ?>
+ <?=c($title)?>
+</h1>
+
+<div class="layout-hbox-content">
+
+<?php if (strlen($description) > 1): ?>
+<div class="text-block"><?=$description?></div>
+<?php endif; ?>
+
+<form>
+<?=Elt::text(array('rows' => intval($rows), 'wide' => true, 'value' => $value))?>
+<div class="buttons">
+<?=Elt::button(array('type' => 'button', 'label' => 'ok', 'class' => 'button-ok'))?>
+<?=Elt::link(array('label' => l('cancel'), 'class' => 'button-cancel'))?>
+</div>
+</form>
+
+</div>

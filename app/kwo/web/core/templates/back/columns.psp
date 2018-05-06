@@ -1,0 +1,27 @@
+
+<div data-tree-id="<?=$tree_id?>"
+     data-tree-model="<?=$tree_model?>"
+     data-node-model="<?=$node_model?>"
+     data-column-count="<?=count($columns)?>"
+     data-branch-key="<?=$node_model?>_id"
+     data-branch-value="0">
+
+<?php foreach ($columns as $i => $column): ?>
+<div class="column" data-path="<?=$column['path']?>">
+<ul>
+<?php foreach ($column['nodes'] as $node): ?>
+ <li id="xxx_<?=$node['id']?>"<?=!empty($node['classes']) ? ' class="'.$node['classes'].'"' : ''?>
+     data-id="<?=$node['id']?>">
+  <span class="node-edit">&raquo;</span>
+  <span class="node-move">=</span>
+  <span class="node-name"><?=h($node['name'])?></span>
+ </li>
+<?php endforeach; ?>
+</ul>
+<img src="<?=PIX_URL?>/action/node.add.png" class="node-add" data-id="0" />
+</div>
+<?php endforeach; ?> 
+
+</div>
+
+<?=H::trigger("new kwo.managers.Column(this)")?>

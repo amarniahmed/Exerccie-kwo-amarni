@@ -1,0 +1,12 @@
+<?php foreach($genres as $genre): ?>
+  <div style="width:200px; float:left; border:1px solid black; background:#ccc;">
+    <h1><?=$genre['name']?></h1>
+    <p>
+      <?php foreach($genre['formats'] as $format => $count): ?>
+        <a href="/catalog/-/genre/<?=urlencode($genre['name'])?>/format/<?=urlencode($format)?>"><?=$format?></a> (<?=$count?>) |
+      <?php endforeach; ?>
+    </p>
+  </div>
+<?php endforeach; ?>
+
+<div style="clear:both;">&nbsp;</div>

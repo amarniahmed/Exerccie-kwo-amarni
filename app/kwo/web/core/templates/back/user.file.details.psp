@@ -1,0 +1,18 @@
+<table class="grid">
+  <tbody>
+    <?php foreach ($details as $key => $value): ?>
+      <tr>
+        <td><?=$key?></td>
+        <td><?=$value?></td>
+      </tr>
+    <?php endforeach ; ?>
+  </tbody>
+</table>
+
+<?php if (File::isImage($file->getBaseName())): ?>
+ <img src="/<?=$file->getName()?>"
+      onclick="new kwo.dialogs.Preview(this)"
+      data-url="/<?=$file->getName()?>"
+      title="<?=l('afficher en taille réelle')?>"
+      style="max-width:500px; max-height:350px; margin:10px auto 0 auto;" />
+<?php endif; ?>

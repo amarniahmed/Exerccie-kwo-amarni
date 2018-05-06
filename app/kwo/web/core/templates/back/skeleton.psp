@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title><?=c(l('espace d’administration'))?></title>
+  <script>
+    var _scope = "back";
+    var _extension = "<?=$_extension?>";
+    var _action = "<?=$_action?>";
+    var _dict = {"buttons": {"accept": "<?=l('accepter')?>",
+                             "cancel": "<?=l('annuler')?>",
+                             "close": "<?=l('fermer')?>"},
+                 "dialogs": {"batch-manager" : "<?=l('traitement par lots')?>",
+                             "image" : "<?=l('image')?>",
+                             "callback-panel" : "<?=l('réponse')?>",
+                             "older-manager" : "<?=l('répertoire')?>",
+                             "item-picker" : "<?=l('sélection d’un élément')?>",
+                             "item-editor" : "<?=l('éditeur d’objet')?>",
+                             "bitmap-editor" : "<?=l('image')?>",
+                             "period-picker" : "<?=l('période')?>",
+                             "datetime-picker" : "<?=l('datetime')?>",
+                             "date-picker" : "<?=l('date')?>",
+                             "preview" : "<?=l('aperçu')?>",
+                             "visit" : "<?=l('visite')?>",
+                             "confirm" : "<?=l('confirmation')?>",
+                             "alert" : "<?=l('message')?>",
+                             "translation-manager" : "<?=l('traductions')?>",
+                             "file-manager" : "<?=l('fichiers')?>"}};
+  </script>
+  <script src="<?=WEB_URL?>/core/scripts/vendors/prototype.js" type="text/javascript"></script>
+  <script src="<?=WEB_URL?>/core/scripts/kwo.js" type="text/javascript"></script>
+  <script src="<?=WEB_URL?>/core/scripts/vendors/scriptaculous/scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
+  <script src="<?=WEB_URL?>/core/scripts/back.js" type="text/javascript"></script>
+  <script src="/<?=ConfigManager::JS_PLATFORM?>" type="text/javascript"></script>
+  <?php if (file_exists(WEB_PATH.'/core/scripts/'.$_action.'.js')): ?>
+    <script src="<?=WEB_URL?>/core/scripts/<?=$_action?>.js" type="text/javascript"></script>
+  <?php endif; ?>
+  <?php foreach (Extension::names() as $name): ?>
+    <?php if ($name === CORE) continue ; ?>
+    <?php if (file_exists(WEB_PATH.'/'.$name.'/scripts/back.js')): ?>
+      <script src="<?=WEB_URL.'/'.$name?>/scripts/back.js" type="text/javascript"></script>
+    <?php endif; ?>
+  <?php endforeach; ?>
+  <script src="<?=WEB_URL?>/core/scripts/richtext.js" type="text/javascript"></script>
+  <script src="<?=WEB_URL?>/core/scripts/vendors/d3.min.js" type="text/javascript"></script>
+  <link href="<?=WEB_URL?>/core/styles/vendors/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link href="<?=WEB_URL?>/core/styles/back.css" rel="stylesheet" type="text/css" />
+  <?php if (file_exists(WEB_PATH.'/'.P('app.extension').'/styles/back.css')): ?>
+    <link href="<?=WEB_URL.'/'.P('app.extension')?>/styles/back.css" rel="stylesheet" type="text/css" />
+  <?php endif; ?>
+  <link href="<?=WEB_URL?>/core/styles/print.css" rel="stylesheet" type="text/css" media="print" />
+  <link href="<?=PIX_URL?>/back.favicon.png" rel="icon" type="image/png" />
+</head>
+<body class="scope-back">
+  <?php if ($_is_model): ?>
+    <div id="<?=strtolower(MODEL)?>-box" class="<?=strtolower(MODEL)?>-box">
+  <?php endif; ?>
+  <?=$_content?>
+  <?php if ($_is_model): ?>
+    </div>
+  <?php endif; ?>
+</body>
+</html>

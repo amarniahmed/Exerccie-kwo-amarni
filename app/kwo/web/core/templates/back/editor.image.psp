@@ -1,0 +1,68 @@
+<table class="fixed">
+  <tbody>
+    <tr class="hbox">
+      <td style="height:410px; padding-right:0;">
+        <div id="file-panel" style="overflow-y:auto; height:380px;"></div>
+        <table class="fixed">
+          <tbody>
+            <tr>
+              <td><div class="dropzone"></div></td>
+              <td>
+                <div class="launcher" style="padding-right:6px;">
+                  <img src="<?=PIX_URL?>/action/folder_add.png" class="button"
+                       id="create-folder-button"
+                       data-prompt="<?=c(l('nom du dossier'))?>" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <img src="<?=PIX_URL?>/empty.gif" id="image-preview"
+             onclick="new kwo.dialogs.BitmapEditor(this)"
+             style="max-width:280px; max-height:380px; margin-top:8px;" />
+      </td>
+      <td class="attributes-column">
+        <input type="hidden" id="image-path" />
+        <form>
+          <div class="hbox">
+            <table class="hbox">
+              <tbody>
+                <tr class="hbox">
+                  <td>
+                    <div class="elem elem-text">
+                      <label><?=c(l('largeur'))?></label>
+                      <input type="text" id="image-width" />
+                    </div>
+                  </td>
+                  <td>
+                    <div class="elem elem-text">
+                      <label><?=c(l('hauteur'))?></label>
+                      <input type="text" id="image-height" />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="elem elem-text">
+            <label><?=c(l('alignement'))?></label>
+            <select id="image-float">
+              <option value="">-</option>
+              <option value="right"><?=l('droite')?></option>
+              <option value="left"><?=l('gauche')?></option>
+            </select>
+          </div>
+          <div class="elem elem-text">
+            <label><?=c(l('texte alternatif'))?></label>
+            <input type="text" id="image-alt" />
+          </div>
+          <div class="launcher">
+            <input type="button" value="<?=c(l('sélectionner'))?>" id="image-select-button" style="display:none;" />
+          </div>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+</table>

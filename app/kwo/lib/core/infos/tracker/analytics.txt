@@ -1,0 +1,14 @@
+Définitions
+http://support.google.com/googleanalytics/bin/answer.py?hl=en&answer=99118
+
+
+http://www.google.com/support/analytics/bin/answer.py?hl=en&answer=55578
+http://www.google.com/support/analytics/bin/answer.py?answer=55518
+
+knxm : medium 
+knxs : source
+knxn : name
+
+
+tracking download
+http://www.google.com/support/analytics/bin/answer.py?hl=en&answer=27242

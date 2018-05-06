@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<kwo-interface>
+<hbox>
+ <vbox width="20%"><scrollbox value="$explorer" /></vbox>
+ <vbox>
+ 
+   <notebook>
+    <page label="définition">
+
+ <form>
+   <elem type="hidden" id="parent_id" value="$parent_id" />
+   <elem type="hidden" id="_up_id" value="$parent_id" />
+   <elem type="hidden" id="_prev_id" value="$prev_id" />
+   <elem type="hidden" id="_next_id" value="$next_id" />
+
+     <hbox>
+      <vbox width="60%">
+       <elem value="$name" label="nom" isrequired="true" />
+       <elem value="$code" label="code de la page" />
+       <elem value="$locale" />
+       <elem value="$title" label="titre" isrequired="true" />
+       <elem value="$description" rows="6" label="description" />
+       <elem value="$image" type="file" filter="img" label="image associée" />
+       <elem value="$thumbnail" type="file" filter="img" label="icône associée" />
+      </vbox>
+      <vbox>
+       <box label="contenu">
+       <link icon="edit_text" label="édition brute"
+             action=".go('edit_content', {edit_mode: 'text'}, {popup: {width: 700, height: 600}})" />
+       <link icon="edit_html" label="édition html"
+             action=".go('edit_content', {edit_mode: 'html'}, {popup: {width: 700, height: 600}})" />
+       <link icon="preview" action="Kwo.go('/content/page', {}, {target: 'blank'})" label="aperçu" built="false" />
+       </box>
+      </vbox>
+     </hbox>
+
+   <launcher>
+    <button icon="store" tooltip="enregistrer" action=".store(this)" />
+    <button icon="destroy" tooltip="suppression" action=".destroy(this)" />
+    <button icon="page_copy" tooltip="selection" action=".exec('select')" />
+    <button icon="prev" tooltip="page précédente" action=".navigate('prev')" active="$prev_flag" built="false" />
+    <button icon="up" tooltip="page parente" action=".navigate('up')" active="$up_flag" built="false" />
+    <button icon="next" tooltip="page suivante" action=".navigate('next')" active="$next_flag" built="false" />
+   </launcher>
+  </form>
+    </page>
+
+ <page label="opérations">
+  
+    <hbox>
+     <vbox width="22%">
+      <box label="actions">
+       <link icon="details" />
+       <link icon="note" />
+       <link icon="seo" />
+       <link icon="protect" label="droits" action="$('rights_box').raise()" built="false" />
+       <link icon="navigation" label="navigation" action="$('navig_box').raise()" built="false" />
+       <link icon="advanced" label="options avancées" action="$('advanced_box').raise()" built="false" />
+       <link icon="layout" label="présentation" action="$('layout_box').raise()" />
+       <link icon="tag" />
+      </box>
+     </vbox>
+     <vbox>
+      <deck>
+     
+      <box id="rights_box">
+      <box label="back office">
+       <elem type="select" size="6" id="back_access_list" value="1"  options="Page::$groups" label="groupes autorisés" />
+       <elem type="yesno" id="back_recur" value="0" visibility="false" label="appliquer aux pages filles" />
+      </box>
+      <box label="front office">
+       <elem value="$is_public_flag" type="yesno" label="page publique ?" />
+       <elem type="select" size="6" id="front_access_list" value="1"  options="Page::$families" label="familles autorisées" />
+       <elem type="yesno" id="front_recur" value="0" visibility="false" label="appliquer aux pages filles" />
+      </box>
+      </box>
+ 
+      <box id="navig_box" label="navigation">
+      <form>
+       <elem type="select" size="6" id="record[navig_list]" value="$navig_list"  options="Page::$navig" label="navigation niveau 1" />
+       <launcher>
+        <button icon="exec" tooltip="génération de la navigation" action="alert('ok')" />
+       </launcher>
+      </form>
+      </box>
+
+      <box id="advanced_box" label="options avancées">
+       <form>
+       <hbox><vbox>
+       <elem value="$visibility" type="yesno" label="page visible sur le site" warn="yes" />
+       <elem value="$publication_time" type="date" label="date de publication" />
+       <elem value="$is_destroyable" type="yesno" label="suppression possible" />
+       </vbox><vbox>
+       <elem value="$is_model_flag" type="yesno" label="proposer en tant que modèle" />
+       </vbox></hbox>
+       <launcher>
+        <button icon="exec" tooltip="exécuter" action=".exec('exec', this, {callback:true})" />
+       </launcher>
+      </form>
+      </box>
+
+      <box id="layout_box" label="présentation">
+      <form>
+       <hbox><vbox>
+       <elem type="select" id="position" value="0" options="$positions" label="position" />
+       </vbox>
+       <vbox></vbox>
+       </hbox>
+       <launcher>
+        <button icon="exec" tooltip="exécuter" action=".exec('set_display', this, {callback:true})" />
+       </launcher>
+      </form>
+      </box>
+
+
+      </deck>
+     </vbox>
+    </hbox> 
+ </page>
+
+   </notebook>
+
+<triggers>
+ <trigger target="back_access_list" event="change" action="$('_zone_back_recur').show()" />
+ <trigger target="front_access_list" event="change" action="$('_zone_front_recur').show()" />
+</triggers>
+
+
+</vbox>
+
+</hbox>
+
+</kwo-interface>

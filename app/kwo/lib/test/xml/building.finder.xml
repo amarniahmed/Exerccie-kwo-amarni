@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="residence_id" label="résidence" />
+  <filter name="status" />
+ </filters>
+ <cols>
+  <col name="name" />
+  <col name="residence_id" label="résidence" />
+ </cols>
+</finder>

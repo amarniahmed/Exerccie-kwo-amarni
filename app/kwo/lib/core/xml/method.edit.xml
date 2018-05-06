@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+ <page label="définition">
+  <form>
+   <hbox>
+    <vbox>
+     <elem field="name" />
+     <hbox>
+      <vbox><elem field="status" type="yesno" label="en cours" /></vbox>
+      <vbox><elem field="position" /></vbox>
+      <vbox><elem field="locales" /></vbox>
+     </hbox>
+     <hbox>
+      <vbox>
+       <elem field="psp_id" label="fournisseur" />
+       <elem field="flags" />
+      </vbox>
+      <vbox>
+       <elem field="type" options="Method::$types" type="select" label="méthode de paiement" />
+      </vbox>
+      <vbox><elem field="image" /></vbox>
+     </hbox>
+     <hbox>
+      <vbox><elem field="letter_pending" label="code courrier" precision="pending" /></vbox>
+      <vbox><elem field="letter_received"  label="code courrier" precision="received" /></vbox>
+      <vbox><elem field="snippet_response"  label="code fragment" precision="response" /></vbox>
+     </hbox>
+     <elem field="options" rows="4" label="options" spellcheck="false" />
+    </vbox>
+    <vbox localized="true">
+     <elem field="label" label="intitulé" />
+     <elem field="description" rows="4" label="description" />
+    </vbox>
+   </hbox>
+   <launcher/>
+  </form>
+ </page>
+
+ <page label="opérations" built="$is_loaded">
+  <hbox>
+   <vbox width="150px">
+    <box label="actions">
+     <link icon="details" />
+    </box>
+   </vbox>
+   <vbox><deck /></vbox>
+  </hbox> 
+ </page>
+
+</notebook>
+</fieldset>
+

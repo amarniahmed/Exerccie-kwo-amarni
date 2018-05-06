@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox width="33%">
+      <elem field="code" spellcheck="false" disabled="$is_back" />
+      <elem field="app" disabled="$is_back" />
+      <hbox>
+       <vbox><elem field="status" /></vbox>
+       <vbox>
+        <elem field="type" />
+        <elem field="flags" />
+        <elem field="used_at" type="datetime" />
+       </vbox>
+      </hbox>
+      <elem field="locales" />
+      <elem field="about" />
+     </vbox>
+     <vbox localized="true">
+      <elem field="content" label="contenu" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="180px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="cache.write" label="générer le dictionnaire"
+            action="cache.write" container="panel" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

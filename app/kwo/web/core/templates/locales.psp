@@ -1,0 +1,13 @@
+
+<a href="javascript:void(0)" 
+   onclick="Kwo.Locale.onOpen(this)"><?=ucfirst(l('language'))?>
+  <img src="<?=PIX_URL?>/select.gif" align="absmiddle"/></a>
+<div id="kwo-locales-box" style="display:none">
+<?php foreach ($locales as $locale => $label): ?>
+ <a href="javascript:void(0)" 
+    onclick="Kwo.Locale.onSet(<?=$locale?>)">
+  <img src="<?=PIX_URL?>/lang/<?=$locale?>.png" />
+  <?=ucfirst($label)?>
+ </a>
+<?php endforeach; ?>
+</div>

@@ -1,0 +1,7 @@
+<form>
+  <?=Elt::text(array('rows' => 21))?>
+  <div style="text-align:right; margin-top:6px;">
+    <?=Elt::button(array('label' => l('insérer'), 'type' => 'button'))?>
+  </div>
+</form>
+<i>CTRL + SHIFT + V | CMD + ALT + SHIFT + V</i>

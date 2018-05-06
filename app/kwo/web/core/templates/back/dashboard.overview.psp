@@ -1,0 +1,143 @@
+<?php if (empty($stats)) return ; ?>
+
+<table class="grid">
+  <thead>
+    <tr>
+      <th colspan="2"><?=c(l('statistiques'))?></th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($stats as $key => $value): ?>
+      <tr>
+        <td><?=$key?></td>
+        <td><?=$value?></td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+
+<?php if (!empty($models)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('types d’articles les plus vendus'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($models as $row): ?>
+        <tr>
+          <td><?=$row[0]?></td>
+          <td><?=$row[1]?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php if (!empty($items)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('articles les plus vendus'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($items as $row): ?>
+        <tr>
+          <td><?=$row[0]?></td>
+          <td><?=$row[1]?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php if (!empty($ca)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('articles générant le plus de ca'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($ca as $row): ?>
+        <tr>
+          <td><?=$row[0]?></td>
+          <td><?=$row[1]?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php if (!empty($cart)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('articles les plus ajoutés au panier'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($cart as $row): ?>
+        <tr>
+          <td><?=$row[0]?></td>
+          <td><?=$row[1]?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php if (!empty($users)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('meilleurs clients'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($users as $key => $value): ?>
+        <tr>
+          <td><?=$key?></td>
+          <td><?=$value?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php if (!empty($payments)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('moyens de paiements'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($payments as $key => $value): ?>
+        <tr>
+          <td><?=$key?></td>
+          <td><?=$value?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
+
+<?php if (!empty($countries)): ?>
+  <table class="grid">
+    <thead>
+      <tr>
+        <th colspan="2"><?=c(l('pays'))?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($countries as $key => $value): ?>
+        <tr>
+          <td><?=$key?></td>
+          <td><?=$value?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>

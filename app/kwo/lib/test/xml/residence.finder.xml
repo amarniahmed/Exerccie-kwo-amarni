@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="city" label="ville" />
+  <filter name="postal_code" label="code postal" />
+  <filter name="country_id" label="pays" />
+  <filter name="status" />
+ </filters>
+ <cols>
+  <col name="name" />
+  <col name="address" label="adresse" />
+  <col name="city" label="ville" />
+  <col name="postal_code" label="code postal" />
+  <col name="country_id" label="pays" />
+ </cols>
+</finder>

@@ -1,0 +1,155 @@
+<div class="kwo-login signup-box">
+  <table id="login-panel" class="login-panel"<?=$_mode==='signup'?' style="display:none;"':''?>>
+    <tr>
+      <td class="kwo-login-box">
+        <div>
+          <h2><?=c(l('signup.account.yes'))?></h2>
+          <form autocomplete="on" onsubmit="Kwo.Auth.onLogIn(this); return false;">
+            <ul>
+              <li>
+                <?=Elt::text(array('name' => 'login',
+                                   'label' => c(l('email'))))?>
+              </li>
+              <li>
+                <?=Elt::text(array('name' => 'password',
+                                   'label' => c(l('password')),
+                                   'password' => true))?>
+              </li>
+              <li class="padded-left">
+                <?=Elt::checkbox(array('name' => 'remember_me',
+                                       'label' => c(l('remember')),
+                                       'class' => 'remember_me',
+                                       'value' => P('auth.sso')===true,
+                                       'values' => array(1)))?>
+             </li>
+             <li class="padded-left">
+               <?=H::button(l('log_in'))?>
+             </li>
+             <li class="padded-left">
+               <a href="javascript:void(0)" class="elt-link"
+                  onclick="$(this).up('FORM').hide().next().show()"><?=c(l('forgot_passord'))?></a>
+             </li>
+           </ul>
+          </form>
+
+          <form style="display:none;"
+                onsubmit="Kwo.Auth.onPasswordRequest(this); return false;">
+            <ul>
+              <li>
+                <?=Elt::text(array('name' => 'email',
+                                   'label' => c(l('input.youremail'))))?>
+              </li>
+              <li class="padded-left">
+                <?=H::button(l('send'))?>
+              </li>
+              <li class="padded-left">
+                <a href="javascript:void(0)" class="elt-link"
+                   onclick="$(this).up('FORM').hide().previous().show()"><?=c(l('back'))?></a>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </td>
+      <td class="kwo-signup-box">
+        <div>
+          <h2><?=c(l('signup.account.no'))?></h2>
+          <p><?=l('snippet:signup.about')?></p>
+          <div class="kwo-signup-button">
+            <input type="button" value="<?=c(l('create_account'))?>" class="button"
+                   onclick="$(this).up('TABLE').hide().next().show()" />
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <form autocomplete="off" class="signup-panel"
+        style="display:<?=$_mode==='signup'?'block':'none'?>"
+        onsubmit="Kwo.Auth.onSignUp(this); return false;">
+    <div>
+      <h2><?=c(l('account_creation'))?></h2>
+      <ul>
+        <li>
+          <?=Elt::text(array('name' => 'login',
+                             'label' => c(l('email')),
+                             'class' => 'required'))?>
+        </li>
+        <li>
+          <?=Elt::text(array('name' => 'password',
+                             'label' => c(l('password')),
+                             'class' => 'required short',
+                             'password' => true))?>
+        </li>
+        <li>
+          <?=Elt::text(array('name' => 'user[password_confirm]',
+                             'label' => c(l('confirm').' '.l('password')),
+                             'class' => 'required short',
+                             'password' => true))?>
+        </li>
+        <li>
+          <?=Elt::text(array('name' => 'user[name]',
+                             'label' => c(l('nick_name'))))?>
+        </li>
+        <li>
+          <?=Elt::birthdate(array('name' => 'user[birth_date]',
+                                  'label' => c(l('birth_date')),
+                                  'class' => 'required'))?>
+<!--
+          <label class="required"><?=c(l('birth_date'))?></label>
+          <?=H::birthdate(null, array('name' => 'user[birth_date]'))?>
+-->
+        </li>
+        <li class="options">
+          <?=Elt::radio(array('name' => 'user[gender]',
+                              'label' => c(l('gender')),
+                              'class' => 'required',
+                              'options' => array(0 => c(l('gender.0')), 1 => c(l('gender.1'))),
+                             ))?>
+        </li>
+        <li>
+          <?=Elt::select(array('name' => 'origin_id',
+                               'label' => c(l('signup.origin')),
+                               'first' => '------',
+                               'options' => $_origins))?>
+
+        </li>
+        <li>
+          <div class="elt elt-captcha">
+	          <label class="elt required"><?=c(l('captcha'))?></label>
+            <div class="elt-control">
+              <?=W::captcha()?>
+            </div>
+          </div>
+        </li>
+<?php if ($_notices->count() >= 1): ?>
+        <li class="options padded-left">
+<?php foreach ($_notices as $_notice): ?>
+          <div>
+            <label>
+              <input type="checkbox" name="notices[<?=$_notice->getId()?>]" value="1" />
+              <?=c($_notice->getProperty('title'))?>.<br/>
+            </label>
+          </div>
+<?php endforeach ; ?>
+        </li>
+<?php endif; ?>
+        <li class="options padded-left">
+          <div>
+            <input type="checkbox" class="terms_of_use"
+                   data-confirm="<?=l('error.terms')?>" />
+            <a href="javascript:void(0)"
+               onclick="new Kwo.Class.Snippet('terms.use')"><?=c(l('signup.accept.terms.use'))?></a>.
+          </div>
+        </li>
+        <li class="padded-left">
+          <?=H::button(l('continue'))?>
+        </li>
+        <li class="padded-left">
+          <a href="javascript:void(0)" class="elt-link"
+             onclick="$(this).up('FORM').hide().previous().show()"><?=c(l('cancel'))?></a>
+        </li>
+      </ul>
+    </div>
+  </form>
+
+</div>

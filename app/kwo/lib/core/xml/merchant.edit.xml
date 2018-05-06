@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox width="33%">
+      <elem field="name" required="true" />
+      <elem field="app" required="true" />
+      <elem field="image" type="file" label="image d'en-tête de facture" />
+     </vbox>
+     <vbox width="33%">
+      <elem field="corporate_name" label="nom de la société" required="true" />
+      <elem field="caption" label="légende (service)" />
+      <elem field="address" label="adresse" required="true" />
+      <elem field="address_extra" label="adresse (complément)" />
+      <elem field="postal_code" label="code postal" required="true" />
+      <elem field="city" label="ville" required="true" />
+      <elem field="country" label="pays" required="true" />
+      <elem field="phone" label="téléphone" />
+      <elem field="fax" label="fax" />
+      <elem field="email" label="email" required="true" />
+     </vbox>
+     <vbox>
+      <elem field="legal_form" label="forme juridique" required="true" />
+      <elem field="corporate_code" label="SIRET" required="true" />
+      <elem field="corporate_type" label="APE" required="true" />
+      <elem field="tax_authority_reference" label="TVA Inter Communautaire" required="true" />
+     </vbox>
+    </hbox>
+    <launcher buttons="store" />
+   </form>
+  </page>
+ </notebook>
+</fieldset>
+

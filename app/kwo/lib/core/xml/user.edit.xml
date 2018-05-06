@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox width="28%">
+      <elem field="email" required="true" />
+      <hbox>
+       <vbox>
+        <elem field="name" label="surnom" />
+        <elem name="profiles[person][last_name]" value="$profiles['person']['last_name']" label="nom" />
+        <elem name="profiles[person][first_name]" value="$profiles['person']['first_name']" label="prénom" />
+       </vbox>
+       <vbox>
+        <elem field="app_id" />
+        <elem field="status" />
+       </vbox>
+      </hbox>
+      <elem field="image" type="image" label="avatar" />
+     </vbox>
+     <vbox width="28%">
+      <hbox>
+       <vbox><elem field="locale" /></vbox>
+       <vbox><elem field="birth_date" type="date" label="date de naissance" /></vbox>
+      </hbox>
+      <hbox>
+       <vbox><elem field="quota_hard" label="quota : espace (Mo)" /></vbox>
+       <vbox><elem field="quota_soft" label="quota : nbre fichiers" /></vbox>
+      </hbox>
+      <elem field="password" value="" label="associer un nouveau mot de passe" />
+     </vbox>
+     <vbox>
+      <elem field="flags" />
+      <elem field="privileges" options="Model::asBits('privilege')" type="checkbox" cols="3" label="privilèges" />
+      <elem field="notices" options="Model::asBits('notice')" type="checkbox" cols="3" label="avis" />
+      <elem field="complaints" options="User::$complaints" type="checkbox" cols="3" label="griefs" />
+      <hbox>
+       <vbox><elem field="privacy" options="User::$privacies" type="radio" label="visibilité" /></vbox>
+       <vbox><elem field="profiles" options="P('profiles')" value="$item->getMask('profiles')" type="checkbox" label="profils" disabled="true" built="$is_loaded" /></vbox>
+      </hbox>
+     </vbox>
+    </hbox>
+    <launcher buttons="store" />
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="note" />
+      <link icon="access" label="permissions" id="acl-button" 
+            action="Kwo.F('user').onExec('acl', this, {container: 'acl-box'})" />
+      <link icon="hasmany" model="credit" built="false" />
+      <link icon="hasmany" model="debit" built="false" />
+      <link icon="files" action="files" label="fichiers" id="user-files" />
+      <link icon="privilege" label="privilèges" id="privilege-button"
+            action="Kwo.F('privilege').onExec('expirations', this, {container: 'privilege-box'})" />
+      <link icon="profile" />
+     </box>
+    </vbox>
+    <vbox>
+     <deck>
+      <box id="privilege-box" />
+      <box id="notice-box" />
+      <box id="acl-box" />
+     </deck>
+    </vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>
+

@@ -1,0 +1,243 @@
+
+
+  // a implementer : first | last
+  /*  public function shift($obj, $direction='front') {
+    if (!($obj instanceof ActiveRecord)) return $this;
+    $relation = $this->_has_many[$obj->_model_name]
+              ? $this->_has_many[$obj->_model_name]
+              : $this->_has_and_belongs_to_many[$obj->_model_name];
+    $through = $relation['through'];
+    if ($through !== null) {
+      if (is_numeric($direction)) {
+        $new_position = $direction;
+      }
+      else {
+        $position = (int) $this->dbo->fetchValue('SELECT position'
+                                                 .' FROM '.$through
+                                                 .' WHERE '.$this->_foreign_key.'='.$this->getID()
+                                                 .  ' AND '.$obj->_foreign_key.'='.$obj->getID());
+        if ($direction === 'back' && $position < 1) return $this;
+        $new_position = $direction === 'front' ? $position + 1 : $position - 1;
+        $count = (int) $this->dbo->fetchValue('SELECT COUNT(*)'
+                                              .' FROM '.$through
+                                              .' WHERE '.$this->_foreign_key.'='.$this->getID()
+                                              .  ' AND position='.$new_position);
+        if ($count >= 1) {
+          $this->dbo->exec('UPDATE '.$through
+                           .' SET position='.$position
+                           .' WHERE '.$this->_foreign_key.'='.$this->getID()
+                           .  ' AND '.$obj->_foreign_key.'<>'.$obj->getID()
+                           .  ' AND position='.$new_position);
+        }
+      }
+      $this->dbo->exec('UPDATE '.$through
+                       .' SET position='.$new_position
+                       .' WHERE '.$this->_foreign_key.'='.$this->getID()
+                       .  ' AND '.$obj->_foreign_key.'='.$obj->getID());
+    }
+    return $this;
+  }*/
+
+
+
+      /*    case 'att' : 
+      $this->checkLoaded($method);
+      $model = Model::singularize(substr($method, 6));
+      $link_table = $this->_has_many[$model]['through'];
+      if (strlen($link_table) < 1) {
+        S('log')->error('relation table missing ['.$method.']', __METHOD__);
+        throw new ActiveRecordException('no relation table');
+      }
+      if ($args[1] === true) {
+        $this->dbo->exec('DELETE FROM '.$link_table
+                         .    ' WHERE '.$this->_foreign_key.'='.$this->getID());
+      }
+      $records = array();
+      if ($args[0] instanceof Collection) {
+        $args[0] = $args[0]->asSet();
+      }
+      foreach ($args[0] as $id) {
+        $records[] = array($this->_foreign_key => $this->getID(),
+                           $model.'_id' => $id);
+      }
+      $this->dbo->insert($link_table, $records, array('IGNORE'));
+      if ($this->hasAttribute($model.'_count')) {
+        
+      }
+      return $this;
+      break;*/
+      /*    case 'cle':
+      return $this->clear(Model::singularize(substr($method, 4)));
+      break ;
+    case 'upd': 
+      $this->checkLoaded($method);
+      $method_name = '_update';
+      $model = substr($method, 6);
+      if (count($args) !== 2) {
+        S('log')->error('__call ['.$method.']', __METHOD__);
+        throw new ActiveRecordException($method.' error');
+      }
+      $args[1][$this->_foreign_key] = $this->getID();
+      $class = self::getInstanceByName($model, $args[0]);
+      $class->commit($args[1]);
+      return $this;
+      break ; */
+
+ /*
+
+  public function attach($obj) {
+    if ($obj instanceof Collection) {
+      foreach ($obj as $o) {
+        $this->attach($o);
+      }
+      return $this;
+    }
+    if ($obj instanceof ActiveRecord) {
+      $class = $obj->_model_name;
+      $relation = $this->_has_many[$class]
+                ? $this->_has_many[$class]
+                : $this->_has_and_belongs_to_many[$class];
+      if ($relation === null) {
+        throw new Exception('objects are not linked');
+      }
+      $record = array($this->_foreign_key => $this->getID(),
+                      $obj->_foreign_key => $obj->getID());
+      if ($relation['positionned'] === true) {
+        $record['position'] = $this->dbo->fetchValue('SELECT MAX(position)'
+                                                     .' FROM '.$relation['through']
+                                                     .' WHERE '.$this->_foreign_key.'='.$this->getID());
+        $record['position']++;
+      }
+      try {
+        $this->dbo->insert($relation['through'], $record, true);
+        $counter = $obj->_model_name.'_count';
+        if ($this->hasAttribute($counter)) {
+          $this->increment($counter);
+        }
+      }
+      catch (Exception $e) { $this->log->error($e, __METHOD__); }
+      return $this;
+    }
+  }
+
+  public function detach($obj) {
+    if ($this->_has_many[$obj->_model_name] !== null) {
+      $obj->destroy();
+    }
+    elseif ($this->_has_and_belongs_to_many[$obj->_model_name] !== null) {
+      $s =& $this->_has_and_belongs_to_many[$obj->_model_name];
+      $this->dbo->exec('DELETE FROM '.$s['through'].' WHERE '.$obj->_foreign_key.'='.$obj->getID().' LIMIT 1');
+    }
+  }
+
+  public function clear($class) {
+    $relation = $this->_has_many[$class]
+              ? $this->_has_many[$class]
+              : $this->_has_and_belongs_to_many[$class];
+    $through = $relation['through'];
+    if (empty($through)) return ;
+    $this->dbo->exec('DELETE FROM '.$through.' WHERE '.$obj->_foreign_key.'='.$obj->getID());
+  }
+
+  */
+
+
+singularize : http://en.wikipedia.org/wiki/Stemming
+http://snowball.tartarus.org/algorithms/english/stemmer.html
+
+  /*  public function addRelation($obj, $properties=null) {
+    $record = (array) $properties;
+    if ($obj instanceof ActiveRecord) {
+      $rel_model_id = $obj->getURI();
+      $rel_record_id = $obj->getID();
+    }
+    else {
+      $rel_model_id =$obj[0];
+      $rel_record_id = $obj[1];
+    }
+    $record['model_id'] = $this->getURI();
+    $record['record_id'] = $this->getID();
+    $record['rel_model_id'] = $rel_model_id;
+    $record['rel_record_id'] = $rel_record_id;
+    $id = $this->dbo->insert('sys_relation', $record, true);
+    if ($id < 1) {
+      $filters = array('model_id' => $record['model_id'],
+                       'record_id' => $record['record_id'],
+                       'rel_model_id' => $record['rel_model_id'],
+                       'rel_record_id' => $record['rel_record_id']);
+      $ret = $this->dbo->update('sys_relation', 
+                                $record,
+                                array('filters' => $filters));
+                                
+      if ($ret === false) {
+        $this->log->error('update', __METHOD__);
+        throw new ActiveRecordException('operation failed');
+      }
+      $args = array('model_id' => $this->getURI(),
+                    'record_id' => $this->getID(),
+                    'rel_model_id' => $rel_model_id,
+                    'rel_record_id' => $rel_record_id);
+    }
+    else {
+      $args = array('id' => $id);
+    }
+    return Relation::getInstance('Relation', $args);
+  }*/
+  
+  /*  public function getRelations($opts=array()) {
+    if (empty($opts['filters'])) $opts['filters'] = array();
+    $opts['filters']['model_id'] = $this->getURI();
+    $opts['filters']['record_id'] = $this->getID();
+    return Relation::collect('Relation', $opts);
+  }*/
+
+termes interessants : stub
+
+gbiv.com/protocols/uri/rfc/rfc3986.html
+
+foo://example.com:8042/over/there?name=ferret#nose
+scheme     authority       path      query   fragment
+
+authority : //example.com
+
+alias pr pluriel Product<->Product ... Child<->Children
+
+ar.rubyonrails.com/classes/ActiveRecord/Associations/ClassMethods.html
+has_one (User has_one Profile)
+belongs_to (Profile belongs_to User)
+has_many
+has_many through
+
+A implémenter :
+-> save : flag pr mettre a jour update_time
+-> commit
+-> remove
+-> getMeta
+-> load
+:: exists() : filter_sql+bindings_arr, id, ou filters_arr
+:: expunge
+
+Tree 
+-> siblings( | bool) : indique si on inclut le modèle 
+-> parent
+-> ancestors
+-> children
+:: root
+
+
+  public function index() {
+    try {
+      $doc_arr = array('model_id' => $this->getURI(),
+                       'record_id' => $this->getID(),
+                       'title' => $this->name,
+                       'description' => $this->content,
+                       'lang_id' => $this->lang_id,
+                       'user_id' => $this->user_id,
+                       'url' => '/'.$this->extension_name.'/'.strtolower($this->_model_name).'?id='.$this->getID(),
+                       'update_time' => $this->update_time,
+                       'creation_time' => $this->creation_time);
+      Document :: getInstance()->index($doc_arr);
+    }
+    catch (Exception $e) { throw $e; }
+  }
+

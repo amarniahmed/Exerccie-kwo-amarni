@@ -1,0 +1,7 @@
+<form method="post" target="_top" action="<?=$server_url?>" id="ogone-form">
+  <?php foreach ($hash as $key => $value): ?>
+    <input type="hidden" name="<?=$key?>" value="<?=$value?>" />
+  <?php endforeach; ?>
+  <input type="submit" style="display:none;" />
+</form>
+<img src="<?=PIX_URL?>/empty.gif" onload="$('ogone-form').submit()" />

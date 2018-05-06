@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="email" />
+  <filter name="name" label="pseudo"/>
+  <filter name="status" type="select" />
+  <filter name="flags" />
+  <filter name="privileges" type="checkbox" label="privilèges"
+          options="Model::asBits('privilege')" />
+  <filter name="profiles" type="checkbox" label="profil"
+          options="P('profiles')" />
+ </filters>
+ <cols>
+  <col name="email" />
+  <col name="name" width="200px" label="pseudo"/>
+  <col name="registered_at" />
+ </cols>
+</finder>

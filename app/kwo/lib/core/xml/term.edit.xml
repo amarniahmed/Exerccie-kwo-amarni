@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox width="40%">
+    <elem field="name" />
+    <elem field="glossary_id" />
+    <elem field="status" type="yesno" />
+    <elem field="locales" />
+   </vbox>
+   <vbox localized="true">
+    <elem field="letter" />
+    <elem field="label" />
+    <elem field="content" rows="7" label="contenu" />
+    <elem field="alias" />
+    <elem field="related" rows="3" label="à voir" precision="un terme par ligne" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+
+</fieldset>
+

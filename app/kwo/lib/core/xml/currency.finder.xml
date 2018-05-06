@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="code">
+    <filters>
+      <filter type="text" name="code" label="code"/>
+      <filter type="text" name="name_fr" label="nom"/>
+      <filter type="yesno" name="status" label="en cours"/>
+    </filters>
+    <cols>
+      <col name="code" />
+      <col name="name_fr" label="nom"/>
+    </cols>
+  </finder>
+

@@ -1,0 +1,96 @@
+<div style="margin:10px 0; padding:10px 0; border-top:1px solid #ccc; border-bottom:1px solid #ccc;">
+  <div>
+    <table style="table-layout:fixed; width:100%;">
+      <tr style="font-size:1.2em;">
+        <td><?=c(l('client_id', null, $locale))?> : <?=$order->getUser()->getId()?></td>
+        <td style="text-align:center;">
+          <?php if ($order->invoice_id >= 1): ?>
+            <?=c(l('invoice_id', null, $locale))?> <?=$order->invoice_id?><br/>
+          <?php endif; ?>
+          <?=c(l('order_id', null, $locale))?> <?=$order->getId()?>
+        </td>
+        <td style="text-align:right;">
+          <?=c(l('date', null, $locale))?> :
+          <?=H::date($order->getMeta('created_at'))?>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div style="margin-top:10px;">
+    <table style="width:100%;">
+      <tr>
+        <td style="width:50%">
+          <b><?=c(l('billing_address', null, $locale))?></b><br/>
+          <?=nl2br($order->billingAddress())?>
+        </td>
+        <td>
+          <b><?=c(l('shipping_address', null, $locale))?></b><br/>
+          <?=nl2br($order->shippingAddress())?>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="height:8px;"></td>
+      </tr>
+      <tr>
+        <td style="vertical-align:top;">
+
+<?php if ($order->method_id >= 1): ?>
+ <label><?=c(l('payment.method', null, $locale))?></label> :
+ <?=$order->getMethod()->getProperty('label', $locale)?><br/>
+ <div style="clear:both; margin-top:6px;"></div>
+<?php endif; ?>
+
+<?php if ($order->handling_amount > 0 || $order->shipping_amount > 0): ?>
+ <label><?=c(l('sending.fees', null, $locale))?></label> :
+ <?=H::amount($order->handling_amount + $order->shipping_amount)?><br/>
+ <div style="clear:both; margin-top:6px;"></div>
+<?php endif; ?>
+
+<?php if ($order->discount_amount > 0): ?>
+ <label><?=c(l('discount', null, $locale))?></label> :
+ <?=H::amount($order->discount_amount)?><br/>
+ <div style="clear:both; margin-top:6px;"></div>
+<?php endif; ?>
+
+<?php if ($order->tax_amount > 0): ?>
+<?php if (count($taxes) > 1): ?>
+ <label><?=c(l('amount.total.without.tax', null, $locale))?></label> :
+ <?=H::amount($order->total_amount - $order->tax_amount)?><br/>
+ <div style="clear:both; margin-top:6px;"></div>
+<?php endif; ?>
+<?php foreach ($taxes as $tax => $value): ?>
+ <label><?=c(l('vat', null, $locale))?> <?=$tax?>%</label> :
+ <?=H::amount($value)?>
+ <div style="clear:both; margin-top:6px;"></div>
+<?php endforeach; ?>
+ <div style="clear:both; margin-top:6px;"></div>
+<?php endif; ?>
+
+<label style="font-size:larger;"><?=c(l('amount.total.with.tax', null, $locale))?></label> :
+<span style="font-weight:bolder; font-size:1.3em;"><?=H::amount($order->total_amount)?></span>
+
+</td><td style="vertical-align:top;">
+
+<div>
+<?php foreach ($order->getPurchases() as $purchase): ?>
+ <div style="margin-bottom:5px;">
+  <u><?=c($purchase->name)?></u><br/>
+<?php if (!empty($purchase->code)): ?>
+  <small><?=$purchase->code?></small><br/>
+<?php endif; ?>
+<?php if (!empty($purchase->description)): ?>
+  <small><?=$purchase->description?></small><br/>
+<?php endif; ?>
+  <?=c(l('unit.price.tax.not.included', null, $locale))?> : 
+  <?=H::amount($purchase->getPriceWithoutTax())?><br/>
+  <?=c(l('quantity', null, $locale))?> : <?=$purchase->quantity?>
+ </div>
+<?php endforeach; ?>
+</div>
+
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

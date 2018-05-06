@@ -1,0 +1,250 @@
+  public static $cp1252 = array("\xe2\x82\xac" => "\xc2\x80",  /* EURO */
+                                "\xe2\x80\xa6" => "\xc2\x85",  /* HORIZONTAL ELLIPSIS */
+                                "\xe2\x80\xa0" => "\xc2\x86",  /* DAGGER */
+                                "\xe2\x80\xa1" => "\xc2\x87",  /* DOUBLE DAGGER */
+                                "\xe2\x80\xb0" => "\xc2\x89",  /* PER MILLE */
+                                "\xc5\x92"     => "\xc2\x8c",  /* LATIN CAPITAL LIGATURE OE */
+                                "\xe2\x80\x98" => "\xc2\x91",  /* LEFT SINGLE QUOTATION MARK */
+                                "\xe2\x80\x99" => "\xc2\x92",  /* RIGHT SINGLE QUOTATION MARK */
+                                "\xe2\x80\x9c" => "\xc2\x93",  /* LEFT DOUBLE QUOTATION MARK */ 
+                                "\xe2\x80\x9d" => "\xc2\x94",  /* RIGHT DOUBLE QUOTATION MARK */
+                                "\xe2\x80\xa2" => "\xc2\x95",  /* BULLET */
+                                "\xe2\x80\x93" => "\xc2\x96",  /* EN DASH */ 
+                                "\xe2\x80\x94" => "\xc2\x97",  /* EM DASH */  
+                                "\xcb\x9c"     => "\xc2\x98",  /* SMALL TILDE */
+                                "\xe2\x84\xa2" => "\xc2\x99",  /* TRADE MARK */
+                                "\xc5\x93"     => "\xc2\x9c",  /* OE */
+                                );
+
+
+  public static function unique_num() {
+    // COL : INT
+    list($usec, $sec) = explode(" ", microtime());
+    $sec = (string) $sec;
+    $usec = (string) $usec;
+    $ret = mt_rand(1, 429).substr($sec, -5).substr($usec, 5, 2);
+    return $ret;
+  }
+
+
+    /*    $str = preg_replace('/[àáâãäåÀÁÂÃÄÅ]/u', 'a', $str);
+    $str = preg_replace('/[èéêëěÈÉÊË]/u', 'E', $str);
+    $str = preg_replace('/[ìíîïÌÍÎÏ]/u', 'i', $str);
+    $str = preg_replace('/[òóôõöøÒÓÔÕÖØ]/u', 'o', $str);
+    $str = preg_replace('/[ùúûüůÙÚÛÜŮ]/u', 'u', $str);
+    $str = preg_replace('/[çčÇ]/u', 'c', $str);
+    $str = preg_replace('/[ñňÑŇ]/u', 'n', $str);
+    $str = preg_replace('/[ŕřŔŘ]/u', 'r', $str);
+    $str = preg_replace('/[ðď]/u', 'd', $str);
+    $str = preg_replace('/[ýÿÝ]/u', 'y', $str);
+    $str = preg_replace('/[þÞ]/u', 'b', $str);
+    $str = preg_replace('/[šßŠ]/u', 's', $str);*/
+    /*    return strtr($str,
+                 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ',
+                 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn');*/
+
+
+http://www.google.com/codesearch/p?hl=en#wH0yCo_H0Fw/ecrire/charsets/cp1256.php&q=0x200c%20php
+
+$GLOBALS['CHARSET']['cp1256'] = array (
+0x80=>0x20AC, 0x81=>0x067E, 0x82=>0x201A, 0x83=>0x0192, 0x84=>0x201E,
+0x85=>0x2026, 0x86=>0x2020, 0x87=>0x2021, 0x88=>0x02C6, 0x89=>0x2030,
+0x8A=>0x0679, 0x8B=>0x2039, 0x8C=>0x0152, 0x8D=>0x0686, 0x8E=>0x0698,
+0x8F=>0x0688, 0x90=>0x06AF, 0x91=>0x2018, 0x92=>0x2019, 0x93=>0x201C,
+0x94=>0x201D, 0x95=>0x2022, 0x96=>0x2013, 0x97=>0x2014, 0x98=>0x06A9,
+0x99=>0x2122, 0x9A=>0x0691, 0x9B=>0x203A, 0x9C=>0x0153, 0x9D=>0x200C,
+0x9E=>0x200D, 0x9F=>0x06BA, 0xA0=>0x00A0, 0xA1=>0x060C, 0xA2=>0x00A2,
+0xA3=>0x00A3, 0xA4=>0x00A4, 0xA5=>0x00A5, 0xA6=>0x00A6, 0xA7=>0x00A7,
+0xA8=>0x00A8, 0xA9=>0x00A9, 0xAA=>0x06BE, 0xAB=>0x00AB, 0xAC=>0x00AC,
+0xAD=>0x00AD, 0xAE=>0x00AE, 0xAF=>0x00AF, 0xB0=>0x00B0, 0xB1=>0x00B1,
+0xB2=>0x00B2, 0xB3=>0x00B3, 0xB4=>0x00B4, 0xB5=>0x00B5, 0xB6=>0x00B6,
+0xB7=>0x00B7, 0xB8=>0x00B8, 0xB9=>0x00B9, 0xBA=>0x061B, 0xBB=>0x00BB,
+0xBC=>0x00BC, 0xBD=>0x00BD, 0xBE=>0x00BE, 0xBF=>0x061F, 0xC0=>0x06C1,
+0xC1=>0x0621, 0xC2=>0x0622, 0xC3=>0x0623, 0xC4=>0x0624, 0xC5=>0x0625,
+0xC6=>0x0626, 0xC7=>0x0627, 0xC8=>0x0628, 0xC9=>0x0629, 0xCA=>0x062A,
+0xCB=>0x062B, 0xCC=>0x062C, 0xCD=>0x062D, 0xCE=>0x062E, 0xCF=>0x062F,
+0xD0=>0x0630, 0xD1=>0x0631, 0xD2=>0x0632, 0xD3=>0x0633, 0xD4=>0x0634,
+0xD5=>0x0635, 0xD6=>0x0636, 0xD7=>0x00D7, 0xD8=>0x0637, 0xD9=>0x0638,
+0xDA=>0x0639, 0xDB=>0x063A, 0xDC=>0x0640, 0xDD=>0x0641, 0xDE=>0x0642,
+0xDF=>0x0643, 0xE0=>0x00E0, 0xE1=>0x0644, 0xE2=>0x00E2, 0xE3=>0x0645,
+0xE4=>0x0646, 0xE5=>0x0647, 0xE6=>0x0648, 0xE7=>0x00E7, 0xE8=>0x00E8,
+0xE9=>0x00E9, 0xEA=>0x00EA, 0xEB=>0x00EB, 0xEC=>0x0649, 0xED=>0x064A,
+0xEE=>0x00EE, 0xEF=>0x00EF, 0xF0=>0x064B, 0xF1=>0x064C, 0xF2=>0x064D,
+0xF3=>0x064E, 0xF4=>0x00F4, 0xF5=>0x064F, 0xF6=>0x0650, 0xF7=>0x00F7,
+0xF8=>0x0651, 0xF9=>0x00F9, 0xFA=>0x0652, 0xFB=>0x00FB, 0xFC=>0x00FC,
+0xFD=>0x200E, 0xFE=>0x200F, 0xFF=>0x06D2);
+
+
+
+
+
+  public static function input_convert($s) {
+    $s = ereg_replace ("[[:blank:]]{4,}",' ',$s);
+    $s = htmlspecialchars ($s, ENT_QUOTES,'ISO-8859-1');
+    return $s;
+  }
+
+  
+  public static function input_convert_cmt($s) {
+    $a_tags[0] = array('<b>','</b>','<strong>','</strong>','<u>','</u>','<i>','</i>','</a>');
+    $a_tags[1] = array('[b]','[/b]','[strong]','[/strong]','[u]','[/u]','[i]','[/i]','[/a]');
+    $s = ereg_replace ("[[:blank:]]{4,}",' ',$s);
+    $s = str_replace($a_tags[0],$a_tags[1],$s);
+    $s = htmlspecialchars ($s, ENT_QUOTES,'ISO-8859-1');
+    $s = str_replace($a_tags[1],$a_tags[0],$s);
+    return $s;
+  }
+  
+  public static function input_convert_link($s) {
+    $s = str_replace(array('<A href=','<A HREF='),array('<a href=','<a href='),$s);
+    $s = html_entity_decode($s,ENT_QUOTES,'ISO-8859-1');
+    $a_links = get_tags($s,'<a href="','">');
+    if ($a_links!=false) {
+      $i = 0;
+      $a_links_from = array();
+      foreach ($a_links as $link) {
+	$a_links_from[] = '<a href="'.$link.'">';
+	$a_links_to[] = 'KWOLINK'.$i;
+	$i++;
+    }
+      $s = str_replace($a_links_from,$a_links_to,$s);
+    }
+    
+    $a_tags[0]  = array('<em>','</em>','<p>','</p>','<br>','<b>','</b>','<strong>','</strong>','<u>','</u>','<i>','</i>','</a>',
+			'<EM>','</EM>','<P>','</P>','<BR>','<B>','</B>','<STRONG>','</STRONG>','<U>','</U>','<I>','</I>','</A>');
+    $a_tags[1]  = array('[i]','[/i]','[p]','[/p]','[br/]','[b]','[/b]','[strong]','[/strong]','[u]','[/u]','[i]','[/i]','[/a]',
+			'[i]','[/i]','[p]','[/p]','[br/]','[b]','[/b]','[strong]','[/strong]','[u]','[/u]','[i]','[/i]','[/a]');
+    $a_tags[2]  = array('<i>','</i>','<p>','</p>','<br/>','<b>','</b>','<strong>','</strong>','<u>','</u>','<i>','</i>','</a>',
+			'<i>','</i>','<p>','</p>','<br/>','<b>','</b>','<strong>','</strong>','<u>','</u>','<i>','</i>','</a>');
+    $s = str_replace($a_tags[0],$a_tags[1],$s);
+    $s = strip_tags($s);
+    //  if (empty($s)) return "";
+    $s = htmlspecialchars ($s, ENT_QUOTES,'ISO-8859-1');
+    $s = str_replace($a_tags[1],$a_tags[2],$s);
+    if ($a_links!=false) {
+      $i = 0;
+      foreach ($a_links as $link) {
+	if (strpos($link,'&#')!==false || eregi("[<>(){}'`\"\n\r\\]",$link)) $a_links_from[$i] = '<a href="#">';
+	$i++;
+      }
+      $s = str_replace($a_links_to,$a_links_from,$s);
+    }
+    return $s;
+  }
+
+
+- split en unicode
+$tags = preg_split(\s,;:]+/u, $input, null, PREG_SPLIT_NO_EMPTY);
+
+
+ATTENTION : inverser gauche droite !!!
+
+$cp1252_map = array(
+   "\xc2\x80" => "\xe2\x82\xac", /* EURO SIGN */
+   "\xc2\x82" => "\xe2\x80\x9a", /* SINGLE LOW-9 QUOTATION MARK */
+   "\xc2\x83" => "\xc6\x92",    /* LATIN SMALL LETTER F WITH HOOK */
+   "\xc2\x84" => "\xe2\x80\x9e", /* DOUBLE LOW-9 QUOTATION MARK */
+   "\xc2\x85" => "\xe2\x80\xa6", /* HORIZONTAL ELLIPSIS */
+   "\xc2\x86" => "\xe2\x80\xa0", /* DAGGER */
+   "\xc2\x87" => "\xe2\x80\xa1", /* DOUBLE DAGGER */
+   "\xc2\x88" => "\xcb\x86",    /* MODIFIER LETTER CIRCUMFLEX ACCENT */
+   "\xc2\x89" => "\xe2\x80\xb0", /* PER MILLE SIGN */
+   "\xc2\x8a" => "\xc5\xa0",    /* LATIN CAPITAL LETTER S WITH CARON */
+   "\xc2\x8b" => "\xe2\x80\xb9", /* SINGLE LEFT-POINTING ANGLE QUOTATION */
+   "\xc2\x8c" => "\xc5\x92",    /* LATIN CAPITAL LIGATURE OE */
+   "\xc2\x8e" => "\xc5\xbd",    /* LATIN CAPITAL LETTER Z WITH CARON */
+   "\xc2\x91" => "\xe2\x80\x98", /* LEFT SINGLE QUOTATION MARK */
+   "\xc2\x92" => "\xe2\x80\x99", /* RIGHT SINGLE QUOTATION MARK */
+   "\xc2\x93" => "\xe2\x80\x9c", /* LEFT DOUBLE QUOTATION MARK */
+   "\xc2\x94" => "\xe2\x80\x9d", /* RIGHT DOUBLE QUOTATION MARK */
+   "\xc2\x95" => "\xe2\x80\xa2", /* BULLET */
+   "\xc2\x96" => "\xe2\x80\x93", /* EN DASH */
+   "\xc2\x97" => "\xe2\x80\x94", /* EM DASH */
+
+   "\xc2\x98" => "\xcb\x9c",    /* SMALL TILDE */
+   "\xc2\x99" => "\xe2\x84\xa2", /* TRADE MARK SIGN */
+   "\xc2\x9a" => "\xc5\xa1",    /* LATIN SMALL LETTER S WITH CARON */
+   "\xc2\x9b" => "\xe2\x80\xba", /* SINGLE RIGHT-POINTING ANGLE QUOTATION*/
+   "\xc2\x9c" => "\xc5\x93",    /* LATIN SMALL LIGATURE OE */
+   "\xc2\x9e" => "\xc5\xbe",    /* LATIN SMALL LETTER Z WITH CARON */
+   "\xc2\x9f" => "\xc5\xb8"      /* LATIN CAPITAL LETTER Y WITH DIAERESIS*/
+);
+function detectUTF8($string)
+{
+       return preg_match('%(?:
+       [\xC2-\xDF][\x80-\xBF]        # non-overlong 2-byte
+       |\xE0[\xA0-\xBF][\x80-\xBF]              # excluding overlongs
+       |[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}      # straight 3-byte
+       |\xED[\x80-\x9F][\x80-\xBF]              # excluding surrogates
+       |\xF0[\x90-\xBF][\x80-\xBF]{2}    # planes 1-3
+       |[\xF1-\xF3][\x80-\xBF]{3}                  # planes 4-15
+       |\xF4[\x80-\x8F][\x80-\xBF]{2}    # plane 16
+       )+%xs', $string);
+}
+
+function cp1252_to_utf8($str)
+{
+       global $cp1252_map;
+       return  strtr($str, $cp1252_map);
+}
+
+
+$badchr = array(
+   "\xE2\x80\xA6",        // ellipsis
+   "\xE2\x80\x93",        // long dash
+   "\xE2\x80\x94",        // long dash
+   "\xE2\x80\x98",        // single quote opening
+   "\xE2\x80\x99",        // single quote closing
+   "\xE2\x80\x9c",        // double quote opening
+   "\xE2\x80\x9d",        // double quote closing
+   "\xE2\x80\xa2"         // dot used for bullet points
+   //"."
+   );
+
+$goodchr = array(
+   '...',
+   '-',
+   '-',
+   '\'',
+   '\'',
+   '"',
+   '"',
+   '*',
+   //'...'
+   );
+
+if (detectUTF8($My_String)) {
+    $My_String = str_replace($badchr, $goodchr,cp1252_to_utf8($My_String));
+    $My_String = utf8_decode($My_String);
+} 
+
+
+function get_html_translation_table_CP1252() {
+  $trans = get_html_translation_table(HTML_ENTITIES);
+  $trans[chr(128)] = '&euro;';      // Euro
+  $trans[chr(130)] = '&sbquo;';    // Single Low-9 Quotation Mark
+  $trans[chr(131)] = '&fnof;';    // Latin Small Letter F With Hook
+  $trans[chr(132)] = '&bdquo;';    // Double Low-9 Quotation Mark
+  $trans[chr(133)] = '&hellip;';    // Horizontal Ellipsis
+  $trans[chr(134)] = '&dagger;';    // Dagger
+  $trans[chr(135)] = '&Dagger;';    // Double Dagger
+  $trans[chr(136)] = '&circ;';    // Modifier Letter Circumflex Accent
+  $trans[chr(137)] = '&permil;';    // Per Mille Sign
+  $trans[chr(138)] = '&Scaron;';    // Latin Capital Letter S With Caron
+  $trans[chr(139)] = '&lsaquo;';    // Single Left-Pointing Angle Quotation Mark
+  $trans[chr(140)] = '&OElig;';    // Latin Capital Ligature OE
+  $trans[chr(145)] = '&lsquo;';    // Left Single Quotation Mark
+  $trans[chr(146)] = '&rsquo;';    // Right Single Quotation Mark
+  $trans[chr(147)] = '&ldquo;';    // Left Double Quotation Mark
+  $trans[chr(148)] = '&rdquo;';    // Right Double Quotation Mark
+  $trans[chr(149)] = '&bull;';    // Bullet
+  $trans[chr(150)] = '&ndash;';    // En Dash
+  $trans[chr(151)] = '&mdash;';    // Em Dash
+  $trans[chr(152)] = '&tilde;';    // Small Tilde
+  $trans[chr(153)] = '&trade;';    // Trade Mark Sign
+  $trans[chr(154)] = '&scaron;';    // Latin Small Letter S With Caron
+  $trans[chr(155)] = '&rsaquo;';    // Single Right-Pointing Angle Quotation Mark
+  $trans[chr(156)] = '&oelig;';    // Latin Small Ligature OE
+  $trans[chr(159)] = '&Yuml;';    // Latin Capital Letter Y With Diaeresis
+  return $trans;
+}

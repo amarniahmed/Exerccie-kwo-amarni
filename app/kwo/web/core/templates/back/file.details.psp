@@ -1,0 +1,42 @@
+<table class="grid auto">
+  <thead>
+    <th colspan="2">/<span style="text-transform:lowercase!important;"><?=$file->getName()?></span></th>
+  </thead>
+  <tbody>
+    <?php foreach ($details as $key => $value): ?>
+      <tr>
+        <td><?=$key?></td>
+        <td><?=$value?></td>
+      </tr>
+    <?php endforeach ; ?>
+  </tbody>
+</table>
+
+<div style="margin-top:6px;">
+  <a href="javascript:void(0)" class="elt-link"
+     data-filepath="<?=$file->getName()?>"
+     data-action="download"><?=l('télécharger')?></a> &middot;
+
+  <a href="javascript:void(0)" class="elt-link"
+     data-filepath="<?=$file->getName()?>"
+     data-confirm="<?=l('êtes-vous sûr ?')?>"
+     data-action="remove"><?=l('supprimer')?></a>
+
+  <input type="button"
+         value="<?=c(l('sélectionner'))?>"
+         style="float:right;"
+         data-filepath="<?=$file->getName()?>"
+         data-action="select" />
+</div>
+<div>
+  <?php if (File::isImage($file->getBaseName())): ?>
+    <img src="/<?=$file->getName()?>?t=<?=time()?>"
+         onclick="new kwo.dialogs.BitmapEditor(this)"
+         title="<?=l('éditer l’image')?>"
+         style="max-width:300px; max-height:200px; margin:14px auto 0 auto;" />
+  <?php elseif (File::isVideo($file->getBaseName())): ?>
+    <video src="/<?=$file->getName()?>" controls="controls" style="max-width:300px; margin:14px auto 0 auto;"></video>
+  <?php elseif (File::isAudio($file->getBaseName())): ?>
+    <audio src="/<?=$file->getName()?>" controls="controls" style="max-width:300px; margin:14px auto 0 auto;"></audio>
+  <?php endif; ?>
+</div>

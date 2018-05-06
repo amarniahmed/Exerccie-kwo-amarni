@@ -1,0 +1,170 @@
+<table class="hbox">
+  <tbody>
+    <tr>
+      <td>
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l('visites')?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><?=l('durée moyenne par visite')?>*</td>
+              <td><?=$metrics['dpv']?></td>
+            </tr>
+            <tr>
+              <td><?=l('fréquence des venues')?></td>
+              <td><?=$metrics['span']?> j</td>
+            </tr>
+            <tr>
+              <td><?=l('nb de pages / visite')?>*</td>
+              <td><?=$metrics['ppv']?></td>
+            </tr>
+            <tr>
+              <td><?=l('tps moyen / page')?>*</td>
+              <td><?=$metrics['dpp']?> s</td>
+            </tr>
+            <tr>
+              <td><?=l('nb robots')?></td>
+              <td><?=$metrics['robot']?></td>
+            </tr>
+            <tr>
+              <td><?=l('visites en soirée')?></td>
+              <td><?=$report->format($metrics['night'])?></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2"><?=l('visite* : visite significative')?></td>
+            </tr>
+          </tfoot>
+        </table>
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l('langues / locales')?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($locales as $key => $value): ?>
+              <tr>
+                <td><?=$key?></td>
+                <td><?=$value?>%</td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l("points d'entrée")?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($landings as $key => $value): ?>
+              <tr>
+                <td><?=$key?></td>
+                <td><?=$value?>%</td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+
+        <?php if ($shares): ?>
+          <table class="grid">
+            <thead>
+              <tr>
+                <th colspan="2"><?=l('urls partagées')?></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($shares as $key => $value): ?>
+                <tr>
+                  <td><?=$key?></td>
+                  <td><?=$value?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        <?php endif; ?>
+
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l('profondeur (requêtes par visite)')?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($depth as $key => $value): ?>
+              <tr>
+                <td><?=$key?></td>
+                <td><?=$report->format($value)?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l('principaux navigateurs')?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($browsers as $key => $value): ?>
+              <tr>
+                <td><?=$key?></td>
+                <td><?=$value?>%</td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<?=join(',', array_values($browsers))?>&chs=300x100&chl=<?=join('|', array_keys($browsers))?>"
+             style="display:block; margin:10px auto;"
+             onerror="$(this).hide()" />
+
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l('principaux systèmes d’exploitation')?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($systems as $key => $value): ?>
+              <tr>
+                <td><?=$key?></td>
+                <td><?=$value?>%</td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <img src="http://chart.apis.google.com/chart?cht=p3&chd=t:<?=join(',', array_values($systems))?>&chs=300x100&chl=<?=join('|', array_keys($systems))?>"
+             style="display:block; margin:10px auto;"
+             onerror="$(this).hide()" />
+
+        <table class="grid">
+          <thead>
+            <tr>
+              <th colspan="2"><?=l('pays')?></th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($countries as $country): ?> <?php $codes[] = $country['code']; ?>
+              <tr>
+                <td>
+                  <img src="<?=PIX_URL?>/flags/<?=strtolower($country['code'])?>.png"
+                       style="vertical-align:text-top; margin-top:1px;" />
+                  <?=$country['name']?>
+                </td>
+                <td><?=$country['rate']?>% (<?=$country['count']?>)</td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+        <img src="http://chart.apis.google.com/chart?cht=map&chs=300x300&chld=<?=join('|', $codes)?>&chco=FFEBCC|FFB444" style="display:block; margin:10px auto;" onerror="$(this).hide()" />
+      </td>
+    </tr>
+  </tbody>
+</table>

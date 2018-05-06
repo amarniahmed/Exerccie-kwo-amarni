@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <notebook>
+     <page label="propriétés">
+      <hbox>
+       <vbox width="30%">
+        <elem field="name" required="true" />
+        <elem field="code" required="true" />
+        <elem field="app" />
+        <elem field="flags" />
+        <hbox>
+         <vbox><elem field="status" /></vbox>
+         <vbox>
+          <elem field="scheduled_at" label="date de mise en ligne" />
+          <elem field="published_at" label="date de publication" />
+         </vbox>
+        </hbox>
+        <elem field="locales" />
+        <elem field="about" />
+       </vbox>
+       <vbox width="50%">
+        <hbox>
+         <vbox><elem field="image" type="image" label="image" /></vbox>
+         <vbox><elem field="thumbnail" type="image" /></vbox>
+        </hbox>
+       </vbox>
+      </hbox>
+
+     </page>
+     <page label="contenus">
+      <hbox>
+       <vbox localized="true">
+        <elem field="title" />
+        <elem field="description" mode="rich" rows="3" />
+        <elem field="content" mode="rich" rows="16" />
+       </vbox>
+       <vbox>
+        <elem type="relations" model="chapter" label="chapitre(s)" height="130px" />
+       </vbox>
+      </hbox>
+     </page>
+    </notebook>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="seo" />
+      <link icon="timeline" />
+     </box>
+    </vbox>
+    <vbox><deck/></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

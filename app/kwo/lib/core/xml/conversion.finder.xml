@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="status" />
+  <filter name="flags" />
+  <filter name="|>=|conversion.created_at" label="depuis" />
+  <filter name="|ioe|conversion.created_at" label="jusqu’à" />
+  <filter name="model_id" options="Conversion::types()" label="type" />
+  <filter name="media" options="Conversion::$medias" label="media" />
+  <filter name="medium" options="Tracker::$mediums" label="medium" />
+  <filter name="source" />
+  <filter name="term" />
+  <filter name="campaign" />
+  <filter name="ip" label="IP" />
+  <filter type="user" />
+ </filters>
+ <cols>
+  <col name="type" width="96px" />
+  <col name="record_id" label="id" width="60px" />
+  <col name="name" width="250px" />
+  <col name="worth" label="valeur" width="70px" />
+  <col name="medium" />
+  <col name="source" />
+  <col name="term" />
+  <col name="campaign" />
+  <col name="converted_at" />
+ </cols>
+ <actions>
+  <action name="destroy" label="supprimer"
+          confirm="êtes vous sûr de vouloir procéder à la suppression ?" />
+ </actions>
+</finder>

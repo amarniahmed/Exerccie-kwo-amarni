@@ -1,0 +1,17 @@
+<table class="fixed">
+  <tbody>
+    <tr>
+      <td class="from">
+        <div data-date="<?=$from?>"></div>
+        <input type="text" name="from" value="<?=H::date($from)?>" />
+      </td>
+      <td class="to">
+        <div data-date="<?=$to?>"></div>
+        <input type="text" name="to" value="<?=H::date($to)?>" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="button">
+  <input type="button" value="<?=c(l('sélectionner'))?>" />
+</div>

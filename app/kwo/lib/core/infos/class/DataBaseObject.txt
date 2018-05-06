@@ -1,0 +1,6 @@
+source [tablename].sql
+LOCK TABLES [tablename] WRITE;
+ALTER TABLE [tablename] DISABLE KEYS ;
+LOAD DATA INFILE '[path][tablename].txt' INTO TABLE [tablename] ;
+ALTER TABLE [tablename] ENABLE KEYS ;
+UNLOCK TABLES;

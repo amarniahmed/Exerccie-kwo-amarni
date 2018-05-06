@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<fieldset>
+
+<notebook>
+
+<page>
+ <form>
+  <hbox>
+   <vbox width="30%">
+    <elem field="name" />
+    <elem field="app" />
+    <elem field="status" />
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page>
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="note" />
+   </box>
+  </vbox>
+  <vbox>
+   <deck/>
+  </vbox>
+ </hbox> 
+</page>
+
+</notebook>
+
+</fieldset>
+

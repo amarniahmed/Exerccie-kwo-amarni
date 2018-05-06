@@ -1,0 +1,2 @@
+$select .= ',3956*2*ASIN(SQRT(POWER(SIN(('.$this->latitude.'-md.latitude)*pi()/180/2),2)+COS('.$this->latitude.'*pi()/180)*cos(md.latitude*pi()/180)*POWER(SIN(('.$this->longitude.'-md.longitude)*pi()/180/2),2))) as distance';
+$select .= ',7912*ASIN(SQRT(POWER(SIN(('.$this->latitude.'-md.latitude)*0.00872664625997),2)+COS('.$this->latitude.'*0.0174532925)*cos(md.latitude*0.0174532925)*POWER(SIN(('.$this->longitude.'-md.longitude)*0.00872664625997),2))) as distance';

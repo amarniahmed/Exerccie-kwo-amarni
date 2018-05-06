@@ -1,0 +1,25 @@
+CURRENCIES
+- http://en.wikipedia.org/wiki/ISO_4217
+
+LANG
+- http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+- http://en.wikipedia.org/wiki/ISO_639-3
+
+COUNTRY
+- http://www.iso.org/iso/fr/prods-services/iso3166ma/02iso-3166-code-lists/index.html
+- http://en.wikipedia.org/wiki/ISO_3166-1
+- http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+- http://www.maxmind.com/app/fips10_4
+- http://en.wikipedia.org/wiki/List_of_FIPS_region_codes 
+- http://en.wikipedia.org/wiki/List_of_FIPS_region_codes_%28D-F%29 
+- http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm 
+
+REGION
+- http://www.maxmind.com/app/fips10_4
+- http://en.wikipedia.org/wiki/List_of_FIPS_region_codes 
+
+TEL
+- http://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html
+
+
+http://unicode.org/cldr/repository_access.html

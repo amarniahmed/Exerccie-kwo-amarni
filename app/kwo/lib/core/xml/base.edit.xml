@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+<notebook>
+ <page label="définition">
+  <form>
+   <hbox>
+    <vbox width="30%">
+     <elem field="name" required="true" />
+     <hbox>
+      <vbox><elem field="code" required="true" /></vbox>
+      <vbox><elem field="app" /></vbox>
+     </hbox>
+     <elem field="locale" />
+    </vbox>
+    <vbox>
+     <elem field="title" />
+     <elem field="description" rows="4" />
+     <elem field="confirmation" rows="4" />
+    </vbox>
+    <vbox width="25%">
+     <elem field="flags" />
+     <elem field="position" label="si publique, position dans l'espace membre" />
+    </vbox>
+   </hbox>
+   <launcher/>
+  </form>
+ </page>
+ <page label="opérations" built="$is_loaded">
+  <hbox>
+   <vbox width="30%">
+    <box label="actions">
+     <link icon="details" />
+     <link icon="note" />
+     <link icon="import" label="importer" action="$('actions').raise('import_box')" />
+     <link icon="export" label="exporter" action="$('actions').raise('export_box'); " />
+     <link icon="dump" label="vider" action="Kwo.F('base').onExec('dump', this, {'confirm':this, 'callback':true})"
+           confirm="Souhaitez-vous supprimer toutes les adresses associées ?" />
+    </box>
+   </vbox>
+   <vbox>
+    <deck id="actions">
+     <box label="import" id="import_box">
+      <form>
+       <hbox>
+        <vbox><elem type="file" tooltip="1ere ligne contient le nom des colonnes" name="file_path" value=""
+                    label="fichier CSV" /></vbox>
+        <vbox><elem type="text" rows="10" name="emails" value=""
+                    label="liste d'adresses" precision="une par ligne" /></vbox>
+       </hbox>
+       <launcher>
+        <button name="import" action=".onExec('email.import', this, {callback:true})" />
+       </launcher>
+      </form>
+     </box>
+     <box label="export" id="export_box">
+      <form>
+       <launcher>
+        <button name="export" action=".go('email.export', this)" />
+       </launcher>
+      </form>
+     </box>
+     <box id="infos_box"></box>
+    </deck>
+   </vbox>
+  </hbox>
+ </page>
+</notebook>
+
+</fieldset>
+

@@ -1,0 +1,20 @@
+<div class="string-tracer">
+  <form>
+    <table border="1">
+      <thead>
+        <th><input type="text" /></th>
+        <th><input type="submit" value="<?=l('se rendre à la page')?>" /></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><iframe></iframe></td>
+          <td>
+            <div class="head"><span class="refresh"><?=l('refresh')?></span> items</div>
+            <div class="list"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+<?=H::trigger('new kwo.managers.ItemTracer(this)')?>

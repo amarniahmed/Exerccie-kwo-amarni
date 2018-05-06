@@ -1,0 +1,22 @@
+Salut à vous,
+
+Petit récapitulatif de ce qui a été fait pour obtenir les profils icc:
+
+J'ai récupéré un rpm sources fedora icc-profiles (en effet il n'existe pas de rpm icc-profiles ou correspondant pour rhel), j'ai extrait les fichiers de ce rpm en utilisant la commande
+
+    rpm2cpio icc-profiles.rpm | cpio --extract
+
+J'ai ainsi obtenu une archive tar.bz2 contenant tous les fichiers du rpm.
+
+A priori un seul de ces fichiers sera utile:
+
+sRGB.icc
+
+Matthieu a également récupéré deux profils sur le site d'adobe:
+
+CoatedFOGRA27.icc
+CoatedFOGRA39.icc
+
+Ces fichiers ont été placés dans le répertoire /usr/share/color/icc/ sur s107 et pulsar.
+
+Damien

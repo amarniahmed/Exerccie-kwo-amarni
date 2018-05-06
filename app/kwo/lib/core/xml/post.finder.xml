@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder include="blog" order="published_at desc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="blog_id" />
+  <filter name="status" />
+ </filters>
+ <cols>
+  <col name="name" />
+  <col name="blog_name" width="250px" label="blog"/>
+  <col name="published_at" label="publication" />
+  <col name="locales" />
+ </cols>
+</finder>

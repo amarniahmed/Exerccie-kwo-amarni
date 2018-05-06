@@ -1,0 +1,25 @@
+<table class="columns">
+  <tbody>
+    <tr>
+      <td class="column">
+        <h2><?=l('alerts.heading')?></h2>
+        <div class="rounded column-bloc-list">
+          <ul>
+<?php foreach ($alerts as $alert): ?>
+              <li style="cursor:pointer;"
+                  onclick="Kwo.Alert.onEdit(this)"
+                  data-id="<?=$alert->getId()?>"><?=c($alert->asString())?></li>
+<?php endforeach ; ?>
+          </ul>
+          <?=Elt::button(array('label' => l('button.alert.create'),
+                               'events' => array('click' => 'new Kwo.Composer.Alert(this)')))?>
+        </div>
+      </td>
+      <td class="column">
+        <?php if ($alert_id >= 1): ?>
+          <?=H::get('/account/alert.edit', array('id' => $alert_id))?>
+        <?php endif; ?>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,202 @@
+<?php 
+$is_ff = stripos(S('req')->getClient('agent'), 'firefox') !== false;
+?>
+
+<!-- Finder -->
+<form onsubmit="Kwo.F('<?=$finder->model?>').onSearch(this); return false;">
+<input type="submit" name="submit" value="1" style="display:none;" />
+<input type="hidden" name="model" value="<?=$finder->model?>" />
+<input type="hidden" name="offset" id="<?=$finder->model?>_offset" value="0" />
+<input type="hidden" name="reset" id="<?=$finder->model?>_reset" value="0" />
+<input type="hidden" name="order" value="<?=$finder->order?>" />
+
+<table class="hbox finder"><tr class="hbox">
+<td style="width:22%;">
+  
+<table class="layout filters">  
+<?php foreach ($finder->filters as $filter): ?>
+
+<?php if ($filter['type'] === null): ?>
+  <!-- <?=$filter['name']?> --> 
+
+<?php elseif ($filter['type'] === 'hidden'): ?>
+
+ <input type="hidden" name="filters[<?=$filter['name']?>]" value="<?=$filter['value']?>" />
+
+<?php else: ?>
+
+<tr>
+
+ <td class="left">
+  <label><?=$filter['label']?></label>
+ </td>
+
+ <td class="right filter-<?=$filter['type']?>">
+
+<?php if ($filter['type'] == 'text'): ?>
+
+ <input type="text" name="filters[<?=$filter['name']?>]" value="<?=$filter['value']?>" class="text" />
+
+<?php elseif ($filter['type'] == 'radio'): ?>
+
+  <label><input type="radio" name="filters[<?=$filter['name']?>]" value="" />&times;</label>
+<?php foreach ($filter['options'] as $k => $v): ?>
+  <br/><label><input type="radio" name="filters[<?=$filter['name']?>]" value="<?=$k?>"<?=(strlen($filter['value'])>=1 && $k==$filter['value'])?' checked="checked"':''?> /><?=c($v)?></label>
+<?php endforeach; ?>
+
+<?php elseif ($filter['type'] == 'select'): ?>
+
+ <select name="filters[<?=$filter['name']?>]">
+  <option value="">--</option>
+<?php foreach ($filter['options'] as $k => $v): ?>
+  <option value="<?=$k?>"<?=(strlen($filter['value']) >= 1 && $k == $filter['value'])?' selected="selected"':''?>><?=$v?></option>
+<?php endforeach; ?>
+ </select>
+
+<?php elseif ($filter['type'] == 'checkbox'): ?>
+
+<?php foreach ($filter['options'] as $k => $v): ?>
+ <label><input type="checkbox" name="filters[<?=$filter['name']?>][]"
+               value="<?=$k?>"<?=in_array($k, (array)$filter['value'])?' checked="checked"':''?>/><span><?=ucfirst($v)?></span></label>
+<?php endforeach; ?>
+
+<?php elseif ($filter['type'] == 'yesno'): ?> 
+
+ <label><input type="radio" name="filters[<?=$filter['name']?>]"
+               value=""<?=empty($filter['value']) ? ' checked="checked"' : ''?> />&times;</label> - 
+ <label><input type="radio" name="filters[<?=$filter['name']?>]"
+               value="1"<?=('1' == $filter['value']) ? ' checked="checked"' : ''?> /> oui</label> -
+ <label><input type="radio" name="filters[<?=$filter['name']?>]"
+               value="0"<?=('0' == $filter['value']) ? ' checked="checked"' : ''?> /> non</label>
+
+<?php endif; ?>
+ </td>
+
+</tr>
+
+<?php endif; ?>
+<?php endforeach; ?>
+
+<?php if ($finder->has_user == true): $v = $finder->extra_filters['user_field']; ?> 
+<tr>
+ <td class="left">
+  <select name="extra_filters[user_field]">
+  <option value="id"<?=$v=='id'?' selected':''?>>user ID</option>
+   <option value="email"<?=$v=='email'?' selected':''?>>email</option>
+   <option value="name"<?=$v=='name'?' selected':''?>>pseudo</option>
+   <option value="last_name"<?=$v=='last_name'?' selected':''?>>nom</option>
+  </select>
+ </td>
+ <td class="right"><input type="text" name="extra_filters[user_value]" value="<?=$finder->extra_filters['user_value']?>" class="text" /></td>
+</tr>
+<?php endif; ?>
+
+</table>
+
+<div class="launcher" style="margin-top:8px;">
+<?php if ($finder->collection !== null): ?>
+ <input type="image" src="/<?=PIX_PATH?>/action/refresh.png" title="reset" 
+        onclick="$('<?=$finder->model?>_reset').value = 1;" />
+<?php endif; ?>
+ <input type="image" src="/<?=PIX_PATH?>/action/search.png" title="rechercher" /> 
+</div>
+
+<div class="pagination2">  
+<?php if ($finder->hasPagination()): ?>
+<?=$finder->getPagination()->asHTML(array('onclick' => '$(\''.$finder->model.'_offset\').value=((offset)); Kwo.F(\''.$finder->model.'\').onSearch(this)'))?>
+<?php endif; ?>
+</div>
+
+</td>
+
+<td>
+
+<?php if ($finder->collection !== null): ?>
+ <fieldset>
+
+  <legend>
+   Résultat(s) : <b><?=$finder->collection->offsetFrom()?> - <?=$finder->collection->offsetTo()?></b> 
+   sur <b><?=$finder->collection->foundRows()?></b>
+  </legend>
+
+<?php if ($is_ff === true): ?>
+<div style="height:<?=$finder->height?>px; overflow:hidden;">
+<?php else: ?>
+<div style="height:<?=$finder->height?>px; overflow-y:auto;">
+<?php endif; ?>
+
+<?php if (strlen($finder->overlay) >= 2): ?>
+
+<?php foreach($finder->collection as $elem): ?>
+ <?=$elem->email?> - 
+<?php endforeach; ?>
+
+<?php else: ?>
+
+<table class="datagrid">
+
+<colgroup>
+<?php if ($finder->readonly !== true): ?>
+ <col style="width:3%;" />
+<?php endif; ?>
+<?php foreach ($finder->cols as $col): ?>
+ <col style="width:<?=$col['width']?>%;" />
+<?php endforeach; ?>
+</colgroup>
+
+<thead>
+<tr>
+<?php if ($finder->readonly !== true): ?>
+ <th></th>
+<?php endif; ?>
+<?php foreach ($finder->cols as $col): ?>
+ <th><?=c($col['label'])?></th>
+<?php endforeach; ?>
+</tr>
+</thead>
+
+<tbody class="overflow" style="max-height:<?=($finder->height - 24)?>px; overflow-y:auto;">
+
+<?php if ($finder->collection->numRows() < 1) : ?>
+<tr><td colspan="<?=(count($finder->cols)+1)?>"><i>aucun résultat</i></td></tr>
+<?php endif; ?>
+
+<?php foreach($finder->collection as $elem): ?>
+<?php
+$hash = $elem->_asFinderHash($finder->cols);
+$color = array_shift($hash);
+?>
+ <tr onclick="Kwo.F('<?=$finder->model?>').onEdit(this)" data-id="<?=$elem->id?>">
+<?php if ($finder->readonly !== true): ?>
+  <td>
+   <a href="javascript:void(0)" class="link-finder link-<?=$color?>" title="élément (<?=$elem->id?>)"></a>
+  </td>
+<?php endif; ?>
+<?php foreach ($hash as $value): ?>
+  <td><?=$value?></th>
+<?php endforeach; ?>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+
+</table>
+
+<img src="<?=String::dataImage()?>" 
+     onload="if (Prototype.Browser.Gecko) {
+  var tbody = $(this).previous('TABLE').down('tbody');
+  if (tbody.scrollHeight > <?=($finder->height - 24)?>) {
+    tbody.style.height='<?=($finder->height - 24)?>px';
+  }}" />
+
+<?php endif; ?>
+
+</div>
+
+
+ </fieldset>
+<?php endif; ?>
+
+</td></tr></table>
+
+</form>
+<!-- /Finder -->

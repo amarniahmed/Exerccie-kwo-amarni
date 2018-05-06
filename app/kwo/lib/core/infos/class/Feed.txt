@@ -1,0 +1,21 @@
+- http://en.wikipedia.org/wiki/Feed_protocol
+
+newsgatoronline/2.0 (http://www.newsgator.com; 4 subscribers)
+
+date : atom : (RFC 3339 format)
+date : rss : (RFC 822 format)
+
+$post->CONTENT = html_entity_decode($post->CONTENT);
+$post->CONTENT = str_replace("<br>","<br/>",$post->CONTENT);
+$post->CONTENT = str_replace(array("<br>","<br/>","</p>","\x92"),array("\n","\n","\n","'"),$post->CONTENT);
+$post->CONTENT = strip_tags($post->CONTENT);
+
+
+http://www.mnot.net/rss/tutorial/#Tips
+
+<link rel="alternate" type="application/rss+xml" title="Planet KDE" href="http://planetKDE.org/rss20.xml" />
+
+Proposer en bas de l article des liens : email-this, digg
+
+voir : http://radar.oreilly.com/feed
+

@@ -1,0 +1,43 @@
+<h1><?=c(l('valuation.title'))?></h1>
+
+<div>
+<form>
+<table class="fixed valuation-radios">
+
+<thead><tr>
+ <th></th>
+<?php foreach (range(1, 5) as $i): ?>
+ <th class="level"><?=l('valuation.level.'.$i)?></th>
+<?php endforeach; ?>
+<tr></thead>
+
+<tbody>
+<?php foreach ($criterions as $criterion): ?>
+<tr>
+<td class="left"><?=SH::capitalize($criterion)?></td>
+<?php foreach (range(1, 5) as $i): ?>
+ <td class="level">
+  <input type="radio"
+         name="criterions[<?=$criterion->getId()?>]"
+         value="<?=$i?>" />
+ </td>
+<?php endforeach; ?>
+<?php endforeach; ?>
+<tr>
+<td class="left"><?=c(l('valuation.note'))?></td>
+<td colspan="5"><?=Elt::text(array('name' => 'comment', 
+                                   'rows' => 3, 
+                                   'wide' => true))?></td>
+</tr>
+</tbody>
+
+<tfoot>
+<tr>
+ <td></td>
+ <td colspan="5"><?=Elt::button(array('label' => l('send')))?></td>
+</tr>
+</tfoot>
+
+</table>
+</form>
+</div>

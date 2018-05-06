@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="id desc" count="settlem_id" >
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+    <filter name="superficie" />
+    <filter name="type" label="salle de bain, chambre, salon, wc" />
+  <filter name="settlem_id" label="settlem" />
+ </filters>
+ <cols>
+  <col name="name" />
+    <col name="superficie" />
+    <col name="type" />
+  <col name="settlem_id" label="settlem_id" />
+ </cols>
+</finder>

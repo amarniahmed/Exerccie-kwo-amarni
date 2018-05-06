@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<notebook>
+ <page label="logs">
+  <hbox>
+   <vbox width="15%">
+    <box label="actions">
+     <link icon="devel.logs.display" label="logs : display" action="Kwo.Developer.displayLogs(this)" />
+     <link icon="devel.logs.reset" label="logs : reset" action="logs.reset" model="developer" container="panel" confirm="êtes-vous sûr ?" />
+     <link icon="devel.logs.download" label="logs : download + reset" action="logs.download" model="developer" container="stdout" confirm="êtes-vous sûr ?" />
+     <link icon="devel.scheduler" label="tâches automatiques" action="Kwo.Developer.displayScheduler(this)" />
+    </box>
+   </vbox>
+   <vbox>
+    <deck>
+     <box id="developer-logs" />
+     <box id="developer-scheduler" />
+    </deck>
+   </vbox>
+  </hbox>
+ </page>
+
+ <page label="shell">
+  <form>
+   <hbox>
+    <vbox>
+     <elem type="text" rows="20" name="src" />
+     <launcher>
+      <link name="exec" action="Kwo.Developer.onShellExec(this)" />
+     </launcher>
+    </vbox>
+    <vbox>
+     <box id="shell_output" />
+    </vbox>
+   </hbox>
+  </form>
+ </page>
+
+ <page label="config">
+  <hbox>
+   <vbox width="15%">
+    <box label="actions">
+     <link icon="devel.models.display" label="models : display" model="developer" action="models" container="developer-models" />
+     <link icon="devel.models.build" label="models : build" model="developer" action="models.build" container="panel" />
+    </box>
+   </vbox>
+   <vbox>
+    <deck>
+     <box id="developer-models" />
+    </deck>
+   </vbox>
+  </hbox>
+ </page>
+
+ <page label="cache">
+  <hbox>
+   <vbox width="15%">
+    <box label="actions">
+     <link icon="devel.cache.clean" label="cache : clean" model="developer" action="cache.clean" container="panel" />
+    </box>
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+ </page>
+
+ <page label="database">
+  <hbox>
+   <vbox width="15%">
+    <box label="actions">
+     <link icon="devel.tables" label="tables" model="developer" action="tables" container="developer-tables" />
+     <link icon="devel.db.processes" label="processes" model="developer" action="db.processes" container="developer-db-processes" />
+    </box>
+   </vbox>
+   <vbox>
+    <deck>
+     <box id="developer-tables" />
+     <box id="developer-db-processes" />
+    </deck>
+   </vbox>
+  </hbox>
+ </page>
+
+ <page label="server">
+  <hbox>
+   <vbox width="15%">
+    <box label="actions">
+     <link icon="devel.server" label="server" model="developer" action="server" container="developer-server" />
+     <link icon="devel.infos" label="phpinfos" action="Kwo.Developer.phpinfos(this)" />
+    </box>
+   </vbox>
+   <vbox>
+    <deck>
+     <box id="developer-server" />
+    </deck>
+   </vbox>
+  </hbox>
+ </page>
+
+ <page label="heartbeat">
+  <hbox>
+   <vbox width="15%">
+    <box label="actions">
+    </box>
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+ </page>
+
+
+</notebook>
+

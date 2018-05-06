@@ -1,0 +1,89 @@
+k:\kernix\clients\JV1TRUC\technique\EmailVision\SOAP
+---
+
+Obtention d'un token
+---
+un token est obtenu après l'ouverture d'une connexion. L'authentification se compose du login, password, manager key (API key) et le nom du serveur
+un token expire dans 3 cas:
+> fermeture de la connexion
+> le maximum d'action défini dans Campaign commander est dépassé
+> la session reste inactive trop longtemps (time out)
+
+la clé d'API s'obtient une fois connecté à Campaign Commander
+
+connexion ex:
+array('login'       => '',
+      'pwd'         => '',
+      'key'         => '',
+      'server_name' => ''));
+          
+
+
+
+Connexion à Campaign commander
+---
+url: https://www.campaigncommander.com/loginccmd
+
+lors de la 1ère authentification, une mode de login sécurisé est proposé (voir K:\kernix\clients\JV1TRUC\technique\EmailVisionLiveEnsure Secure login guide.pdf)
+(ou http://www.emailvision.com/sites/default/files/ckeditor-upload/files/pdf/1digy8974lgaluu3y8343u01jcm6navagyr32jdu68jfaiti938hklnga8412gehrya.pdf)
+
+
+---
+---
+
+Ajout d'un email (voir doc 2.DataSynchronization_API_(DATA_INDIVIDUAL_UPDATE_SOAP).pdf  page 40)
+createMember $opts 'prend les parametres pour créer un nouveau membre' (détail d'un membre p.15)
+
+ex: array('lastname'  => 'nom',
+          'firstname' => 'prenom',
+          'title'     => 'Mr',
+          'email'     => 'mail@email.com');
+
+updateMember 'fonctionne sur le même pricinpe'
+
+important: les dates doivent respecté un format donné;
+MM/dd/yyyy, MM/dd/yyyy HH:mm, MM/dd/yyyy HH:mm:ss, MMM dd yyyy HH:mma ou yyyy-MM-dd HH:mm:ss
+
+
+
+Envoie d'un mail transactionnel (voir doc 5_Notification_API_(NMP_TRIGGER_SOAP-REST).pdf  page 19)
+---
+sendTransactionalMessage	$email, $html_content, $template_id, $secure_string, $bindings
+
+email: email du destinataire
+html_content: contenu du additionnel du message (souvent vide)
+template_id: id du gabarit à utiliser pour l'envoie (depuis campaign commander)
+secure_string: code de gabarit
+bindings: personnalisation des paramètres dans le gabarits. il prend un tableau en paramètres (ex: array('name' => 'nomPersonne',
+                                                                                                         'url'  => 'http://www.kernix.com/'); )
+
+//
+
+
+
+
+
+
+
+
+détails:
+-
+email
+encrypt voir page 27
+notificationId (id du template --> 5_Notification_API_(NMP_TEMPLATES_SOAP).pdf -- Template Management)
+random voir page 27
+senddate voir page 27 (YYYY-MM-DDTHH:MM:SS)
+synchrotype	voir EmailVisionClient::SYNCHRO_*
+uidkey voir 	page 28
+
+content [
+  key
+  value
+]
+
+dyn [
+  key
+  value
+]
+
+

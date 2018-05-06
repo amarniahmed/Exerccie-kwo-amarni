@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="form_id" />
+      <elem field="contact_id" />
+      <elem field="user_id" label="expert" disabled="true" />
+      <hbox>
+        <vbox><elem field="status" disabled="true" /></vbox>
+        <vbox><elem field="type" disabled="true" /></vbox>
+        <vbox><elem field="motive" type="radio" options="Lead::$motives" label="motif" precision="de clôture" /></vbox>
+      </hbox>
+     </vbox>
+     <vbox>
+      <hbox>
+        <vbox><elem field="sector" label="secteur" /></vbox>
+        <vbox><elem field="priority" type="radio" options="Lead::$priorities" label="priorité" /></vbox>
+      </hbox>
+      <hbox>
+        <vbox>
+          <elem field="call_threshold" label="limite d'appels" />
+          <elem field="calls" label="nb. appels" disabled="true" />
+        </vbox>
+        <vbox>
+          <elem field="called_at" type="datetime" label="dernier appel" disabled="true" />
+          <elem field="call_date" type="datetime" label="rdv appel" disabled="true" />
+        </vbox>
+      </hbox>
+     </vbox>
+     <vbox>
+      <box class="grid" value="$datas" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

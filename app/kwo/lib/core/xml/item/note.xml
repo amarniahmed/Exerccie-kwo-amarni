@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<box label="note associée">
+ <form>
+  <hbox>
+   <vbox><elem name="note" value="$note" rows="20" label="note" /></vbox>
+   <vbox><elem name="comment" value="$comment" rows="20" label="commentaire" /></vbox>
+  </hbox>
+  <launcher>
+   <button icon="store" tooltip="enregistrer" action=".onExec('note.set', this)" />
+  </launcher>
+ </form>
+</box>

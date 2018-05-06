@@ -1,0 +1,2 @@
+http://www.mnot.net/cache_docs/#TIPS
+http://www.die.net/musings/page_load_time/

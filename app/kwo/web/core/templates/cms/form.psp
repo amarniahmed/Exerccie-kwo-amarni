@@ -1,0 +1,43 @@
+<form method="post"
+      class="form form-<?=$form->code?><?=$class?>"
+      data-form-id="<?=$form->getId()?>">
+
+<?=$hidden?>
+
+<div class="form-content">
+
+<?php if ($form->title): ?>
+  <h1 class="form-title"><?=$form->title?></h1>
+<?php endif; ?>
+
+<?php if ($form->header): ?>
+  <div class="form-header"><?=nl2br($form->header)?></div>
+<?php endif; ?>
+
+  <div class="form-fields">
+<?=$fields?>
+  </div>
+
+<?php if ($form->hasRequiredField()): ?>
+  <div class="form-mandatory">
+    <?=c(l('form.field.required'))?>
+  </div>
+<?php endif; ?>
+
+  <div class="form-button">
+    <button type="submit" class="btn"><?=c($form->button ?: l('send'))?></button>
+  </div>
+
+<?php if ($form->footer): ?>
+  <div class="form-footer"><?=nl2br($form->footer)?></div>
+<?php endif; ?>
+
+</div>
+
+</form>
+
+<?=H::trigger('new Kwo.Class.Form(this)')?>
+
+<?php if ($form->hasFlag(Form::FLAG_ACK_SHOW)): ?>
+<div class="form-ack" style="display:none"></div>
+<?php endif; ?>

@@ -1,0 +1,36 @@
+
+<form autocomplete="off"
+      onsubmit="Kwo.Forum.onTopicSubmit(this); return false;">
+
+<?=Elt::hidden(array('name' => 'forum_id', 
+                     'value' => $forum->getId()))?>
+
+<?=Elt::hidden(array('name' => 'id', 
+                     'value' => intval($topic->id)))?>
+
+<ul class="hbox layout-inline">
+
+ <li>
+ <?=Elt::text(array('name' => 'name', 
+                    'label' => l('title'), 
+                    'value' => $topic->name, 
+                    'required' => true))?>
+ </li>
+
+ <li>
+ <?=Elt::text(array('name' => 'content', 
+                    'label' => l('content'), 
+                    'value' => $topic->content, 
+                    'rows' => 10, 
+                    'html' => true, 
+                    'required' => true, 
+                    'style' => 'width:300px;'))?>
+ </li>
+
+ <li>
+ <?=Elt::button(array('value' => l('save')))?>
+ </li>
+
+</ul>
+
+</form>

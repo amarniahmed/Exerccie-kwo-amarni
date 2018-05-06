@@ -1,0 +1,9 @@
+<?=H::head(array(
+  'styles' => array(
+    WEB_PATH.'/test/styles/vendors/bootstrap.min.css'
+  )
+))?>
+
+<?=$_content?>
+
+<?=H::foot()?>

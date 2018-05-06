@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<box label="db processes" height="300px">
+ <grid value="$datas" />
+</box>
+
+

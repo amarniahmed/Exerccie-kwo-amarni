@@ -1,0 +1,51 @@
+<table id="bitmap-editor" class="fixed">
+  <tbody>
+    <tr>
+      <td id="bitmap-sidebar">
+        <div id="bitmap-buttons">
+          <ul>
+            <li id="bitmap-button-crop"><?=l('recadrer')?></li>
+            <li id="bitmap-button-dimensions" data-panel="bitmap-panel-dimensions"><?=l('dimensions')?></li>
+            <li id="bitmap-button-rotate" data-panel="bitmap-panel-rotate"><?=l('rotation')?></li>
+          </ul>
+        </div>
+        <div id="bitmap-panels">
+          <div id="bitmap-panel-dimensions" class="bitmap-panel" style="display:none;">
+            <form>
+              <input type="hidden" name="operation" value="resize" />
+              <ul>
+                <li><label><?=c(l('Larg'))?></label><input type="text" name="width" /></li>
+                <li><label><?=c(l('Haut'))?></label><input type="text" name="height" /></li>
+              </ul>
+              <a href=""><?=l('go')?></a>
+            </form>
+          </div>
+          <div id="bitmap-panel-rotate" class="bitmap-panel" style="display:none;">
+            <form>
+              <input type="hidden" name="operation" value="rotate" />
+              <ul>
+                <li><label><input type="radio" name="angle" value="90" checked="checked" />90°</label></li>
+                <li><label><input type="radio" name="angle" value="180" />180°</label></li>
+                <li><label><input type="radio" name="angle" value="270" />-90°</label></li>
+              </ul>
+              <a href=""><?=l('go')?></a>
+            </form>
+          </div>
+        </div>
+        <div id="bitmap-infos">
+          <ul>
+            <li>L : <span id="bitmap-width" title="<?=c(l('largeur'))?>"></span></li>
+            <li>H : <span id="bitmap-height" title="<?=c(l('hauteur'))?>"></span></li>
+            <li>S : <span title="<?=c(l('poids'))?>"><?=$file_size?></span></li>
+            <li>Z : <span id="bitmap-zoom" data-zoom="" title="<?=c(l('zoom'))?>"></span></li>
+            <li>X : <span id="mouse-x">0</span> Y : <span id="mouse-y">0</span></li>
+          </ul>
+        </div>
+      </td>
+      <td id="bitmap-wrapper">
+        <img src="<?=SH::dataImage()?>" id="bitmap" data-file-path="<?=$file_path?>" style="display:none;" />
+      </td>
+    </tr>
+  </tbody>
+</table>
+<script src="<?=WEB_URL?>/core/scripts/bitmap.js" type="text/javascript"></script>

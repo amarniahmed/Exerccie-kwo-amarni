@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset>
+
+<notebook>
+<page>
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <elem field="amount" />
+    <elem field="flags" />
+    <elem field="status" />
+    <elem field="stock" precision="ne pas remplir si giftcard numérique" />
+    <elem field="locales" type="hidden"/>    
+   </vbox>
+   <vbox>
+    <box localized="true">
+     <elem field="label" label="Titre" />
+     <elem field="description" label="Description" rows="10"/>
+    </box>
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page>
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox>
+</page>
+</notebook>
+
+</fieldset>
+

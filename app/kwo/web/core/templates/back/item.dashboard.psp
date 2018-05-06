@@ -1,0 +1,12 @@
+<table class="hbox dashboard"
+       data-model="<?=$model?>"
+       data-period=""
+       data-date="<?=$date?>">
+<tbody><tr>
+ <td class="dashboard-period">
+  <?=H::get('/back/core/dashboard.period.picker')?>
+ </td>
+ <td class="dashboard-overview" style="padding:0 0 0 6px;"><div class="wrapper"></div></td>
+ <td class="dashboard-precision"><div class="wrapper"></div></td>
+</tr></tbody></table>
+<?=H::trigger('new kwo.managers.Dashboard(this)')?>

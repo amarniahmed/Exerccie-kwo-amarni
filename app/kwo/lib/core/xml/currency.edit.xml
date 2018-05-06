@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+ <page label="définition">
+  <form>
+   <hbox>
+    <vbox width="33%">
+     <elem field="name_fr" label="nom FR" required="true" />
+     <elem field="name_en" label="nom EN" required="true" />
+     <elem field="code" required="true" />
+     <elem field="symbol_left" label="symbole gauche" />
+     <elem field="symbol_right" label="symbole droit" />
+    </vbox>
+     <vbox width="33%">
+     <elem field="decimal_point" label="decimal_point" />
+     <elem field="thousands_point" label="thousands_point" />
+     <elem field="decimal_places" label="decimal_places" />
+    </vbox>
+    <vbox>
+     <elem type="yesno" field="status" label="en cours d'utilisation ?" />
+    </vbox>
+   </hbox>
+   <launcher/>
+  </form>
+ </page>
+ <page label="opérations" built="$is_loaded">
+  <form>
+    <hbox>
+     <vbox width="30%">
+      <box label="actions">
+       <link icon="details" />
+      </box>
+     </vbox>
+     <vbox>
+      <deck />
+     </vbox>
+    </hbox>
+  </form>
+ </page>
+</notebook>
+
+</fieldset>

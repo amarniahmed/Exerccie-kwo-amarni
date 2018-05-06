@@ -1,0 +1,25 @@
+<div class="editor">
+  <div class="elem user">
+    <label><?=c(l('utilisateur associé'))?></label>
+    <input type="hidden" data-field="user_id" value="<?=$user_id?>" />
+    <?php if ($user_id >= 1): ?>
+      <span data-item="<?=$user->getModelId().'-'.$user->getId()?>"
+            onclick="new kwo.dialogs.ItemEditor(this);"><?=$user->name?> (<?=$user->email?>)</span>
+    <?php else: ?>
+      <span style="display:none;"></span>
+      <a href="javascript:void(0)"
+         class="user-picker"
+         data-caller-item="<?=$item->getKey()?>"
+         data-model="user"><?=c(l('sélectionner un utilisateur'))?></a>
+    <?php endif; ?>
+  </div>
+  <div class="elem elem-checkbox">
+    <label><?=l('permissions')?></label>
+    <input type="checkbox" value="255" name="permissions" <?=$permissions == 255 ? 'checked="checked"' : ''?> /> <?=l('tous les droits')?>
+  </div>
+  <div class="controls">
+    <input type="button" class="save" value="<?=c(l('enregistrer'))?>" <?=$user_id < 1 ? 'style="display:none;"' : ''?> />
+     &nbsp;
+    <a href="javascript:void()" class="cancel"><?=l('retour')?></a>
+  </div>
+</div>

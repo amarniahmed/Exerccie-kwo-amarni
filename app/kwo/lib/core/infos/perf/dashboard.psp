@@ -1,0 +1,130 @@
+
+<table class="dtg"><tbody><tr>
+<td class="dtg-filters">
+
+<form>
+
+<input type="hidden" name="offset" value="<?=$offset?>">
+<input type="submit" style="display:none;">
+
+<table class="vbox"><tbody>
+<tr>
+ <td><label>depuis</label></td>
+ <td><input type="text" placeholder="depuis" /></td>
+</tr>
+<tr>
+ <td><label>jusqu’à</label></td>
+ <td><input type="text" placeholder="aujourd’hui" /></td>
+</tr>
+<tr>
+ <td><label>type</label></td>
+ <td>
+  <select name="model_id">
+   <option value="0">tous</option>
+<?php foreach ($types as $id => $name): ?>
+   <option value="<?=$id?>"><?=$name?></option>
+<?php endforeach; ?>
+  </select>
+ </td>
+</tr>
+<tr>
+ <td><label>ID</label></td>
+ <td> <input type="text" name="record_id" /></td>
+</tr>
+<tr>
+ <td><label>medium</label></td>
+ <td>
+  <select name="medium">
+   <option value="0">tous</option>
+<?php foreach ($mediums as $id => $name): ?>
+   <option value="<?=$id?>"><?=$name?></option>
+<?php endforeach; ?>
+  </select>
+ </td>
+</tr>
+<tr>
+ <td><label>source</label></td>
+ <td> <input type="text" name="source" /></td>
+</tr>
+<tr>
+ <td><label>terme</label></td>
+ <td><input type="text" name="term" /></td>
+</tr>
+<tr>
+ <td><label>campagne</label></td>
+ <td><input type="text" name="campaign" /></td>
+</tr>
+<tr>
+ <td><label>user ID</label></td>
+ <td><input type="text" name="user_id" /></td>
+</tr>
+</tbody></table>
+
+<div class="launcher" style="margin-top: 8px;">
+ <input src="/app/core/pix/action/refresh.png" title="reset" onclick="$('order_reset').value = 1;" type="image">
+ <input src="/app/core/pix/action/export.png" title="rechercher" type="image"> 
+ <input src="/app/core/pix/action/stat.png" title="rechercher" type="image"> 
+ <input src="/app/core/pix/action/search.png" title="rechercher" type="image"> 
+</div>
+
+</form>
+
+
+</td>
+<td class="dtg-datas">
+
+<div class="dtg-header">
+<table><tbody><tr>
+ <td class="color"></td>
+ <td class="checkbox">&nbsp;</td>
+ <td>type</td>
+ <td>medium</td>
+ <td>source</td>
+ <td>term</td>
+ <td>campagne</td>
+ <td>date</td>
+ <td></td>
+</tr></tbody></table>
+</div>
+
+<div class="dtg-body">
+<table><tbody>
+<?php foreach ($rs as $row): ?>
+<tr>
+ <td class="color"><a href="#">.</a></td>
+ <td class="checkbox"><input type="checkbox"></td>
+ <td><?=Conversion::getType($row['model_id'], $row['record_id'])?></td>
+ <td><?=Tracker::$mediums[$row['medium']]?></td>
+ <td><?=$strings[$row['source']]?></td>
+ <td><?=$strings[$row['term']]?></td>
+ <td><?=$strings[$row['campaign']]?></td>
+ <td><?=$row['created_at']?></td>
+</tr>
+<?php endforeach; ?>
+</tbody></table>
+</div>
+
+<div class="dtg-footer">
+<table><tbody><tr>
+ <td class="checkbox"></td>
+ <td class="actions"></td>
+ <td class="pagination">
+ <?php
+$b = $rs->getBoundaries();
+echo (($b['offset'] - 1) * $b['limit']).' - ';
+echo (($b['offset'] - 1) * $b['limit']) + $b['limit'];
+?>
+ sur <?=$rs->foundRows()?>
+
+  <a href="javascript:void(0)" class="arrow">&lt;</a>
+  <a href="javascript:void(0)" class="arrow">&gt;</a>
+
+<form onsubmit="$(this).up('.dtg').down('input[name=offset]').value=($(this).down().value - 1); return false;">
+  <input type="text" /> [1 <?=ceil($rs->foundRows()  / $b['limit'])?> ]
+ <input type="submit" style="display:none;" />
+</form>
+ </td>
+</tr></tbody></table>
+</div>
+
+</td></tr></tbody></table>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+<page label="définition">
+ <hbox>
+  <vbox width="36%">
+   <form>
+    <notebook>
+     <page label="paramètres">
+      <elem field="name" required="true" />
+      <elem field="app" />
+      <hbox>
+       <vbox><elem field="type" readonly="$is_loaded" /></vbox>
+       <vbox><elem field="status" /></vbox>
+       <vbox>
+        <elem field="available_from" label="Début de campagne" />
+        <elem field="available_to" label="Fin de campagne" />
+       </vbox>
+      </hbox>
+      <hbox>
+       <vbox><elem field="locales" /></vbox> 
+       <vbox><elem field="code" required="true" /></vbox>
+       <vbox><elem field="position" /></vbox>
+      </hbox>
+      <hbox built="$item->isCart()">
+       <vbox><elem field="priority" label="priorité"
+                   precision="prio max = 255" /></vbox>
+       <vbox><elem field="flags" cols="1" /></vbox>
+       <vbox><elem field="quota" /></vbox>
+      </hbox>
+     </page>
+     <page label="contenu">
+      <box localized="true">
+       <elem field="label" />
+       <elem field="description" rows="2" />
+       <elem field="message" rows="2" precision="explicatif, pour test coupon" />
+      </box>
+      <elem field="image" />
+     </page>
+    </notebook>
+    <launcher/>
+   </form>
+  </vbox>
+  <vbox>
+   <box class="discount-composer" value="$composer" />
+  </vbox>
+ </hbox>
+</page>
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="build" label="appliquer" built="$item->isCatalog()"
+          action="apply" confirm="true" container="panel" />
+    <link icon="build" label="annuler" built="$item->isCatalog()"
+          action="cancel" confirm="true" container="panel" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+</notebook>
+
+</fieldset>
+

@@ -1,0 +1,27 @@
+<table class="columns" data-type="cart" data-id="<?=$discount->getId()?>">
+  <tbody>
+    <tr>
+      <td class="discount-conditions discount-elements">
+        <div class="hbox-label"><?=l('conditions')?></div>
+        <ul>
+          <?php foreach ($conditions as $id => $condition) : ?>
+            <li class="condition-edit" data-id="<?=$id?>"><?=$condition?></li>
+          <?php endforeach ?>
+        </ul>
+        <div style="text-align:right; margin-top:10px;">
+          <img src="<?=PIX_URL?>/action/add.png" class="condition-edit" data-id="0" />
+        </div>
+      </td>
+      <td class="discount-action discount-elements">
+        <div class="hbox-label"><?=l('action')?></div>
+        <?php if (!empty($action)): ?>
+          <ul>
+            <li class="action-edit"><?=$action?></li>
+          </ul>
+        <?php elseif (count($conditions) >= 1): ?>
+          <a href="javascript:void(0)" class="action-edit"><?=l('définir l’action')?></a>
+        <?php endif; ?>
+      </td>
+    </tr>
+  </tbody>
+</table>

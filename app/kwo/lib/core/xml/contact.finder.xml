@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<finder order="last_name">
+  <filters>
+    <filter name="id" />
+    <filter type="text" name="last_name" label="nom"/>
+    <filter type="select" options="Contact::$types" name="type" label="poste"/>
+  </filters>
+  <cols>
+    <col name="last_name" width="150px" label="nom"/>
+    <col name="first_name" label="prénom"/>
+    <col name="occupation" width="150px" label="poste"/>
+    <col name="postal_code" width="150px" label="code postal" />
+    <col name="city" width="150px" label="ville" />
+    <col name="phone" width="150px" label="tel"/>
+    <col name="email" label="email"/>
+  </cols>
+</finder>

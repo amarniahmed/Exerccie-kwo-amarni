@@ -1,0 +1,23 @@
+<h1><?=c(l('return.title'))?></h1>
+<div>
+ <form>
+  <ul class="hbox">
+<?php if ($tree instanceof Tree): ?>
+   <li><?=Elt::select(array('label' => 'quel est l’objet de votre retour ?',
+                            'options' => $tree,
+                            'flowin' => 'tree_level_2',
+                            'wide' => true))?></li>
+   <li><?=Elt::select(array('label' => 'pouvez vous préciser ?',
+                            'name' => 'node_id',
+                            'id' => 'tree_level_2',
+                            'wide' => true))?></li>
+<?php endif; ?>
+   <li><?=Elt::text(array('label' => l('return.cause'),
+                          'name' => 'comment',
+                          'rows' => 4,
+                          'wide' => true))?></li>
+   <li><?=Elt::button(array('label' => l('send'),
+                            'class' => 'submit'))?></li>
+  </ul>
+ </form>
+</div>

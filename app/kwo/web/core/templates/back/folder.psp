@@ -1,0 +1,124 @@
+<div data-path="<?=$path?>">
+  <script>
+    var _path = "<?=$path?>";
+    var _file_path = "";
+    var _selected_file_path = "<?=$selected_file_path?>";
+  </script>
+
+  <div class="folder_path"><?=$_title?></div>
+
+  <table class="columns">
+    <tbody>
+      <tr>
+        <td class="vBoxLeft" style="width:60%;">
+          <fieldset>
+            <legend><?=c(l('fichiers contenus dans'))?> <b><?=basename($path)?></b></legend>
+            <div style="height:350px; overflow-y:auto; overflow-x:hidden;" id="list_files">
+              <table class="columns files" id="table_list">
+                <tbody>
+                  <tr>
+                    <td style="">
+                      <?php foreach ($columns[0] as $cell): ?>
+                        <?=$cell?>
+                      <?php endforeach; ?>
+                    </td>
+                    <td style="padding-left:7px;">
+                      <?php foreach ($columns[1] as $cell): ?>
+                        <?=$cell?>
+                      <?php endforeach; ?>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <table class="layout file-list">
+              <tr>
+                <td style="width:30%;">
+                  <select name="layout" id="layout" onchange="Kwo.Dir.view()" style="margin:0;">
+                    <option value="0"><?=l('affichage')?></option>
+                    <option value="0"> - <?=l('standard')?></option>
+                    <option value="2"> - <?=l('images')?></option>
+                  </select>
+                </td>
+                <td style="text-align:right; vertical-align:bottom;">
+                  <img src="<?=PIX_URL?>/action/folder_explore.png" class="button"
+                       data-prompt="<?=c(l('mot-clé ?'))?>"
+                       onclick="Kwo.Dir.filter(this)"
+                       title="<?=l('chercher un fichier dans')?> < <?=$path?> >" />
+                  <img src="<?=PIX_URL?>/action/compress.png" class="button"
+                       data-confirm="<?=c(l('êtes-vous sur de vouloir créer une archive de ce répertoire'))?>"
+                       onclick="Kwo.Dir.compress(this)"
+                       title="<?=l('compresser ce répertoire')?>" />
+                  <img src="<?=PIX_URL?>/action/folder_add.png" class="button"
+                       data-prompt="<?=c(l('nom du nouveau répertoire ?'))?>"
+                       onclick="Kwo.Dir.addFolder(this)"
+                       title="<?=l('créer un répertoire')?>" />
+                  <?php if ($can_delete == true): ?>
+                    <img src="<?=PIX_URL?>/action/folder_delete.png" class="button"
+                         data-confirm="<?=c(l('êtes-vous sur de vouloir supprimer ce répertoire ainsi que les fichiers qu’il contient ?'))?>"
+                         onclick="Kwo.Dir.unlink(this)"
+                         title="<?=l('supprimer ce répertoire')?>" />
+                  <?php endif; ?>
+                  <img src="<?=PIX_URL?>/action/file_add.png" class="button"
+                       onclick="Kwo.Dir.selectFile()"
+                       title="<?=l('envoyer un fichier dans')?> < <?=$path?> >" />
+                  <?php if (strlen($selected_file_path) >= 1 && dirname($selected_file_path)!=$path) : ?>
+                    <img src="<?=PIX_URL?>/action/paste.png" class="button"
+                         onclick="Kwo.File.move(this)"
+                         title="<?=l('deplacer')?> < <?=basename($selected_file_path)?> > <?=l('dans')?> < <?=$path?> >" />
+                  <?php endif; ?>
+                </td>
+              </tr>
+            </table>
+          </fieldset>
+        </td>
+        <td>
+          <fieldset class="list">
+            <legend><?=c(l('répertoire'))?> <b><?=basename($path)?></b></legend>
+            <table class="grid auto">
+              <tbody>
+                <?php foreach ($details as $key => $value) : ?>
+                  <tr>
+                    <td><?=$key?></td>
+                    <td id="<?=$key?>"><?=$value?></td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </fieldset>
+          <fieldset id="file_box" style="display:none;">
+            <legend><?=c(l('fichier selectionné'))?></legend>
+            <input type="text" id="file_path" class="text" style="margin-top:4px;margin-bottom:4px;width:100%;" onclick="$(this).activate()" /><br/>
+            <table class="layout" style="margin-bottom:6px;">
+              <tr>
+                <td style="width:78%;">
+                  <img src="<?=PIX_URL?>/action/infos.png" style="margin-right:3px" class="button"
+                       onclick="Kwo.File.view(_file_path)"
+                       title="<?=l('détail du fichier')?>" />
+                  <img src="<?=PIX_URL?>/action/cut.png" style="margin-right:3px" class="button"
+                       onclick="Kwo.File.select()"
+                       title="<?=l('selectionner le fichier')?>" />
+                  <img src="<?=PIX_URL?>/action/page_delete.png" style="margin-right:3px;" class="button"
+                       data-confirm="<?=c(l('êtes-vous sûr de vouloir supprimer ce fichier ?'))?>"
+                       onclick="Kwo.File.unlink(this)"
+                       title="<?=l('supprimer le fichier')?>" />
+                  <img src="<?=PIX_URL?>/action/page_save.png" style="margin-right:3px" class="button"
+                       onclick="Kwo.File.download()"
+                       title="<?=l('télécharger le fichier')?>" />
+                </td>
+                <td id="dim" style="text-align:right; padding-right: 2px"></td>
+              </tr>
+            </table>
+            <div style="max-height:240px; overflow-y:auto; overflow-x:hidden; text-align:center;">
+              <img src="<?=PIX_URL?>/empty.gif" id="thumb" style="width:1px; height:1px;" />
+            </div>
+          </fieldset>
+          <fieldset id="upload_box" style="display:none;">
+            <legend><?=c(l('transférer un fichier'))?></legend>
+            <div class="dropzone"></div>
+          </fieldset>
+        </td>
+      </tr>
+    </table>
+</div>
+<?=H::trigger('Kwo.File.observe(this)')?>

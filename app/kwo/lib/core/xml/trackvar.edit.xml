@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" required="true" />
+      <elem field="app" />
+      <elem field="cost" />
+     </vbox>
+     <vbox>
+      <elem field="medium" options="Trackvar::mediums()" required="true" />
+      <elem field="source" />
+      <elem field="campaign" />
+      <elem field="term" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="metrics" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>

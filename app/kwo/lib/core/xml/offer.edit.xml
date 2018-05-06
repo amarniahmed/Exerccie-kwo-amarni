@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset>
+
+<notebook>
+<page>
+ <form>
+  <hbox>
+   <vbox width="560px">
+    <elem field="name" />
+    <hbox>
+     <vbox><elem field="status" readonly="$status_readonly" /></vbox>
+     <vbox>
+      <elem field="scheduled_at" />
+      <elem field="locale" />
+     </vbox>
+     <vbox>
+      <elem field="notice_id" type="select" label="désinscription" addfirst="--" />
+     </vbox>
+    </hbox>
+    <elem field="recipients" label="destinataires" precision="de test" />
+    <hbox>
+     <vbox>
+      <elem field="user_notices" type="checkbox" cols="2" label="avis"
+            options="Model::asBits('notice')" />
+     </vbox>
+     <vbox>
+      <elem field="user_privileges" type="checkbox" cols="2" label="privilèges"
+            options="Model::asBits('privilege')" />
+     </vbox>
+    </hbox>
+    <elem field="user_profiles" type="checkbox" cols="3" label="profils"
+          options="P('profiles')" />
+    <elem field="user_statuses" type="checkbox" cols="3" label="statuts"
+          options="User::$statuses" />
+    <elem field="user_flags" type="checkbox" cols="3" label="flags"
+          options="User::$flags" />
+   </vbox>
+   <vbox>
+    <hbox>
+     <vbox><elem field="from_name" /></vbox>
+     <vbox><elem field="from_email" /></vbox>
+     <vbox><elem field="reply_email" /></vbox>
+    </hbox>
+    <elem field="subject" label="sujet" />
+    <elem field="content" rows="20" mode="rich" label="contenu" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page>
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="send" action="deliver" label="envoyer un test" container="panel" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+</notebook>
+
+</fieldset>
+

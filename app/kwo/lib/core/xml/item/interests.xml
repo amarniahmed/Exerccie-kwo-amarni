@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<box label="centres d’intérêt associés">
+ <form>
+  <elem value="$interests" options="$options" type="checkbox" name="interests" cols="3" label="" />
+  <launcher>
+   <button icon="store" tooltip="enregistrer" action=".onExec('interests.set', this)" />
+  </launcher>
+ </form>
+</box>
+

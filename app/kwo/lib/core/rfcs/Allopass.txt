@@ -1,0 +1,88 @@
+
+configuration:
+---
+$parameter['shop.psp'] = array('allopass' => array('mode' => 'test',
+                                                   'params' => array('site_id' => '')));
+
+Produit: http://www.allopass.com/merchant/product
+un produit ajoutés obtient un id sur le site d'allopass.
+pour acheter le produit il faut référencer cet ID en BDD
+
+site_id: obtenu lors de la création d'un site sur allopass (visible sur la page 'product')
+product_id: disponible dans la liste des produit ou sur la fiche détaillé du produit (ex: #auth --> <site_id>/<product_id>/..)
+le product_id change en fonction du type de palier (fixe ou dynamique)
+
+
+Code gratuit (limiter à 100 par jour et par site) : http://www.allopass.com/merchant/product/free-codes
+seul les produits en paliers dynamique et < 60€ peuvent être testés
+
+Définir un palier:
+sur la page du produit, il faut definir le palier du pays pour fixer un tarif (les tests et les achats ne fonctionneront pas autrement)
+
+
+Paiement par SMS+
+---
+http://www.allopass.com/imgweb/fr/Guide_de_l_utilisateur.pdf
+"Les services SMS+ sont soumis à une législation particulière en France, au Maroc et aux
+Etats-Unis. C’est pourquoi l’activation du service dans ces pays doit faire l’objet d’une demande
+par mail auprès du service clientèle (contact@allopass.com)"
+
+
+Info complémentaires:
+---
+support_it@allopass.com
+ou
+01 53 44 15 07
+
+
+codes test
+---
+T269584R	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 0 fois	
+T2C58299	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T334X477	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T396S873	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T495T344	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T5457Q35	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T559288E	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T565839G	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T565855Q	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+T64777Z4	23/04/2013 15:10:56	TEST_ALLOPASS	JEVEUX1TRUC.FR	valide 1 fois	
+
+reponse après soumission d'un code
+---
+<response xmlns="https://api.allopass.com/rest" code="0" message="OK">
+  <status>0</status>
+  <status_description>success</status_description>
+  <access_type/>
+  <transaction_id/>
+  <price currency="" amount="0.00" exchange="0.0000000" reference_currency="EUR" reference_amount="0.00"/>
+  <paid currency="" amount="0.00" exchange="0.0000000" reference_currency="EUR" reference_amount="0.00"/>
+  <validation_date timestamp="1366794446" date="2013-04-24T09:07:26+00:00"/>
+  <product_name/>
+  <website id="298548" name="JEVEUX1TRUC.FR" url="http://www.jeveux1truc.fr" audience_restricted="false" category="Informatics, telecom, internet"/>
+  <customer_ip/>
+  <customer_country/>
+  <expected_number_of_codes/>
+  <codes>
+    <code>
+      <value>T9522S55</value>
+      <pricepoint id="0" country_code="FR" type="free-code" category="free-code"/>
+      <price currency="EUR" amount="0.00" exchange="1.0000000" reference_currency="EUR" reference_amount="0.00"/>
+      <paid currency="EUR" amount="0.00" exchange="1.0000000" reference_currency="EUR" reference_amount="0.00"/>
+      <payout currency="EUR" amount="0.00" exchange="1.0000000" reference_currency="EUR" reference_amount="0.00"/>
+    </code>
+  </codes>
+  <merchant_transaction_id/>
+  <data/>
+  <affiliate/>
+  <partners/>
+</response>
+
+
+ou
+
+
+<response xmlns="https://api.allopass.com/rest" code="0" message="OK">
+  <status>1</status>
+  <status_description>failed</status_description>
+</response>

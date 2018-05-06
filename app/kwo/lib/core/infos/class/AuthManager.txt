@@ -1,0 +1,24 @@
+en mode cli nous pouvons vérifier l'éxistence d'un MagicCookie dans le home du user 
+rester en signin min mais accéder à user.account afin de forcer l'auth
+
+    /***
+    elseif ($req->hasHeader('x-knx-uid')) {
+      $uid = $req->getHeader('x-knx-uid');
+      if ($req->getHeader('x-knx-credential') !== hash('md5', $uid . KWO_SEED)) {
+        S('log')->error('header credential ('.$uid.')', __METHOD__);
+        throw new Exception('bad access');
+      }
+      $track_event = false;
+      $where = 'id=:id:';
+      $bindings[':id:'] = (int) $uid;
+      $event_suffix = '-header-credential';
+    }
+    ***/
+    /***
+    elseif ($req->getRemoteUser() && $req->getRemotePassword()) {
+      $where = 'login=:login: AND password=MD5(:password:)';
+      $bindings[':login:'] = $req->getRemoteUser();
+      $bindings[':password:'] = $req->getRemotePassword();
+      $event_suffix = '-http';
+    } 
+    ***/

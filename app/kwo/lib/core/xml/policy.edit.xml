@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+ <page label="définition">
+  <form>
+   <hbox>
+    <vbox width="20%">
+     <elem field="name" label="nom" required="true" />
+     <elem field="description" rows="5" label="description" />
+    </vbox>
+    <vbox>
+     <elem field="extensions" options="Extension::asHash()" 
+           type="checkbox" cols="5" label="extensions souscrites" built="false" />
+     <elem field="actions" options="$item->getActions()" checkall="$item->hasNoAction()" highlight="true"
+           type="checkbox" cols="5" label="fonctionnalités disponibles" built="$is_loaded" />
+    </vbox>
+   </hbox>
+   <launcher/>
+  </form>
+ </page>
+
+ <page label="opérations" built="$is_loaded">
+  <hbox>
+   <vbox width="30%">
+    <box label="actions">
+     <link icon="details" />
+    </box>
+   </vbox>
+   <vbox><deck /></vbox>
+  </hbox> 
+ </page>
+
+</notebook>
+</fieldset>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
+<title>Cropper</title>
+<link type="text/css" rel="stylesheet" href="cropper.css" />
+<script type="text/javascript" src="prototype.js"></script>
+<script type="text/javascript" src="cropper.js"></script>
+<script type="text/javascript">
+Event.observe(window,'load',function () {
+    var cropper1 = new Cropper('img1');
+    $('btn1').onclick = function () { alert(cropper1.toQueryString()); };
+    var cropper2 = new Cropper('img2');
+    $('btn2').onclick = function () { alert(cropper2.toQueryString()); };
+    var cropper3 = new Cropper('img3');
+    $('btn3').onclick = function () { alert(cropper3.toQueryString()); };
+});
+</script>
+</head>
+<body>
+<h1>Cropper</h1>
+<hr>
+<input type="button" value="Crop img1" id="btn1" />
+<input type="button" value="Crop img2" id="btn2" />
+<input type="button" value="Crop img3" id="btn3" />
+<hr>
+<img src="civilisation.jpg" id="img1" />
+<img src="civilisation.jpg" id="img2" />
+<img src="civilisation.jpg" id="img3" />
+</body>
+</html>

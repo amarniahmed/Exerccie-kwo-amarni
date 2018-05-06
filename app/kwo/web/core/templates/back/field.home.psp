@@ -1,0 +1,21 @@
+<table class="fixed"><tbody><tr>
+
+<td class="field-types">
+<ul>
+<?php foreach (Field::$type_names as $id => $name): ?>
+<li>
+ <span data-field-type="<?=$id?>"><?=$name?></span>
+</li>
+<?php endforeach; ?>
+</ul>
+</td>
+
+<td class="field-list">
+<div>
+ <?=Field::asList($form)?>
+</div>
+</td>
+
+</tr></tbody></table>
+
+

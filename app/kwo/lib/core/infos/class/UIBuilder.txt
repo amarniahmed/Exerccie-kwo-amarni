@@ -1,0 +1,93 @@
+// elem -> control
+
+// Nodes : hotkey, timer
+// Attr : halign valign
+// filelistcontainer -> files_arr, col_count
+
+/***
+http://www.xamlog.com/2006/07/24/xml-data-binding-using-data-templates/
+http://developer.mozilla.org/en/docs/Category:XUL_Elements
+***/
+
+/***
+- regroupeer : button et elem
+- daterange, 
+  acordeon <-> sidebar, 
+  <dropmarker>, 
+  <notebook orient="horizontal"> 
+
+- hideif="empty|false|true|null"
+***/
+
+/***
+nous ne devons pas ajouter automatiquement des this dans les codes JavaScripts
+***/
+
+
+
+  /*  private function renderDataGrid($xml) {
+    if ($xml->hasAttribute('value')) {
+      $datagrid = $this->getNodeAttribute($xml,'value');
+    }
+    else {
+      $datagrid = new DataGrid();
+    }
+    $datagrid->initContext();
+    $datagrid->id = $xml->getAttribute('id');
+    if ($xml->hasAttribute('checkable')) $datagrid->setCheckable(); 
+    
+    $datagrid->key_name = $xml->getAttribute('key_name'); 
+    $datagrid->source = $xml->getAttribute('source'); 
+    if ($xml->hasAttribute('height')) $datagrid->height = $xml->getAttribute('height'); 
+    if ($xml->hasAttribute('row_count')) $datagrid->row_count = $xml->getAttribute('row_count'); 
+    if ($xml->hasAttribute('height')) $datagrid->setHeight($xml->getAttribute('height')); 
+    if ($xml->hasAttribute('spread')) $datagrid->setSpread($xml->getAttribute('spread')); 
+
+    $nodes = $xml->childNodes;
+    foreach ($nodes as $node) {
+      if ($node->nodeName=='cols') {
+	$cols = $node->childNodes;
+	foreach ($cols as $col) {
+	  $col_props_arr = array();
+	  $col_props_arr['label']    = $this->getNodeAttribute($col,'label');
+	  $col_props_arr['width']    = $col->getAttribute('width');
+	  $col_props_arr['order_by'] = $col->getAttribute('order_by');
+	  $col_props_arr['order_default'] = $col->hasAttribute('order_default');
+	  $col_props_arr['format']   = $col->getAttribute('format');
+	  $col_props_arr['field']    = $col->getAttribute('field');
+	  $col_props_arr['equiv']    = $col->getAttribute('equiv');
+	  $col_props_arr['key'] = false;
+	  if ($col->hasAttribute('key')) $col_props_arr['key'] = true;
+	  $col_props_arr['hidden'] = false;
+	  if ($col->hasAttribute('hidden')) $col_props_arr['hidden'] = true;
+	  $datagrid->addColumn($col_props_arr);
+	}
+      }
+      if ($node->nodeName=='filters') {
+	$filters = $node->childNodes;
+	foreach ($filters as $filter) {
+	  $filter_props_arr = array();
+	  $filter_props_arr['field'] = $filter->getAttribute('field');
+	  $filter_props_arr['ope']   = $filter->getAttribute('ope');
+	  $filter_props_arr['value'] = $this->getNodeAttribute($filter,'value');
+	  $datagrid->addFilter($filter_props_arr);
+	}
+      }
+      elseif ($node->nodeName === 'searchbox') $datagrid->initSearchBox($this->renderContainer($node));
+      elseif ($node->nodeName === 'importbox') $datagrid->initImportBox($this->renderContainer($node));
+      elseif ($node->nodeName === 'exportbox') $datagrid->initExportBox($this->renderContainer($node));
+      elseif ($node->nodeName === 'events') {
+	$events = $node->childNodes;
+	foreach ($events as $event) {
+          if (!$this->isBuilt($event)) continue;
+	  $type  = $event->getAttribute('type');
+	  if ($type === 'add' )       $datagrid->setAddAction($event->getAttribute('action'));
+	  elseif ($type === 'delete') $datagrid->setDeleteAction($event->getAttribute('action'));
+	  elseif ($type === 'reset')  $datagrid->addActionReset();
+	  elseif ($type === 'view')   $datagrid->view_action = $event->getAttribute('action');
+	  else $datagrid->addAction($type,$event->getAttribute('action'));
+	}
+      }
+    }
+    return $datagrid->render();
+  }*/

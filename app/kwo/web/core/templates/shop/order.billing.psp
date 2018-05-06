@@ -1,0 +1,96 @@
+<form>
+  <table class="order-columns">
+    <tr>
+      <td>
+        <h2><?=$snippet->title?></h2>
+        <ul class="hbox rounded">
+          <li>
+            <table class="vbox">
+              <tr>
+                <td style="width:3%;">
+                  <?=Elt::select(array('name' => 'billing[civility]',
+                                       'label' => l('civility'),
+                                       'value' => $profile['civility'],
+                                       'wide' => true,
+                                       'required' => true))?>
+                </td>
+                <td>
+                  <?=Elt::text(array('name' => 'billing[first_name]',
+                                     'label' => l('first_name'),
+                                     'value' => $profile['first_name'],
+                                     'required' => true,
+                                     'wide' => true))?>
+                </td>
+                <td>
+                  <?=Elt::text(array('name' => 'billing[last_name]',
+                                     'label' => l('last_name'),
+                                     'value' => $profile['last_name'],
+                                     'required' => true,
+                                     'wide' => true))?>
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li>
+            <?=Elt::text(array('name' => 'billing[address]',
+                               'label' => l('address'),
+                               'value' => $profile['address'],
+                               'required' => true,
+                               'wide' => true))?>
+          </li>
+          <li>
+            <?=Elt::text(array('name' => 'billing[address_extra]',
+                               'label' => l('address.extra'),
+                               'value' => $profile['address_extra'],
+                               'wide' => true))?>
+          </li>
+          <li>
+            <table class="vbox">
+              <tr>
+                <td>
+                  <?=Elt::text(array('name' => 'billing[city]',
+                                     'label' => l('city'),
+                                     'value' => $profile['city'],
+                                       'required' => true,
+                                     'wide' => true))?>
+                </td>
+                <td style="width:30%;">
+                  <?=Elt::text(array('name' => 'billing[region]',
+                                     'label' => l('region'),
+                                     'value' => $profile['region'],
+                                     'wide' => true))?>
+                </td>
+                <td style="width:30%;">
+                  <?=Elt::text(array('name' => 'billing[postal_code]',
+                                     'label' => l('postal_code'),
+                                     'value' => $profile['postal_code'],
+                                     'required' => true,
+                                     'wide' => true))?>
+                </td>
+              </tr>
+            </table>
+          </li>
+          <li>
+            <?=Elt::select(array('name' => 'billing[country_id]',
+                                 'label' => l('country'),
+                                 'value' => $profile['country_id'],
+                                 'on' => array('change' => 'Kwo.Order.onChange(this)'),
+                                 'required' => true))?>
+          </li>
+          <li>
+            <?=Elt::text(array('name' => 'billing[phone]',
+                               'label' => l('phone'),
+                               'value' => $profile['phone'],
+                               'required' => true))?>
+          </li>
+        </ul>
+      </td>
+      <td class="help"><div class="help"><?=$snippet->content?></div></td>
+    </tr>
+  </table>
+  <div class="order-section-navigation">
+    <a href="/cart" class="elt-link"><?=l('cart.return')?></a>
+    <?=Elt::button(array('label' => c(l('order.continue').' »'),
+                         'events' => array('click' => 'Kwo.Order.onStepNext(this)')))?>
+  </div>
+</form>

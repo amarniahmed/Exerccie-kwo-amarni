@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<resultset statement="SELECT * FROM social_access
+">
+  <row>
+	<field name="id">1</field>
+	<field name="model_id">21</field>
+	<field name="record_id">4</field>
+	<field name="user_id">1</field>
+	<field name="is_master_flag">1</field>
+	<field name="created_at">2007-08-14 18:26:48</field>
+  </row>
+</resultset>

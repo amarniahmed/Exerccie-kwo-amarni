@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+  <finder order="id desc" include="forum,user">
+    <filters>
+      <filter type="text" name="id" label="ID"/>
+      <filter type="text" name="name" label="sujet"/>
+      <filter type="select" name="forum_id" options="Model::asHash('Forum')" label="forurm"/>
+      <filter type="user"/>
+    </filters>
+    <cols>
+      <col name="name" />
+      <col name="forum_name"  label="forum"/>
+      <col name="user" />
+      <col name="posted_at" />
+    </cols>
+  </finder>
+

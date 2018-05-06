@@ -1,0 +1,25 @@
+<table class="fixed">
+  <tbody>
+    <tr class="hbox">
+      <td style="padding-right:0;">
+        <div id="file-panel" style="overflow-y:auto; height:410px;"></div>
+        <table class="fixed" style="margin-top:6px;">
+          <tbody>
+            <tr>
+              <td><div class="dropzone"></div></td>
+              <td>
+                <div class="launcher" style="padding-right:10px;">
+                  <img src="<?=PIX_URL?>/action/folder_add.png" class="button"
+                       id="create-folder-button"
+                       data-prompt="<?=c(l('nom du dossier'))?>" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td class="details" style="padding-top:4px;"></td>
+      <td class="actions"></td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,31 @@
+
+<?php if ($advert->type == Advert::TYPE_FLASH): ?>
+
+<object width="<?=$advert->width > 1 ? $advert->width : 480?>" height="<?=$advert->height > 1 ? $advert->height : 60?>"
+        classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="ad" align="middle"
+        codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0">
+
+ <param name="allowScriptAccess" value="sameDomain" />
+ <param name="movie" value="/web/core/files/wrapper.swf?ad_url=<?=urlencode('/redirect?item='.$advert->getKey())?>&ad_swf=<?=urlencode($advert->source)?>" />
+ <param name="quality" value="high" />
+ <param name="bgcolor" value="#ffffff" />
+ <param name="wmode" value="transparent" />
+
+ <embed width="<?=$advert->width > 1 ? $advert->width : 480?>" height="<?=$advert->height > 1 ? $advert->height : 60?>"
+        src="/web/core/files/wrapper.swf?ad_url=<?=urlencode('/redirect?item='.$advert->getKey())?>&ad_swf=<?=urlencode($advert->source)?>"
+        wmode="transparent" quality="high" bgcolor="#ffffff"  name="ad" align="middle"
+        allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+
+</object>
+
+<?php elseif ($advert->type == Advert::TYPE_IMAGE): ?>
+
+<a href="/redirect?item=<?=$advert->getKey()?>"
+   <?=$advert->width > 1 ? ' width="'.$advert->width.'"' : ''?><?=$advert->height > 1 ? ' height="'.$advert->height.'"' : ''?>
+   class="kwo-advert"<?=$advert->hasFlag(Advert::FLAG_BLANK)?'target="_blank"':''?>><img src="<?=$advert->source?>" border="0" /></a>
+
+<?php else: ?>
+
+<?=H::get($advert->source)?>
+
+<?php endif; ?>

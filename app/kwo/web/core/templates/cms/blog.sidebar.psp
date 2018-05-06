@@ -1,0 +1,70 @@
+<ul class="sections">
+
+<li class="section section-about">
+   <h3><?=l('sidebar.section.about')?></h3>
+ <div>
+<?php if (!empty($blog->image)): ?>
+  <img src="<?=$blog->image?>" />
+<?php endif; ?>
+  <?=$blog->description?>
+  <span class="clear"></span>
+ </div>
+</li>
+
+<li class="section section-search">
+ <h3><?=l('sidebar.section.search')?></h3>
+ <div>
+  <form action="/blog/-/id/<?=$blog->getId()?>" method="get">
+   <input type="text" name="query" class="text" value="<?=$query==""?"":$query?>" />
+   <a href="javascript:void(0)" onclick="$(this).up('FORM').submit()"><span>&nbsp;</span></a>
+  </form>
+ </div>
+</li>
+
+<li class="section section-headings">
+ <h3><?=l('sidebar.section.headings')?></h3>
+ <div>
+  <ul>
+<?php foreach($headings as $heading): ?>
+   <li><a href="/blog/-/id/<?=$blog->getId()?>/heading/<?=$heading['id']?>"><?=$heading['name']?></a> (<?=$heading['count']?>)</li>
+<?php endforeach; ?>
+  </ul>
+ </div>
+</li>
+
+<li class="section section-lasts">
+ <h3><?=l('sidebar.section.lasts')?></h3>
+ <div>
+  <ul>
+<?php foreach ($posts as $post): ?>
+   <li><a href="<?=$post->asUrl()?>"><?=$post->getName()?></a></li>
+<?php endforeach; ?>
+  <ul>
+ </div>
+</li>
+
+<li class="section section-tags">
+ <h3><?=l('sidebar.section.tags')?></h3>
+ <div><?=$cloud->asHtml()?></div>
+</li>
+
+<li class="section section-archive">
+ <h3><?=l('sidebar.section.archive')?></h3>
+ <div>
+  <ul>
+<?php foreach($archives as $archive): ?>
+   <li><a href="/blog/-/id/<?=$blog->getId()?>/<?=$archive['link']?>"><?=$archive['monthkey']?></a> (<?=$archive['count']?>)</li>
+<?php endforeach; ?>
+  </ul>
+ </div>
+</li>
+
+<li class="section section-actions">
+ <h3><?=l('sidebar.section.actions')?></h3>
+ <div>
+  <a href="/blog.feed/-/id/<?=$blog->getId()?>">RSS</a><br/>
+  <?=W::alert($blog)?>
+ </div>
+</li>
+
+</ul>

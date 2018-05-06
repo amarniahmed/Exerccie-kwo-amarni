@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" />
+      <elem field="path" type="file" />
+      <elem field="status" />
+      <elem field="locales" />
+      <elem field="description" rows="3" />
+      <hbox>
+       <vbox><elem field="image" type="image" filter="image" /></vbox>
+       <vbox><elem field="thumbnail" type="image" filter="image" /></vbox>
+      </hbox>
+      <elem field="flags" />
+     </vbox>
+     <vbox localized="true">
+      <elem field="title" label="intitulé" />
+     </vbox>
+    </hbox>
+    <launcher buttons="store" />
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

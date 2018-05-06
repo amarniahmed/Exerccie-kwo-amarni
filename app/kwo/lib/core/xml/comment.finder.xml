@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter type="checkbox" options="Comment::models()" name="model_id" label="type" />
+  <filter name="status" />
+  <filter type="user" />
+ </filters>
+ <cols>
+  <col name="model_id" />
+  <col name="user" width="200px" />
+  <col name="comment" label="commentaire"/>
+  <col name="posted_at" />
+ </cols>
+ <actions>
+  <action name="validate" label="valider" />
+  <action name="destroy" label="supprimer" />
+ </actions>
+</finder>
+
+

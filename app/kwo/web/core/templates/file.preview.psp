@@ -1,0 +1,23 @@
+<div>
+
+<ul>
+
+<li class="row-filename"><?=$file->getName()?></li>
+
+<?php if ($file->isImage()): ?>
+<li class="row-image">
+ <img src="<?=PIX_URL?>/empty.gif" 
+      style=""
+      data-url="<?=$file->getUrl()?>" />
+</li>
+<?php endif; ?>
+
+<li class="row-button">
+ <input type="button" value="<?=l('select')?>"
+        data-name="<?=$file->getName()?>"
+        data-path="<?=$file->getPath()?>" />
+</li>
+
+</ul>
+
+</div>

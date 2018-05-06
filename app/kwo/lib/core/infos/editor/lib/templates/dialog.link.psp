@@ -1,0 +1,137 @@
+<table class="grid">
+
+<tfoot>
+<tr>
+ <td>
+  <input type="button" id="button-remove" style="display:none;" value="supprimer le lien" class="button"
+         onclick="Kwo.Link.remove()" />
+ </td>
+ <td>
+  <input type="button" value="insérer" class="button"
+         onclick="Kwo.Link.insert()" /><br/>
+ </td>
+</tr>
+</tfoot>
+
+<tbody>
+<tr>
+ <td>type</td>
+ <td>
+  <select id="link_type">
+   <option value="http:">page web</option>
+   <option value="download:">téléchargement</option>
+   <option value="mailto:">e-Mail</option>
+  </select>
+ </td>
+</tr>
+<tr>
+ <td>adresse</td>
+ <td>
+  <input type="text" id="link_url" style="width:100%;" class="text" /> 
+ </td>
+</tr>
+<tr>
+ <td>class</td>
+ <td>
+  <select id="link_target">
+   <option value="0">par défaut</option>
+   <option value="_blank">nouvelle fenêtre</option>
+  </select>
+ </td>
+</tr>
+<tr>
+ <td>style</td>
+ <td><input type="text" id="link_class" /></td>
+</tr>
+</tbody>
+</table>
+
+<script>
+Kwo.Link = {
+
+  "init": function() {
+    editor.link = editor.selection.moveToAncestorNode("A");
+    if (editor.link == null) return ;
+    editor.link = Element.extend(editor.link);
+    var href = editor.link.getAttribute("href");
+    if (href.startsWith("mailto:")) {
+      href = href.split("mailto:")[1];
+      $("link_type").setValue("mailto:");
+    }
+    else if (href.startsWith("/file/get?path=")) {
+      href = href.split("/file/get?path=")[1];
+      $("link_type").setValue("download:");
+    }
+    $("link_class").setValue(editor.link.className);
+    $("link_url").setValue(href);
+    if (editor.link.getAttribute("target") === "_blank") {
+      $("link_target").setValue("_blank");
+    }
+    $("button-remove").show();
+  },
+
+  "insert": function() {
+
+    var href = $F("link_url");
+    var type = $F("link_type");
+
+    if (href.length < 1) {
+      return alert("Oops! Veuillez préciser le lien.");
+    }
+
+    if (editor.link == null) { 
+      var tmp = "javascript:void(" + (new Date().getTime()) + ")";
+      editor.doc.execCommand("createlink", false, tmp);
+      var links = editor.doc.getElementsByTagName("A");
+      for (var i = 0; i < links.length; i++) {
+        if (links[i].href == tmp) {
+	  links[i].href = href;
+	  editor.link = Element.extend(links[i]);
+          break ;
+        }
+      }
+    }
+
+    if (type === "download:") {
+      href = "/file/get?path=" + escape(href);
+    }
+    else if (type === "http:") {
+      if (!(href.startsWith("/") || href.startsWith("http"))) {
+        href = "http://" + href; 
+      }
+    }
+    else if (type === "mailto:") {
+      if (!href.include("@")) {
+        return alert("Oops! L'adresse email semble invalide.");
+      }
+      href = "mailto:" + href;
+    }
+
+    editor.link.setAttribute("href", href);
+
+    if ($("link_class") && $F("link_class").length > 1) {
+      editor.link.className = $F("link_class");
+    }
+    else { 
+      editor.link.removeAttribute("class"); 
+    }
+
+    if ($("link_target") && $F("link_target") == "_blank") {
+      editor.link.setAttribute("target", $F("link_target"));
+    }
+
+    Kwo.getDialog().close();
+  },
+
+  "remove": function() {
+    if (editor.link == null) { return false; }
+    var html = editor.link.innerHTML;
+    editor.link.parentNode.removeChild(editor.link);
+    editor.exec("inserthtml", html);
+    Kwo.getDialog().close();
+  }
+
+}
+editor = Kwo.getEditor();
+Kwo.Link.init(); 
+</script>

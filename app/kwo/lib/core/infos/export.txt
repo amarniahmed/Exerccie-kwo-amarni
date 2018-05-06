@@ -1,0 +1,24 @@
+Compte Comptable -> gl_account (General Ledger Account)
+gla
+
+http://www.magentocommerce.com/magento-connect/Agence+C3/extension/2236/c3-ebp-connect
+
+http://forum.pcsoft.fr/thread.awp?groupid=pcsoft.fr.windev&postid=198351&v=2
+
+Jnal ; CODE COMPTA ; Date ; N° Pièce ; Nom du client ; C ;D
+
+--------------------------------------------------------------------------
+JVT;411CLIENT;20090612;FA-0099998;SA NOM CLIENT;4109.44;0
+JVT;701SARF;20090612;FA-0099998;SA NOM CLIENT;0;2733.6
+JVT;701SARF;20090612;FA-0099998;SA NOM CLIENT;0;580.8
+JVT;701SARF;20090612;FA-0099998;SA NOM CLIENT;0;580.8
+JVT;445712;20090612;FA-0099998;SA NOM CLIENT;0;150.348
+JVT;445712;20090612;FA-0099998;SA NOM CLIENT;0;31.944
+JVT;445712;20090612;FA-0099998;SA NOM CLIENT;0;31.944
+--------------------------------------------------------------------------
+
+
+pour code compta pour un client, cela commence par 411.
+un code compta est sur 11 caractères
+il peut donc être intéressant de choisir : 4119xxxxxxx pour les clients web
+(ex. 41190000001 )

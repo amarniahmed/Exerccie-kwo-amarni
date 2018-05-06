@@ -1,0 +1,11 @@
+0 -> event_chapter
+1 -> event_name
+2 -> referer_key
+3 -> referer_tag
+
+
+
+
+update tracker_visit left join tracker_string on (tracker_string.name=tracker_visit.referer_key and tracker_string.type=2) set tracker_visit.referer_key_id=tracker_string.id;
+
+update tracker_visit left join tracker_string on (tracker_string.name=tracker_visit.referer_tag and tracker_string.type=3) set tracker_visit.referer_tag=tracker_string.id;

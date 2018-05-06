@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<mail code="shop_parcel">
+
+ <lang id="1">
+  <subject>suivi de colis</subject>
+  <body>Bonjour,<br/>
+votre colis a le numéro ((parcel)). Vous pouvez suivre<br/>
+Pour rappel, votre commande<br/>
+((order))
+<br/>Bien cordialement,
+</body>
+ </lang>
+
+
+
+</mail>

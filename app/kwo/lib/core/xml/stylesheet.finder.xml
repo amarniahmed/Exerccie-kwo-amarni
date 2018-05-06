@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<finder order="code asc">
+
+<filters>
+ <filter name="id" />
+ <filter name="code" />
+</filters>
+
+<cols>
+ <col name="app" />
+ <col name="code" />
+ <col name="name" />
+</cols>
+
+</finder>
+

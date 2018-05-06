@@ -1,0 +1,33 @@
+<div class="realtime">
+  <table class="fixed columns">
+    <tbody>
+      <tr>
+        <td>
+          <div class="summary">
+            <p><?=c(l('actuellement'))?> <span class="visitors big">0</span> <?=l('visiteur(s) actif(s) sur le site')?>,</p>
+            <p>dont <span class="newcomers big">0</span> <?=l('nouveau(x) visiteur(s)')?>.</p>
+            <p><?=c(l('nous comptabilisons déjà'))?> <span class="visits big">0</span> <?=l('visites aujourd’hui')?>.</p>
+          </div>
+          <div class="actions">
+            <span class="button refresh"><i class="fa fa-refresh"></i><?=c(l('mettre à jour'))?></span>
+            <span class="button" data-date="<?=substr(DH::yesterday(), 0, -3)?>"><i class="fa fa-calendar"></i><?=c(l('autres statistiques'))?></span>
+          </div>
+        </td>
+        <?php foreach (array(0, 1) as $remainder): ?>
+          <td>
+            <?php foreach ($blocks as $i => $block): ?>
+              <?php if ($i % 2 != $remainder) continue;  ?>
+              <div class="block">
+                <div class="label"><?=c($block['label'])?></div>
+                <div class="grid">
+                  <div class="body <?=$block['class']?>" data-fallback="<?=c(l('aucune donnée disponible'))?>" data-layout="list"></div>
+                </div>
+              </div>
+            <?php endforeach ; ?>
+          </td>
+        <?php endforeach ; ?>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<?=H::trigger('new kwo.managers.RealtimeOverview(this)')?>

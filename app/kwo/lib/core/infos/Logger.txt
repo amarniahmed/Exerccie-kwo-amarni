@@ -1,0 +1,4 @@
+
+// TODO
+// APPENDERS : console, syslog, socket, files, 
+// affichaga en mn qd le délais >= 60s

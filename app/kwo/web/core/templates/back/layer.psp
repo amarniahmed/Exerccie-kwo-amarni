@@ -1,0 +1,18 @@
+
+<script>
+ var _is_layer_flag = true; 
+</script>
+
+<link  href="<?=WEB_URL?>/<?=CORE?>/css/layer.css" rel="stylesheet" type="text/css" />
+
+<table class="grip"><tr>
+ <td id="grip"><?=$_title?></td>
+ <td class="close"><a href="javascript:parent.hideAllKwoLayer();">X</a></td>
+</tr></table>
+
+<div class="content" <?=$content_style?>>
+
+<?=$_content?>
+
+</div>
+

@@ -1,0 +1,16 @@
+<div class="result">
+<?=$results['total']?> <?=l('voters')?>
+
+<ul>
+<?php foreach ($results['choices'] as $choice_name => $count): ?>
+<li><?=ucfirst($choice_name)?> : <?=$count?></li>
+<?php endforeach ; ?>
+</ul>
+
+<?php if (strlen($choice->receipt) > 1): ?>
+<p>
+<?=$choice->receipt?>
+</p>
+<?php endif; ?>
+
+</div>

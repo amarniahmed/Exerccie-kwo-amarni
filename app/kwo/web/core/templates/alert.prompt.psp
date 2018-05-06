@@ -1,0 +1,12 @@
+<h1><?=c($title)?></h1>
+
+<div class="layout-hbox-content">
+  <div class="text-block"><?=$content?></div>
+  <form autocomplete="off" style="margin-top:20px;">
+    <div style="float:right;">
+      <?=Elt::button(array('label' => l('save')))?>
+    </div>
+    <?=Elt::text(array('name' => 'keyword',
+                       'label' => l('keyword.label')))?></li>
+  </form>
+</div>

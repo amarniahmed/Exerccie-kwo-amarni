@@ -1,0 +1,114 @@
+<center><img src="<?=$link?>" /></center>
+
+<?php if ($metrics['visit'] < 1) return ; ?>
+
+<table class="grid">
+<thead><tr><th colspan="2">visites</th></tr></thead>
+<tfoot>
+ <tr><td colspan="2">
+  <a href="javascript:void(0)"
+     onclick="Kwo.Dashboard.onRefine(this)"
+     data-action="visit">visites</a> &middot;
+  <a href="javascript:void(0)"
+     onclick="Kwo.Dashboard.onRefine(this)"
+     data-action="dashboard.metrics">+ d’infos</a>
+ </td></tr>
+</tfoot>
+<tbody>
+<tr><td>visites</td><td><?=$metrics['visit']?></td></tr>
+<tr><td>visiteurs uniques</td><td><?=$metrics['visitor']?></td></tr>
+<tr><td>tx habitués</td><td><?=$metrics['returning']?>%</td></tr>
+<tr><td>nouveaux visiteurs</td><td><?=(int)$metrics['new']?></td></tr>
+<tr><td>tx rebond</td><td><?=$metrics['bounce']?>%</td></tr>
+<tr><td>pages vues</td><td><?=$metrics['page']?></td></tr>
+<tr><td>actions</td><td><?=$metrics['interaction']?></td></tr>
+<tr><td>conversions</td><td><?=$metrics['conversion']?></td></tr>
+</tbody>
+</table>
+
+<?php if (Model::exists('user')): ?>
+<table class="grid">
+<thead><tr><th colspan="2">communauté</th></tr></thead>
+<tfoot>
+ <tr><td colspan="2">
+  <a href="javascript:void(0)"
+     onclick="Kwo.Dashboard.onRefine(this)"
+     data-action="dashboard.community">+ d’infos</a>
+ </td></tr>
+</tfoot>
+<tbody>
+<tr><td>nouveaux utilisateurs</td><td><?=(int)$metrics['user']?></td></tr>
+<tr><td>visites authentifiées</td><td><?=$report->format($metrics['person'])?></td></tr>
+</tbody>
+</table>
+<?php endif; ?>
+
+<table class="grid">
+<thead><tr><th colspan="2">sources de trafic</th></tr></thead>
+<tbody>
+<?php foreach ($mediums as $key => $value): ?>
+ <tr>
+  <td><?=Tracker::$mediums[$key]?></td>
+<?php if ($value == 0): ?>
+  <td><?=$value?>%</td>
+<?php else: ?>
+  <td onclick="Kwo.Dashboard.onRefine(this)"
+      data-action="dashboard.medium"
+      data-values="<?=H::asDataValues(array('medium_id' => $key))?>"><?=$value?>%</td>
+<?php endif; ?>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php if (Extension::exists('performance') && !empty($conversions)): ?>
+<table class="grid">
+<thead><tr><th colspan="2">conversions</th></tr></thead>
+<tbody>
+<?php foreach ($conversions as $conversion): ?>
+ <tr>
+  <td><?=$conversion['name']?></td>
+<?php if ($conversion['count'] == 0): ?>
+  <td>0%</td>
+<?php else: ?>
+  <td onclick="Kwo.Dashboard.onRefine(this)"
+      data-action="dashboard.conversion"
+      data-values="<?=H::asDataValues(array('model_id' => $conversion['id']))?>"><?=$conversion['count']?></td>
+<?php endif; ?>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+<table class="grid">
+<thead><tr><th colspan="2">actions</th></tr></thead>
+<tbody>
+<?php foreach ($interactions as $interaction): ?>
+ <tr>
+  <td><?=$interaction['name']?></td>
+  <td onclick="Kwo.Dashboard.onRefine(this)"
+      data-action="dashboard.interaction"
+      data-values="<?=H::asDataValues(array('model_id' => $interaction['id']))?>"><?=$interaction['count']?></td>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<table class="grid">
+<thead><tr><th colspan="2">requêtes</th></tr></thead>
+<tbody>
+<?php foreach ($events as $event): ?>
+ <tr>
+  <td><?=$event['name']?></td>
+<?php if ($event['count'] == 0): ?>
+  <td>0</td>
+<?php else: ?>
+  <td onclick="Kwo.Dashboard.onRefine(this)"
+      data-action="dashboard.category"
+      data-values="<?=H::asDataValues(array('category_id' => $event['id']))?>"><?=$event['count']?></td>
+<?php endif; ?>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+</table>

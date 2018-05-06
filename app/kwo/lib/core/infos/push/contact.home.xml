@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<kwo-interface>
+<notebook>
+ <page>
+
+<finder/>
+
+ </page>
+ <page label="opérations">
+  <hbox>
+   <vbox width="50%">
+    <box label="actions">
+     <link icon="add" />
+    </box>
+   </vbox>
+   <vbox>
+   </vbox>
+  </hbox>
+</page>
+</notebook>
+</kwo-interface>

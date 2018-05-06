@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="status desc, priority desc, name asc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="status" />
+ </filters>
+ <cols>
+  <col name="app" />
+  <col name="status" />
+  <col name="priority" />
+  <col name="name" />
+ </cols>
+</finder>
+

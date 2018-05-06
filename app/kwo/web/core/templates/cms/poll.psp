@@ -1,0 +1,25 @@
+<div class="widget-poll">
+  <strong><?=c($poll->title)?></strong>
+  <form onsubmit="Kwo.Poll.onSubmit(this); return false;">
+<?php if (!empty($poll->header)): ?>
+    <div class="header"><?=$poll->header?></div>
+<?php endif; ?>
+    <ul>
+<?php foreach ($choices as $choice): ?>
+      <li>
+        <label>
+          <input type="radio" name="choice_id"
+                 value="<?=$choice->getId()?>" /><?=c($choice->name)?>
+        </label>
+      </li>
+<?php endforeach; ?>
+    </ul>
+    <div class="footer">
+<?php if (!empty($poll->footer)): ?>
+      <span><?=$poll->footer?></span>
+ <?php endif; ?>
+      <?=Elt::button(array('label' => $poll->button ?: l('send')))?>
+    </div>
+    <div class="clear"></div>
+  </form>
+</div>

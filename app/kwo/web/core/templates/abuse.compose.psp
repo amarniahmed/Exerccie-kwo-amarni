@@ -1,0 +1,59 @@
+<h1>
+ <?=c(l('abuse.dialog.title'))?>
+</h1>
+
+<div class="layout-hbox-content">
+
+<form autocomplete="off">
+
+<?=Elt::hidden(array('name' => 'item', 
+                     'value' => $item))?>
+
+<ul class="hbox" style="margin:0; padding:0;">
+
+<?php if ($_user['id'] < 1): ?>
+
+<li>
+
+<table class="auto vbox"><tr>
+<td>
+<?=Elt::text(array('name' => 'full_name', 
+                   'label' => l('your_name'), 
+                   'required' => true, 
+                   'wide' => true))?>
+</td><td>
+<?=Elt::text(array('name' => 'email', 
+                   'label' => l('your_email'), 
+                   'required' => true, 
+                   'wide' => true))?>
+</td></tr></table>
+
+</li>
+
+<?php endif; ?>
+
+<li>
+<?=Elt::select(array('name' => 'motive_id', 
+                     'label' => l('subject'), 
+                     'required' => true,
+                     'wide' => true,
+                     'options' => $motives))?>
+</li>
+
+<li>
+<?=Elt::text(array('name' => 'content', 
+                   'label' => l('content'), 
+                   'required' => true, 
+                   'rows' => 4,
+                   'wide' => true))?>
+</li>
+
+<li id="abuse-button" style="text-align:right;">
+<?=Elt::button(array('label' => l('send')))?>
+</li>
+
+</ul>
+
+</form>
+
+</div>

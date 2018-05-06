@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+      <elem field="name" />
+      <elem field="code" />
+      <elem field="bit" precision="entre 1 et 31" />
+      <elem field="status" />
+      <elem field="language_id" />
+      <elem field="region_id" />
+      <elem field="native" precision="native name" />
+      <elem field="lang" precision="pour html : hreflang='x' ou html lang='x'" />
+     </vbox>
+     <vbox>
+      <elem field="image" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>
+

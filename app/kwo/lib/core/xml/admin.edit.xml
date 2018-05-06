@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="login" label="identifiant" required="true" />
+    <elem field="password" type="password" label="mot de passe" required="true" />
+    <elem field="locale" options="P('back.admin.locales')" />
+    <elem field="status" type="yesno" label="compte ouvert" />
+   </vbox>
+   <vbox>
+    <elem field="name" label="identité" />
+    <elem field="email" label="email" />
+   </vbox>
+   <vbox>
+    <elem field="policy_id" label="droits" />
+    <elem field="flags" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="30%">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox>
+   <deck/>
+  </vbox>
+ </hbox>
+</page>
+</notebook>
+
+</fieldset>

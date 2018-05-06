@@ -1,0 +1,16 @@
+<h1>Ajouter comme ami</h1>
+
+<div class="layout-hbox-content">
+
+<?=H::identity($friend)?>
+
+<div class="text-block">
+ Voulez vous envoyer une demande
+ de mise en relation à <strong><?=$friend?></strong>.
+</div>
+
+<form style="text-align:right;">
+ <?=Elt::button(array('label' => 'envoyer ma demande'))?>
+</form>
+
+</div>

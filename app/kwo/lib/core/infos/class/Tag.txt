@@ -1,0 +1,4 @@
+- <a href="" rel="tag">
+- http://.../TAGSPACE/../../.../TAGVALUE
+- renommer se_thesaurus en sys_word
+- avoir aussi sys_string et sys_url (url, domain)

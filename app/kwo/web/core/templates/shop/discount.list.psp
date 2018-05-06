@@ -1,0 +1,23 @@
+<?php if (count($discounts) < 1): ?>
+  <?=c(l('coupon.none'))?>.
+<?php return; endif; ?>
+
+<table class="grid auto">
+  <thead>
+    <th class="column-code"><?=l('coupon.code')?></th>
+    <th class="column-date"><?=l('coupon.available.until')?></th>
+    <th class="column-about"><?=l('description')?></th>
+  </thead>
+  <tbody>
+    <?php foreach ($discounts as $i => $discount): ?>
+      <tr <?=$i%2 == 0 ? 'class="alt"' : ''?>>
+        <td class="column-code"><?=$discount->getCoupon()?></td>
+        <td class="column-date"><?=H::date($discount->available_to)?></td>
+        <td class="column-about">
+          <strong><?=$discount->getProperty('label')?></strong><br/>
+          <?=$discount->getProperty('description')?>
+        </td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>

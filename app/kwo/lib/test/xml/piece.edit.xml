@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox>
+       <elem name="id" />
+       <elem name="name" />
+       <elem  name="superficie" />
+       <elem name="settlem_id" label="settlem" />
+       <elem name="type_id" label="type" value="salle de bain, chambre, salon, wc" />
+     </vbox>
+     <vbox>
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck /></vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

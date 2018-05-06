@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+<notebook>
+
+<page label="définition">
+<form>
+ <hbox>
+  <vbox width="40%">
+   <elem field="name" required="true" />
+   <elem field="code" required="true" />
+   <elem field="app" />
+   <elem field="status" />
+   <elem field="flags" />
+   <elem field="class" precision="css" />
+   <elem field="recipients" label="destinataires avertissement"
+         precision="séparés par des virgules" />
+   <elem field="locales" />
+  </vbox>
+  <vbox localized="true">
+   <elem field="title" />
+   <elem field="header" rows="2" label="en tête" />
+   <elem field="footer" rows="2" label="pied de page" />
+   <elem field="button" label="intitulé du bouton d'envoi" />
+   <elem field="ack_content" rows="4" label="Message de confirmation" precision="remplace le formulaire" />   
+   <elem field="ack_subject" label="Mail de confirmation : sujet" />
+   <elem field="ack_body" rows="4" label="Mail de confirmation : contenu" />
+  </vbox>
+  </hbox>
+  <launcher />
+ </form>
+</page>
+
+<page label="champs" built="$is_loaded">
+ <box value="$workspace" />
+</page>
+
+<page label="opérations" built="$is_loaded">
+
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="timeline" />
+    <link icon="export" model="submission" label="export" 
+          action="export.form"
+          container="deck" />
+    <link icon="hasmany" model="submission" />
+   </box>
+   </vbox>
+   <vbox><deck /></vbox>
+  </hbox>
+
+</page>
+
+</notebook>
+</fieldset>

@@ -1,0 +1,3 @@
+<div style="border:1px solid #aaa; padding:16px; background:#fafafa;">
+  <?=l('snippet:payment.failure')?>
+</div>

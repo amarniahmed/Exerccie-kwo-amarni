@@ -1,0 +1,56 @@
+<div class="period">
+  <div class="period-row period-year">
+    <table class="auto year">
+      <tbody>
+        <tr>
+          <td>
+            <select id="year">
+              <?php foreach ($years as $name => $num): ?>
+                <option value="<?=$num?>"<?=$year==$num?' selected="selected"':''?>><?=$name?></option>
+              <?php endforeach; ?>
+            </select>
+          </td>
+          <td class="selector"><span class="icon-caret-right"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="period-row period-month">
+    <table class="auto month">
+      <tbody>
+        <tr>
+          <td>
+            <select id="month" class="input-month">
+              <?php foreach ($months as $num => $name): ?>
+                <option value="<?=$num?>"<?=$month==$num?' selected="selected"':''?>><?=$name?></option>
+              <?php endforeach; ?>
+            </select>
+          </td>
+          <td class="selector"><span class="icon-caret-right"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="period-row period-day">
+    <table class="fixed days">
+      <tbody>
+        <?php foreach ($weeks as $week): ?>
+          <tr>
+            <?php foreach ($week as $num): ?>
+              <?php if ($num === 0): ?>
+                <td></td>
+              <?php elseif (in_array($num, $disabled_days)): ?>
+                <td><span><?=$num?></span></td>
+              <?php else: ?>
+                <td>
+                  <a href="javascript:void(0)"
+                     data-num="<?=$num?>"<?=$day==$num?' class="selected"':''?>><?=$num?></a>
+                </td>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+</div>

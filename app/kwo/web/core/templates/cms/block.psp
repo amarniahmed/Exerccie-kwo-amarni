@@ -1,0 +1,27 @@
+<div class="block block-<?=str_replace('.', '-', $block['code'])?>">
+  <div class="title">
+    <?php if ($block['icon']) : ?>
+      <img src="<?=$block['icon']?>" class="icon" />
+    <?php endif ?>
+    <?=c($block['title'])?>
+  </div>
+  <div class="content">
+    <?php if ($block['image']) : ?>
+      <img src="<?=$block['image']?>" class="image" />
+    <?php elseif ($block['thumbnail']) : ?>
+      <img src="<?=$block['thumbnail']?>" class="thumbnail" />
+    <?php endif;?>
+    <?php if (strlen($block['content']) > 5) : ?>
+      <div class="text-content">
+        <?=$block['content']?>
+      </div>
+    <?php endif;?>
+    <?php if ($block['url']) : ?>
+      <a href="<?=$block['url']?>"><?=c(l('know.more'))?></a>
+    <?php endif;?>
+    <?php if ($block['provider']) : ?>
+      <?=H::get($block['provider'])?>
+    <?php endif;?>
+    <div class="clear">&nbsp;</div>
+  </div>
+</div>

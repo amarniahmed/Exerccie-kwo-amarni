@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox width="30%">
+      <elem field="name" required="true" />
+      <elem field="app" />
+      <elem field="advertiser_id" />
+      <hbox>
+       <vbox width="35%">
+        <elem field="status" type="yesno" />
+       </vbox>
+       <vbox>
+        <elem field="locale" />
+       </vbox>
+      </hbox>
+      <hbox>
+       <vbox width="35%">
+        <elem field="threshold" label="limite" precision="nbre de clics" />
+       </vbox>
+       <vbox>
+        <elem field="online_from" type="date" label="date de début" /> 
+       </vbox>
+       <vbox>
+        <elem field="online_to" type="date" label="date de fin" />
+       </vbox>
+      </hbox>
+      <elem field="profit" label="gain" precision="pour les conversions" />
+     </vbox>
+     <vbox width="35%">
+      <hbox>
+       <vbox>
+        <elem field="format" options="Advert::$formats" type="radio" label="format" />
+       </vbox>
+       <vbox>
+        <elem field="medium" options="Advert::$media" type="radio" label="support" />
+       </vbox>
+      </hbox>
+      <elem field="spaces" options="Model::asBits('space')" type="checkbox" cols="3" label="emplacements" built="false" />
+      <elem type="relations" model="space" label="emplacements" />
+      <elem field="flags" />
+     </vbox>
+     <vbox>
+      <stackpanel index="$type">
+       <panel label="image" index="Advert::TYPE_IMAGE">
+        <elem value="Advert::TYPE_IMAGE" type="hidden" name="record[type]" />
+        <hbox>
+         <vbox width="70%">
+          <elem field="source" type="file" filter="image" label="fichier" />
+          <elem field="target_url" label="adresse cible" />
+         </vbox>
+         <vbox>
+          <elem field="width" label="largeur (px)" /><elem field="height" label="hauteur (px)" />
+         </vbox>
+        </hbox>
+       </panel>
+       <panel label="animation FLASH" index="Advert::TYPE_FLASH">
+        <elem value="Advert::TYPE_FLASH" type="hidden" name="record[type]" />
+        <hbox>
+         <vbox width="70%">
+          <elem field="source" type="file" filter=".swf" label="fichier (.swf)" />
+          <elem field="target_url" label="adresse cible" />
+         </vbox>
+         <vbox>
+          <elem field="width" label="largeur (px)" />
+          <elem field="height" label="hauteur (px)" />
+         </vbox>
+        </hbox>
+       </panel>
+       <panel label="javascript" index="Advert::TYPE_SCRIPT">
+        <elem value="Advert::TYPE_SCRIPT" type="hidden" name="record[type]" />
+        <elem field="source" type="file" filter=".js" label="fichier (.js)"  />
+       </panel>
+       <panel label="texte" index="Advert::TYPE_TEXT">
+        <elem value="Advert::TYPE_TEXT" type="hidden" name="record[type]" />
+        <elem field="title" />
+        <elem field="description" rows="3" />
+        <elem field="source" type="file" filter="image" label="image" />
+       </panel>
+      </stackpanel>
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="note" />
+      <link icon="timeline" />
+     </box>
+    </vbox>
+    <vbox>
+     <deck/>
+    </vbox>
+   </hbox> 
+  </page>
+ </notebook>
+
+</fieldset>
+

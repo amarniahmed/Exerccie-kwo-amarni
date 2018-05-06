@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="app asc, code asc">
+ <filters>
+  <filter name="id" />
+  <filter name="code" />
+  <filter name="status" />
+  <filter name="flags" />
+  <filter name="type" />
+  <filter name="properties" label="contenu" />
+  <filter name="app" options="String::apps()" />
+  <filter name="|%%|about" label="à propos" />
+ </filters>
+ <cols>
+  <col name="app" width="120px" />
+  <col name="code" width="350px" field="code" />
+  <col name="type" />
+  <col name="about" />
+  <col name="locales" />
+ </cols>
+ <actions>
+  <action name="destroy" label="supprimer"
+          confirm="êtes-vous sûr de vouloir procéder à la suppression ?" />
+ </actions>
+ <orders>
+  <order cols="app desc, code asc" label="app" />
+  <order cols="code asc" label="nom" />
+ </orders>
+</finder>

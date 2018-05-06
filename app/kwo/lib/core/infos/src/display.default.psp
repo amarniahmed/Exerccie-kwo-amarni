@@ -1,0 +1,19 @@
+<table class="display-default">
+
+<thead>
+ <tr>
+  <th><h1><?=$page->title?></h1></th>
+ </tr>
+</thead>
+
+<tfoot><tr><td></td></tr></foot>
+
+<tbody>
+ <tr><td><div class="display-default">
+
+<?=$page->content?>
+
+ </div></td></tr>
+</tbody>
+
+</table>

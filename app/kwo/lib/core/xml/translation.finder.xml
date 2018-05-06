@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<finder order="status, priority desc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="locale" />
+  <filter name="status" type="select" />
+  <filter name="flags" />
+  <filter type="select" name="priority"
+          options="Translation::$priorities" label="priorité" />
+  <filter type="select" name="model_id"
+          options="Translation::models()" label="modèle" />
+ </filters>
+ <cols>
+  <col name="model_id" />
+  <col name="locale" />
+  <col name="status" />
+  <col name="priority" width="90px" />
+  <col name="name" />
+ </cols>
+</finder>

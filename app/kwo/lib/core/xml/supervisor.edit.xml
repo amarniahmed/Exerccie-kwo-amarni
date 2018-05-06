@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset>
+
+<notebook>
+<page>
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <elem field="model_id" options="Supervisor::models()" />
+   </vbox>
+   <vbox>
+    <elem field="dimensions" precisions="une par ligne" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page>
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+</notebook>
+
+</fieldset>
+

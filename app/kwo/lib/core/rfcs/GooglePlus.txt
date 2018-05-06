@@ -1,0 +1,1 @@
+Pour forcer l'image, utiliser og:image : attention la hauteur de l'image doit être au moins 100px (et le ratio inférieur à 3)

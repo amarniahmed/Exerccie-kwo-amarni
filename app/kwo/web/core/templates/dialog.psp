@@ -1,0 +1,8 @@
+
+<div id="support-title">
+ <div style="float:left;"><?=h($_title)?></div>
+</div>
+
+<div style="padding:4px;">
+ <?=$_content?>
+</div>

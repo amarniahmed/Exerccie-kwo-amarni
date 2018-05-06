@@ -1,0 +1,26 @@
+<table class="fixed">
+ <tr><td class="top"></td></tr>
+ <tr><td class="center">
+  <h3><?=l('topics.last')?></h3>
+  <table class="fixed forum-abstract" style="margin-top:0 !important">
+   <thead>
+    <tr>
+     <th style="width:50%;"><?=ucfirst(l('subject'))?></th>
+     <th style="width:30%;"><?=ucfirst(l('forum'))?></th>
+     <th style="width:10%;"><?=ucfirst(l('responses'))?></th>
+     <th style="width:10%;"><?=ucfirst(l('displays'))?></th>
+    </tr>
+   </thead>
+   <tbody>
+<?php foreach ($topics as $i => $topic): ?>
+    <tr class="<?=($i%2 === 1)?'odd':''?>">
+     <td><a href="<?=$topic->asUrl()?>"><?=$topic->name?></a> by <?=$topic->user_name?></td>
+     <td><?=$topic->forum_name?></a></td>
+     <td><?=(int)$topic->comment_count?></a></td>
+     <td><?=(int)$topic->display_count?></a></td>
+    </tr>
+<?php endforeach; ?>
+   </tbody>
+  </table></td></tr>
+ <tr><td class="bottom"></td></tr>
+</table>

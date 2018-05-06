@@ -1,0 +1,26 @@
+<div class="editor">
+<div class="fields">
+
+<div class="elem elem-hidden">
+<input type="hidden" value="<?=$attachment->getKey()?>" />
+<blockquote><?=$attachment->getName()?></blockquote>
+</div>
+
+<?php foreach ($fields as $field): ?>
+
+<div class="elem elem-text">
+<label><?=$field?></label>
+<input type="text" value="<?=$row[$field]?>" data-field="<?=$field?>" />
+</div>
+
+<?php endforeach; ?>
+
+</div>
+
+<div class="controls">
+<span class="cancel">annuler</span>
+<span class="buttons"><span class="save">enregistrer</span></span>
+<div class="clear"></div>
+</div>
+
+</div>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox width="40%">
+    <elem field="name" />
+    <elem field="app" />
+    <hbox>
+     <vbox><elem field="status" type="yesno" /></vbox>
+     <vbox><elem field="position" /></vbox>
+     <vbox><elem field="threshold_min" label="seuil min" /></vbox>
+     <vbox><elem field="threshold_max" label="seuil max" /></vbox>
+    </hbox>
+    <elem field="priority" label="priorité" precision="plus prioritaire = 1" built="false" />
+    <elem field="countries" rows="2" label="pays" precision="ex. fr,en,ch" />
+    <box localized="true">
+     <elem field="label" />
+     <elem field="description" rows="3" />
+    </box>
+   </vbox>
+   <vbox>
+    <elem field="rates" label="taux" rows="35"
+          precision="pays(-admin2); prix; volume_min; volume_max; poids_min; poids_max; montant_min; montant_max" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+</fieldset>
+

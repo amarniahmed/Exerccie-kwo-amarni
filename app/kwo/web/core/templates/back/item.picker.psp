@@ -1,0 +1,46 @@
+<div class="nav">
+  <form>
+    <input type="hidden" name="page" value="0" />
+    <select name="model"<?=count($models) == 1 ? 'readonly' : ''?>>
+      <?php foreach ($models as $mdl): ?>
+        <option value="<?=$mdl?>"<?=$mdl==$model?' selected="selected"':''?>><?=Model::name($mdl)?></option>
+      <?php endforeach; ?>
+    </select>
+    <input type="text" name="query" value="<?=h($query)?>" />
+    <span class="icon-search item-search-button"></span>
+    <span class="icon-plus item-editor-button"></span>
+  </form>
+  <div class="clear"></div>
+</div>
+
+<div class="items">
+  <?php if ($items instanceof Collection): ?>
+    <?php if ($items->count() < 1): ?>
+      Aucun résultat
+    <?php else: ?>
+      <ul>
+        <?php foreach ($items as $item): ?>
+          <li title="ID <?=$item->getId()?>"
+              data-id="<?=$item->getId()?>"
+              data-item="<?=$item->getKey()?>"
+              data-model-id="<?=$item->getModelId()?>">
+            <?php if ($selection == 'multiple'): ?>
+              <input type="checkbox" />
+            <?php endif; ?>
+            <?=$item->asPickerRow()?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    <?php endif; ?>
+  <?php endif; ?>
+</div>
+
+<footer>
+<?php if ($selection == 'multiple'): ?>
+  <span class="button select-button"
+        style="display:none;"><i class="fa fa-check"></i>Sélectionner</span>
+<?php endif; ?>
+<?php if ($items instanceof Collection && $items->hasPagination()): ?>
+  <div class="pagination" style="float:right;"><?=$items->getPagination()->asHtml()?></div>
+<?php endif; ?>
+</footer>

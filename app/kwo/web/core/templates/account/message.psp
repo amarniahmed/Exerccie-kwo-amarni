@@ -1,0 +1,78 @@
+<table class="fixed kwo-message">
+
+<colgroup>
+ <col style="width:30%;" />
+ <col style="width:70%;" />
+</colgroup>
+
+<thead>
+<tr>
+ <th class="sender">
+  <?=$message->getUser()->avatar()?>
+  <strong><?=$message->getUser()->name?></strong><br/>
+  <?=H::datetime($message->created_at)?>
+ </th> 
+ <th>
+  <strong style="font-size:2em;"><?=ucfirst(h($message->title))?></strong>
+<?php if (is_array($recipients)): ?>
+  <div class="recipients">
+   <strong><?=ucfirst(l('message.recipients'))?></strong> : 
+   <span><?=join('</span>, <span>', $recipients)?></span>
+  </div>
+<?php endif; ?>
+  <p><?=h($message->content)?><p>
+ </th> 
+</tr>
+</thead>
+
+<tfoot>
+<tr>
+ <td>
+ </td>
+ <td>
+<?php if ($can_reply === true): ?>
+<form onsubmit="Kwo.Inbox.Message.onComment(this); return false;">
+ <input type="hidden" name="messages[]" value="<?=$message->getId()?>" />
+ <input type="hidden" name="item" value="<?=$message->getKey()?>" />
+ <strong><?=ucfirst(l('reply'))?>:</strong>
+ <?=Elt::text(array('name' => 'content', 
+                    'rows' => 6))?>
+ <div style="float:right">
+  <a href="javascript:void(0)" class="elt-link"
+     data-confirm="<?=l('confirmation')?>"
+     onclick="Kwo.Inbox.Message.onDelete(this)"><?=ucfirst(l('delete'))?></a>
+ </div>
+ <input type="submit" value="<?=ucfirst(l('send'))?>" /> 
+ <input type="button" value="<?=ucfirst(l('back'))?>"
+        onclick="Kwo.Inbox.display()" /> 
+</form>
+<?php else: ?>
+ <input type="button" value="<?=ucfirst(l('back'))?>"
+        onclick="Kwo.Inbox.display()" /> 
+<?php endif; ?>
+ </td>
+</tr>
+</tfoot>
+
+<tbody>
+
+<?php foreach ($message->getComments() as $comment): ?>
+<tr>
+ <td class="sender">
+  <?=$comment->getUser()->avatar()?>
+  <strong><?=$comment->user_name?></strong><br/>
+  <?=H::datetime($comment->created_at)?>
+ </td>
+ <td>
+  <?=h($comment->content)?>
+ </td>
+</tr>
+<?php endforeach; ?>
+
+</tbody>
+
+</table>
+
+<script>
+inbox_offset = <?=intval($inbox_offset)?>;
+</script>

@@ -1,0 +1,85 @@
+<table class="columns">
+  <tbody>
+    <tr>
+      <td class="primary">
+        <div class="nav">
+          <table class="fixed">
+            <tbody>
+              <tr>
+                <td>
+                  <?php if ($visit->id > 1): ?>
+                    <span class="icon-circle-arrow-left" data-visit-id="<?=($visit->id - 1)?>"></span>
+                  <?php endif; ?>
+                </td>
+                <td>
+                  <?=c(l('visite'))?> <span style="color:<?=$visit->conversions>0?'red':'black'?>;"><?=$visit->id?></span>
+                </td>
+                <td>
+                  <?php if ($visit->hasNext()): ?>
+                    <span class="icon-circle-arrow-right" data-visit-id="<?=($visit->id + 1)?>"></span>
+                  <?php endif; ?>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <table class="grid auto details">
+          <?php foreach ($rows as $key => $value) : ?>
+            <tr>
+              <td><?=$key?></td>
+              <td><?=$value?></td>
+            </tr>
+          <?php endforeach; ?>
+        </table>
+      </td>
+      <td class="secondary">
+        <div class="panels">
+          <div class="panel-path panel">
+            <table class="fixed columns">
+              <tbody>
+                <tr>
+                  <td>
+                    <?php if (count($events) > 0): ?>
+                      <span class="visit-label"><?=c(l('chemin'))?></span>
+                      <table class="grid auto">
+                        <tbody>
+                          <tr>
+                            <td colspan="2"><?=$url?></td>
+                          </tr>
+                          <?php foreach ($events as $created_at => $name) : ?>
+                            <tr>
+                              <td><?=$created_at?></td>
+                              <td><?=$name?></td>
+                            </tr>
+                          <?php endforeach; ?>
+                        </tbody>
+                      </table>
+                    <?php endif; ?>
+                  </td>
+                  <td>
+                    <?php if (count($conversions) > 0): ?>
+                      <span class="visit-label"><?=c(l('conversions'))?></span>
+                      <div class="data-rows">
+                        <?php foreach ($conversions as $conversion) : ?>
+                          <div>
+                            <ul>
+                              <?php foreach ($conversion as $key => $value) : ?>
+                                <li><span><?=c($key)?></span><span><?=$value?></span></li>
+                              <?php endforeach ; ?>
+                            </ul>
+                          </div>
+                        <?php endforeach; ?>
+                      </div>
+                    <?php endif; ?>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel-siblings panel" style="display:none;"></div>
+          <div class="panel-ripe panel" style="display:none;"></div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

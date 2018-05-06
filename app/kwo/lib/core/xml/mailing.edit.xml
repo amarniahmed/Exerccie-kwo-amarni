@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset>
+
+<notebook>
+<page>
+ <form>
+  <hbox>
+   <vbox>
+    <elem field="name" />
+    <hbox>
+     <vbox><elem field="status" /></vbox>
+     <vbox><elem field="locale" /></vbox>
+    </hbox>
+    <hbox>
+     <vbox><elem field="scheduled_at" /></vbox>
+     <vbox><elem field="bases" type="checkbox" options="Model::asHash('base')" /></vbox>
+    </hbox>
+    <elem field="image" />
+   </vbox>
+   <vbox>
+    <elem field="subject" />
+    <elem field="description" rows="3" />
+    <elem field="content" rows="6" />
+   </vbox>
+   <vbox>
+    <elem type="relations" model="country," />   
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+<page>
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="stats" />
+    <link icon="message" label="envoyer un BAT" action="send" container="panel" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+</notebook>
+
+</fieldset>
+

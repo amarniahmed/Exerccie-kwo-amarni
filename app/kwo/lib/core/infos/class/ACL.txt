@@ -1,0 +1,13 @@
+# Read (R):
+
+    * Read file contents
+    * List directory contents
+
+# Write (W):
+
+    * Add
+    * Create
+    * Delete
+    * Rename
+
+# Execute (X): 

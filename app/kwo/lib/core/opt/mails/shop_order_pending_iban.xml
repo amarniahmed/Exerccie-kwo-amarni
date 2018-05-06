@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<mail code="shop_parcel">
+
+<lang id="1">
+ <subject>enregistrement de votre commande</subject>
+ <body>Bonjour,<br/><br/>
+votre commande a bien été prise en compte.<br/><br/>
+Voici un résumé :<br/><br/>
+((details))
+Veuillez désormais nous envoyer votre règlement à l'adresse suivante :<br/>
+12 rue nationale<br/><br/>
+Bien cordialement,<br/>
+L'équipe</body>
+</lang>
+
+
+
+</mail>

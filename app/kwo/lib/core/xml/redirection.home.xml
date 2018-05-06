@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<notebook>
+
+<page>
+ <finder/>
+</page>
+
+<page label="opérations">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="add" />
+    <link icon="import" label="importer" action="$('actions').raise('import_box')" />
+   </box>
+  </vbox>
+  <vbox>
+    <deck id="actions">
+     <box label="import" id="import_box">
+      <form>
+       <hbox>
+        <vbox><elem type="file" tooltip="1ere ligne contient le nom des colonnes" name="file_path" value=""
+                    label="fichier CSV" /></vbox>
+       </hbox>
+       <launcher>
+        <button name="import" action=".onExec('import', this, {callback:true})" />
+       </launcher>
+      </form>
+     </box>
+    </deck>
+  </vbox>
+ </hbox>
+</page>
+
+</notebook>

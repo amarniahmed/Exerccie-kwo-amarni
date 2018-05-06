@@ -1,0 +1,7 @@
+<form method="post" target="_top" action="<?=$server_url?>" id="cybermut-form">
+  <?php foreach ($h as $key => $value): ?>
+    <input type="hidden" name="<?=$key?>" value="<?=h($value)?>" />
+  <?php endforeach; ?>
+  <input type="submit" style="display:none;" />
+</form>
+<script>$("cybermut-form").submit();</script>

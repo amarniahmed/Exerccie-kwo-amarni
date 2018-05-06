@@ -1,0 +1,44 @@
+<div class="comments-header">
+ <a href="javascript:void(0)"
+    onclick="new Kwo.Composer.Comment(this)"
+    data-item="<?=$item->getKey()?>"><img src="<?=PIX_URL?>/action/add.png" /></a>
+
+<?php if ($comments->numRows() >= 3): ?>
+    <?=l('comments')?>
+    <?=$comments->offsetFrom()?>-<?=$comments->offsetTo()?> /
+    <?=$comments->foundRows()?>
+<?php elseif ($comments->numRows() > 1): ?>
+    <?=l('comments')?>
+<?php elseif ($comments->numRows() == 1): ?>
+    <?=l('comment')?>
+<?php else: ?>
+    <?=l('no_comment')?>
+<?php endif; ?>
+</div>
+
+<div class="comments">
+<?php foreach ($comments as $i => $comment): ?>
+ <div<?=$i%2?' class="alt"':''?>>
+  <div class="avatar">
+   <?=$comment->getUser()->avatar()?>
+  </div>
+  <div class="content">
+   <div class="title">
+    <div class="widgets">
+     <?=W::abuse($comment)?> |
+     <?=W::thumb($comment)?>
+    </div>
+    <strong><?=$comment->getUser()->name?></strong>
+    <em>(<?=H::when($comment->created_at)?>)</em>
+   </div>
+   <p><?=$comment->content?></p>
+  </div>
+ </div>
+<?php endforeach; ?>
+</div>
+
+<?php if ($comments->hasPagination()) : ?>
+<div class="comments-footer">
+ <?=$comments->getPagination()->asHtml(array('onclick' => 'Kwo.Comment.onSwitchPage(this, ((page)))'))?>
+</div>
+<?php endif; ?>

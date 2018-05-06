@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+
+<finder order="code">
+
+<filters>
+ <filter name="app" />
+ <filter name="code" />
+</filters>
+
+<cols>
+ <col name="app" />
+ <col name="code" width="250px" />
+ <col name="content" width="360px" label="valeur" />
+ <col name="description" label="description" />
+</cols>
+
+</finder>
+

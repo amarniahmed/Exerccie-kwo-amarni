@@ -1,0 +1,33 @@
+Bonjour ((name)),
+
+merci de votre inscription sur notre site !
+
+Votre compte a été créé et doit être vérifié avant d'être activé.
+
+- pseudo : ((name))
+- identifiant : ((login))
+
+Veuillez cliquer sur le lien ci-dessous pour activer votre compte :
+((confirm))
+
+Merci et à bientôt,
+
+L'équipe du site.
+
+-------------------------------------------------------------------------------
+
+Hi ((name)),
+
+Thanks for signing up to this site!
+
+Your account has been created but needs to be verified before it is activated.
+
+Nickname: ((name))
+Login: ((login))
+
+Please click the link below to activate your account:
+((confirm))
+
+Thanks
+
+Your Team

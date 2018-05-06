@@ -1,0 +1,4 @@
+<h2>Modifier le Groupe</h2>
+<div class="rounded">
+<?=$form?>
+</div>

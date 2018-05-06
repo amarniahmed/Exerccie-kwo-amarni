@@ -1,0 +1,55 @@
+<div class="calendar">
+
+<table class="fixed navig"><tbody>
+<tr>
+ <td class="nav prev">«</td>
+ <td class="month">
+  <select>
+<?php foreach ($months as $key => $value): ?>
+   <option value="<?=$key?>"<?=$key == $month?'selected="selected"':''?>><?=$value?></option> 
+<?php endforeach; ?>
+  </select>
+ </td>
+ <td class="year">
+  <select>
+<?php for ($i = $year - 50; $i <= $year + 50; $i++) : ?>
+   <option value="<?=$i?>"<?=$i == $year?'selected="selected"':''?>><?=$i?></option> 
+<?php endfor; ?>
+  </select>
+ </td>
+ <td class="nav next">»</td>
+</tr>
+</tbody></table>
+
+<table class="fixed weeks">
+
+<colgroup>
+ <col /><col /><col /><col /><col />
+ <col style="background:#f9f9f9;" />
+ <col style="background:#f9f9f9;" />
+</colgroup>
+
+<thead>
+<?php foreach ($days as $day): ?>
+ <th><?=$day?></th>
+<?php endforeach; ?>
+</thead>
+
+<tbody>
+<?php foreach ($weeks as $week): ?>
+ <tr>
+<?php foreach ($week as $day): ?>
+<?php if ($day['num'] === 0): ?>
+  <td></td>
+<?php else: ?>
+  <td class="<?=implode(' ', $day['classes'])?>"
+      data-date="<?=$day['date']?>"><?=$day['num']?></td>
+<?php endif; ?>
+<?php endforeach; ?>
+ </tr>
+<?php endforeach; ?>
+</tbody>
+
+</table>
+
+</div>

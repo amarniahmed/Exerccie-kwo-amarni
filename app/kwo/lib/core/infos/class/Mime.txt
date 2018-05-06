@@ -1,0 +1,3 @@
+- http://developer.apple.com/documentation/Carbon/Conceptual/understanding_utis/utilist/chapter_4_section_1.html#//apple_ref/doc/uid/TP40001319-CH205-CHDIJFGJ
+- http://en.wikipedia.org/wiki/MIME_type
+- http://www.iana.org/assignments/media-types/

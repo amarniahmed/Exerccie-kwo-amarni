@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<finder order="id desc">
+  <filters>
+    <filter name="id" />
+    <filter type="text" name="last_name" label="nom"/>
+    <filter type="user"/>
+  </filters>
+  <cols>
+    <col name="last_name" width="20%" />
+    <col name="first_name" width="25%" />
+    <col name="phone" width="15%" />
+    <col name="user" />
+    <col name="created_at" />
+  </cols>
+</finder>

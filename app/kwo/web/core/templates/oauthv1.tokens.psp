@@ -1,0 +1,33 @@
+<div class="oauth-tokens">
+
+<h1><?=$title?></h1>
+
+<?php if (empty($tokens)): ?>
+<form action="<?=$button['url']?>" method="post">
+<input type="text" name="consumer_key" placeholder="consumer_key" value="<?=$consumer_key?>" />
+<input type="text" name="consumer_secret" placeholder="consumer_secret"  value="<?=$consumer_secret?>" />
+<input type="submit" value="<?=$button['label']?>" />
+</form>
+
+<?php else: ?>
+
+<div class="tokens">
+<ul>
+<?php foreach ($tokens as $key => $value): ?>
+<li><?=$key?>: <?=$value?></li>
+<?php endforeach; ?>
+</ul>
+</div>
+
+<?php if ($button): ?>
+
+<form action="<?=$button['url']?>" method="post">
+<input type="submit" value="<?=$button['label']?>" />
+</form>
+
+<?php endif; ?>
+
+<?php endif; ?>
+
+</form>
+</div>

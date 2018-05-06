@@ -1,0 +1,5 @@
+
+<a href="javascript:void(0)"
+   onclick="Kwo.F('user').onEdit(this)" 
+   data-id="<?=$user_id?>"><?=$login?></a> (<?=$user_id?>) / 
+<?=$nick_name?> - <?=$insert_date?>

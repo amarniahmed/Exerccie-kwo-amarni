@@ -1,0 +1,2 @@
+voiture=automobile
+vtt=velo

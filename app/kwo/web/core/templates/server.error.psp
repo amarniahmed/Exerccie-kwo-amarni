@@ -1,0 +1,14 @@
+<div class="error-box">
+ <img src="<?=PIX_URL?>/error48.gif" class="error-picto" />
+ <div class="error-content">
+   <strong>Oops! (<?=$code?>)</strong><br/>
+<?php if (strlen($_error_msg) < 4): ?>
+  <!-- <?=$msg?> -->
+  <?=ucfirst(l('snippet:page.failure'))?>
+<?php else: ?>
+  <?=ucfirst($_error_msg)?>
+<?php endif; ?>
+ </div>
+ <div class="clear"></div>
+</div>
+

@@ -1,0 +1,72 @@
+<?php
+
+if (!($req->manual == 'yes' || intval(date('H')) == 4)) return ;
+
+$keywords = $dbo->query('SELECT * FROM '.T('keyword'));
+
+$rows = $dbo->query('SELECT model_id, record_id, locale'
+                    .' FROM '.T('publication')
+                    .' WHERE published_on="'.DH::yesterday().'"');
+
+$n = 0;
+foreach ($rows as $row) {
+  try {
+    $item = Item::getInstance($row['model_id'], $row['record_id']);
+    $content = $item->asText($row['locale']);
+  }
+  catch (Exception $e) { 
+    $log->error($e);
+    continue ; 
+  }
+  //  echo $content."---------------------------------";
+  foreach ($keywords as $keyword) {
+    if ($keyword['locale'] != $row['locale']) continue ;
+    $reg = preg_quote($keyword['name']);
+    if (!empty($keyword['synonyms'])) {
+      $reg .= ','.preg_quote($keyword['synonyms']);
+    }
+    $reg = str_replace(',', '|', $reg);
+    if (!preg_match('/('.$reg.')/iu', $content)) continue ;
+    //    echo "$reg matches ".$issue."\n";
+    $n++;
+    $dbo->insert(Keyword::TABLE_MATCHING, 
+                 array('model_id' => $row['model_id'],
+                       'record_id' => $row['record_id'],
+                       'keyword_id' => $keyword['id'],
+                       'created_on' => DH::yesterday()),
+                 array('ignore'));
+  }
+}
+
+if ($n < 1) return ;
+
+$rs = $dbo->query('SELECT m.*, k.name, k.locale,'
+                  .     ' a.user_id, a.id AS alert_id'
+                  .' FROM '.Keyword::TABLE_MATCHING.' AS m,'
+                  .     ' '.T('keyword').' AS k,'
+                  .     ' '.T('alert').' AS a'
+                  .' WHERE m.keyword_id=k.id'
+                  .  ' AND a.model_id='.Model::id('keyword')
+                  .  ' AND a.record_id=k.id'
+                  .  ' AND a.status>0'
+                  .  ' AND m.created_on="'.DH::yesterday().'"'); 
+
+foreach ($rs as $row) {
+  try {
+    $item = Item::getInstance($row['model_id'], 
+                              $row['record_id']);
+    if (!$item->isOnline()) {
+      throw new Exception('item is offline'
+                          .' ['.$row['model_id'].'-'.$row['record_id'].']');
+    }
+  }
+  catch (Exception $e) { continue ; }
+  $record = array('model_id' => $row['model_id'],
+                  'record_id' => $row['record_id'],
+                  'user_id' => $row['user_id'],
+                  'type' => 'kwd',
+                  'value' => $row['name'],
+                  'locale' => $row['locale']);
+  Alert::enqueue($record);
+}
+

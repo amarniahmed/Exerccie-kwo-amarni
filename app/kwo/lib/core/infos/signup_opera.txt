@@ -1,0 +1,24 @@
+--------------------------------------------------------
+Please make sure to write a valid e-mail address. 
+You will receive an e-mail with an activation link after the registration.
+Your email does not appear on the site.
+--------------------------------------------------------
+Hi ((login))<br/>
+Thanks for joining our service :)
+
+Please activate your account by clicking here:
+LINK
+
+If you do not activate your account it will automatically
+be closed after 7 days.
+
+Your login name is: ((login))
+Your page can be accessed at: http://((server))/community/account
+
+We hope that you will enjoy your new membership.
+Please feel free to contact us at any time via
+
+http://my.opera.com/community/contact/
+
+Yours Sincerely,
+The Team

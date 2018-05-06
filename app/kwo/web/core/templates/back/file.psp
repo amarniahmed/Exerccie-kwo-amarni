@@ -1,0 +1,88 @@
+<div data-file-path="<?=$file->getName()?>">
+  <script>
+   var _file_path = "<?=$file->getName()?>";
+   var _path      = "<?=$file->getPath()?>";
+   var _filename = "<?=$file->getBaseName()?>";
+  </script>
+
+  <div class="folder_path"><?=$_title?></div>
+
+  <table class="columns">
+    <tr>
+      <td width="40%">
+        <fieldset class="list">
+          <legend><?=c(l('propriétés du fichier'))?></legend>
+          <table class="grid auto">
+            <?php
+              foreach ($details as $k => $v) {
+                print("<tr".(($i++%2)?' class="alt"':'')."><td style='width:20%;'>$k</td><td id='$k'>$v</td></tr>\n");
+              }
+            ?>
+          </table>
+        </fieldset>
+        <fieldset class="list">
+          <legend><?=c(l('actions'))?></legend>
+          <a href="javascript:void(0)"
+             data-prompt="<?=c(l('nom du nouveau fichier ?'))?>"
+             onclick="Kwo.File.rename(this)"><?=l('renommer')?></a>
+          <br/>
+          <?php if (File::isImage($file)): ?>
+            <a href="javascript:$('rotate_box').raise()"><?=l('réaliser une rotation')?></a><br/>
+            <a href="javascript:$('resize_box').raise()"><?=l('changer les dimensions')?></a><br/>
+            <a href="javascript:file.cropselect()" style="display:none;"><?=l('selectionner une zone')?></a>
+          <?php
+            elseif ($file->getExtension() === 'zip'):
+              $zip = new ZipArchive;
+              $ret = $zip->open($file->getName());
+              $zip->numFiles;
+          ?>
+            <a href="javascript:void(0)"
+               data-confirm="<?=c(l('êtes-vous sûr de vouloir décompresser ce fichier ?'))?>"
+               onclick="Kwo.File.unzip(this)"><?=l('décompresser')?> (<?=$zip->numFiles?> <?=l('fichiers')?>)</a>
+          <?php elseif ($file->isText() && $file->isWritable($file->getName())): ?>
+            <a href="javascript:Kwo.File.edit()"><?=l('éditer le contenu')?></a><br />
+          <?php endif; ?>
+
+          <?php if (in_array($file->getExtension(), array('csv', 'txt'))): ?>
+            <a href="javascript:Kwo.File.encode()"><?=l('encoder le fichier en UTF-8')?></a>
+          <?php endif; ?>
+          <?php if (in_array($file->getExtension(), array('csv'))): ?>
+            <br><a href="javascript:Kwo.go(\'/back/core/file.csv\', {file_path:_file_path})"><?=l('Csv reader')?></a>
+          <?php endif; ?>
+        </fieldset>
+        <div class="deck">
+          <fieldset style="display:none;" id="rotate_box">
+            <legend><?=c(l('effectuer une rotation'))?></legend>
+            <input type="radio" id="angle90" checked="checked" name="angle" /> 90° -
+            <input type="radio" id="angle180" name="angle" /> 180°<br/><br/>
+            <img src="<?=PIX_URL?>/action/apply.png" onclick="Kwo.File.rotate()" class="button" />
+          </fieldset>
+          <fieldset style="display:none;" id="resize_box">
+            <legend><?=c(l('nouvelles dimensions'))?></legend>
+            <table class="layout">
+              <tr>
+                <td style="width:50%;"><?=l('largeur')?><br/><input type="text" id="width" class="text" /></td>
+                <td><?=l('hauteur')?><br/><input type="text" id="height" class="text" /></td>
+              </tr>
+            </table>
+            <img src="<?=PIX_URL?>/action/apply.png" onclick="Kwo.File.resize()" class="button" />
+          </fieldset>
+        </div>
+      </td>
+      <td>
+        <?php if (File::isImage($file)): ?>
+          <fieldset>
+            <legend><?=c(l('aperçu'))?></legend>
+            <div style="height:377px; width:100%; overflow-x:auto; overflow-y:auto;">
+              <a href="/<?=$file->getName()?>" target="_blank"><img src='/<?=$file->getName()?>?time=<?=time()?>' /></a>
+            </div>
+          </fieldset>
+        <?php elseif (File::isVideo($file->getBaseName())): ?>
+          <video src="/<?=$file->getName()?>" controls="controls" style="max-width:300px; margin:14px auto 0 auto;"></video>
+        <?php elseif (File::isAudio($file->getBaseName())): ?>
+          <audio src="/<?=$file->getName()?>" controls="controls" style="max-width:300px; margin:14px auto 0 auto;"></audio>
+        <?php endif; ?>
+      </td>
+    </tr>
+  </table>
+</div>

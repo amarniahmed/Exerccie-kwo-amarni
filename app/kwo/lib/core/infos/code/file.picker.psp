@@ -1,0 +1,24 @@
+
+
+<div class="rounded" id="dialog-file-panel"
+     style="margin:6px; padding:4px; height:340px; border:1px solid #eee; overflow-y:auto;"></div>
+
+<div style="border-top:1px solid #eee;">
+
+<form enctype="multipart/form-data" method="post" target="upload-box" id="upload-form" 
+      action="/back/file/file.upload" style="float:right;">
+ <input type="hidden" name="type" value="panel" />
+ <input type="hidden" name="path" id="file_path" />
+
+ <button onclick="Kwo.getDialog().apply('');" value="Vider le champ">Vider le champ</button>
+
+ <input type="file" name="remote_file_path" />
+ <input type="button" value="Envoyer"
+        onclick="$('file_path').value = Kwo.panel.path; $(this.form).submit(); $(this.form).disable();" />
+ <iframe frameborder="no" name="upload-box" id="upload-box" style="width:0px; height:0px"></iframe>
+</form>
+
+</div>
+
+
+

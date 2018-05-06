@@ -1,0 +1,24 @@
+<div style="width:220px;">
+
+ <img src="<?=PIX_URL?>/colorpicker.jpg" 
+      class="image"
+      style="cursor:crosshair;" />
+
+ <div class="preview"
+      style="height:10px; width:220px; margin:2px 0 4px 0;"></div>
+
+ <div style="text-align:right;">
+
+  <input type="text" 
+         class="text"
+         style="width:6em; float:left;" />
+
+  <input type="button" 
+         value="<?=l('select')?>"
+         class="button" />
+
+ </div>
+
+ <div style="clear:both;"></div>
+
+</div>

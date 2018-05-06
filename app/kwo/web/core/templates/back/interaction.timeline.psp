@@ -1,0 +1,40 @@
+<fieldset>
+  <legend><?=c(l('timeline'))?></legend>
+  <table class="columns">
+    <tbody>
+      <tr>
+        <td>
+          <table class="grid auto">
+            <tbody>
+              <?php foreach ($months as $month => $hash): ?>
+                <tr>
+                  <td><?=$month?></td>
+                  <td>
+                    <ul class="border">
+                      <?php foreach ($hash as $type => $n): ?>
+                        <li>
+                          <?php if (is_numeric($type)): ?>
+                            <a href="#" title="<?=l('exporter')?>"
+                               onclick="kwo.ux.onExec(this)"
+                               data-model="<?=$model?>"
+                               data-action="interaction.export"
+                               data-args="<?=H::asDataValues(array('interaction_type' => $type, 'date' => $month))?>"
+                               data-container="_blank"><?=Interaction::$names[$type]?></a>
+                          <?php else: ?>
+                            <?=$type?>
+                          <?php endif; ?>
+                          : <?=$n?>
+                        </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </table>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>

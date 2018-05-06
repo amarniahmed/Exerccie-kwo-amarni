@@ -1,0 +1,11 @@
+<table class="hbox dashboard" data-period=""><tbody><tr>
+<td id="dashboard-period" class="dashboard-period">
+<form>
+ <?=H::get('/back/core/period.picker')?>
+</form>
+</td>
+<td id="dashboard-overview" class="dashboard-overview"><div class="wrapper"></div></td>
+<td id="dashboard-precision" class="dashboard-precision"><div class="wrapper"></div></td>
+</tr></tbody></table>
+
+

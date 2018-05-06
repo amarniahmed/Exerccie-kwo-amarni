@@ -1,0 +1,38 @@
+<div class="blog-container">
+
+<table class="blog-wrapper">
+
+ <thead>
+  <tr>
+   <th colspan="2" class="blog-header">
+    <h1><a href="<?=$blog->asUrl()?>"><?=h($blog->getName())?></a></h1>
+   </th>
+  </tr>
+ </thead>
+
+ <tfoot>
+  <tr><td colspan="2" class="blog-footer"></td></tr>
+ </tfoot>
+
+ <tbody>
+  <tr>
+
+<!-- [CONTENT] -->
+   <td class="blog-content">
+    <?=$_content?>
+   </td>
+<!-- [/CONTENT] -->
+
+<!-- [SIDEBAR] -->
+   <td class="blog-sidebar">
+    <?=H::get('/blog.sidebar',
+              array('id' => $blog->getId(), 'query' => $query),
+              array('item' => $blog, 'ttl' => 0))?>
+   </td>
+<!-- [/SIDEBAR] -->
+
+  </tr>
+ </tbody>
+</table>
+
+</div>

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+## deux petits exemple que tu arrangeras a ta sauce
+
+## inotify-tools-3.13-1.el5.rf.i386.rpm
+
+
+PATH="/tmp/"
+
+
+## monitore un repertoire $PATH, inotify se coupe des qu'une operation "CLOSE_WRITE"
+## est detecte
+while /usr/bin/inotifywait --event close_write $PATH &>/dev/null; 
+do
+        echo "nouveau fichier cree sous $PATH"
+        ## cd /var/web/ncw && /usr/local/bin/php -c etc/php-cli.ini init.php la/tache/php
+done
+
+
+## pour recuperer le nom du fichier concerne 
+while [ 42 ]; 
+do 
+        FILENAME=`/usr/bin/inotifywait --quiet --event close_write $PATH | /bin/grep CLOSE_WRITE | /bin/awk '{print $3}'`
+        echo "Le fichier $FILENAME vient d'etre cree sous $PATH"
+        ## cd /var/web/ncw && /usr/local/bin/php -c etc/php-cli.ini init.php la/tache/php
+done

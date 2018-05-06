@@ -1,0 +1,35 @@
+<div class="post">
+<table class="fixed">
+<thead><tr><th><?=H::datenice($post->created_at)?></th></tr></thead>
+
+<tfoot><tr><td>
+<?php if ($_action == 'post'): ?>
+ <?=W::abuse($post)?> -
+<?php else: ?>
+ <a href="/post/-/id/<?=$post->getId()?>#comments"
+    class="comment_count">
+<?php if ($post->comment_count < 1): ?>
+    <?=l('no_comment')?>
+<?php else: ?>
+  (<?=intval($post->comment_count)?>) commentaire(s)
+<?php endif; ?>
+ </a> -
+<?php endif; ?>
+<a href="/post/-/id/<?=$post->getId()?>" class="permalink"><?=l('permalink')?></a>
+</td></tr></tfoot>
+
+<tbody>
+ <tr>
+  <td>
+  <h2><a href="/post/-/id/<?=$post->getId()?>"><?=h($post->name)?></a></h2>
+  <p>
+   <?=$post->content?>
+<?php if (!empty($post->embed) >= 1): ?>
+   <div class="embed"><?=$post->embed?></div>
+<?php endif; ?>
+  </p>
+  </td>
+ </tr>
+</tbody>
+</table>
+</div>

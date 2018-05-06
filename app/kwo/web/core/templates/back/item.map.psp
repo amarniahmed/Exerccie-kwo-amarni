@@ -1,0 +1,3 @@
+<div data-model="<?=$model?>" style="width:400px; height:400px;"></div>
+
+<?=H::trigger('new kwo.managers.MarkerCluster(this)')?>

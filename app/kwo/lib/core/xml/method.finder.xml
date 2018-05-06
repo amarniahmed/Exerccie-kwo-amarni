@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="status desc, position" include="psp">
+ <filters>
+  <filter name="id" />
+  <filter name="name" />
+  <filter name="type" />
+  <filter name="psp_id" />
+ </filters>
+ <cols>
+  <col name="name" />
+  <col name="psp_name" label="Payment Service Provider"/>
+  <col name="type" />
+  <col name="position" />
+ </cols>
+</finder>

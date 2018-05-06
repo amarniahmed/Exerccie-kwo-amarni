@@ -1,0 +1,42 @@
+<table class="grid">
+
+<tfoot><tr>
+ <td></td>
+ <td>
+  <input type="button" value="mettre à jour" class="button"
+         onclick="Kwo.getEditor().setFont()" />
+ </td>
+<tr></tfoot>
+
+<tbody>
+<tr>
+ <td>famille</td>
+ <td>
+  <select id="font-family">
+   <option value=""></option>
+   <option value="serif" style="font-family:serif;">serif</option>
+   <option value="sans-serif" style="font-family:sans-serif;">sans-serif</option>
+   <option value="cursive" style="font-family:cursive;">cursive</option>
+   <option value="fantasy" style="font-family:fantasy;">fantasy</option>
+   <option value="monospace" style="font-family:monospace;">monospace</option>
+  </select>
+ </td>
+</tr>
+<tr>
+ <td>taille</td>
+ <td>
+  <select id="font-size">
+   <option value=""></option>
+   <option value="xx-small">xx-small</option>
+   <option value="x-small">x-small</option>
+   <option value="small">small</option>
+   <option value="medium">medium</option>
+   <option value="large">large</option>
+   <option value="x-large">x-large</option>
+   <option value="xx-large">xx-large</option>
+  </select>
+ </td>
+</tr>
+</tbody>
+
+</table>

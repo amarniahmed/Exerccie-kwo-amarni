@@ -1,0 +1,83 @@
+
+https://www1.perf.overture.com/caps/help/url_tracking_codes.htm
+
+
+Channel 	ovchn= 	
+
+A set code for the name of the channel or vendor the referring link is coming from.
+	
+
+    *
+
+      Required
+    *
+
+      Must be the 1st name-value pair in the query string
+    *
+
+      Name code must be entered in lower case: "ovchn"
+    *
+
+      Value code for undefined is OVR
+    *
+
+      Value codes are restricted to a set list of Channel codes. (To see a full list of Channel Codes, see the full Setup Guide, or see Available Channels)
+
+*******************************
+
+Campaign Name 	ovcpn= 	The name of the specific campaign for which marketing creative was created. For example, ovcpn=Fall+Product+Launch or ovcpn =Florida+Hotels 	
+
+    *
+
+      Required
+    *
+
+      Must be the 2nd name-value pair in the query string
+    *
+
+      Name code must be entered in lower case: "ovcpn";
+    *
+
+      Maximum value length is 50 characters
+
+*******************************
+
+Creative Name
+	
+
+ovcrn=
+	A descriptive name for the creative element of the campaign. For tracking Paid Search activities, your Creative must be the exact search term. For example, ovcrn=blue+shoes or ovcrn=real+estate+ohio. 	
+
+    *
+
+      Required
+    *
+
+      Must be the 3rd name-value pair in the query string
+    *
+
+      Name code must be entered in lowercase:"ovcrn"
+    *
+
+      Maximum value length is 50 characters
+
+
+*******************************
+
+Tactic 	ovtac= 	A set code for the type of tactic used for the creative. For example, ovtac=PPC 	
+
+    *
+
+      Required
+    *
+
+      Must be the 4th name-value pair in the query string
+    *
+
+      Name code must be entered in lower case: "ovtac"
+    *
+
+      Value code for Yahoo! Search Marketing's Pay Per Click code is PPC
+    *
+
+      Value codes are restricted to a set list of Tactic codes (For a full list of supported Tactic codes, please see the full Setup Guide)

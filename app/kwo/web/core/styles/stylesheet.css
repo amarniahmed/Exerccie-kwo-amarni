@@ -1,0 +1,10 @@
+.kwo-grey { background:#eee; color:#330000; font-family:sans-serif; letter-spacing:3px; font-size:20px; text-transform:uppercase; }
+.kwo-red-link { color:#220000; font-style:italic; font-weight:bolder; }
+.kwo-left { float:left; display:inline; }
+.kwo-double-ligne { line-height:2em; }
+.kwo-right { float:right; }
+.kwo-clear { clear:both; }
+.kwo-link-download { }
+.kwo-sub { font-size: .8em; vertical-align: sub; }
+.kwo-sup { font-size:.8em; vertical-align: super; }
+.kwo-legal-mention { font-size:0.625em; color:#b3b3b3; }

@@ -1,0 +1,70 @@
+.cropper {
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+.shadow {
+  z-index:1;
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+.cropzone {
+  z-index:2;
+  border:1px dashed white;
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+.block {
+  background-color:black;
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+.slidertop, .sliderbottom, .sliderleft, .sliderright, .slidertopleft, .slidertopright, .sliderbottomleft, .sliderbottomright {
+  z-index:3;
+  width:4px;
+  height:4px;
+  border:1px solid white;
+  background-color:#999;
+  position:absolute;
+  top:0px;
+  left:0px;
+}
+
+.slidertop {
+  cursor:n-resize;
+}
+
+.sliderbottom {
+  cursor:s-resize;
+}
+
+.sliderleft {
+  cursor:w-resize;
+}
+
+.sliderright {
+  cursor:e-resize;
+}
+
+.slidertopleft {
+  cursor:nw-resize;
+}
+
+.slidertopright {
+  cursor:ne-resize;
+}
+
+.sliderbottomleft {
+  cursor:sw-resize;
+}
+
+.sliderbottomright {
+  cursor:se-resize;
+}

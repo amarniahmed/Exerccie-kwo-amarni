@@ -1,0 +1,5 @@
+- http://www.facebook.com/ajax/s_network_ajax.php?q=boucho&t=7
+
+- http://my.opera.com/fxbois/account/about.dml
+
+- http://my.opera.com/community/signup/

@@ -1,0 +1,152 @@
+BUG JEVEUX1T
+
+=> toujouts demander les dernières versions de tous les composants
+=> il est possible d'utiliser le meme path pour tous les 
+ <components>
+  <pathfile id="office" path="/var/web/preprod/var/sips/params/pathfile" />
+  <pathfile id="paypal" path="/var/web/preprod/var/sips/params/pathfile" />
+  <pathfile id="payid"  path="/var/web/preprod/var/sips/params/pathfile" />
+ </components>
+
+
+
+Configuration
+---
+$parameter['shop.psp'] = array('sipsofficeserver' => array('mode' => 'test',
+                                                           'payment.response' => '',
+                                                           'payment.cancel'   => '',
+                                                           'params' => array('office' => array('host' => '127.0.0.1',
+                                                                                               'service.port' => 7180,
+                                                                                               'command.port' => 7181),
+                                                                             'merchant_id' => '011223344553333',
+                                                                             'merchant_country' => 'fr')));
+
+
+Informations Techniques
+---
+Sips Office Server 2.06 
+
+e-mail : sips@atosorigin.com
+tel : 0 811 107 033 (touches : # puis 4)
+fax : 0 811 370 981
+===
+Pour toute demande de renseignement, veuillez fournir le merchant_id, la phase d’installation (démo, 
+pré-production, ou production), et la solution de paiement (Sips) de votre boutique. Ces paramètres 
+nous permettront de vous identifier rapidement, afin de répondre à votre demande dans les meilleurs 
+délais.
+===
+
+
+Décompresser sips_API_SERVER_XXX.tar et sips_composant_office_XXX.tar dans un même répertoire (ex. var/sips)
+On doit se retrouver avec : examples/  office/  server/  Version.txt
+Vérifier que le fichier server/components/service/office.jar est bien là
+
+Mettre à jour :
+
+- office/param/pathfile (F_CERTIFICATE!/var/web/kwo/var/sips/office/param/certif!)
+
+- server/access/*
+
+- server/config/config.xml 
+(chemins absolus !
+Attention à
+<alternateTrace id="office" path="/var/web/kwo/var/sips/server/traces" prefix="office" />
+<pathfile id="office" path="/var/web/kwo/var/sips/office/param/pathfile" />)
+
+- on peut augmenter la quantité de logs
+<trace level="4" 
+
+- server/script/*.sh 
+(#!/bin/sh + 
+Mettre à jour
+SERVER_ROOT="/var/web/kwo/var/sips/server")
+
+
+
+Pour arrêter : kill sur les process java
+
+
+
+Vérifier qu'on peut bien se connecter en telnet à : 
+- test: http://rcet-office.sips-atos.com:2001
+- prod: http://office.sips-atos.com:2001
+
+
+
+> config/config.xml
+>> permet de configurer les différents services
+>>> service: les composants de type services (fonctionne en server to server avec Atos)
+>>> command: les composants de type commande (fonctionne en local)
+>>> httprequest: l'interface Html d'administration
+>>> watchdog: le processus permettant de tracer les actions et les erreurs
+>>> alert: envoie un message par methode POST à l'adresse indiqué en cas de problème (optionnel)
+>>> components: renseigne les composants additionnels (optionnel)
+
+> access/accessListHttpRequest.xml (paramétrage des règles d'accès obligatoire si le serveur n'est pas sur la même machine. "tout se qui n'est pas écrit est interdit [sauf localhost]")
+>> ajout de la règle '<acceptList from="192.168.0.1" to="192.168.0.253" />'
+
+
+
+
+Installation du JRE (version >= 1.3)
+Important: les enveloppes XML (requêtes) ne doivent pas contenir de retour chariot (renvoie une erreur)
+merchant_id et merchant_country se refère à l'extension du certificat (certif.<merchant_country>.<merchant_id>)
+
+
+Les different ports:
+---
+requetes de service: 7180
+requetes de commande: 7181
+server http (interface d'administration): 7282 (7182 à l'origine)
+watchdog: 7183
+
+
+Demarrage du server:
+---
+server/script/startWatchdog.sh
+server/script/startApiServer.sh
+
+pour utiliser les scripts, éditez les en remplaçant la 1ère ligne "#! /usr/bin/ksh" par "#!/usr/bin/sh" (sur kwo: #!/bin/sh)
+puis renseignez le chemin absolus vers le server dans 'SERVER_ROOT'
+
+scripts de test dans /var/web/kwo/var/sipofficeserver/apiServer_206/examples/php
+
+GetStatus.php : renvoie le status du serveur
+StopServer.php : stop le watchdog et l'apiserver
+
+
+Dictionnaire des données
+---
+Tout les champs utilisé dans les requetes et les reponses sont disponible dans le dictionnaire des données (07. dictionnaire des données)
+
+> 'data': Données supplémentaires en fonction du moyen de paiement (page 34)
+> 'currency_code' et 'amount': Données supplémentaires en fonction du moyen de paiement (page 31)
+> 'card_validity': format aaaamm
+> 'card_number': pour le serveur de test, les cryptogrammes se terminant par 00 ou 40 conduisent à une acceptation
+
+
+Reponse du serveur d'API: (06. Guide des composants -- page 18)
+--- request($payment) ---
+
+authorisation_id  renseigné par le serveur bancaire (si transaction autorisée)
+bank_response_code  renseigné par le serveur bancaire
+complementary_code  renseigné par le serveur Office
+complementary_info  renseigné par le serveur Office
+credit_amount  non renseigné
+currency_code  identique à la requête
+cvv_response_code  renseigné par le serveur bancaire (si demande d’autorisation avec cryptogramme effectuée)
+avs_response_code  renseigné par le serveur Office (si demande d’autorisation avec vérification d’adresse effectuée)
+data  identique à la requête
+new_amount  renseigné par le serveur Office
+new_status  renseigné par le serveur Office
+response_code  renseigné par le serveur Office
+transaction_date  renseigné par le serveur Office
+transaction_time  renseigné par le serveur Office
+transaction_certificate  renseigné par le serveur Office (si transaction acceptée)
+
+
+
+CB de test 
+num : 1111222233334400
+exp; : 12/2014 (par ex)
+cvv : 400

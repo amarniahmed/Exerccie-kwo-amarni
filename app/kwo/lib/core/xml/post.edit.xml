@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox width="35%">
+      <elem field="name" required="true" />
+      <elem field="code" required="true" />
+      <elem field="blog_id" label="blog associé" readonly="$blog" />
+      <elem field="image" type="file" label="image associée" />
+      <hbox>
+       <vbox>
+        <elem field="status" label="état" />
+        <elem field="published_at" type="datetime" label="date de publication" />
+        <elem field="author_id" />
+       </vbox>
+       <vbox>
+        <elem type="relations" model="heading" label="catégories associées" built="$blog" 
+              rows="8" selection="multiple" />
+       </vbox>
+      </hbox>
+      <elem field="flags" cols="3" />
+      <elem field="locales" />
+     </vbox>
+     <vbox localized="true">
+      <elem field="title" />
+      <elem field="description" rows="2" label="résumé" />
+      <elem field="content" rows="12" mode="rich" label="contenu" />
+      <elem field="embed" rows="3" label="contenu multimedia" precision="embed" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="comments" />
+      <link icon="seo" />
+     </box>
+    </vbox>
+    <vbox>
+     <deck/>
+    </vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>

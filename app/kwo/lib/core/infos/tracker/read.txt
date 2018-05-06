@@ -1,0 +1,65 @@
+http://code.google.com/apis/analytics/docs/
+http://code.google.com/apis/analytics/docs/gaTracking.html#Traffic
+
+
+  public function logScreen() {
+    if ($this->new_visit_flag===true) {
+      $out = "<script>\n";
+      $out .= " var s = 0; if (screen.width) s = screen.width;\n"; 
+      $out .= " var tracker_img = new Image(); ".
+	"tracker_img.src = \"".$this->tracker_url."?visit_id=".$this->cookie->visit_id."&screen_width=\"+s+\"&".time()."\";\n";
+      $out .= "</script>\n";
+      print($out);
+    }
+  }
+
+- utiliser : INET_ATON et INET_NTOA pour stocker les ips
+
+- ne pas stocker le remote_host
+
+- log_visitor : avoir l'ip en INT et utiliser 2 critères (IP et SIG) 
+pour retrouver la trace d'un visiteur
+
+- doc google :
+
+  	                Banner Ad 	E-mail Campaign 	Pay Per Click Keywords
+Campaign Source 	citysearch      newsletter1 	        overture
+Campaign Medium 	banner 	        email 	                cpc
+Campaign Term 	        Boston 	        July 	                the keyword you purchased
+Campaign Content 	  	  	 
+Campaign Name 	        productxyz 	productxyz 	        productxyz
+
+Google Analytics tracks online campaigns using a combination of the following five marketing dimensions:
+
+    * Source
+    * Medium
+    * Term
+    * Content
+    * Campaign
+
+* Source
+Every referral to a web site has an origin, or source. Examples of sources are the
+ Google search engine, the AOL search engine, the name of a newsletter, or the name 
+of a referring web site.
+
+* Medium
+The medium helps to qualify the source; together, the source and medium provide 
+specific information about the origin of a referral. For example, in the case of 
+a Google search engine source, the medium might be "cost-per-click", indicating 
+a sponsored link for which the advertiser paid, or "organic", indicating a link 
+in the unpaid search engine results. In the case of a newsletter source, examples 
+of medium include "email" and "print".
+
+* Term
+The term or keyword is the word or phrase that a user types into a search engine.
+
+* Content
+The content dimension describes the version of an advertisement on which a visitor
+ clicked. It is used in content-targeted advertising and Content (A/B) Testing to 
+determine which version of an advertisement is most effective at attracting 
+profitable leads.
+
+* Campaign
+The campaign dimension differentiates product promotions such as "Spring Ski Sale" 
+or slogan campaigns such as "Get Fit For Summer". 
+

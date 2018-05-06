@@ -1,0 +1,12 @@
+<?php foreach ($grids as $label => $grid): ?>
+
+<table class="grid">
+<thead><tr><th colspan="2"><?=$label?></th></tr></thead>
+<tbody>
+<?php foreach ($grid as $name => $n): ?>
+ <tr><td><?=$name?></td><td><?=$n?></td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+<?php endforeach; ?>

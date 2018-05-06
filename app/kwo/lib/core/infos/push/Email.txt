@@ -1,0 +1,21 @@
+  public static function asID($email) {
+    $email = str_replace(array(' ', "\t", "\n", "\r"), 
+                         array('', '', '', ''), 
+                         $email);
+    if (Valid::isEmailAddress($email, false) === false) {
+      S('log')->error('invalid email ['.$email.']', __METHOD__);
+      throw new ActiveRecordException('invalid email');
+    }
+    $email_id = S('dbo')->insert('psh_email', array('email' => $email), 
+                                 true);
+    if ($email_id < 1) { 
+      $email_id = S('dbo')->fetchValue('SELECT id'
+                                         .' FROM psh_email'
+                                         .' WHERE email=:email:',
+                                         array(':email:' => $email));
+      if ($email_id === false) {
+        throw new ActiveRecordException('can not insert email');
+      }
+    }
+    return $email_id;
+  }

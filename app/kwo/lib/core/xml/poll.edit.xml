@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset>
+ <notebook>
+  <page>
+   <form>
+    <hbox>
+     <vbox width="40%">
+      <elem field="name" required="true" />
+      <elem field="code" required="true" />
+      <elem field="app" />
+      <hbox>
+       <vbox><elem field="status" /></vbox>
+       <vbox><elem field="locales" /></vbox> 
+      </hbox>
+     </vbox>
+     <vbox width="30%" localized="true">
+      <elem field="title" />
+      <elem field="header" rows="2" label="contenu haut" />
+      <elem field="footer" rows="2" label="contenu bas" />
+      <elem field="button" label="bouton" />
+     </vbox>
+     <vbox>
+      <elem type="relations" model="choice" label="choix" />
+     </vbox>
+    </hbox>
+    <launcher />
+   </form>
+  </page>
+  <page>
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+     </box>
+    </vbox>
+    <vbox><deck/></vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>

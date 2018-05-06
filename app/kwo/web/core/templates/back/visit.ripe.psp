@@ -1,0 +1,12 @@
+<span class="visit-label">Informations concernant l’adresse IP</span>
+<table class="grid"><tbody>
+<?php foreach ($h as $object => $keys): ?>
+<?php foreach ($keys as $key => $value): ?>
+<tr><td><?=$object.' : '.$key?></td><td><?=$h[$object][$key]?></td></tr>
+<?php endforeach; ?>
+<?php endforeach; ?>
+</tbody></table>
+
+<pre style="display:none;">
+<?php print_r($h); ?>
+</pre>

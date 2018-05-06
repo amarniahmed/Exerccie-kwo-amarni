@@ -1,0 +1,11 @@
+
+<style>
+ .elem { display:block; padding:3px; background:#eee; float:left; margin:0 2px 2px 0; 
+         border:1px solid #aaa; text-decoration:none; }
+</style>
+
+<?php foreach ($chars as $c): ?>
+ <a href="javascript:Kwo.getEditor().insertCharacter('<?=$c?>')" class="elem"><?=$c?></a>
+<?php endforeach; ?>
+
+

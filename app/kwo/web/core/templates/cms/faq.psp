@@ -1,0 +1,56 @@
+<article class="faq-container">
+  <header>
+    <h1 class="heading-title"><?=c($faq->title)?></h1>
+    <?php if($faq->description): ?>
+    <p class="heading-description"><?=c($faq->description)?></p>
+    <?php endif; ?>
+  </header>
+  
+  <div class="layout-hbox-content">
+  <br><br>
+<h2>raccourcis</h2>
+    <ul id="faq-questions" class="faq-questions">
+    <?php foreach ($components as $component): ?>
+     <li><a href="#<?=SH::urlify($component->name.'-'.$component->id)?>" class="event-select" data-id="<?=$component->id?>"><?=c($component->name)?></a></li>
+    <?php endforeach; ?>
+    </ul>
+<br><br>
+    <hr>
+<br><br>
+    <ul class="faq-questions">
+    <?php foreach ($components as $component): ?>
+      <li class="faq-question">
+        <h3 id="<?=SH::urlify($component->name.'-'.$component->id)?>" class="faq-question-title" onClick="$(this).next().toggle()">
+          <?=c($component->title)?>
+        </h3>
+        <div class="faq-question-content" style="display:none;">
+          <div class="editable-content"><?=$component->content?></div>
+        </div>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+<br><br>
+    <hr>
+<br><br>
+    <ul class="faq-sections">
+    <?php foreach ($sections as $section) : ?>
+      <li class="sidebox-container faq-section">
+        <h2 class="sidebox-title sidebox-title-bb faq-section-title"><?=c($section->label)?></h2>
+        <ul class="faq-questions">
+        <?php foreach ($section_components[$section->id] as $component): ?>
+          <li class="faq-question">
+            <h3 id="<?=SH::urlify($component->name.'-'.$component->id)?>" class="faq-question-title" onClick="$(this).next().toggle()">
+              <?=c($component->title)?>
+            </h3>
+            <div class="faq-question-content" style="display:none;">
+              <div class="editable-content"><?=$component->content?></div>
+            </div>
+          </li>
+        <?php endforeach; ?>
+        </ul>
+      </li>
+    <?php endforeach; ?>
+    </ul>
+  
+  </div>
+</article>

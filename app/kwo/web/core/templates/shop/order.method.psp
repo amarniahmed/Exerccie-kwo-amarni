@@ -1,0 +1,44 @@
+<form>
+ <table class="order-columns">
+  <tr>
+   <td>
+    <h2><?=$snippet->title?></h2>
+    <table class="layout-checkboxes">
+     <tbody>
+<?php foreach ($methods as $method) : ?>
+      <tr>
+       <td class="left">
+        <input type="radio" name="method_id"
+               id="method-<?=$method->getId()?>"
+               value="<?=$method->getId()?>"<?=$method_id==$method->getId()?' checked="checked"':''?> />
+       </td>
+       <td>
+        <label for="method-<?=$method->getId()?>"><?=c($method->label)?></label>
+<?php if ($method->image): ?>
+          <img src="<?=$method->image?>" />
+<?php endif; ?>
+        <small><?=$method->description?></small>
+       </td>
+      </tr>
+<?php endforeach; ?>
+     </tbody>
+    </table>
+   </td>
+   <td class="help">
+    <div class="help"><?=$snippet->content?></div>
+   </td>
+  </tr>
+ </table>
+ <div class="order-section-navigation">
+  <a href="/cart" class="elt-link"><?=l('cart.return')?></a>
+   <?=Elt::button(array('label' => c(l('order.finalize').' »'),
+                        'events' => array('click' => 'Kwo.Order.onFinalize(this)')))?>
+ </div>
+</form>
+
+<div id="psp-container"></div>
+
+<?php if ($trackers['lengow']): ?>
+<img src="https://tracking.lengow.com/lead.php?idClient=<?=$trackers['lengow']['id_client']?>&idGroup=<?=$trackers['lengow']['id_group']?>&price=<?=$order->total_amount?>&idCommande=<?=$order->id?>"
+     alt="" border="0" />
+<?php endif; ?>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <notebook>
+     <page label="paramètres">
+      <hbox>
+       <vbox width="25%">
+        <elem field="name" label="intitulé" required="true" />
+        <elem field="flags" />
+        <hbox>
+         <vbox><elem field="status" type="radio" options="Campaign::$statuses" label="état" /></vbox>
+         <vbox>
+          <elem field="scheduled_at" type="datetime" label="Date d'envoi" />
+          <elem field="locale" />
+         </vbox>
+        </hbox>
+        <elem field="newsletter_id" label="newsletter associée" required="true" />
+       </vbox>
+       <vbox width="40%">
+        <elem field="from_name" label="nom de l'envoyeur" required="true" />
+        <elem field="from_email" label="adresse email de l'envoyeur" required="true" />
+        <elem field="reply_email" label="adresse email de réponse" precision="reply-to" required="true" />
+        <elem field="subject" label="objet du message" required="true" />
+        <elem field="body_id" options="Model::asHash('body')" addfirst="-- aucun --" label="créer le corps du message à partir de" />
+        <elem field="style" precision="pour le tag body" />
+       </vbox>
+       <vbox>
+        <elem field="bases" options="Campaign::bases()" type="checkbox" label="destinataires" />
+        <elem field="blacklist" precision="un domaine ou une adresse email par ligne" rows="5" />
+       </vbox>
+      </hbox>
+     </page>
+     <page label="corps du message">
+      <hbox>
+       <vbox>
+        <elem field="content_html" mode="rich" rows="31" label="contenu HTML" />
+       </vbox>
+       <vbox>
+        <elem field="content_text" rows="31" label="contenu TEXT" />
+       </vbox>
+      </hbox>
+     </page>
+    </notebook>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="stats" />
+      <link icon="send" action="proof" label="envoi BAT" />
+      <link icon="export" action="export.form" label="export" />
+     </box>
+    </vbox>
+    <vbox>
+     <deck />
+    </vbox>
+   </hbox>
+  </page>
+ </notebook>
+</fieldset>

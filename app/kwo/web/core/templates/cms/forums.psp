@@ -1,0 +1,45 @@
+<?php foreach ($columns as $name => $forums): ?>
+
+<h2><?=c($name)?></h2>
+
+<table class="fixed">
+
+<thead>
+<tr>
+ <th class="column-title"><?=c(l('forum'))?></th>
+ <th class="column-topic-count"><?=c(l('topics'))?></th>
+ <th class="column-last-topic"><?=c(l('topic.last'))?></th>
+</tr>
+</thead>
+
+<tfoot>
+ <tr><td colspan="3"></td></tr>
+</tfoot>
+
+<tbody>
+<?php foreach ($forums as $forum): ?>
+<tr>
+ <td class="column-title">
+  <a href="<?=$forum->asUrl()?>"><?=c($forum->name)?></a>
+  <p><?=$forum->description?></p>
+ </td>
+ <td class="column-topic-count"><?=$forum->getTopicCount()?></td>
+ <td class="column-last-topic">
+<?php if ($topics[$forum->last_topic_id]): ?>
+ <?=H::datetime($topics[$forum->last_topic_id]->created_at)?><br/>
+ <p>
+  &laquo; <?=c(h($topics[$forum->last_topic_id]->name))?> &raquo;
+  <?=l('by')?> <?=H::user($topics[$forum->last_topic_id])?>
+ </p>
+
+<?php endif; ?>
+ </td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+
+</table>
+<?php endforeach; ?>
+
+
+

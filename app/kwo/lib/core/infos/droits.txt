@@ -1,0 +1,3 @@
+http://developer.apple.com/DOCUMENTATION/Security/Conceptual/authorization_concepts/01introduction/introduction.html
+
+http://msdn.microsoft.com/en-us/library/dd550643(VS.85).aspx

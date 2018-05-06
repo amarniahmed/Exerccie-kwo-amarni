@@ -1,0 +1,40 @@
+<h1>Importer mes contacts</h1>
+
+<div class="layout-hbox-content">
+
+<form class="auth" autocomplete="off">
+
+<table class="fixed contact-form">
+<tr>
+ <td class="left"><label>Fournisseurs</label></td>
+ <td>
+  <select name="type" id="import-contact-type">
+<?php foreach ($providers as $id => $name) : ?>
+   <option value="<?=$id?>"><?=$name?></option>
+<?php endforeach; ?>
+  </select>
+ </td>
+</tr>
+
+<tr>
+ <td class="left"><label>Email</label></td>
+ <td>
+  <input type="text" name="login" id="import-contact-login" class="text" 
+         value="" />
+ </td>
+</tr>
+<tr>
+ <td class="left"><label>Mot de passe</label></td>
+ <td><input type="password" name="pass" id="import-contact-pass" class="text" /></td>
+</tr>
+<tr>
+ <td></td>
+ <td><?=Elt::button(array('label' => 'importer'))?></td>
+</tr>
+</table>
+</form>
+
+<div id="contact-import-result"></div>
+
+</div>
+

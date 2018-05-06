@@ -1,0 +1,36 @@
+<table class="hbox"><tboby><tr><td>
+
+<table class="grid">
+<thead><tr><th colspan="2">sources</th></tr></thead>
+<tbody>
+<?php foreach ($sources as $key => $value): ?>
+ <tr><td><?=$key?></td><td><?=$value?>%</td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+
+</td><td>
+
+<?php if (!empty($terms)): ?>
+<table class="grid">
+<thead><tr><th colspan="2">termes</th></tr></thead>
+<tbody>
+<?php foreach ($terms as $key => $value): ?>
+ <tr><td><?=$key?></td><td><?=$value?>%</td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+<?php if (!empty($campaigns)): ?>
+<table class="grid">
+<thead><tr><th colspan="2">campagnes</th></tr></thead>
+<tbody>
+<?php foreach ($campaigns as $key => $value): ?>
+ <tr><td><?=$key?></td><td><?=$value?>%</td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>
+<?php endif; ?>
+
+</td></tr></tbody></table>

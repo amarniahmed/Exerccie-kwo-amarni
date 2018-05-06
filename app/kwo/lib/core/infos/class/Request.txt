@@ -1,0 +1,29 @@
+utiliser ie : pour input encoding 
+ (et oe pour la Response)
+ vars : lang, locale
+Voir : PHP-RPC
+http://www.rooftopsolutions.nl/article/141
+
+
+An AST for
+
+<a href="http://foo.com/?bar=$baz">
+
+might look like
+
+    Element : a
+      Attribute : href
+        Value
+          Url
+            Protocol : http
+            Authority
+              Domain : foo.com
+            Path : /
+            Query
+              Pair
+                Key : bar
+                Value
+                  QuasiLiteralReference baz
+
+
+

@@ -1,0 +1,23 @@
+<fieldset>
+  <legend><?=c(l('conversions'))?></legend>
+  <table class="hbox">
+    <tbody>
+      <tr>
+        <td>
+          <ul class="grid">
+            <?php foreach ($rows as $row): ?>
+              <li>
+                <span><?=c(l('conversion'))?> : <?=Item::link(array(Model::id('conversion'), $row['id']))?> - <?=$row['status']<1?l('REFUS'):''?></span>
+                <span><?=c(l('type'))?> : <?=Item::link(array($row['model_id'], $row['record_id']))?></span>
+                <span><?=c(l('valeur'))?> : <?=$row['worth']?></span>
+                <span><?=c(l('date'))?> : <?=$row['converted_at']?></span>
+                <span><?=c(l('visite'))?> : <?=Visit::link($row['visit_id'])?></span>
+              </li>
+            <?php endforeach ; ?>
+          </ul>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>

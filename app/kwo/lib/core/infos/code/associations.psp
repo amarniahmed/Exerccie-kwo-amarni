@@ -1,0 +1,54 @@
+
+<fieldset data-model1="<?=MODEL?>" data-model2="<?=$items->model()?>"><legend><?=$label?>(s)</legend>
+
+<table class="fixed"><tbody><tr class="hbox"><td>
+
+<form>
+<ul class="associations">
+<?php foreach ($items as $item): ?> 
+ <li title="id(<?=$item->getId()?>)">
+  <img src="/<?=PIX_PATH?>/bullets/delete.png"
+       data-item="<?=$item->getKey()?>"
+       onclick="Kwo.Association.onRemove(this)" />
+  <?=ucfirst($item)?>
+<?php foreach ($through_cols as $name => $title): ?>
+ &middot; <small><?=ucfirst($title)?>=[<?=$item->getAttribute($name.'_')?>]</small>
+<?php endforeach; ?>
+ </li>
+<?php endforeach; ?>
+</ul>
+</form>
+
+</td><td>
+
+<?php if ($orphans): ?>
+<form onsubmit="Kwo.Association.onAdd(this); return false;">
+<ul class="elts">
+<li>
+<label><?=$label?></label>
+<select name="item_key" style="width:auto;">
+ <option value="">--</option>
+<?php foreach ($orphans as $item): ?>
+ <option value="<?=$item->getKey()?>"><?=$item?></option>
+<?php endforeach; ?>
+</select>
+</li>
+<?php foreach ($through_cols as $name => $label): ?>
+<li>
+<label><?=ucfirst($label)?></label>
+<input type="text" name="attributes[<?=$name?>]" style="width:auto;" />
+</li>
+<?php endforeach; ?>
+<ul>
+<div class="launcher" style="margin-top:6px;">
+ <input src="/app/core/pix/action/add.png" title="enregistrer" class="action"  type="image" />
+</div>
+</form>
+<?php else: ?>
+Aucun élément [<?=$items->model()?>] à associer
+<?php endif; ?>
+
+</tbody></td></tr></table>
+
+</fieldset>
+

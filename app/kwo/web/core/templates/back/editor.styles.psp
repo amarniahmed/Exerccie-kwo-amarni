@@ -1,0 +1,10 @@
+<?php foreach ($stylesheets as $stylesheet) : ?>
+<a href="javascript:void(0)"
+   style="<?=$stylesheet->css()?>"
+   data-style="kwo-<?=$stylesheet->code?>"
+   data-tag="<?=$stylesheet->tag()?>">
+ <?=Stylesheet::$tag_types[$stylesheet->tag_type]?> : 
+ <?=$stylesheet->name?>
+</a>
+<?php endforeach; ?>
+

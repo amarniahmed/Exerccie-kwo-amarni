@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+
+<body style="background:#F2F2F2; color:#646464; font-family:lucida grande, helvetica, arial;">
+<div style="margin:18px auto 6px auto; padding:20px; width:627px;">
+
+
+<a href="<?=H::url('/')?>">
+ <img src="<?=H::url(PIX_URL.'/empty.gif')?>" style="border:none;" />
+</a>
+
+<div style="padding:8px; background:white; border:1px solid #D9D9D9;">
+<?php if (!empty($image)): ?>
+  <img src="<?=$image?>" style="float:right; margin:0 0 10px 10px;" />
+<?php endif; ?>
+  <h1><?=$name?></h1>
+<?php if (!empty($description)): ?>
+  <u><?=$description?></u>
+<?php endif; ?>
+<?php if (!empty($content)): ?>
+  <p><?=$content?></p>
+<?php endif; ?>
+ <div style="clear:both;"></div>
+</div>
+
+<div style="text-align:center; font-size:0.9em; color:blue; margin-top:10px;">
+ ((remove)) pour vous désinscrire
+</div>
+
+</div></body></html>

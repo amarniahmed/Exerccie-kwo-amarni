@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox width="30%">
+      <elem field="code" required="true" />
+      <elem field="app" />
+      <elem field="status" />
+      <elem field="locales" />
+      <elem field="about" />
+     </vbox>
+     <vbox localized="true">
+      <elem field="title" label="titre" />
+      <elem field="image" type="image" label="image" />
+      <elem field="description" rows="4" label="description" />
+      <elem field="content" mode="rich" rows="14" label="contenu" />
+     </vbox>
+    </hbox>
+    <launcher/>
+   </form>
+  </page>
+  <page label="opérations" built="$is_loaded">
+   <hbox>
+    <vbox width="150px">
+     <box label="actions">
+      <link icon="details" />
+      <link icon="note" />
+     </box>
+    </vbox>
+    <vbox>
+     <deck />
+    </vbox>
+   </hbox> 
+  </page>
+ </notebook>
+</fieldset>

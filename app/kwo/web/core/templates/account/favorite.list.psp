@@ -1,0 +1,51 @@
+<?php if ($favorites->numRows() < 1): ?>
+Aucun favoris
+<?php return; endif; ?>
+
+<div class="item-rows">
+  <?php foreach ($favorites as $favorite): ?>
+    <?php $item = $favorite->getItem(); ?>
+    <div class="item-row vanish">
+      <table>
+        <tbody>
+          <tr>
+            <td class="icon">
+              <img src="<?=$item->getThumbnail()?>" alt="" />
+            </td>
+            <td class="details">
+              <strong><a href="<?=$favorite->asUrl()?>"><?=c($item->getName())?></a></strong>
+              <span class="date"><?=H::date($favorite->created_at)?></span>
+              <?php if (!empty($item->description)): ?>
+                <small><div><?=$item->description?></div></small>
+              <?php endif; ?>
+              <?php if (!empty($favorite->comment)): ?>
+                <em>Commentaire : <?=nl2br($favorite->comment)?></em>
+              <?php endif; ?>
+            </td>
+            <td class="actions">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" class="elt-link"
+                     onclick="new Kwo.Composer.Share(this)"
+                     data-item="<?=$item->getKey()?>">envoyer à un ami</a>
+                </li>
+                <?php if ($favorite->hasFlag(Favorite::FLAG_ALERT)): ?>
+                  <li><a href="javascript:void(0)" class="elt-link"
+                         onclick="Kwo.Favorite.onAlertUnset(this)"
+                         data-confirm="<?=l('confirmation')?>">désactiver l’alerte mail</a>
+                  </li>
+                <?php endif; ?>
+                <li>
+                  <a href="javascript:void(0)" class="elt-link"
+                     onclick="Kwo.Favorite.onDelete(this)"
+                     data-confirm="<?=l('confirmation')?>"
+                     data-id="<?=$favorite->getId()?>">supprimer</a>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <?php endforeach; ?>
+</div>

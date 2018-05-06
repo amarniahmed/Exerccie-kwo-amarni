@@ -1,0 +1,71 @@
+http://codex.wordpress.org/Update_Services
+http://www.prelovac.com/vladimir/wordpress-ping-list 
+
+------------------------------------------------------------------------
+
+http://codex.wordpress.org/Widgetizing_Themes
+
+http://www.xmlrpc.com/metaWeblogApi
+http://en.wikipedia.org/wiki/Really_Simple_Discovery 
+
+------------------------------------------------------------------------
+- présentation archive
+  https://www.joost.com/press/
+------------------------------------------------------------------------
+http://en.wikipedia.org/wiki/Linkback
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+http://www.google.com/help/blogsearch/pinging_API.html
+
+function pingblog() {
+  if ($_SESSION['flagping']==1) return false;
+  $_SESSION['flagping'] = 1;
+  $url = 'http://rpc.weblogs.com/pingSiteForm?name='.urlencode($_SESSION['blog']->TITLE).'&url='.urlencode('http://'.$_SESSION['blog']->LOGIN.'.'.$GLOBALS['arrConf']['domain']);
+  $fp = fopen($url,'r');
+  fread($fp,32);
+  fclose($fp);
+
+  $fp = fopen("http://api.my.yahoo.com/rss/ping?u=http://".$_SESSION['blog']->LOGIN.'.'.$GLOBALS['arrConf']['domain']."/index/rss.xml",'r');
+  fread($fp,32);
+  fclose($fp);
+
+  $url = "http://ping.blo.gs/?name=".urlencode($_SESSION['blog']->TITLE)."&url=http://".$_SESSION['blog']->LOGIN.'.'.$GLOBALS['arrConf']['domain'].'/';
+  urlping($url);
+
+  if ($GLOBALS['arrConf']['flaginproduction']!=1) return false;
+  $content = '<?xml version="1.0"?>
+<methodCall>
+ <methodName>weblogUpdates.ping</methodName>
+  <params>
+    <param>
+      <value>'.$_SESSION['blog']->TITLE.'</value>
+    </param>
+    <param>
+      <value>http://'.$_SESSION['blog']->LOGIN.'.'.$GLOBALS['arrConf']['domain'].'/</value>
+    </param>
+  </params>
+</methodCall>';
+
+  $http_request  = "POST /rpc/ping HTTP/1.0\r\n";
+  $http_request .= "User-Agent: Kernix.com blog\r\n";
+  $http_request .= "Host: rpc.technorati.com\r\n";
+  $http_request .= "Content-Type: text/xml\r\n";
+  $http_request .= "Content-Length: ".strlen($content)."\r\n";
+  $http_request .= "\r\n";
+  $http_request .= $content;
+  
+  $response = '';
+  $fs = @fsockopen('rpc.technorati.com', 80, $errno, $errstr, 5);
+  if ($fs!=false) {
+    fwrite($fs, $http_request);
+    while ( !feof($fs) )
+      $response .= fgets($fs, 1160);
+    fclose($fs);
+  }
+
+  //  kwo_error_log("$url\n".$response);
+  return true;
+}
+------------------------------------------------------------------------

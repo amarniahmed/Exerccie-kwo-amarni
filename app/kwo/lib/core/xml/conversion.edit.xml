@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<fieldset label="$fieldset_label">
+ <notebook>
+  <page label="définition">
+   <form>
+    <hbox>
+     <vbox width="300px">
+      <hbox>
+       <vbox><elem field="status" /></vbox>
+       <vbox><elem field="flags" cols="1" /></vbox>
+      </hbox>
+      <hbox>
+       <vbox><elem field="cost" precision="EUR" /></vbox>
+       <vbox><elem field="worth" precision="EUR" /></vbox>
+      </hbox>
+      <elem field="media" options="Conversion::$medias" />
+      <elem name="datas[note]" rows="4" label="commentaire" />
+      <launcher buttons="store" />
+     </vbox>
+     <vbox>
+      <hbox>
+       <vbox label="origine">
+        <grid value="$origin" />
+       </vbox>
+       <vbox label="résumé">
+        <grid value="$details" layout="auto" />
+       </vbox>
+      </hbox>
+      <box value="$visits" />
+     </vbox>
+    </hbox>
+   </form>
+  </page>
+ </notebook>
+</fieldset>

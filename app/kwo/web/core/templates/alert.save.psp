@@ -1,0 +1,5 @@
+<h1><?=c($title)?></h1>
+
+<div class="layout-hbox-content">
+  <div class="text-block"><?=$content?></a>
+</div>

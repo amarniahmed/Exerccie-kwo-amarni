@@ -1,0 +1,17 @@
+<fieldset data-model="<?=MODEL?>">
+  <legend><?=c(l('logs tâches automatiques'))?></legend>
+  <table class="columns">
+    <tbody>
+      <tr>
+        <td style="width:200px;">
+          <ul class="elts">
+            <?php foreach ($files as $file => $class): ?>
+              <li class="<?=$class?>" data-filename="<?=basename($file)?>" onclick="Kwo.Developer.displaySchedulerLog(this)"><?=basename($file)?></li>
+            <?php endforeach; ?>
+          </ul>
+        </td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</fieldset>

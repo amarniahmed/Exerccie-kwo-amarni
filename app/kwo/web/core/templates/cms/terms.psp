@@ -1,0 +1,9 @@
+<ul class="terms">
+<?php foreach ($terms as $term): ?>
+<li>
+ <a href="javascript:void(0)" onclick="Kwo.Glossary.selectTerm(this)"><?=$term->name?></a> 
+ <p style="display:<?=$term->name === $selected_term ? 'block' : 'none'?>;"><?=nl2br($term->content)?></p>
+</li>
+<?php endforeach; ?>
+</ul>
+

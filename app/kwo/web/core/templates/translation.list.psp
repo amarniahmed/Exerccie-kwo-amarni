@@ -1,0 +1,13 @@
+<?php if ($translations->foundRows() < 1): ?>
+  <p>Aucune translation</p>
+<?php else: ?>
+  <ul>
+    <?php foreach ($translations as $translation): ?>
+      <li>
+        <a href="javascript:void(0)"
+           data-id="<?=$translation->getId()?>"><span class="item-status item-status-<?=$translation->status?>"></span><span class="item-priority-<?=$translation->priority?>"><?=$translation->asRowName()?></span>
+        </a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
+<?php endif; ?>

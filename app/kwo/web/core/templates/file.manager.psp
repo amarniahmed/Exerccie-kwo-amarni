@@ -1,0 +1,65 @@
+<h1><?=c($label)?></h1>
+<div>
+
+<table><tbody>
+<tr><td class="side">
+
+<ul>
+<?php if ($user): ?>
+ <li class="<?=count($files)>0?'selected':''?>"
+     data-panel="list"><?=c(l('my.files'))?></li>
+<?php endif; ?>
+ <li class="<?=count($files)<1?'selected':''?>"
+     data-panel="upload"><?=c(l('send.file'))?></li>
+</ul>
+
+</td><td class="panels">
+
+<div class="list" style="display:<?=count($files)>0?'block':'none'?>;">
+
+<table><tbody>
+<tr><td>
+
+<ul>
+<?php foreach ($files as $file): ?>
+ <li data-file="<?=$file['path']?>"><?=$file['name']?></li>
+<?php endforeach; ?>
+</ul>
+
+</td><td>
+ <div class="preview"></div>
+</td></tr>
+</tbody></table>
+
+
+</div>
+
+<div class="upload" style="display:<?=count($files)<1?'block':'none'?>;">
+
+<form>
+ <input type="file" name="file" />
+ <input type="hidden" name="filter" />
+ <input type="submit" value="<?=l('send')?>" class="button" />
+</form>
+
+<?php if ($user): ?>
+<div class="message">
+ <?=l('snippet:upload.info', array('used_space' => $user->getUsedSpace(),
+                                   'quota' => $user->getQuota()))?>
+</div>
+<?php endif; ?>
+
+<img src="<?=PIX_URL?>/empty.gif" class="progress"
+     data-intial="<?=PIX_URL?>/empty.gif"
+     data-progress="<?=PIX_URL?>/throbbers/default.gif" />
+
+<iframe src="<?=PIX_URL?>/empty.gif"
+        name="upload-container"></iframe>
+
+</div>
+
+</td></tr>
+</tbody></table>
+
+
+</div>

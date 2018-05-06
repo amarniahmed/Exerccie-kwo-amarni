@@ -1,0 +1,8 @@
+<table class="grid">
+<thead><tr><th colspan="2">requêtes</th></tr></thead>
+<tbody>
+<?php foreach ($actions as $name => $value): ?>
+ <tr><td><?=$name?></td><td><?=$value?>%</td></tr>
+<?php endforeach; ?>
+</tbody>
+</table>

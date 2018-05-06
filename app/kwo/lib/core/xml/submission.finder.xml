@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<finder order="id desc">
+ <filters>
+  <filter name="id" />
+  <filter name="name" label="résumé"/>
+  <filter name="locale" />
+  <filter name="form_id" />
+ </filters>
+ <cols>
+  <col name="name" label="résumé"/>
+  <col name="locale" />
+  <col name="submitted_at" />
+ </cols>
+</finder>

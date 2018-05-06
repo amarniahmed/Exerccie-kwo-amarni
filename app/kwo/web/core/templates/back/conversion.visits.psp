@@ -1,0 +1,25 @@
+<div class="visit-picker" data-confirm="<?=c(l('êtes-vous sûr de vouloir attribuer cette conversion à la visite'))?>">
+  <div class="hbox-label">
+    <?=c(l('attribution : Customer Journey : visites du visiteur sur les 30 jours qui ont précédé la conversion'))?>
+  </div>
+  <div style="max-height:350px; overflow-y:auto;">
+    <table class="grid auto visits">
+      <tbody>
+        <?php foreach ($visits as $vis): ?>
+          <tr class="<?=$vis['conversions']>0?' important':''?><?=$visit_id==$vis['id']?' selected':''?>"
+              style="<?=($vis['medium'] === Tracker::MEDIUM_DIRECT ? 'opacity:0.6"' : '')?>"
+              data-visit-id="<?=$vis['id']?>">
+            <td><span class="select icon-legal clickable" title="<?=l('attribuer')?>"></span></td>
+            <td><a href="javascript:void(0)" class="visit-detail"><?=$vis['id']?></a></td>
+            <td><?=substr($vis['created_on'], 2)?> <?=substr($vis['created_at'], 0, 5)?></td>
+            <td><?=Tracker::$mediums[$vis['medium']]?></td>
+            <td><?=$vis['source']?></td>
+            <td><?=$vis['term']?></td>
+            <td><?=$vis['campaign']?></td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+<?=H::trigger('new kwo.managers.Conversion(this)')?>

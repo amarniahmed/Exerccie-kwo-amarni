@@ -1,0 +1,24 @@
+
+GOOGLE 
+
+LEADERBOARD creates a fullly horizontal display area.
+BANNER creates a horizontal "banner" ad.
+HALF_BANNER creates a smaller horiztonal "banner" ad.
+SKYSCRAPER creates a large vertical ad.
+WIDE_SKYSCRAPER creates a wide vertical ad using larger type.
+VERTICAL_BANNER creates a medium-sized vertical ad.
+BUTTON creates a small ad.
+SMALL_SQUARE creates a slightly larger square ad.
+SQUARE creates a large square ad with large type.
+SMALL_RECTANGLE creates a small rectangular ad.
+MEDIUM_RECTANGLE creates a medium rectangular ad.
+LARGE_RECTANGLE creates a large rectangular ad.
+
+
+
+http://en.wikipedia.org/wiki/Standard_ad_size
+
+
+<select name="format" id="text_format" onchange="wiz_dirty(); updateCodeField()"><optgroup label="Horizontal"><option value="728x90">Leaderboard 728 x 90</option> <option value="468x60">Bannière 468 x 60</option> <option value="234x60">Demi-bannière de 234 X 60</option></optgroup> <optgroup label="Vertical"><option value="120x600">Skyscraper 120 x 600</option> <option value="160x600">Skycraper large 160 x 600</option> <option value="120x240">Bannière verticale 120 x 240</option></optgroup> <optgroup label="Carré"><option value="336x280">Grand rectangle 336 x 280</option> <option value="300x250">Rectangle moyen 300 x 250</option> <option value="250x250">Carré 250 x 250</option> <option value="200x200">Petit carré 200 x 200</option> <option value="180x150">Petit rectangle 180 x 150</option> <option value="125x125">Bouton 125 x 125</option></optgroup></select>
+
+

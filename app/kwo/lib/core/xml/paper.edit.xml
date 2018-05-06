@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<fieldset label="$fieldset_label">
+
+<notebook>
+
+<page label="définition">
+ <form>
+  <hbox>
+   <vbox width="40%">
+    <elem field="name" precision="pour les listes" />
+    <elem field="app" />
+    <hbox>
+     <vbox><elem field="code" /></vbox>
+     <vbox><elem field="status" type="yesno" /></vbox>
+    </hbox>
+    <elem field="locales" />
+    <elem field="about" />
+    <hbox>
+     <vbox>
+     </vbox>
+     <vbox>
+     </vbox>
+    </hbox>
+   </vbox>
+   <vbox localized="true">
+    <elem field="title" />
+    <elem field="description" rows="4" label="préambule" />
+    <elem field="content" rows="14" label="contenu" />
+   </vbox>
+  </hbox>
+  <launcher/>
+ </form>
+</page>
+
+<page label="paragraphes" built="$is_loaded">
+ <hbox class="paragraph-box workspace-box">
+  <vbox width="40%">
+   <box class="paragraph-home-box columns" value="$columnview" />
+  </vbox>
+  <vbox>
+   <box class="paragraph-edit-box"/>
+  </vbox>
+ </hbox>
+</page>
+
+<page label="opérations" built="$is_loaded">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions">
+    <link icon="details" />
+    <link icon="seo" />
+    <link icon="preview" />
+   </box>
+  </vbox>
+  <vbox><deck /></vbox>
+ </hbox> 
+</page>
+
+</notebook>
+
+</fieldset>
+

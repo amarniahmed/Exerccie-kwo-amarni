@@ -1,0 +1,61 @@
+<table class="fixed columns"><tboby><tr>
+
+
+<td class="column" style="width:60%;">
+
+   <h2><?=ucfirst(l('account.subscriptions'))?></h2>
+
+<ul class="hbox rounded">
+
+<form onsubmit="Kwo.Subscriptions.onSubmit(this); return false;">
+
+<table class="auto checkbox-grid">
+
+<tfoot>
+ <td></td>
+ <td>
+  <?=H::button(l('save'))?>
+ </td>
+</tfoot>
+
+<tbody>
+<?php foreach ($bases as $base): ?>
+<tr>
+ <td>
+  <input type="hidden" name="bases[<?=$base->getId()?>]" value="0" />
+  <input type="checkbox" name="bases[<?=$base->getId()?>]"
+         value="1"<?=$base->hasEmail($email_id)?' checked="checked"':''?> />
+ </td>
+ <td>
+  <strong><?=ucfirst($base->title)?></strong>
+  <div><?=ucfirst($base->description)?></div>
+ </td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+
+</table>
+
+</form>
+
+</ul>
+
+</td><td class="column">
+
+<form onsubmit="Kwo.Newsletter.onRecipientSave(this); return false;">
+<h2><?=ucfirst(l('account.recipient'))?></h2>
+
+<ul class="hbox rounded">
+   <li><?=Elt::code(array('label' => l('account.recipient.before'),
+                          'value' => $email))?></li>
+<li><?=Elt::text(array('label' => l('account.recipient.after'),
+                       'name' => 'email',
+                       'wide' => true))?></li>
+<li><?=Elt::button(array('label' => l('save')))?></li>
+</ul>
+
+
+</form>
+</td></tr></tboby></table>
+
+

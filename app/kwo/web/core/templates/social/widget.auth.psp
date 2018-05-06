@@ -1,0 +1,28 @@
+<form onsubmit="Kwo.Account.login(this); return false;" method="post">
+  <div class="box">
+    <?php if ($_user['id'] < 1): ?>
+      <label><?=c(l('email'))?></label>
+      <input type="text" name="login" class="text" />
+      <label><?=c(l('password'))?></label>
+      <input type="password" name="password" class="text" />
+      <div class="remember">
+        <input type="checkbox" name="remember_me" value="1" />
+        <?=c(l('remember'))?>
+      </div>
+      <div class="links">
+        <a href="javascript:void(Kwo.Account.signup())">devenir membre</a><br/>
+        <a href="javascript:void(Kwo.Account.forgotPassword())">mot de passe oublié ?</a>
+      </div>
+      <div class="login">
+        <input type="submit" value="<?=l('log_in')?>" class="button" /> 
+      </div>
+    <?php else: ?>
+      <div class="welcome">
+        <?=c(l('welcome'))?><br/>
+        <a href="javascript:void(Kwo.Account.view())"><?=c(l('my_account'))?></a> -
+        <a href="javascript:void(Kwo.Account.logout('<?=l('confirmation')?>?'))"><?=c(l('log_off'))?></a>
+      </div>
+    <?php endif; ?>
+    <div style="clear:both;"></div>
+  </div>
+</form>

@@ -1,0 +1,1 @@
+<textarea rows="30" spellcheck="false" style="width:100%; height:500px;"><?=$content?></textarea>

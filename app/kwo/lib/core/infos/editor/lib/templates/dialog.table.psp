@@ -1,0 +1,67 @@
+<script>
+ins = function insertTable() {
+  var o = {};
+  o._rows       = parseInt($F('rows')) || 2;
+  o._cols       = parseInt($F('columns')) || 2;
+  o._unite      = ($F('unite')=="pixels") ? "" : "%";
+  o._width      = (parseInt($F('width')) > 0 && !isNaN(parseInt($F('width')))) ? 'width="'+$F('width')+o._unite+'"' : 'width="80%"';
+  o._height     = (parseInt($F('height')) > 0 && !isNaN(parseInt($F('height')))) ? 'height="'+$F('height')+'px"' : '';
+  o._spacing    = (!isNaN(parseInt($F('spacing')))) ? 'cellspacing="'+$F('spacing')+'"' : 'cellspacing="0"';
+  o._padding    = (!isNaN(parseInt($F('padding')))) ? 'cellpadding="'+$F('padding')+'"' : 'cellpadding="0"';
+  //  o._border     = (!isNaN(parseInt($F('border')))) ? 'border="'+$F('border')+'"' : 'border="0"';
+  o._layout     = 'style="table-layout:'+$F('layout')+';"';
+  // o._properties = o._border+" "+o._layout;
+  // if (!$('class')) o._class = undefined;
+  //  var editor = parent.Kwo.registry["<?=$params_arr['name']?>"];
+  Kwo.getEditor().insertTable(o);
+  //  parent.hideAllKwoLayer();
+}
+</script>
+
+<table class="grid">
+
+<tfoot>
+<tr>
+ <td></td>
+ <td><input type="button" onclick="ins()" class="button" value="insérer" /></td>
+</tr>
+</tfoot>
+
+<tbody>
+<tr>
+ <td>nbre de lignes</td>
+ <td><input type="text" id="rows" value="3" size="4" class="text" /></td>
+</tr>
+<tr>
+ <td>nbre de colonnes</td>
+ <td><input type="text" id="columns" value="2" size="4" class="text" /></td>
+</tr>
+<tr>
+ <td>largeur</td>
+ <td>
+  <input type="text" id="width" value="200" size="4" class="text" />
+  <select id="unite" style="margin-left:2px;"> 
+   <option value="pixels">pixels</option>
+   <option value="percent">%</option>
+  </select>
+ </td>
+</tr> 
+<tr>
+ <td>hauteur</td>
+ <td><input type="text" id="height" size="4" class="text" /> pixels</td>
+</tr>
+<tr>
+ <td>dimensions fixes</td>
+ <td><select id="layout"><option value="fixed">oui</option><option value="auto">non</option></select></td>
+</tr>
+<tr>
+ <td>espace intérieur</td>
+ <td><input type="text" id="padding" value="0" size="4" class="text" /></td>
+</tr>
+<tr>
+ <td>espace extérieur</td>
+ <td><input type="text" id="spacing" id="0" value="1" size="4" class="text" /></td>
+</tr>
+</tbody>
+
+</table>

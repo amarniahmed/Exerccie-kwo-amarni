@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<notebook>
+<page>
+ <finder/>
+</page>
+<page label="export" built="false">
+ <hbox>
+  <vbox width="150px">
+   <box label="actions" />
+  </vbox>
+  <vbox>
+  </vbox>
+ </hbox>
+</page>
+</notebook>
